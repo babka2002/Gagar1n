@@ -9,7 +9,7 @@ sections: true
 title_template: 'Gagarin 1 / %s'
 # og_image: /img/og_emma.png
 author: Evgenii Zhukov
-favicon: /img/logo.png
+favicon: /img/logo3.svg
 description: Gagarin 1
 port: 8083
 
