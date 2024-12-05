@@ -1,0 +1,32 @@
+globals: ['@global']
+libs: ['@library']
+
+view_transitions: true
+native_css_nesting: true
+inline_css: true
+sections: true
+
+title_template: 'Gagarin 1 / %s'
+# og_image: /img/og_emma.png
+author: Evgenii Zhukov
+favicon: /img/logo.png
+description: Gagarin 1
+port: 8083
+
+# OG image
+origin: http://g1.crimeatest.ru
+og: /img/logo.png
+
+navigation:
+  header:
+    # - "": /
+    # - Contact: /contact/
+
+  footer:
+    - © Gagar1n: /
+
+    - image: /img/codeberg.svg
+      url: https://codeberg.org/webstartechnology/Gagar1n
+      alt: Codeberg Projects
+      size: 22 x 22
+      class: 'codeberg'

@@ -1,0 +1,102 @@
+/* all reset/normalization you need */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* consistent whitespace */
+ul,
+ol,
+figure,
+pre {
+  margin: 2em 0;
+}
+
+/* page layout */
+body {
+  background-color: var(--gray-100);
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2% 5%;
+
+  > header nav {
+    justify-content: space-between;
+    margin-bottom: 4rem;
+    display: flex;
+
+    /*  avatar image */
+    > a:first-child {
+      background: url(/img/logo.svg) 0 50% no-repeat;
+      background-size: 10em;
+      padding-left: 14.5em;
+    }
+
+    a {
+      padding: 1.5em 0;
+    }
+  }
+
+  /* content area: hero and sections */
+  article {
+    > header {
+      margin-bottom: 2rem;
+    }
+
+    > section {
+      max-width: 650px;
+      margin: 0 auto;
+    }
+  }
+
+  /* global footer */
+  > footer {
+    border-top: 1px solid var(--gray-200);
+    margin-top: 8rem;
+
+    nav {
+      padding: 1rem 0;
+      display: flex;
+      gap: 0.5em;
+
+      a {
+        opacity: 0.8;
+      }
+      a:hover {
+        opacity: 1;
+      }
+
+      a:nth-child(2) {
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+.pulsating-logo-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+}
+
+.pulsating-logo {
+  animation: pulse 2s infinite;
+  height: 30vh;
+}
+
+@keyframes pulse {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.1);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+.codeberg img{
+  background-color: var(--gray-300);
+}
