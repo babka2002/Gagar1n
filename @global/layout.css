@@ -87,16 +87,28 @@ body {
 
 @keyframes pulse {
   0% {
-      transform: scale(1);
+    transform: scale(1);
   }
   50% {
-      transform: scale(1.1);
+    transform: scale(1.1);
   }
   100% {
-      transform: scale(1);
+    transform: scale(1);
   }
 }
 
-.codeberg img{
+.codeberg img {
   background-color: var(--gray-300);
+}
+
+.home-text {
+  h1 {
+    margin-top: 2rem;
+  }
+  p {
+    margin-top: 2rem;
+    font-size: 0.9em;
+    text-align: justify;
+    color: var(--gray-400);
+  }
 }
