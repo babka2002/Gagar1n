@@ -12,29 +12,245 @@
 
 <body class="bg-dark">
 
-  <header class="bg-light flex justify-between items-center gap-2 container my-5 rounded-[30px] px-[20px] py-[14px]">
-    <div class="flex items-center justify-center">
-      <button class="">menu</button>
-      <a href="#" class="p-0 m-0">
-        <img src="/img/logo.png" alt="" class="max-w-[218px]">
-      </a>
+  <!-- START::HEADER -->
+  <div class="container px-[1em] my-5">
+    <header class="bg-light flex justify-between items-center gap-2 rounded-[30px] px-[20px] py-[14px] ">
+      <div class="flex items-center justify-center gap-[34px] relative">
+        <button
+          class="rounded-full bg-dark text-light flex items-center justify-center w-[60px] h-[60px] relative z-10"><svg
+            width="34" height="22" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 2H32" stroke="#EBE7E7" stroke-width="4" stroke-linecap="round" />
+            <path d="M2 11H32" stroke="#EBE7E7" stroke-width="4" stroke-linecap="round" />
+            <path d="M2 20H32" stroke="#EBE7E7" stroke-width="4" stroke-linecap="round" />
+          </svg>
+        </button>
+
+        <a href="#" class="p-0 m-0 relative z-10">
+          <img src="/img/logo.png" alt="" class="max-w-[218px]">
+        </a>
+
+        <ul class="absolute top-[90%] left-[-20px] bg-light rounded-b-[30px] p-5 min-w-[300px]">
+          <li><a href="#"
+              class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">тренажерный
+              зал</a>
+          </li>
+          <li><a href="#"
+              class="uppercase leading-8 text-black font-normal block hover:underline hover:underline-offset-4">групповые
+              тренировки</a></li>
+        </ul>
+
+      </div>
+
+      <div class="flex items-center justify-between gap-2">
+        <button type="button" class="w-[87px] h-[77px]"><img src="/img/g1.png" alt="" class="block"></button>
+        <button type="button" class="w-[87px] h-[77px]"><img src="/img/g1.png" alt=""
+            class="block filter grayscale-[.7] hover:grayscale-0 transition-all"></button>
+        <button type="button" class="w-[87px] h-[77px] "><img src="/img/g1.png" alt=""
+            class="block filter grayscale hover:grayscale-0 transition-all"></button>
+      </div>
+
+      <div class="flex items-center justify-center gap-[34px]">
+        <p class=""> г. Симферополь <br> ул. Киевская, 115</p>
+        <a href="#"
+          class="flex items-center justify-center bg-main-red px-[10px] py-[19px] rounded-[30px] text-[20px] text-light hover:opacity-70 transition-all">записаться</a>
+      </div>
+    </header>
+  </div>
+  <!-- END::HEADER -->
+
+  <!-- START::HERO -->
+  <section class="pt-24 pb-28">
+    <div class="container grid grid-cols-2 gap-11 px-[1em]">
+      <div class="">
+        <h1 class="uppercase text-light [font-size:_clamp(2.3125rem,1.6754rem+3.1853vw,4.375rem)] mb-5 mt-14">
+          тренируйся с g1</h1>
+        <p class="text-light mb-14 [font-size:_clamp(1.5rem,1.249rem+1.2548vw,2.3125rem)]">
+          получи выгоду до <span class="bg-main-red px-2 py-1 rounded-xl text-dark ">30%</span> <br>на <span
+            class="border-dashed border-main-red border-b-[4px]">годовой</span>
+          абонемент
+        </p>
+        <a href="#"
+          class="flex items-center justify-center bg-light rounded-[30px] px-4 py-3 uppercase [font-size:_clamp(1.5rem,1.1911rem+1.5444vw,2.5rem)] hover:opacity-70 transition-all">подробнее</a>
+
+        <div class="h-[284px] mt-[34px] bg-neutral-800 rounded-[46px] overflow-hidden">
+          <img src="/img/hero1.jpg" alt="" class="rounded-[46px] object-cover object-center">
+        </div>
+      </div>
+      <div class="bg-neutral-800 rounded-[46px] overflow-hidden h-[750px]">
+        <img src="/img/hero2.jpg" alt="" class="rounded-[46px] object-cover object-center max-w-full">
+      </div>
     </div>
+  </section>
+  <!-- END::HERO -->
 
-    <div class="flex items-center justify-between gap-2">
-      <button>01</button>
-      <button>02</button>
-      <button>03</button>
+  <!-- START::DIRECTION -->
+  <section class="py-16 bg-light">
+    <div class="container">
+      <h2
+        class="flex justify-center items-center text-3xl font-normal text-black text-center [font-size:_clamp(1.75rem,1.0936rem+3.2819vw,3.875rem);] mb-6 leading-[1]">
+        ВЫБЕРИ НАПРАВЛЕНИЕ СЕБЕ
+        ПО ДУШЕ</h2>
+      <div class="bg-dark rounded-[74px] px-[45px] py-[40px] grid grid-cols-3 gap-5">
+
+        <a href="#" class="rounded-[46px] bg-light flex flex-col transition-all hover:opacity-70">
+          <img src="/img/direction-1.jpg" alt="" class="object-cover object-center rounded-[30px] h-[196px] w-full">
+          <p
+            class="text-center [font-size:_clamp(1.25rem,1.1728rem+0.3861vw,1.5rem)] font-normal flex-1 flex items-center justify-center my-2">
+            Индивидуальные <br> занятия
+          </p>
+        </a>
+        <a href="#" class="rounded-[46px] bg-light flex flex-col transition-all hover:opacity-70">
+          <p
+            class="text-center [font-size:_clamp(1.25rem,1.1728rem+0.3861vw,1.5rem)] font-normal flex-1 flex items-center justify-center my-2">
+            теренажерный зал
+          </p>
+          <img src="/img/direction-2.jpg" alt="" class="object-cover object-center rounded-[30px] h-[196px] w-full">
+        </a>
+        <a href="#" class="rounded-[46px] bg-light flex flex-col transition-all hover:opacity-70">
+          <img src="/img/direction-3.jpg" alt="" class="object-cover object-center  rounded-[30px] h-[196px] w-full ">
+          <p
+            class="text-center [font-size:_clamp(1.25rem,1.1728rem+0.3861vw,1.5rem)] font-normal flex-1 flex items-center justify-center my-2">
+            фитнес
+          </p>
+        </a>
+
+        <a href="" class="rounded-[46px] bg-light flex flex-col transition-all hover:opacity-70">
+          <img src="/img/direction-4.jpg" alt="" class="object-cover object-top rounded-[30px] h-[196px] w-full">
+          <p
+            class="text-center [font-size:_clamp(1.25rem,1.1728rem+0.3861vw,1.5rem)] font-normal flex-1 flex items-center justify-center my-2">
+            кроссфит
+          </p>
+        </a>
+        <a href="#" class="rounded-[46px] bg-light flex flex-col transition-all hover:opacity-70">
+          <p
+            class="text-center [font-size:_clamp(1.25rem,1.1728rem+0.3861vw,1.5rem)] font-normal flex-1 flex items-center justify-center my-2">
+            бассейн
+          </p>
+          <img src="/img/direction-5.jpg" alt="" class="object-cover object-center rounded-[30px] h-[196px] w-full">
+        </a>
+        <a href="#" class="rounded-[46px] bg-light flex flex-col gap-3 transition-all hover:opacity-70">
+          <img src="/img/direction-6.jpg" alt="" class="object-cover object-center rounded-[30px] h-[196px] w-full">
+          <p
+            class="text-center [font-size:_clamp(1.25rem,1.1728rem+0.3861vw,1.5rem)] font-normal flex-1 flex items-center justify-center my-2">
+            сайкл студия
+          </p>
+        </a>
+
+      </div>
+
     </div>
-
-    <div class="flex items-center justify-center gap-2">
-      <p class=""> г. Симферополь ул. Киевская, 115</p>
-      <button class="">записаться </button>
-    </div>
-
-  </header>
-
+  </section>
+  <!-- END::DIRECTION -->
 
   <script type="module" src="/src/main.js"></script>
 </body>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
 
 </html>

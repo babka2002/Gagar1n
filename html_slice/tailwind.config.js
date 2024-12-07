@@ -8,11 +8,15 @@ export default {
     container: {
       center: true,
     },
-    extend: {},
-    colors: {
+    extend: {
+          colors: {
       'main-red': '#E23333',
       'dark': '#1E1E1E',
       'light': '#FFF8F8',
+    },
+    },
+    fontFamily: {
+      sans: ['Gothic No60'],
     },
   },
   plugins: [],
