@@ -13,7 +13,7 @@
     <!-- Open Graph -->
     <meta property="og:title" content="Бассейн Гагарин">
     <meta property="og:description" content="Профессиональный 25-метровый бассейн с 6 дорожками">
-    <meta property="og:image" content="/path-to-pool-image.jpg">
+    <!-- <meta property="og:image" content="/path-to-pool-image.jpg"> -->
     
     <!-- Scripts -->
     <!-- <script src="https://unpkg.com/nuejs"></script> -->
@@ -34,104 +34,105 @@
       "telephone": "8 800 555 1234"
     }
     </script>
-    <link rel="stylesheet" href="/src/style.css">
 </head>
 
-<body class="bg-[#474747] text-white font-sans antialiased px-[1em] my-5">
+<body class="bg-[#474747] text-white font-sans antialiased my-5">
     <!-- Header -->
-    <header class="container bg-light flex justify-between items-center gap-2 rounded-[30px] px-[20px] py-[14px] ">
-        <div class="flex items-center justify-center gap-[34px] relative ">
-            <button
-            onclick="MobileMenu.toggle()"
-            class="rounded-full bg-dark text-light flex items-center justify-center w-[3.75em] h-[3.75em] relative z-10"><svg
-                width="34" height="22" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2 2H32" stroke="#EBE7E7" stroke-width="4" stroke-linecap="round" />
-                <path d="M2 11H32" stroke="#EBE7E7" stroke-width="4" stroke-linecap="round" />
-                <path d="M2 20H32" stroke="#EBE7E7" stroke-width="4" stroke-linecap="round" />
-            </svg>
-            </button>
+     <div class="px-[1em]">
+        <header class="container bg-light flex justify-between items-center gap-2 rounded-[30px] px-[20px] py-[14px] ">
+            <div class="flex items-center justify-center gap-[34px] relative ">
+                <button
+                onclick="MobileMenu.toggle()"
+                class="rounded-full bg-dark text-light flex items-center justify-center w-[3.75em] h-[3.75em] relative z-10"><svg
+                    width="34" height="22" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 2H32" stroke="#EBE7E7" stroke-width="4" stroke-linecap="round" />
+                    <path d="M2 11H32" stroke="#EBE7E7" stroke-width="4" stroke-linecap="round" />
+                    <path d="M2 20H32" stroke="#EBE7E7" stroke-width="4" stroke-linecap="round" />
+                </svg>
+                </button>
 
-            <a href="#" class="p-0 m-0 relative z-10 hidden md:block">
-            <img src="/img/logo.png" alt="" class="max-w-[13.625em]">
-            </a>
+                <a href="/" class="p-0 m-0 relative z-10 hidden md:block">
+                <img src="/img/logo.png" alt="" class="max-w-[13.625em]">
+                </a>
 
-            <ul class="absolute top-[90%] left-[-20px] bg-light rounded-b-[1.875em] p-5  min-w-[18.75em] menu-items">
-                <li>
-                    <a href="/pool.html"
-                    class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all"
-                    >Бессейн</a>
-                </li>
-                <li>
-                    <a href="#"
-                    class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all"
-                    >тренажерный зал</a>
-                </li>
-                <li>
-                    <a href="#"
-                    class="uppercase leading-8 text-black font-normal block hover:underline hover:underline-offset-4"
-                    >групповые тренировки</a>
-                </li>
-            </ul>
+                <ul class="absolute top-[90%] left-[-20px] bg-light rounded-b-[1.875em] p-5  min-w-[18.75em] menu-items">
+                    <li>
+                        <a href="/pool.html"
+                        class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all"
+                        >Бессейн</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                        class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all"
+                        >тренажерный зал</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                        class="uppercase leading-8 text-black font-normal block hover:underline hover:underline-offset-4"
+                        >групповые тренировки</a>
+                    </li>
+                </ul>
 
-        </div>
+            </div>
 
-        <div class="flex items-center justify-between gap-2 relative z-10">
-            <button type="button" class="w-[52px] md:w-[5.4375em]"><img src="/img/g1.png" alt="" class="block"></button>
-            <button type="button" class="w-[52px] md:w-[5.4375em]"><img src="/img/g1.png" alt=""
-                class="block filter grayscale-[.7] hover:grayscale-0 transition-all"></button>
-            <button type="button" class="w-[52px] md:w-[5.4375em]"><img src="/img/g1.png" alt=""
-                class="block filter grayscale hover:grayscale-0 transition-all"></button>
-        </div>
+            <div class="flex items-center justify-between gap-2 relative z-10">
+                <button type="button" class="w-[52px] md:w-[5.4375em]"><img src="/img/g1.png" alt="" class="block"></button>
+                <button type="button" class="w-[52px] md:w-[5.4375em]"><img src="/img/g1.png" alt=""
+                    class="block filter grayscale-[.7] hover:grayscale-0 transition-all"></button>
+                <button type="button" class="w-[52px] md:w-[5.4375em]"><img src="/img/g1.png" alt=""
+                    class="block filter grayscale hover:grayscale-0 transition-all"></button>
+            </div>
 
-        <div class="flex items-center justify-center">
-            <p class="text-black font-normal [font-size:_clamp(1rem,0.9228rem+0.3861vw,1.25rem)] hidden lg:block mr-5"> г.
-            Симферополь <br> ул.
-            Киевская, 115</p>
-            <a href="#"
-            class="flex items-center justify-center bg-main-red px-[10px] py-[19px] rounded-[30px] text-[20px] text-light hover:opacity-70 transition-all hidden lg:block">записаться</a>
-            <a href="#" class="flex items-center justify-center"><img src="/img/phone.png" alt=""
-                class="min-w-[52px] h-[52px] flex-1 lg:hidden"></a>
-        </div>
-    </header>
+            <div class="flex items-center justify-center">
+                <p class="text-black font-normal [font-size:_clamp(1rem,0.9228rem+0.3861vw,1.25rem)] hidden lg:block mr-5"> г.
+                Симферополь <br> ул.
+                Киевская, 115</p>
+                <a href="#"
+                class="flex items-center justify-center bg-main-red px-[10px] py-[19px] rounded-[30px] text-[20px] text-light hover:opacity-70 transition-all hidden lg:block">записаться</a>
+                <a href="#" class="flex items-center justify-center"><img src="/img/phone.png" alt=""
+                    class="min-w-[52px] h-[52px] flex-1 lg:hidden"></a>
+            </div>
+        </header>
+    </div>
 
-    <main class="mt-[5em]">
+    <main class="mt-[2em] md:mt-[5em]">
         <!-- Hero Section -->
-        <section class="pt-24 pb-28">
-            <div class="container  mx-auto px-4">
+        <section class="px-[1em] mb-5">
+            <div class="container mx-auto">
             <div class="relative">
                 <img 
                     src="/img/pool-hero.png" 
                     alt="Бассейн" 
-                    class="w-full h-full object-cover rounded-[30px]"
+                    class="w-full h-full object-cover rounded-[10px] px-4"
                 />
                 
                     <div class="absolute inset-0 flex flex-col items-center justify-between">
                         <!-- Заголовок -->
-                        <h1 class="text-white text-[144px] font-bold col-span-12 text-center relative -mt-12">
+                        <h1 class="text-white text-[37px] md:text-[144px] col-span-12 text-center relative -mt-[12px]">
                             БАССЕЙН
                         </h1>
                    </div>  
                     <!-- Характеристики -->
-                    <div class="col-span-12 grid grid-cols-3 gap-20 ">
+                    <div class="col-span-12 grid grid-cols-[100px_150px_100px] gap-0 ">
                         <div class="text-center">
-                            <span class="text-white text-[250px] block leading-none">25</span>
-                            <span class="text-white text-[66px] uppercase">метров</span>
+                            <span class="text-white text-[75px] md:text-[250px] block leading-none">25</span>
+                            <span class="text-white text-[20px] md:text-[66px] uppercase">метров</span>
                         </div>
                         
                         <div class="text-center">
-                            <span class="text-white text-[250px] block leading-none">2.20</span>
-                            <span class="text-white text-[66px] uppercase">м.глубины</span>
+                            <span class="text-white text-[75px] md:text-[250px] block leading-none">2.20</span>
+                            <span class="text-white text-[20px] md:text-[66px] uppercase">м.глубины</span>
                         </div>
                         
                         <div class="text-center">
-                            <span class="text-white text-[250px] block leading-none">6</span>
-                            <span class="text-white text-[66px] uppercase">дорожек</span>
+                            <span class="text-white text-[75px] md:text-[250px] block leading-none">6</span>
+                            <span class="text-white text-[20px] md:text-[66px] uppercase">дорожек</span>
                         </div>
                     </div>
                     
                     <!-- Информация о системе очистки -->
                     <div class="col-span-8 bg-main-red rounded-[30px] p-6 mt-6">
-                        <p class="text-white text-[37px] uppercase leading-tight  text-center">
+                        <p class="text-white text-[14px] md:text-[37px] uppercase leading-tight  text-center">
                             используем многоступенчатую систему очистки для поддержания идеального состояния воды
                         </p>
                     </div>
@@ -141,147 +142,153 @@
         </section>
 
         <!-- Индивидуальные тренировки -->
-        <section class="py-16 bg-white text-black">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center">
+        <section class="bg-white text-black pt-5 pb-5 px-[1em]">
+            <div class="container mx-auto grid grid-cols-1">
+                <h2 class="text-[23px] md:text-[144px] mb-4 absolute left-3"> 
                     ИНДИВИДУАЛЬНЫЕ ТРЕНИРОВКИ
                 </h2>
 
-                <div class="grid md:grid-cols-2 gap-8 items-center">
-                    <div class="relative aspect-video">
-                        <img 
-                            src="/img/individual-training.png" 
-                            alt="Индивидуальная тренировка по плаванию" 
-                            class="w-full h-full object-cover rounded-lg"
-                            loading="lazy"
-                        >
-                    </div>
-                    <div class="space-y-4">
-                        <p class="text-lg">
-                            В ИНДИВИДУАЛЬНОМ ФОРМАТЕ МЫ ПРЕДЛАГАЕМ ТРЕНИРОВКИ ПО ПЛАВАНИЮ ДЛЯ ВЗРОСЛЫХ И ДЕТЕЙ С ПРОФЕССИОНАЛЬНЫМИ ТРЕНЕРАМИ. ЗАНЯТИЯ ПРОХОДЯТ В УДОБНОЕ ДЛЯ ВАС ВРЕМЯ.
-                        </p>
-                    </div>
-                </div>
+                <picture>
+                    <source media="(max-width: 768px)" srcset="/img/pool-individual-mobile.png"> <!-- Изображение для мобильных устройств -->
+                    <img 
+                        src="/img/pool-individual-training.png" 
+                        alt="Индивидуальная тренировка по плаванию" 
+                        class="w-full h-auto object-cover rounded-lg"
+                        loading="lazy"
+                    >
+                </picture>
+                
+                <p class="text-[10px] mt-[125px] absolute w-[180px] text-right right-4">
+                    Индивидуальные занятия под руководством профессионального тренера для укрепления здоровья и улучшения физической формы. Подходят для любого уровня подготовки.
+                </p>
             </div>
         </section>
 
         <!-- Групповые тренировки -->
-        <section class="py-16 bg-white">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center">
-                    ГРУППОВЫЕ ТРЕНИРОВКИ
-                </h2>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <section class="bg-white text-black">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-gray-800 text-[25px] text-center">ГРУППОВЫЕ ТРЕНИРОВКИ</h2>
+                <!-- <div class="columns-2 md:columns-2 lg:columns-3 gap-6  sm:p-1 mt-2"> -->
+                <div class="columns-2 md:columns-2 lg:columns-3 gap-x-2 p-1 sm:p-1 mt-2">
                     <!-- PRO -->
-                    <div class="bg-red-600 p-6 rounded-lg hover:bg-red-700 transition">
-                        <h3 class="text-xl font-bold mb-4">PRO</h3>
-                        <p class="text-sm">
-                            Тренировки для продвинутых пловцов, направленные на улучшение техники и выносливости
-                        </p>
-                    </div>
-
-                    <!-- SWIMMING -->
-                    <div class="bg-red-600 p-6 rounded-lg hover:bg-red-700 transition">
-                        <h3 class="text-xl font-bold mb-4">SWIMMING</h3>
-                        <p class="text-sm">
-                            Базовые тренировки по плаванию для всех уровней подготовки
-                        </p>
-                    </div>
-
-                    <!-- ВОДНОЕ ПОЛО -->
-                    <div class="bg-red-600 p-6 rounded-lg hover:bg-red-700 transition">
-                        <h3 class="text-xl font-bold mb-4">ВОДНОЕ ПОЛО</h3>
-                        <p class="text-sm">
-                            Тренировки по водному поло для любителей и профессионалов
+                    <div class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-lg transform duration-200 hover:shadow-md z-0 relative">
+                        <h3 class="w-full p-5 text-[22px] font-bold text-center text-white rounded-lg bg-[#9E1D1D]">PRO</h3>
+                        <p class="text-[9px] p-3 rounded-b-lg text-white">
+                            Групповая тренировка с использованием аква-гантелей, нудлов и аква-утяжелителей под динамичную музыку. 
+                            <br>
+                            <br>
+                            Фокус на мышцы верхней части тела, брюшного пресса и ног.       
                         </p>
                     </div>
 
                     <!-- ШЕЙПИНГ -->
-                    <div class="bg-red-600 p-6 rounded-lg hover:bg-red-700 transition">
-                        <h3 class="text-xl font-bold mb-4">ШЕЙПИНГ</h3>
-                        <p class="text-sm">
-                            Аквааэробика для поддержания формы и укрепления мышц
+                    <div class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-lg transform duration-200 hover:shadow-md z-0 relative">
+                        <h3 class="w-full p-5 text-[22px] font-bold text-center text-white rounded-lg bg-[#9E1D1D]">ШЕЙПИНГ</h3>
+                        <p class="text-[9px] p-3 rounded-b-lg text-white">
+                            Аквааэробика для улучшения физической формы и формирования фигуры. Укрепление мышц и повышение обмена веществ.
                         </p>
+                    </div>
+                    
+                    <!-- Бассейн картинка -->
+                    <div class=" flex flex-col mb-6 rounded-lg transform  z-0 relative">
+                        <img src="/img/pool-group-mobile.png" alt="Бассейн" class="w-full h-full object-cover rounded-lg">
                     </div>
 
                     <!-- ГИМНАСТИКА -->
-                    <div class="bg-red-600 p-6 rounded-lg hover:bg-red-700 transition">
-                        <h3 class="text-xl font-bold mb-4">ГИМНАСТИКА</h3>
-                        <p class="text-sm">
-                            Специальный комплекс упражнений в воде для развития гибкости
-                        </p>
-                    </div>
-
-                    <!-- MIX -->
-                    <div class="bg-red-600 p-6 rounded-lg hover:bg-red-700 transition">
-                        <h3 class="text-xl font-bold mb-4">MIX</h3>
-                        <p class="text-sm">
-                            Комбинированные тренировки различных стилей
+                    <div class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-lg transform duration-200 hover:shadow-md z-0 relative">
+                        <h3 class="w-full p-5 text-[22px] font-bold text-center text-white rounded-lg bg-[#9E1D1D]">ГИМНАСТИКА</h3>
+                        <p class="text-[9px] p-3 rounded-b-lg text-white">
+                            Групповая тренировка для укрепления суставов и улучшения их гибкости. Сочетает оздоровительное плавание и специальные упражнения.
                         </p>
                     </div>
 
                     <!-- ПЛАВАНИЕ В ЛАСТАХ -->
-                    <div class="bg-red-600 p-6 rounded-lg hover:bg-red-700 transition">
-                        <h3 class="text-xl font-bold mb-4">ПЛАВАНИЕ В ЛАСТАХ</h3>
-                        <p class="text-sm">
-                            Специализированные тренировки с использованием ласт
+                    <div class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-lg transform duration-200 hover:shadow-md z-0 relative">
+                        <h3 class="w-full p-5 text-[22px] font-bold text-center text-white rounded-lg bg-[#9E1D1D]">ПЛАВАНИЕ В ЛАСТАХ</h3>
+                        <p class="text-[9px] p-3 rounded-b-lg text-white">
+                            Тренировка с ластами для увеличения нагрузки на мышцы, улучшения выносливости и сердечно-сосудистой системы.
+                        </p>
+                    </div>
+
+                    <!-- SWIMMING -->
+                    <div class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-lg transform duration-200 hover:shadow-md z-0 relative">
+                        <h3 class="w-full p-5 text-[22px] font-bold text-center text-white rounded-lg bg-[#9E1D1D]">SWIMMING</h3>
+                        <p class="text-[9px] p-3 rounded-b-lg text-white">
+                            Групповая тренировка для развития техники плавания и физической формы под руководством квалифицированного тренера.
+                        </p>
+                    </div>
+                    
+                    <!-- MIX -->
+                    <div class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-lg transform duration-200 hover:shadow-md z-0 relative">
+                        <h3 class="w-full p-5 text-[22px] font-bold text-center text-white rounded-lg bg-[#9E1D1D]">MIX</h3>
+                        <p class="text-[9px] p-3 rounded-b-lg text-white">
+                            Динамичная высокоинтенсивная тренировка, сочетающая аквааэробику и специальные упражнения для всех групп мышц.
                         </p>
                     </div>
 
                     <!-- NOODLES/DUMBELLS -->
-                    <div class="bg-red-600 p-6 rounded-lg hover:bg-red-700 transition">
-                        <h3 class="text-xl font-bold mb-4">NOODLES/DUMBELLS</h3>
-                        <p class="text-sm">
-                            Тренировки с использованием специального оборудования
+                    <div class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-lg transform duration-200 hover:shadow-md z-0 relative">
+                        <h3 class="w-full p-5 text-[22px] font-bold text-center text-white rounded-lg bg-[#9E1D1D]">
+                            <span class="block md:inline">NOODLES/</span><span class="block md:inline">DUMBELLS</span>
+                        </h3>
+                        <p class="text-[9px] p-3 rounded-b-lg text-white">
+                            Тренировка для развития координации и укрепления стабилизаторов с использованием аква-нудлов и специальных гантелей.
                         </p>
                     </div>
 
                     <!-- ТЕХНИКА ПЛАВАНИЯ -->
-                    <div class="bg-red-600 p-6 rounded-lg hover:bg-red-700 transition">
-                        <h3 class="text-xl font-bold mb-4">ТЕХНИКА ПЛАВАНИЯ</h3>
-                        <p class="text-sm">
-                            Занятия по совершенствованию техники различных стилей
+                    <div class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-lg transform duration-200 hover:shadow-md z-0 relative">
+                        <h3 class="w-full p-5 text-[22px] font-bold text-center text-white rounded-lg bg-[#9E1D1D]">ТЕХНИКА ПЛАВАНИЯ</h3>
+                        <p class="text-[9px] p-3 rounded-b-lg text-white">
+                            Мастер-класс по совершенствованию техники плавания различных стилей с индивидуальными рекомендациями.
+                        </p>
+                    </div>
+
+                    <!-- ВОДНОЕ ПОЛО -->
+                    <div class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-lg transform duration-200 hover:shadow-md z-0 relative">
+                        <h3 class="w-full p-5 text-[22px] font-bold text-center text-white rounded-lg bg-[#9E1D1D]">ВОДНОЕ ПОЛО</h3>
+                        <p class="text-[9px] p-3 rounded-b-lg text-white">
+                            Групповая тренировка, посвященная игре в водное поло. Развитие командного взаимодействия и плавательных навыков.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Расписание -->
-        <section class="py-16 bg-gray-900" id="schedule">
+        <!-- Расписание pool-schedule.png-->
+        <section class="py-16 bg-white" id="schedule">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold mb-8 text-center">ВРЕМЯ ПОСЕЩЕНИЯ БАССЕЙНА</h2>
-                
-                <div class="bg-black/50 p-8 rounded-lg max-w-2xl mx-auto">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-lg">ПОНЕДЕЛЬНИК - ПЯТНИЦА</span>
-                        <span class="text-lg">07:00 ДО 22:30</span>
+                <div class="bg-black/50 py-2 rounded-2xl max-w-2xl mx-auto bg-cover bg-center" style="background-image: url('img/pool-schedule.png');">
+                    <div class="text-center text-white mb-4">
+                        <h2 class="text-[11px] font-bold mt-3 mb-6 text-center text-white">СВОБОДНОЕ ПОСЕЩЕНИЕ БАССЕЙНА</h2>
+                        <span class="block text-[20px] font-light">понедельник - пятница</span>
+                        <span class="block text-[16px]">С 07:00 ДО 22:30</span>
                     </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-lg">ВЫХОДНЫЕ</span>
-                        <span class="text-lg">09:00 ДО 22:30</span>
+                    <hr class="border-t border-white w-1/2 mx-auto">
+                    <div class="text-center text-white">
+                        <span class="block text-[20px] font-light">выходные</span>
+                        <span class="block text-[16px]">С 08:00 ДО 21:30</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Форма записи -->
-        <section class="py-16" id="contact">
+        <section class="py-8" id="contact">
             <div class="container mx-auto px-4">
                 <div class="grid md:grid-cols-2 gap-8 items-center">
                     <div>
-                        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                        <h2 class="text-[32px] md:text-4xl mb-6">
                             ЛУЧШИЙ БАССЕЙН<br>
                             ГОРОДА ЖДЕТ ТЕБЯ
                         </h2>
                         
-                        <form class="space-y-4" id="contact-form">
+                        <form class="space-y-2" id="contact-form">
                             <div>
                                 <input 
                                     type="text" 
                                     placeholder="ИМЯ" 
-                                    class="w-full p-3 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600"
+                                    class="w-full p-3 bg-white rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-600"
                                     required
                                 >
                             </div>
@@ -289,16 +296,19 @@
                                 <input 
                                     type="tel" 
                                     placeholder="НОМЕР ТЕЛЕФОНА" 
-                                    class="w-full p-3 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600"
+                                    class="w-full p-3 bg-white rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-600"
                                     required
                                 >
                             </div>
                             <button 
                                 type="submit" 
-                                class="w-full bg-red-600 hover:bg-red-700 transition py-3 rounded-lg font-bold"
+                                class="w-full bg-red-600 hover:bg-red-700 transition py-3 rounded-2xl font-bold"
                             >
                                 СТАТЬ БЛИЖЕ К СВОЕЙ ЦЕЛИ
                             </button>
+                            <p class="text-[8px] text-center">
+                                Нажимая "Отправить" я согласен на обработку персональных данных
+                            </p>
                         </form>
                     </div>
                     
@@ -306,7 +316,7 @@
                         <img 
                             src="/img/pool-contact.png" 
                             alt="Бассейн Гагарин" 
-                            class="w-full h-full object-cover rounded-lg"
+                            class="w-full h-full object-cover rounded-[47px]"
                             loading="lazy"
                         >
                     </div>
@@ -316,60 +326,90 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 py-8">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8">
-                <!-- Логотип и контакты -->
-                <div>
-                    <img src="/img/logo2.svg" alt="Гагарин" class="h-8 mb-4">
-                    <p class="text-gray-400">
-                        Профессиональный бассейн для всей семьи
-                    </p>
-                </div>
+    <footer class="bg-dark py-14 px-4">
+        <div class="container text-dark bg-white sm:grid sm:grid-cols-4 md:grid-cols-5 items-center gap-12 rounded-[77px] px-8 py-10">
 
-                <!-- Навигация -->
-                <div>
-                    <h3 class="text-lg font-bold mb-4">Навигация</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#about" class="text-gray-400 hover:text-white">О бассейне</a></li>
-                        <li><a href="#training" class="text-gray-400 hover:text-white">Тренировки</a></li>
-                        <li><a href="#schedule" class="text-gray-400 hover:text-white">Расписание</a></li>
-                    </ul>
-                </div>
+            <a href="/" class="sm:col-span-4 md:col-span-1 flex justify-center items-center"><img src="/img/footer-pool.svg"
+                alt="home" class="max-w-full block"></a>
 
-                <!-- Контакты -->
-                <div>
-                    <h3 class="text-lg font-bold mb-4">Контакты</h3>
-                    <ul class="space-y-2">
-                        <li class="text-gray-400">8 800 555 1234</li>
-                        <li class="text-gray-400">info@gagarin-pool.ru</li>
-                        <li class="text-gray-400">г. Москва, ул. Примерная, 123</li>
-                    </ul>
-                </div>
+            <ul class="col-span-2">
+            <li class="">
+                <a href=""
+                class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light">команда</a>
+            </li>
+            <li class="">
+                <a href=""
+                class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light">ПАРТНЕРЫ</a>
+            </li>
+            <li class="">
+                <a href=""
+                class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light">ОПЛАТА</a>
+            </li>
+            <li class="">
+                <a href=""
+                class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light w-[100px] block">СОТРУДНИЧЕСТВО
+                И РЕКЛАМА</a>
+            </li>
+            <li class="">
+                <a href=""
+                class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light">ПРАВИЛА
+                КЛУБА</a>
+            </li>
+            <li class="">
+                <a href=""
+                class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light w-[100px] block">ПОЛИТИКА
+                КОНФИДЕЦИАЛЬНОСТИ</a>
+            </li>
+            <li class="">
+                <a href=""
+                class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light">ДОГОВОР
+                ОФЕРТЫ</a>
+            </li>
+            <li class="">
+                <a href=""
+                class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light">КОНТАКТЫ</a>
+            </li>
+            </ul>
 
-                <!-- Социальные сети -->
-                <div>
-                    <h3 class="text-lg font-bold mb-4">Мы в соцсетях</h3>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <!-- VK icon -->
-                                <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.408 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.862-.523-2.049-1.72-1.033-1.01-1.49-1.135-1.745-1.135-.356 0-.458.102-.458.597v1.575c0 .424-.135.683-1.253.683-1.846 0-3.896-1.12-5.339-3.202-2.17-3.055-2.77-5.347-2.77-5.817 0-.254.102-.491.596-.491h1.744c.44 0 .61.203.78.677.864 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.372 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.27-1.423 2.18-3.624 2.18-3.624.119-.254.322-.491.762-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.202 1.253.745.847 1.32 1.558 1.473 2.049.17.474-.085.716-.576.716z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <!-- Telegram icon -->
-                                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.223-.548.223l.188-2.623 4.823-4.351c.192-.18-.043-.277-.297-.097l-5.945 3.733-2.564-.801c-.566-.177-.576-.566.118-.836l10.033-3.87c.474-.177.892.097.692.85z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <ul class="col-span-2">
+            <li
+                class=" [font-size:_clamp(1.125rem,0.7775rem+1.7375vw,2.25rem)] font-normal leading-5 text-right mb-3">
+                8 800 500
+                1598</li>
 
-            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
-                <p>&copy; 2024 Бассейн Гагарин. Все права защищены.</p>
-            </div>
+            <li class="">
+                <span class="block  text-right [font-size:_clamp(0.625rem,0.4706rem+0.7722vw,1.125rem)]">пн-пт
+                7-23</span>
+                <span class="block  text-right [font-size:_clamp(0.625rem,0.4706rem+0.7722vw,1.125rem)]">сб-вс,
+                праздники 7-22</span>
+            </li>
+
+            <li class="flex items-center justify-end mb-4">
+                <button class="hover:opacity-70 transition-all"><img src="/img/telegram_button_light.svg" alt=""
+                    class="max-w-[3.3125em] invert"></button>
+                <button class="hover:opacity-70 transition-all"><img src="/img/vk_button_light.svg" alt=""
+                    class="max-w-[3.3125em] invert"></button>
+            </li>
+
+            <li class="">
+                <p class="[font-size:_clamp(0.625rem,0.5092rem+0.5792vw,1rem)]  font-normal text-right">наше
+                мобильное приложение</p>
+            </li>
+
+            <li class="flex items-center justify-end gap-4 py-4">
+                <button class="border border-dark rounded-[64px] h-16 px-4 py-2 ">App Store</button>
+                <button class="border border-dark rounded-[64px] h-16 px-4 py-2 ">Google Play</button>
+            </li>
+
+            <li class="flex justify-end items-center gap-5">
+                <button class=""><img src="/img/yandex_button.svg" alt="" class="invert"></button>
+                <p class=" [font-size:_clamp(0.5rem,0.3649rem+0.6757vw,0.9375rem)] font-normal">наш рейтинг <br>на
+                Яндекс</p>
+                <p class="[font-size:_clamp(1.3125rem,0.9457rem+1.834vw,2.5rem)]  font-normal">4,9</p>
+            </li>
+
+            </ul>
+
         </div>
     </footer>
 
@@ -392,7 +432,14 @@
                 }
             }
         }
+        // Скрыть меню по умолчанию
+        document.addEventListener('DOMContentLoaded', () => {
+            const menu = document.querySelector('.menu-items');
+            if (menu) {
+                menu.classList.add('hidden'); // Добавлено: скрыть меню по умолчанию
+            }
+        });
     </script>
-    
+    <link rel="stylesheet" href="/src/style.css">
 </body>
 </html>
