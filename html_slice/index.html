@@ -63,10 +63,10 @@
   <!-- END::HEADER -->
 
   <!-- START::HERO -->
-  <section class="pt-24 pb-28">
+  <section class="py-8 md:pt-24 md:pb-28">
     <div class="container grid grid-cols-2 gap-11 px-[1em]">
-      <div class="">
-        <h1 class="uppercase text-light [font-size:_clamp(2.3125rem,1.6754rem+3.1853vw,4.375rem)] mb-5 mt-14">
+      <div class="order-2 md:order-1 col-span-2 text-center md:col-span-1">
+        <h1 class="uppercase text-light [font-size:_clamp(2.3125rem,1.6754rem+3.1853vw,4.375rem)] md:mb-5 md:mt-14">
           тренируйся с g1</h1>
         <p class="text-light mb-14 [font-size:_clamp(1.5rem,1.249rem+1.2548vw,2.3125rem)]">
           получи выгоду до <span class="bg-main-red px-2 py-1 rounded-xl text-dark ">30%</span> <br>на <span
@@ -74,14 +74,15 @@
           абонемент
         </p>
         <a href="#"
-          class="flex items-center justify-center bg-light rounded-[30px] px-4 py-3 uppercase [font-size:_clamp(1.5rem,1.1911rem+1.5444vw,2.5rem)] hover:opacity-70 transition-all">подробнее</a>
+          class="flex items-center justify-center bg-light rounded-[30px] px-4 py-3 text-main-red uppercase [font-size:_clamp(1.5rem,1.1911rem+1.5444vw,2.5rem)] hover:opacity-70 transition-all">подробнее</a>
 
-        <div class="h-[284px] mt-[34px] bg-neutral-800 rounded-[46px] overflow-hidden">
+        <div class="h-[284px] mt-[34px] bg-neutral-800 rounded-[46px] overflow-hidden hidden md:block">
           <img src="/img/hero1.jpg" alt="" class="rounded-[46px] object-cover object-center">
         </div>
       </div>
-      <div class="bg-neutral-800 rounded-[46px] overflow-hidden h-[750px]">
-        <img src="/img/hero2.jpg" alt="" class="rounded-[46px] object-cover object-center max-w-full">
+      <div
+        class="flex items-center justify-center bg-neutral-800 rounded-[20px] overflow-hidden h-[300px] md:h-auto col-span-2 order-1 md:order-2 md:col-span-1 md:max-h-[750px]">
+        <img src="/img/hero2.jpg" alt="" class="object-cover object-top w-full h-full ">
       </div>
     </div>
   </section>
