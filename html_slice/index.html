@@ -88,13 +88,13 @@
   <!-- END::HERO -->
 
   <!-- START::DIRECTION -->
-  <section class="py-16 bg-light">
+  <section class="pt-16 pb-44 bg-light">
     <div class="container">
       <h2
         class="flex justify-center items-center text-3xl font-normal text-black text-center [font-size:_clamp(1.75rem,1.0936rem+3.2819vw,3.875rem);] mb-6 leading-[1]">
         ВЫБЕРИ НАПРАВЛЕНИЕ СЕБЕ
         ПО ДУШЕ</h2>
-      <div class="bg-dark rounded-[74px] px-[45px] py-[40px] grid md:grid-cols-3 gap-5">
+      <div class="bg-dark rounded-[74px] px-[45px] py-[40px] md:grid-cols-3 gap-5 hidden lg:grid">
 
         <a href="#" class="rounded-[46px] bg-light flex flex-col transition-all hover:opacity-70">
           <img src="/img/direction-1.jpg" alt="" class="object-cover object-center rounded-[30px] h-[196px] w-full">
@@ -142,16 +142,67 @@
 
       </div>
 
+      <div class="bg-dark rounded-[41px] px-3 py-6 grid md:grid-cols-3 gap-3">
+
+        <a href="#" class="rounded-[46px] bg-light flex flex-col transition-all hover:opacity-70">
+          <img src="/img/direction-1.jpg" alt="" class="object-cover object-center rounded-[30px] h-[196px] w-full">
+          <p
+            class="text-center [font-size:_clamp(1.25rem,1.1728rem+0.3861vw,1.5rem)] font-normal flex-1 flex items-center justify-center my-2">
+            Индивидуальные <br> занятия
+          </p>
+        </a>
+        <div class="grid grid-cols-2 gap-2">
+          <a href="#" class="rounded-[20px] bg-light flex flex-col transition-all hover:opacity-70">
+            <img src="/img/direction-2.jpg" alt="" class="object-cover object-center rounded-[20px] h-[125px] w-full">
+            <p
+              class="text-center [font-size:_clamp(0.9375rem,0.7444rem+0.9653vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2">
+              теренажерный зал
+            </p>
+          </a>
+          <a href="#" class="rounded-[20px] bg-light flex flex-col transition-all hover:opacity-70">
+            <img src="/img/direction-3.jpg" alt="" class="object-cover object-center  rounded-[20px] h-[125px] w-full ">
+            <p
+              class="text-center [font-size:_clamp(0.9375rem,0.7444rem+0.9653vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2">
+              фитнес
+            </p>
+          </a>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <a href="" class="rounded-[20px] bg-light flex flex-col transition-all hover:opacity-70">
+            <img src="/img/direction-4.jpg" alt="" class="object-cover object-top rounded-[20px] h-[125px] w-full">
+            <p
+              class="text-center [font-size:_clamp(0.9375rem,0.7444rem+0.9653vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2">
+              кроссфит
+            </p>
+          </a>
+          <a href="#" class="rounded-[20px] bg-light flex flex-col gap-3 transition-all hover:opacity-70">
+            <img src="/img/direction-6.jpg" alt="" class="object-cover object-center rounded-[20px] h-[125px] w-full">
+            <p
+              class="text-center [font-size:_clamp(0.9375rem,0.7444rem+0.9653vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2">
+              сайкл студия
+            </p>
+          </a>
+        </div>
+        <a href="#" class="rounded-[20px] bg-light flex flex-col transition-all hover:opacity-70">
+          <p
+            class="text-center [font-size:_clamp(0.9375rem,0.7444rem+0.9653vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2">
+            бассейн
+          </p>
+          <img src="/img/direction-5.jpg" alt="" class="object-cover object-center rounded-[20px] h-[196px] w-full">
+        </a>
+
+      </div>
+
     </div>
   </section>
   <!-- END::DIRECTION -->
 
   <!-- START::ABONIMENT -->
   <section class="">
-    <div class="px-4 text-light pb-24 bg-light">
-      <div class="container lg:grid lg:grid-cols-2">
+    <div class="px-4 text-light pb-24 pt-0 bg-dark">
+      <div class="container lg:grid lg:grid-cols-3">
 
-        <div class="bg-dark rounded-[30px] p-4">
+        <div class="bg-dark lg:col-span-1 rounded-[30px] p-4 -mt-[116px]">
           <div
             class="rounded-[30px] overflow-hidden bg-light/25 text-dark py-4 px-5 relative after:bg-gradient-to-t after:from-[#000000] 0% after:to-[#FFF8F838] 100% after:absolute after:bottom-0 after:left-0 after:right-0 after:top-0 after:opacity-55 ">
             <h3 class="text-center uppercase [font-size:_clamp(2.75rem,2.6728rem+0.3861vw,3rem)] text-light">расписание
@@ -239,13 +290,23 @@
           </div>
         </div>
 
-        <div class="">
-          <div class="">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem ducimus cum, aperiam ex hic
-            quisquam dicta consequuntur. Doloremque odit fugit enim facilis veniam sunt nihil quia error fugiat. Rerum,
-            sint?</div>
-          <div class="">Libero perspiciatis nesciunt itaque, voluptatum laboriosam provident, aliquid voluptate
-            consequuntur commodi, repellendus alias exercitationem maiores dicta ea dolore. Maiores, aliquam modi? Aut
-            vel nihil at maxime incidunt ab facilis dolore!</div>
+        <div class="col-span-2">
+          <div class="bg-light text-dark pb-11 rounded-bl-[30px] pl-8 -mt-10">более 70 видов тренировок специально для
+            тебя</div>
+          <div class="bg-main-red/40 rounded-[30px] mt-4 px-8 py-6">
+            <h3
+              class="text-light uppercase font-normal mb-4 [font-size:_clamp(2.25rem,1.6708rem+2.8958vw,4.125rem)] flex items-center justify-between">
+              наша команда
+              <a href="" class="w-[100px] flex items-center justify-center transition-all hover:scale-90"><svg
+                  width="103" height="103" viewBox="0 0 103 103" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="51.5" cy="51.5" r="51.5" fill="#1E1E1E" />
+                  <path
+                    d="M73 45.8469C70.154 45.8469 67.8469 48.154 67.8469 51C67.8469 53.846 70.154 56.1531 73 56.1531V45.8469ZM79.6438 54.6438C81.6562 52.6314 81.6562 49.3686 79.6438 47.3562L46.8498 14.5622C44.8374 12.5498 41.5746 12.5498 39.5622 14.5622C37.5498 16.5746 37.5498 19.8374 39.5622 21.8498L68.7124 51L39.5622 80.1502C37.5498 82.1626 37.5498 85.4254 39.5622 87.4378C41.5746 89.4502 44.8374 89.4502 46.8498 87.4378L79.6438 54.6438ZM73 56.1531H76V45.8469H73V56.1531Z"
+                    fill="#4F1818" />
+                </svg>
+              </a>
+            </h3>
+          </div>
         </div>
 
       </div>
