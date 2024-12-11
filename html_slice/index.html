@@ -16,7 +16,8 @@
   <div class="container px-[1em] my-5">
     <header class="bg-light flex justify-between items-center gap-2 rounded-[30px] px-[20px] py-[14px] ">
       <div class="flex items-center justify-center gap-[34px] relative ">
-        <button
+        <butto
+          onclick="MobileMenu.toggle()"
           class="rounded-full bg-dark text-light flex items-center justify-center w-[3.75em] h-[3.75em] relative z-10"><svg
             width="34" height="22" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M2 2H32" stroke="#EBE7E7" stroke-width="4" stroke-linecap="round" />
@@ -29,7 +30,17 @@
           <img src="/img/logo.png" alt="" class="max-w-[13.625em]">
         </a>
 
-        <ul class="absolute top-[90%] left-[-20px] bg-light rounded-b-[1.875em] p-5 min-w-[18.75em]">
+        <ul class="menu-items z-9 absolute top-[90%] left-[-20px] bg-light rounded-b-[1.875em] p-5 min-w-[18.75em]">
+          <li>
+              <a href="/fitness.html"
+              class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all"
+              >Фитнес</a>
+          </li>
+          <li>
+              <a href="/pool.html"
+              class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all"
+              >Бессейн</a>
+          </li>
           <li><a href="#"
               class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">тренажерный
               зал</a>
@@ -432,7 +443,33 @@
     </div>
   </footer>
   <!-- END::FOOTER -->
+   <!-- Scripts -->
+    <script>
+      // Компонент формы
+      const ContactForm = {
+          submit(e) {
+              e.preventDefault()
+              // Логика отправки формы
+          }
+      }
 
+      // Мобильное меню
+      const MobileMenu = {
+          toggle() {
+              const menu = document.querySelector('.menu-items');
+              if (menu) {
+                  menu.classList.toggle('hidden');
+              }
+          }
+      }
+      // Скрыть меню по умолчанию
+      document.addEventListener('DOMContentLoaded', () => {
+          const menu = document.querySelector('.menu-items');
+          if (menu) {
+              menu.classList.add('hidden'); // Добавлено: скрыть меню по умолчанию
+          }
+      });
+  </script>
   <script type="module" src="/src/main.js"></script>
 </body>
 
