@@ -102,23 +102,23 @@
 
     <main class="mt-[2em] md:mt-[5em]">
         <!-- Hero Section -->
-        <section class="px-[1em] mb-5">
+        <section class="px-[1em] mb-14">
             <div class="container mx-auto">
-            <div class="relative">
-                <img 
-                    src="/img/fitness-hero.png" 
-                    alt="Фитнес" 
-                    class="w-full h-full object-cover rounded-[10px] px-4"
-                />
-                <!-- <div class="absolute inset-0 m-[0_15px] rounded-[30px] bg-gradient-to-b from-black/60 to-black/10 z-0 h-[670px]"></div> -->
-                
+                <div class="relative">
+                    <img 
+                        src="/img/fitness-hero.png" 
+                        alt="Фитнес" 
+                        class="w-full h-full object-cover rounded-[10px] px-4"
+                    />
+                    <!-- <div class="absolute inset-0 m-[0_15px] rounded-[30px] bg-gradient-to-b from-black/60 to-black/10 z-0 h-[670px]"></div> -->
+                    
                     <div class="absolute inset-0 flex flex-col items-center justify-between">
                         <!-- Заголовок -->
-                        <h1 class="text-white text-[37px] md:text-[144px] col-span-12 text-center relative -mt-[12px]">
+                        <h1 class="text-white text-[37px] md:text-[144px] col-span-12 text-center relative -mt-[12px] md:-mt-[32px]">
                             ФИТНЕС
                         </h1>
-                   </div>  
-                    <!-- Характеристики -->
+                    </div>  
+                        <!-- Характеристики -->
                     <div class="col-span-12 grid grid-cols-[60px_180px_100px] md:grid-cols-[400px_550px_400px] gap-0 ">
                         <div class="text-center">
                             <span class="text-white text-[75px] md:text-[250px] block leading-none">3</span>
@@ -142,16 +142,15 @@
                             групповые тренировки на любой вкус
                         </p>
                     </div>
-                <!-- </div> -->
-            </div>
+                </div>
             </div>
         </section>
 
-        <!-- Типы тренировок -->
+        <!-- Типы тренировок Mobile-->
         <section class="bg-white py-8 px-4">
-            <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="container mx-auto grid grid-cols-1 gap-6 md:hidden">
                 <!-- Силовые тренировки -->
-                <div class="relative rounded-[30px] overflow-hidden shadow-lg">
+                <div class="relative rounded-[45px] overflow-hidden shadow-lg">
                     <img src="/img/fitness-strength-training.png" alt="Силовые тренировки" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
                         <h3 class="text-white text-2xl md:text-4xl font-bold text-right px-10">СИЛОВЫЕ ТРЕНИРОВКИ</h3>
@@ -182,24 +181,59 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Типы тренировок Desktop -->
+            <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 hidden md:grid">
+                <!-- Силовые тренировки -->
+                <div class="relative rounded-[45px] overflow-hidden">
+                    <img src="/img/fitness-strength-training.png" alt="Силовые тренировки" class="w-full h-full object-cover">
+                </div>
+                <div class="flex items-center">
+                    <h3 class="text-black md:text-[80px] px-10 leading-[1.2em]">СИЛОВЫЕ ТРЕНИРОВКИ</h3>
+                </div>
+            
+                <!-- Body & Mind -->
+                <div class="relative rounded-[30px] overflow-hidden h-[100px]">
+                    <img src="/img/fitness-body-mind.png" alt="Body & Mind" class="w-full h-full object-cover">
+                </div>
+                <div class="flex items-center">
+                    <h3 class="text-black md:text-[80px] px-10 leading-[1.2em]">BODY & MIND</h3>
+                </div>
+            
+                <!-- Танцевальные программы -->
+                <div class="relative rounded-[30px] overflow-hidden">
+                    <img src="/img/fitness-dance-programs.png" alt="Танцевальные программы" class="w-full h-full object-cover">
+                </div>
+                <div class="flex items-center">
+                    <h3 class="text-black md:text-[80px] px-10 leading-[1.2em]">ТАНЦЕВАЛЬНЫЕ ПРОГРАММЫ</h3>
+                </div>
+            
+                <!-- Функциональные тренировки -->
+                <div class="relative rounded-[45px] overflow-hidden h-[350px]">
+                    <img src="/img/fitness-functional-training.png" alt="Функциональные тренировки" class="w-full h-full object-cover">
+                </div>
+                <div class="flex items-center">
+                    <h3 class="text-black md:text-[80px] px-10 leading-[1.2em]">ФУНКЦИОНАЛЬНЫЕ И СМЕШАННЫЕ ТРЕНИРОВКИ</h3>
+                </div>
+            </div>
         
             <!-- Сайкл и Кроссфит -->
             <div class="bg-black text-white py-8 mt-8 rounded-lg">
                 <div class="container mx-auto text-center">
-                    <h2 class="text-[38px] md:text-4xl font-bold mb-4 text-left px-5 leading-[1.2em]">ИЩЕШЬ САЙКЛ ИЛИ КРОССФИТ?</h2>
+                    <h2 class="text-[38px] md:text-[76px] font-bold mb-4 text-left px-5 leading-[1.2em]">ИЩЕШЬ САЙКЛ ИЛИ КРОССФИТ?</h2>
                     <div class="grid grid-cols-2 gap-4">
                         <div class="relative rounded-lg overflow-hidden shadow-lg">
                             <img src="/img/fitness-cycle.png" alt="Сайкл" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <h3 class="text-white text-xl md:text-3xl font-bold">САЙКЛ</h3>
-                                <img src="/img/button-right.svg" alt="Button Right" class="absolute bottom-0 m-2">
+                            <div class="absolute inset-0 flex md:items-center justify-center md:justify-between px-4">
+                                <h3 class="text-white text-xl md:text-[80px] font-bold">САЙКЛ</h3>
+                                <img src="/img/button-right.svg" alt="Button Right" class="absolute md:static w-[2em] md:w-[4em] bottom-0 m-2">
                             </div>
                         </div>
                         <div class="relative rounded-lg overflow-hidden shadow-lg">
                             <img src="/img/fitness-crossfit.png" alt="Кроссфит" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <h3 class="text-white text-xl md:text-3xl font-bold">КРОССФИТ</h3>
-                                <img src="/img/button-right.svg" alt="Button Right" class="absolute bottom-0 m-2">
+                            <div class="absolute inset-0 flex md:items-center justify-center md:justify-between px-4">
+                                <h3 class="text-white text-xl md:text-[80px] font-bold">КРОССФИТ</h3>
+                                <img src="/img/button-right.svg" alt="Button Right" class="absolute md:static w-[2em] md:w-[4em] bottom-0 m-2">
                             </div>
                         </div>
                     </div>
@@ -211,8 +245,8 @@
         <section class="py-8" id="contact">
             <div class="container mx-auto px-4">
                 <div class="grid md:grid-cols-2 gap-8 items-center justify-center">
-                    <div class="flex flex-col items-center md:w-full">
-                        <h2 class="text-[32px] md:text-[50px] mb-6 text-center">
+                    <div class="flex flex-col justify-start items-start md:w-full">
+                        <h2 class="text-[32px] md:text-[50px] mb-6 text-left leading-[1.2em] md:w-[400px]">
                             СТАНЬ ЛУЧШЕЙ ВЕРСИЕЙ СЕБЯ
                         </h2>
                         
@@ -245,13 +279,18 @@
                         </form>
                     </div>
                     
-                    <div class="relative flex justify-start items-center ">
-                        <img 
-                            src="/img/fitness-contact.png" 
-                            alt="Фитнес-центр Гагарин" 
-                            class="w-[390px] md:w-4/5 object-cover rounded-[47px]"
-                            loading="lazy"
-                        >
+                    <div class="relative flex justify-start items-center">
+                        
+
+                        <picture>
+                            <source media="(max-width: 768px)" srcset="/img/fitness-contact.png"> <!-- Изображение для мобильных устройств -->
+                            <img 
+                                src="/img/fitness-contact-desktop.png" 
+                                alt="Фитнес-центр Гагарин" 
+                                class="w-[390px] md:w-4/5 object-cover rounded-[47px]"
+                                loading="lazy"
+                            >
+                        </picture>
                     </div>
                 </div>
             </div>
