@@ -10,10 +10,13 @@ export default {
     },
     extend: {
           colors: {
-      'main-red': '#E23333',
-      'dark': '#1E1E1E',
-      'light': '#FFF8F8',
-    },
+            'main-red': '#E23333',
+            'dark': '#1E1E1E',
+            'light': '#FFF8F8',
+          },
+          zIndex: {
+            '9': '9',
+          }
     },
     fontFamily: {
       sans: ['Gothic No60'],
