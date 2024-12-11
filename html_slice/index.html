@@ -5,6 +5,8 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <title>Vite App</title>
 </head>
 
@@ -199,8 +201,8 @@
   <!-- END::DIRECTION -->
 
   <!-- START::ABONIMENT -->
-  <section class="">
-    <div class="px-4 text-light pb-24 pt-0 bg-dark">
+  <section class="pb-20">
+    <div class="px-4 text-light pt-0 bg-dark">
       <div class="container lg:grid lg:grid-cols-3">
 
         <div class="bg-dark lg:col-span-1 rounded-[30px] p-4 -mt-[116px]">
@@ -319,15 +321,59 @@
       </div>
     </div>
 
-    <div class="container uppercase text-light">
-      <h3 class="[font-size:_clamp(1.25rem,0.6515rem+2.9923vw,3.1875rem)]">один абонемент - безграничные возможности
+    <div class="container uppercase text-light px-4">
+      <h3 class="[font-size:_clamp(1.25rem,0.6708rem+2.8958vw,3.125rem)]">один абонемент - безграничные возможности
       </h3>
     </div>
 
-    <!-- CARD WRAPPER -->
-    <div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, delectus ducimus nesciunt ipsum, qui
-      velit voluptates minus quis eligendi suscipit consequuntur officia voluptatem, temporibus ab eveniet soluta
-      debitis ut quidem.</div>
+    <!-- Swiper -->
+
+    <div class="mx-4 lg:mx-0 my-8">
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide">
+            <a href="#" class="flip_card">
+              <img src="/img/cards/бейсик-1.png" alt="" class="fron">
+              <img src="/img/cards/бейсик-2.png" alt="" class="back">
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="#" class="flip_card">
+              <img src="/img/cards/день-1.png" alt="" class="fron">
+              <img src="/img/cards/день-2.png" alt="" class="back">
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="#" class="flip_card">
+              <img src="/img/cards/бизнес-1.png" alt="" class="fron">
+              <img src="/img/cards/бизнес-2.png" alt="" class="back">
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="#" class="flip_card">
+              <img src="/img/cards/даймонд-1.png" alt="" class="fron">
+              <img src="/img/cards/даймонд-2.png" alt="" class="back">
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="#" class="flip_card">
+              <img src="/img/cards/полдень-1.png" alt="" class="fron">
+              <img src="/img/cards/полдень-2.png" alt="" class="back">
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="#" class="flip_card">
+              <img src="/img/cards/студентам-1.png" alt="" class="fron">
+              <img src="/img/cards/студентам-2.png" alt="" class="back">
+            </a>
+          </div>
+
+          <!-- <div class="swiper-pagination"></div> -->
+        </div>
+      </div>
+    </div>
+
 
     <div class="container uppercase text-light text-center">
       <h4 class="[font-size:_clamp(1.125rem,0.5652rem+2.7992vw,2.9375rem)]">не нашли идеальный вариант? </h4>
@@ -448,7 +494,36 @@
     </div>
   </footer>
   <!-- END::FOOTER -->
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      centeredSlides: true,
+      freeMode: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: false,
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 40,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 50,
+        },
+      },
+    });
+  </script>
   <script type="module" src="/src/main.js"></script>
 </body>
 
