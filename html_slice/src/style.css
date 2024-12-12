@@ -19,6 +19,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  outline: none;
   /* outline: 1px solid tomato; */
 }
 
@@ -173,5 +174,66 @@ body {
     background: #FFF8F8;
     height: 60px;
     /* border-radius: 0 0 0 30px; */
+  }
+}
+
+.dialog-glass {
+  background: rgba(255, 255, 255, 0.17);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.8px);
+  -webkit-backdrop-filter: blur(8.8px);
+
+}
+
+dialog {
+  animation: fade-out 0.3s ease-out;
+  margin: auto;
+}
+
+dialog[open] {
+  animation: fade-in 0.3s ease-out;
+}
+
+dialog[open]::backdrop {
+  animation: backdrop-fade-in 0.3s ease-out forwards;
+}
+
+/* Animation keyframes */
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+    display: none;
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+    display: block;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+    transform: scaleY(1);
+    display: block;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scaleY(0);
+    display: none;
+  }
+}
+
+@keyframes backdrop-fade-in {
+  0% {
+    background-color: rgb(0 0 0 / 0%);
+  }
+
+  100% {
+    background-color: rgb(0 0 0 / 60%);
   }
 }
