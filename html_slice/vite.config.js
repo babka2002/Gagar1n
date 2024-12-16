@@ -1,12 +1,22 @@
-import { defineConfig } from 'vite'
-import { sync as globSync } from 'glob'
+import nunjucks from 'vite-plugin-nunjucks'
 
-const htmlFiles = globSync('**/*.html');
+export default {
+    plugins: [
+        nunjucks(),
+    ]
+}
 
-export default defineConfig({
-  build: {
-    rollupOptions: {
-      input: htmlFiles
-    }
-  }
-})
+
+
+// import { defineConfig } from 'vite'
+// import { sync as globSync } from 'glob'
+//
+// const htmlFiles = globSync('**/*.html');
+//
+// export default defineConfig({
+//   build: {
+//     rollupOptions: {
+//       input: htmlFiles
+//     }
+//   }
+// })
