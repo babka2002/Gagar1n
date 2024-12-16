@@ -1,24 +1,35 @@
-<!-- START::FORM -->
-<section
-  class="bg-light px-4 pt-[clamp(4.375rem,1.3253rem+13.5542vw,12.8125rem)] pb-[clamp(9.125rem,6.9111rem+9.8394vw,15.25rem)]">
-  <div class="container md:grid md:grid-cols-2 gap-5 items-center leading-tight">
-    <div class="text-dark uppercase mb-5 md:mb-0 text-center md:text-left">
-      <h3 class="text-[clamp(2.9375rem,2.192rem+3.3133vw,5rem)]">стань членом клуба сейчас</h3>
-      <p class="text-[clamp(1rem,0.7289rem+1.2048vw,1.75rem)]">колличество абонементов ограничено</p>
-    </div>
-    <div class="">
-      <form action="" method="post">
-        <input type="text" placeholder="имя"
-          class="block w-full bg-dark text-light px-5 py-2 uppercase rounded-[clamp(0.625rem,0.3991rem+1.004vw,1.25rem)] text-[clamp(0.875rem,0.5587rem+1.4056vw,1.75rem)]">
-        <input type="tel" name="" id="" placeholder="номер телефона"
-          class="block w-full bg-dark text-light px-5 py-2 uppercase rounded-[clamp(0.625rem,0.3991rem+1.004vw,1.25rem)] text-[clamp(0.875rem,0.5587rem+1.4056vw,1.75rem)] my-2">
-        <input type="submit" value="стать ближе к своей цели" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required
-          class="block w-full bg-main-red px-5 py-2 text-light uppercase rounded-[clamp(0.625rem,0.3991rem+1.004vw,1.25rem)] text-[clamp(0.875rem,0.5587rem+1.4056vw,1.75rem)]">
-        <span class="block mt-2 text-center text-[clamp(0.5rem,0.3645rem+0.6024vw,0.875rem)]">Нажимая "Отправить" я
-          согласен на
-          обработку персональных данных</span>
+<section class="bg-dark">
+  <div
+    class="container grid grid-cols-1 items-center px-4 pb-[clamp(7.8125rem,6.7508rem+4.7189vw,10.75rem)] pt-[clamp(3.4375rem,1.5173rem+8.5341vw,8.75rem)] lg:grid-cols-3 gap-y-5 lg:gap-24">
+    <div class="col-span-2">
+      <h3 class="text-[clamp(3rem,2.3675rem+2.8112vw,4.75rem)] leading-none uppercase mb-7 text-light">
+        лучший бассейн
+        города ждет тебя
+      </h3>
+
+      <form id="contact-form" action="" method="get" class="flex flex-col gap-5">
+        <div>
+          <input type="text" placeholder="ИМЯ"
+            class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-light rounded-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] focus:outline-none focus:ring-2 focus:ring-red-600"
+            required>
+        </div>
+        <div>
+          <input type="tel" placeholder="НОМЕР ТЕЛЕФОНА"
+            class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)]  bg-light rounded-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] focus:outline-none focus:ring-2 focus:ring-red-600"
+            required>
+        </div>
+        <button type="submit"
+          class="w-full text-light px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-red-600 hover:bg-red-700 transition rounded-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)]">
+          СТАТЬ БЛИЖЕ К СВОЕЙ ЦЕЛИ
+        </button>
+        <p class="text-[clamp(0.5rem,0.2741rem+1.004vw,1.125rem)] text-center text-light">
+          Нажимая "Отправить" я согласен на обработку персональных данных
+        </p>
       </form>
+
+    </div>
+    <div class="col-span-1">
+      <img src="/img/pool-contact.png" alt="" class="block w-full mx-auto">
     </div>
   </div>
 </section>
-<!-- END::FORM -->

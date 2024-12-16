@@ -1,17 +1,136 @@
-{% extends 'src/partials/base.html' %}
+<!DOCTYPE html>
+<html lang="ru">
 
-{% block title %}
-<title>Gagar1n - Pool</title>
-{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Профессиональный 25-метровый бассейн Гагарин. Индивидуальные и групповые тренировки, обучение плаванию. Современная система очистки воды.">
+    <meta name="keywords" content="бассейн, плавание, тренировки, обучение плаванию, водное поло, аквааэробика">
+    <title>Бассейн Гагарин | Профессиональный бассейн</title>
 
-{% block header %}
-  {% include './src/partials/templates/header.html' %}
-{% endblock %}
+    <!-- Favicons -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-{% block content %}
+    <!-- Open Graph -->
+    <meta property="og:title" content="Бассейн Гагарин">
+    <meta property="og:description" content="Профессиональный 25-метровый бассейн с 6 дорожками">
+    <!-- <meta property="og:image" content="/path-to-pool-image.jpg"> -->
 
+    <!-- Scripts -->
+    <!-- <script src="https://unpkg.com/nuejs"></script> -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+
+    <!-- Schema.org разметка -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsActivityLocation",
+      "name": "Бассейн Гагарин",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Город",
+        "streetAddress": "Адрес"
+      },
+      "openingHours": "Mo-Fr 07:00-22:30",
+      "telephone": "8 800 555 1234"
+    }
+    </script>
+</head>
+
+<body class="bg-[#474747] text-light font-sans antialiased my-5">
+    <!-- Header -->
+    <div class="px-[1em]">
+        <header class="container bg-light flex justify-between items-center gap-2 rounded-[30px] px-[20px] py-[14px] ">
+            <div class="flex items-center justify-center gap-[34px] relative ">
+                <button onclick="MobileMenu.toggle()"
+                    class="rounded-full bg-dark text-light flex items-center justify-center w-[3.75em] h-[3.75em] relative z-10"><svg
+                        width="34" height="22" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 2H32" stroke="#EBE7E7" stroke-width="4" stroke-linecap="round" />
+                        <path d="M2 11H32" stroke="#EBE7E7" stroke-width="4" stroke-linecap="round" />
+                        <path d="M2 20H32" stroke="#EBE7E7" stroke-width="4" stroke-linecap="round" />
+                    </svg>
+                </button>
+
+                <a href="/" class="p-0 m-0 relative z-10 hidden md:block">
+                    <img src="/img/logo.png" alt="" class="max-w-[13.625em]">
+                </a>
+
+                <ul
+                    class="absolute top-[90%] left-[-20px] bg-light rounded-b-[1.875em] p-5  min-w-[18.75em] menu-items z-9">
+                    <li>
+                        <a href="/power.html"
+                            class="uppercase text-dark leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">Силовые</a>
+                    </li>
+                    <li>
+                        <a href="/dance.html"
+                            class="uppercase text-dark leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">Танцы</a>
+                    </li>
+                    <li>
+                        <a href="/fitness.html"
+                            class="uppercase text-dark leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">Фитнес</a>
+                    </li>
+                    <li>
+                        <a href="/pool.html"
+                            class="uppercase text-dark leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">Бессейн</a>
+                    </li>
+                    <li>
+                        <a href="/body-mind.html"
+                            class="uppercase text-dark leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">Боди
+                            и майнд</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="uppercase leading-8 text-dark font-normal block hover:underline hover:underline-offset-4">тренажерный
+                            зал</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="uppercase leading-8 text-dark font-normal block hover:underline hover:underline-offset-4">групповые
+                            тренировки</a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="flex items-center justify-between gap-2 relative z-10">
+
+                <button type="button"
+                    class="w-[52px] md:w-[5.4375em] show grayscale-[1] hover:grayscale-0 transition-all"><img
+                        src="/img/грелка-лого.png" alt="" class="block hover:opacity-70 transition-all"></button>
+                <button type="button"
+                    class="w-[52px] md:w-[5.4375em] show grayscale-[1] hover:grayscale-0 transition-all"><img
+                        src="/img/лого-джуниор.png" alt="" class="block hover:opacity-70 transition-all"></button>
+                <button type="button"
+                    class="w-[52px] md:w-[5.4375em] show grayscale-[1] hover:grayscale-0 transition-all"><img
+                        src="/img/джифуд-лого.png" alt="" class="block hover:opacity-70 transition-all"></button>
+
+
+                <!-- <button type="button" class="w-[52px] md:w-[5.4375em]"><img src="/img/g1.png" alt="" -->
+                <!--     class="block show"></button> -->
+                <!-- <button type="button" class="w-[52px] md:w-[5.4375em]"><img src="/img/g1.png" alt="" -->
+                <!--     class="block filter grayscale-[.7] hover:grayscale-0 transition-all"></button> -->
+                <!-- <button type="button" class="w-[52px] md:w-[5.4375em]"><img src="/img/g1.png" alt="" -->
+                <!--     class="block filter grayscale hover:grayscale-0 transition-all"></button> -->
+            </div>
+
+            <div class="flex items-center justify-center">
+                <p
+                    class="text-dark font-normal [font-size:_clamp(1rem,0.9228rem+0.3861vw,1.25rem)] hidden lg:block mr-5">
+                     г.
+                    Симферополь <br> ул.
+                    Киевская, 115</p>
+                <a href="#"
+                    class="flex items-center justify-center bg-main-red px-[10px] py-[19px] rounded-[30px] text-[20px] text-light hover:opacity-70 transition-all hidden lg:block">записаться</a>
+                <a href="#" class="flex items-center justify-center"><img src="/img/phone.png" alt=""
+                        class="min-w-[52px] h-[52px] flex-1 lg:hidden"></a>
+            </div>
+        </header>
+    </div>
+
+    <main class="mt-[2em] md:mt-[5em]">
         <!-- Hero Section -->
-        <section class="px-4 mb-5 pb-[clamp(0.75rem,-1.2154rem+8.7349vw,6.1875rem)]">
+        <section class="px-[1em] mb-5">
             <div class="container mx-auto">
                 <div class="relative">
                     <img src="/img/pool-hero.png" alt="Бассейн"
@@ -53,14 +172,14 @@
                     <!-- Информация о системе очистки -->
 
                     <a href="#"
-                        class="relative z-9 text-light flex items-center justify-center text-center bg-main-red rounded-[clamp(0.625rem,0.128rem+2.2088vw,2rem)] mt-[clamp(1.875rem,1.6039rem+1.2048vw,2.625rem)] py-[clamp(0.625rem,-0.2334rem+3.8153vw,3rem)] text-[clamp(1.25rem,0.8886rem+1.6064vw,2.25rem)] cursor-pointer transition-all hover:opacity-80">
+                        class="relative z-9 flex items-center justify-center text-center bg-main-red rounded-[clamp(0.625rem,0.128rem+2.2088vw,2rem)] mt-[clamp(1.875rem,1.6039rem+1.2048vw,2.625rem)] py-[clamp(0.625rem,-0.2334rem+3.8153vw,3rem)] text-[clamp(1.25rem,0.8886rem+1.6064vw,2.25rem)] cursor-pointer transition-all hover:opacity-80">
                         используем многоступенчатую систему очистки для поддержания идеального состояния воды
                     </a>
                     <!-- </div> -->
                 </div>
             </div>
         </section>
-        
+
         <!-- Индивидуальные тренировки -->
         <section class="bg-light text-dark pt-[clamp(1.0625rem,-1.2417rem+10.241vw,7.4375rem)] pb-5 px-4">
             <div class="container mx-auto grid grid-cols-1">
@@ -83,7 +202,7 @@
                 </p>
             </div>
         </section>
-        
+
         <!-- Групповые тренировки -->
         <section class="bg-light text-dark pt-[clamp(1.4375rem,0.4435rem+4.4177vw,4.1875rem)] hyphens-auto">
             <div class="container mx-auto max-w-6xl">
@@ -225,12 +344,13 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Расписание pool-schedule.png-->
+
         <section id="schedule"
             class="pt-[clamp(1.4375rem,-0.2342rem+7.4297vw,6.0625rem)] pb-[clamp(3.4375rem,-0.0866rem+15.6627vw,13.1875rem)] bg-light text-light px-4">
             <div
-                class="container bg-[url('/img/pool-schedule.png')] bg-no-repeat bg-cover bg-center py-[clamp(1rem,0.3675rem+2.8112vw,2.75rem)] px-4 lg:px-14 rounded-[clamp(0.875rem,0.1295rem+3.3133vw,2.9375rem)]">
+                class="container bg-[url('/img/pool-schedule.png')] bg-no-repeat bg-cover bg-center py-[clamp(1rem,0.3675rem+2.8112vw,2.75rem)] px-4 lg:px-20 rounded-[clamp(0.875rem,0.1295rem+3.3133vw,2.9375rem)]">
                 <h3
                     class="uppercase text-center text-[clamp(0.625rem,-0.0075rem+2.8112vw,2.375rem)] mb-[clamp(1.1875rem,1.0294rem+0.7028vw,1.625rem)]">
                     свободное
@@ -257,11 +377,161 @@
             </div>
         </section>
 
+
         <!-- Форма записи -->
-        {% include './src/partials/templates/form.html' %}
+        <section class="bg-dark">
+            <div class="container grid grid-cols-1 items-center px-4 pt-[60px] lg:grid-cols-3 gap-y-5 lg:gap-24">
+                <div class="col-span-2">
+                    <h3 class="text-[clamp(3rem,2.3675rem+2.8112vw,4.75rem)] leading-none uppercase mb-7">
+                        лучший бассейн<br>
+                        города ждет тебя
+                    </h3>
 
-{% endblock %}
+                    <form id="contact-form" action="" method="get" class="flex flex-col gap-5">
+                        <div>
+                            <input type="text" placeholder="ИМЯ"
+                                class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-light rounded-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] focus:outline-none focus:ring-2 focus:ring-red-600"
+                                required>
+                        </div>
+                        <div>
+                            <input type="tel" placeholder="НОМЕР ТЕЛЕФОНА"
+                                class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)]  bg-light rounded-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] focus:outline-none focus:ring-2 focus:ring-red-600"
+                                required>
+                        </div>
+                        <button type="submit"
+                            class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-red-600 hover:bg-red-700 transition py-3 rounded-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] font-bold">
+                            СТАТЬ БЛИЖЕ К СВОЕЙ ЦЕЛИ
+                        </button>
+                        <p class="text-[clamp(0.5rem,0.2741rem+1.004vw,1.125rem)] text-center">
+                            Нажимая "Отправить" я согласен на обработку персональных данных
+                        </p>
+                    </form>
 
-{% block footer %}
-  {% include './src/partials/templates/footer.html' %}
-{% endblock %}
+                </div>
+                <div class="col-span-1">
+                    <img src="/img/pool-contact.png" alt="" class="block w-full mx-auto">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark py-14 px-4">
+        <div
+            class="container text-dark bg-light sm:grid sm:grid-cols-4 md:grid-cols-5 items-center gap-12 rounded-[77px] px-8 py-10">
+
+            <a href="/" class="sm:col-span-4 md:col-span-1 flex justify-center items-center"><img
+                    src="/img/footer-pool.svg" alt="home" class="max-w-full block"></a>
+
+            <ul class="col-span-2">
+                <li class="">
+                    <a href=""
+                        class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light">команда</a>
+                </li>
+                <li class="">
+                    <a href=""
+                        class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light">ПАРТНЕРЫ</a>
+                </li>
+                <li class="">
+                    <a href=""
+                        class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light">ОПЛАТА</a>
+                </li>
+                <li class="">
+                    <a href=""
+                        class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light w-[100px] block">СОТРУДНИЧЕСТВО
+                        И РЕКЛАМА</a>
+                </li>
+                <li class="">
+                    <a href=""
+                        class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light">ПРАВИЛА
+                        КЛУБА</a>
+                </li>
+                <li class="">
+                    <a href=""
+                        class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light w-[100px] block">ПОЛИТИКА
+                        КОНФИДЕЦИАЛЬНОСТИ</a>
+                </li>
+                <li class="">
+                    <a href=""
+                        class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light">ДОГОВОР
+                        ОФЕРТЫ</a>
+                </li>
+                <li class="">
+                    <a href=""
+                        class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light">КОНТАКТЫ</a>
+                </li>
+            </ul>
+
+            <ul class="col-span-2">
+                <li
+                    class=" [font-size:_clamp(1.125rem,0.7775rem+1.7375vw,2.25rem)] font-normal leading-5 text-right mb-3">
+                    8 800 500
+                    1598</li>
+
+                <li class="">
+                    <span class="block  text-right [font-size:_clamp(0.625rem,0.4706rem+0.7722vw,1.125rem)]">пн-пт
+                        7-23</span>
+                    <span class="block  text-right [font-size:_clamp(0.625rem,0.4706rem+0.7722vw,1.125rem)]">сб-вс,
+                        праздники 7-22</span>
+                </li>
+
+                <li class="flex items-center justify-end mb-4">
+                    <button class="hover:opacity-70 transition-all"><img src="/img/telegram_button_light.svg" alt=""
+                            class="max-w-[3.3125em] invert"></button>
+                    <button class="hover:opacity-70 transition-all"><img src="/img/vk_button_light.svg" alt=""
+                            class="max-w-[3.3125em] invert"></button>
+                </li>
+
+                <li class="">
+                    <p class="[font-size:_clamp(0.625rem,0.5092rem+0.5792vw,1rem)]  font-normal text-right">наше
+                        мобильное приложение</p>
+                </li>
+
+                <li class="flex items-center justify-end gap-4 py-4">
+                    <button class="border border-dark rounded-[64px] h-16 px-4 py-2 ">App Store</button>
+                    <button class="border border-dark rounded-[64px] h-16 px-4 py-2 ">Google Play</button>
+                </li>
+
+                <li class="flex justify-end items-center gap-5">
+                    <button class=""><img src="/img/yandex_button.svg" alt="" class="invert"></button>
+                    <p class=" [font-size:_clamp(0.5rem,0.3649rem+0.6757vw,0.9375rem)] font-normal">наш рейтинг <br>на
+                        Яндекс</p>
+                    <p class="[font-size:_clamp(1.3125rem,0.9457rem+1.834vw,2.5rem)]  font-normal">4,9</p>
+                </li>
+
+            </ul>
+
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Компонент формы
+        const ContactForm = {
+            submit(e) {
+                e.preventDefault()
+                // Логика отправки формы
+            }
+        }
+
+        // Мобильное меню
+        const MobileMenu = {
+            toggle() {
+                const menu = document.querySelector('.menu-items');
+                if (menu) {
+                    menu.classList.toggle('hidden');
+                }
+            }
+        }
+        // Скрыть меню по умолчанию
+        document.addEventListener('DOMContentLoaded', () => {
+            const menu = document.querySelector('.menu-items');
+            if (menu) {
+                menu.classList.add('hidden'); // Добавлено: скрыть меню по умолчанию
+            }
+        });
+    </script>
+    <link rel="stylesheet" href="/src/style.css">
+</body>
+
+</html>

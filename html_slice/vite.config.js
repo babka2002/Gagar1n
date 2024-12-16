@@ -1,22 +1,21 @@
+import { defineConfig } from 'vite';
 import nunjucks from 'vite-plugin-nunjucks'
+import { resolve } from 'path';
 
-export default {
+export default defineConfig({
     plugins: [
         nunjucks(),
-    ]
-}
+    ],
+    root: resolve(__dirname, './'),
+    build: {
+        outDir: './dist',
+        emptyOutDir: true,
+        rollupOptions: {
+        input: {
+            main: resolve(__dirname, 'index.html'),
+            pool: resolve(__dirname, 'pool.html')
+        }
+    }
+  }
+});
 
-
-
-// import { defineConfig } from 'vite'
-// import { sync as globSync } from 'glob'
-//
-// const htmlFiles = globSync('**/*.html');
-//
-// export default defineConfig({
-//   build: {
-//     rollupOptions: {
-//       input: htmlFiles
-//     }
-//   }
-// })
