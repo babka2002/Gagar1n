@@ -13,7 +13,8 @@ export default defineConfig({
         rollupOptions: {
         input: {
             main: resolve(__dirname, 'index.html'),
-            pool: resolve(__dirname, 'pool.html')
+            pool: resolve(__dirname, 'pool.html'),
+            trainers: resolve(__dirname, 'trainers.html')
         }
     }
   }

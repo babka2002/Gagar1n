@@ -1,17 +1,44 @@
-{% macro innerHero(img, text) %}
-
-<div class="">
-  <h1 class="text-9xl text-light">Inner Hero</h1>
-</div>
-
-{% endmacro %}
-
-
-
 {% macro redb(texts) %}
 
 {% for text in texts %}
 <li class="text-light text-xl"><span>{{text.title}}</span><br><span>{{ text.text }}</span></li>
 {% endfor %}
+
+{% endmacro %}
+
+{% macro formreg(title, submit, imgSrc) %}
+<section class="bg-dark">
+  <div class="container grid grid-cols-1 items-center px-4 lg:grid-cols-3 gap-y-5 lg:gap-24 py-sectionPadding">
+    <div class="col-span-2">
+      <h3 class="text-xxl leading-none uppercase mb-7 text-light">
+        {{ title }}
+      </h3>
+
+      <form id="contact-form" action="" method="get" class="flex flex-col gap-5">
+        <div>
+          <input type="text" placeholder="ИМЯ"
+            class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-light rounded-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] focus:outline-none focus:ring-2 focus:ring-red-600"
+            required>
+        </div>
+        <div>
+          <input type="tel" placeholder="НОМЕР ТЕЛЕФОНА"
+            class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)]  bg-light rounded-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] focus:outline-none focus:ring-2 focus:ring-red-600"
+            required>
+        </div>
+        <button type="submit"
+          class="w-full text-light px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-red-600 hover:bg-red-700 transition rounded-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)]">
+          {{ submit }}
+        </button>
+        <p class="text-sm text-center text-light">
+          Нажимая "Отправить" я согласен на обработку персональных данных
+        </p>
+      </form>
+
+    </div>
+    <div class="col-span-1">
+      <img src="{{ imgSrc }}" alt="" class="block w-full mx-auto">
+    </div>
+  </div>
+</section>
 
 {% endmacro %}

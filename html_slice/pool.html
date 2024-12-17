@@ -1,7 +1,5 @@
 {% extends "src/part/base.html" %}
-
-{% from "./src/part/components.html" import redb, innerHero %}
-
+{% from "./src/part/components.html" import formreg %}
 
 {% set title = "Pool" %}
 
@@ -260,7 +258,12 @@
 </section>
 
 <!-- Форма записи -->
-{% include './src/part/templates/pool_form.html' %}
+{% set formSettings = {
+  "title": "ЛУЧШИЙ БАССЕН ГОРОДА ЖДЕТ ТЕБЯ",
+  "submit": "СТАТЬ БЛИЖЕ К СВОЕЙ ЦЕЛИ",
+  "img": "/img/pool-contact.png"
+} %}
+{{ formreg(formSettings.title, formSettings.submit, formSettings.img) }}
 
 {% endblock %}
 

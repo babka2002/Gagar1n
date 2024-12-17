@@ -9,10 +9,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <title>
     {% if title %}
-      {{ title }}
+    {{ title }}
     {% else %}
-      {% set title = "Gagar1n" %}
-      {{ title }}
+    {% set title = "Gagar1n" %}
+    {{ title }}
     {% endif %}
   </title>
 </head>
@@ -21,14 +21,15 @@
 
 <body class="bg-dark">
   {% block header %}{% endblock %}
-    <main class="mt-[2em] md:mt-[5em]">
-      
-      {% block content %}
-      
-      {% endblock %}
-  
-    </main>
-    
+  <!-- <main class="mt-[2em] md:mt-[5em]"> -->
+  <main class="">
+
+    {% block content %}
+
+    {% endblock %}
+
+  </main>
+
   {% block footer %}
   {% endblock %}
 
@@ -102,6 +103,46 @@
         },
       },
     });
+
+    // TRAINER SLIDER
+    var swiper = new Swiper(".mySwiper2", {
+      slidesPerView: 1,
+      spaceBetween: 16,
+      // centeredSlides: false,
+      centeredSlides: true,
+      autoplay: {
+        delay: 2000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        dynamicBullets: true,
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 16,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 16,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 16,
+        },
+        1440: {
+          slidesPerView: 4,
+          spaceBetween: 16,
+        },
+        1600: {
+          slidesPerView: 5,
+          spaceBetween: 16,
+        },
+      },
+    });
+
     // Компонент формы
     const ContactForm = {
       submit(e) {
