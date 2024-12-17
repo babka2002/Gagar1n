@@ -1,11 +1,9 @@
-{% extends 'src/partials/base.html' %}
+{% extends 'src/part/base.html' %}
 
-{% block title %}
-<title>Gagar1n - Home Page</title>
-{% endblock %}
+{% set title="Home" %}
 
 {% block header %}
-  {% include './src/partials/templates/header.html' %}
+  {% include './src/part/templates/header.html' %}
 {% endblock %}
 
 {% block content %}
@@ -370,5 +368,5 @@
 {% endblock %}
 
 {% block footer %}
-  {% include './src/partials/templates/footer.html' %}
+  {% include './src/part/templates/footer.html' %}
 {% endblock %}

@@ -4,9 +4,9 @@ import { resolve } from 'path';
 
 export default defineConfig({
     plugins: [
-        nunjucks(),
+        nunjucks()
     ],
-    root: resolve(__dirname, './'),
+    root: resolve(__dirname, '.'),
     build: {
         outDir: './dist',
         emptyOutDir: true,

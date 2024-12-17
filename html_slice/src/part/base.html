@@ -7,9 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  {% block title %}
-  <title>{{title}}</title>
-  {% endblock %}
+  <title>
+    {% if title %}
+      {{ title }}
+    {% else %}
+      {% set title = "Gagar1n" %}
+      {{ title }}
+    {% endif %}
+  </title>
 </head>
 
 <!-- <body class="bg-[#1E1E1E]"> -->
@@ -17,9 +22,13 @@
 <body class="bg-dark">
   {% block header %}{% endblock %}
     <main class="mt-[2em] md:mt-[5em]">
+      
       {% block content %}
+      
       {% endblock %}
+  
     </main>
+    
   {% block footer %}
   {% endblock %}
 

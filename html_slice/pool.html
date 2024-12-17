@@ -1,267 +1,269 @@
-{% extends 'src/partials/base.html' %}
+{% extends "src/part/base.html" %}
 
-{% block title %}
-<title>Gagar1n - Pool</title>
-{% endblock %}
+{% from "./src/part/components.html" import redb, innerHero %}
+
+
+{% set title = "Pool" %}
 
 {% block header %}
-  {% include './src/partials/templates/header.html' %}
+{% include './src/part/templates/header.html' %}
 {% endblock %}
 
 {% block content %}
 
-        <!-- Hero Section -->
-        <section class="px-4 mb-5 pb-[clamp(0.75rem,-1.2154rem+8.7349vw,6.1875rem)]">
-            <div class="container mx-auto">
-                <div class="relative">
-                    <img src="/img/pool-hero.png" alt="Бассейн"
-                        class="w-full h-full object-cover rounded-[10px] px-4" />
-                    <!-- <div class="absolute inset-0 m-[0_15px] rounded-[30px] bg-gradient-to-b from-black/60 to-black/10 z-0 h-[670px]"></div> -->
+<!-- Hero Section -->
+<section class="px-4 mb-5 pb-[clamp(0.75rem,-1.2154rem+8.7349vw,6.1875rem)]">
+    <div class="container mx-auto">
+        <div class="relative">
+            <img src="/img/pool-hero.png" alt="Бассейн" class="w-full h-full object-cover rounded-[10px] px-4" />
+            <!-- <div class="absolute inset-0 m-[0_15px] rounded-[30px] bg-gradient-to-b from-black/60 to-black/10 z-0 h-[670px]"></div> -->
+            <div class="absolute inset-0 flex flex-col items-center justify-between">
+                <!-- Заголовок -->
+                <h1
+                    class="text-light text-[clamp(2.125rem,-0.3373rem+10.9438vw,8.9375rem)] col-span-12 text-center relative -mt-[12px] md:-mt-[32px] uppercase">
+                    бассейн
+                </h1>
+            </div>
+            <!-- Характеристики -->
+            <div
+                class="flex items-center justify-between mt-[clamp(1.6875rem,0.8065rem+3.9157vw,4.125rem)] z-10 relative gap-2">
+                <div class="text-center flex flex-col justify-between items-center">
+                    <span
+                        class="text-light text-[clamp(4.6875rem,0.7568rem+17.4699vw,15.5625rem)] block leading-none">25</span>
+                    <span class="text-light text-[clamp(1.25rem,0.2108rem+4.6185vw,4.125rem)] uppercase">метров</span>
+                </div>
 
-                    <div class="absolute inset-0 flex flex-col items-center justify-between">
-                        <!-- Заголовок -->
-                        <h1
-                            class="text-light text-[clamp(2.125rem,-0.3373rem+10.9438vw,8.9375rem)] col-span-12 text-center relative -mt-[12px] md:-mt-[32px] uppercase">
-                            бассейн
-                        </h1>
-                    </div>
-                    <!-- Характеристики -->
-                    <div
-                        class="flex items-center justify-between mt-[clamp(1.6875rem,0.8065rem+3.9157vw,4.125rem)] z-10 relative gap-2">
-                        <div class="text-center flex flex-col justify-between items-center">
-                            <span
-                                class="text-light text-[clamp(4.6875rem,0.7568rem+17.4699vw,15.5625rem)] block leading-none">25</span>
-                            <span
-                                class="text-light text-[clamp(1.25rem,0.2108rem+4.6185vw,4.125rem)] uppercase">метров</span>
-                        </div>
+                <div class="text-center flex flex-col justify-between items-center">
+                    <span
+                        class="text-light text-[clamp(4.6875rem,0.7568rem+17.4699vw,15.5625rem)] block leading-none">2.20</span>
+                    <span
+                        class="text-light text-[clamp(1.25rem,0.2108rem+4.6185vw,4.125rem)] uppercase">м.глубины</span>
+                </div>
 
-                        <div class="text-center flex flex-col justify-between items-center">
-                            <span
-                                class="text-light text-[clamp(4.6875rem,0.7568rem+17.4699vw,15.5625rem)] block leading-none">2.20</span>
-                            <span
-                                class="text-light text-[clamp(1.25rem,0.2108rem+4.6185vw,4.125rem)] uppercase">м.глубины</span>
-                        </div>
-
-                        <div class="text-center flex flex-col justify-between items-center">
-                            <span
-                                class="text-light text-[clamp(4.6875rem,0.7568rem+17.4699vw,15.5625rem)] block leading-none">6</span>
-                            <span
-                                class="text-light text-[clamp(1.25rem,0.2108rem+4.6185vw,4.125rem)] uppercase">дорожек</span>
-                        </div>
-                    </div>
-
-                    <!-- Информация о системе очистки -->
-
-                    <a href="#"
-                        class="relative z-9 text-light flex items-center justify-center text-center bg-main-red rounded-[clamp(0.625rem,0.128rem+2.2088vw,2rem)] mt-[clamp(1.875rem,1.6039rem+1.2048vw,2.625rem)] py-[clamp(0.625rem,-0.2334rem+3.8153vw,3rem)] text-[clamp(1.25rem,0.8886rem+1.6064vw,2.25rem)] cursor-pointer transition-all hover:opacity-80">
-                        используем многоступенчатую систему очистки для поддержания идеального состояния воды
-                    </a>
-                    <!-- </div> -->
+                <div class="text-center flex flex-col justify-between items-center">
+                    <span
+                        class="text-light text-[clamp(4.6875rem,0.7568rem+17.4699vw,15.5625rem)] block leading-none">6</span>
+                    <span class="text-light text-[clamp(1.25rem,0.2108rem+4.6185vw,4.125rem)] uppercase">дорожек</span>
                 </div>
             </div>
-        </section>
-        
-        <!-- Индивидуальные тренировки -->
-        <section class="bg-light text-dark pt-[clamp(1.0625rem,-1.2417rem+10.241vw,7.4375rem)] pb-5 px-4">
-            <div class="container mx-auto grid grid-cols-1">
-                <h2
-                    class="text-[clamp(1.375rem,0.2229rem+5.1205vw,4.5625rem)] absolute left-3 md:left-[330px] md:w-[800px] uppercase">
-                    индивидуальные тренировки
-                </h2>
 
-                <picture>
-                    <source media="(max-width: 768px)" srcset="/img/pool-individual-mobile.png">
-                    <!-- Изображение для мобильных устройств -->
-                    <img src="/img/pool-individual-training.png" alt="Индивидуальная тренировка по плаванию"
-                        class="w-full h-auto object-cover rounded-lg" loading="lazy">
-                </picture>
+            <!-- Информация о системе очистки -->
 
-                <p
-                    class="text-[clamp(0.6875rem,0.2809rem+1.8072vw,1.8125rem)] mt-[125px] md:mt-[425px] absolute w-[180px] md:w-[880px] text-right right-4 md:right-[300px]">
-                    Индивидуальные занятия под руководством профессионального тренера для укрепления здоровья и
-                    улучшения физической формы. Подходят для любого уровня подготовки.
+            <a href="#"
+                class="relative z-9 text-light flex items-center justify-center text-center bg-main-red rounded-[clamp(0.625rem,0.128rem+2.2088vw,2rem)] mt-[clamp(1.875rem,1.6039rem+1.2048vw,2.625rem)] py-[clamp(0.625rem,-0.2334rem+3.8153vw,3rem)] text-[clamp(1.25rem,0.8886rem+1.6064vw,2.25rem)] cursor-pointer transition-all hover:opacity-80">
+                используем многоступенчатую систему очистки для поддержания идеального состояния воды
+            </a>
+            <!-- </div> -->
+        </div>
+    </div>
+</section>
+
+<!-- Индивидуальные тренировки -->
+<section class="bg-light text-dark pt-[clamp(1.0625rem,-1.2417rem+10.241vw,7.4375rem)] pb-5 px-4">
+    <div class="container mx-auto grid grid-cols-1">
+        <h2
+            class="text-[clamp(1.375rem,0.2229rem+5.1205vw,4.5625rem)] absolute left-3 md:left-[330px] md:w-[800px] uppercase">
+            индивидуальные тренировки
+        </h2>
+
+        <picture>
+            <source media="(max-width: 768px)" srcset="/img/pool-individual-mobile.png">
+            <!-- Изображение для мобильных устройств -->
+            <img src="/img/pool-individual-training.png" alt="Индивидуальная тренировка по плаванию"
+                class="w-full h-auto object-cover rounded-lg" loading="lazy">
+        </picture>
+
+        <p
+            class="text-[clamp(0.6875rem,0.2809rem+1.8072vw,1.8125rem)] mt-[125px] md:mt-[425px] absolute w-[180px] md:w-[880px] text-right right-4 md:right-[300px]">
+            Индивидуальные занятия под руководством профессионального тренера для укрепления здоровья и
+            улучшения физической формы. Подходят для любого уровня подготовки.
+        </p>
+    </div>
+</section>
+
+<!-- Групповые тренировки -->
+<section class="bg-light text-dark pt-[clamp(1.4375rem,0.4435rem+4.4177vw,4.1875rem)] hyphens-auto">
+    <div class="container mx-auto max-w-6xl">
+        <h2
+            class="text-dark text-[clamp(1.5rem,-0.0587rem+6.9277vw,5.8125rem)] text-center uppercase mb-[clamp(1.6875rem,1.5745rem+0.502vw,2rem)]">
+            групповые
+            тренировки</h2>
+        <!-- <div class="columns-2 md:columns-2 lg:columns-3 gap-6  sm:p-1 mt-2"> -->
+        <div class="columns-2 md:columns-2 lg:columns-3 gap-x-2 p-1 sm:p-1 mt-2">
+
+
+            {% set items = [
+            {
+            "title":"pro",
+            "text":"Групповая тренировка с использованием аква-гантелей, нудлов и аква-утяжелителей под динамичную
+            музыку.",
+            "second": "Фокус на мышцы верхней части тела, брюшного пресса и ног."
+            },
+            {
+            "title":"шейпинг",
+            "text":"Аквааэробика для улучшения физической формы и формирования фигуры. Укрепление мышц и повышение
+            обмена веществ."
+            }
+            ] %}
+            {% for item in items %}
+            <div
+                class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] transform duration-200 hover:shadow-md z-0 relative">
+                <h3
+                    class="w-full uppercase px-2 py-[clamp(1.375rem,0.7425rem+2.8112vw,3.125rem)] text-[clamp(1.375rem,0.6973rem+3.012vw,3.25rem)] font-normal text-center text-light rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] bg-[#9E1D1D]">
+                    {{ item.title }}</h3>
+                <p class="text-[clamp(0.5625rem,0.2914rem+1.2048vw,1.3125rem)] p-3 md:py-5 md:px-10 text-light">
+                    {{ item.text }}
+                </p>
+                <p class="text-[clamp(0.5625rem,0.2914rem+1.2048vw,1.3125rem)] p-3 md:py-5 md:px-10 text-light">
+                    {{ item.second }}
                 </p>
             </div>
-        </section>
-        
-        <!-- Групповые тренировки -->
-        <section class="bg-light text-dark pt-[clamp(1.4375rem,0.4435rem+4.4177vw,4.1875rem)] hyphens-auto">
-            <div class="container mx-auto max-w-6xl">
-                <h2
-                    class="text-dark text-[clamp(1.5rem,-0.0587rem+6.9277vw,5.8125rem)] text-center uppercase mb-[clamp(1.6875rem,1.5745rem+0.502vw,2rem)]">
-                    групповые
-                    тренировки</h2>
-                <!-- <div class="columns-2 md:columns-2 lg:columns-3 gap-6  sm:p-1 mt-2"> -->
-                <div class="columns-2 md:columns-2 lg:columns-3 gap-x-2 p-1 sm:p-1 mt-2">
-                    <!-- PRO -->
-                    <div
-                        class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] transform duration-200 hover:shadow-md z-0 relative">
-                        <h3
-                            class="w-full uppercase px-2 py-[clamp(1.375rem,0.7425rem+2.8112vw,3.125rem)] text-[clamp(1.375rem,0.6973rem+3.012vw,3.25rem)] font-normal text-center text-light rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] bg-[#9E1D1D]">
-                            pro</h3>
-                        <p class="text-[clamp(0.5625rem,0.2914rem+1.2048vw,1.3125rem)] p-3 md:py-5 md:px-10 text-light">
-                            Групповая тренировка с использованием аква-гантелей, нудлов и аква-утяжелителей под
-                            динамичную музыку.
-                            <br>
-                            <br>
-                            Фокус на мышцы верхней части тела, брюшного пресса и ног.
-                        </p>
-                    </div>
+            {% endfor %}
 
-                    <!-- ШЕЙПИНГ -->
-                    <div
-                        class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] transform duration-200 hover:shadow-md z-0 relative">
-                        <h3
-                            class="w-full uppercase px-2 py-[clamp(1.375rem,0.7425rem+2.8112vw,3.125rem)] text-[clamp(1.375rem,0.6973rem+3.012vw,3.25rem)] font-normal text-center text-light rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] bg-[#9E1D1D]">
-                            шейпинг</h3>
-                        <p class="text-[clamp(0.5625rem,0.2914rem+1.2048vw,1.3125rem)] p-3 md:py-5 md:px-10 text-light">
-                            Аквааэробика для улучшения физической формы и формирования фигуры. Укрепление мышц и
-                            повышение обмена веществ.
-                        </p>
-                    </div>
-
-                    <!-- Бассейн картинка -->
-                    <div
-                        class=" flex flex-col break-inside-avoid mb-6 rounded-lg transform duration-200 hover:shadow-md z-0 relative">
-                        <picture>
-                            <source media="(min-width: 768px)" srcset="/img/pool-group-desktop-1.png">
-                            <img src="/img/pool-group-mobile.png" alt="Бассейн"
-                                class="w-full h-full object-cover rounded-lg">
-                        </picture>
-                    </div>
-
-                    <!-- ГИМНАСТИКА -->
-                    <div
-                        class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] transform duration-200 hover:shadow-md z-0 relative">
-                        <h3
-                            class="w-full uppercase px-2 py-[clamp(1.375rem,0.7425rem+2.8112vw,3.125rem)] text-[clamp(1.375rem,0.6973rem+3.012vw,3.25rem)] font-normal text-center text-light rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] bg-[#9E1D1D]">
-                            гимнастика</h3>
-                        <p class="text-[clamp(0.5625rem,0.2914rem+1.2048vw,1.3125rem)] p-3 md:py-5 md:px-10 text-light">
-                            Групповая тренировка для укрепления суставов и улучшения их гибкости. Сочетает
-                            оздоровительное плавание и специальные упражнения.
-                        </p>
-                    </div>
-
-                    <!-- ПЛАВАНИЕ В ЛАСТАХ -->
-                    <div
-                        class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] transform duration-200 hover:shadow-md z-0 relative">
-                        <h3
-                            class="w-full uppercase px-2 py-[clamp(1.375rem,0.7425rem+2.8112vw,3.125rem)] text-[clamp(1.375rem,0.6973rem+3.012vw,3.25rem)] font-normal text-center text-light rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] bg-[#9E1D1D]">
-                            плавание в ластах</h3>
-                        <p class="text-[clamp(0.5625rem,0.2914rem+1.2048vw,1.3125rem)] p-3 md:py-5 md:px-10 text-light">
-                            Тренировка с ластами для увеличения нагрузки на мышцы, улучшения выносливости и
-                            сердечно-сосудистой системы.
-                        </p>
-                    </div>
-
-
-                    <div
-                        class=" flex flex-col break-inside-avoid mb-6 rounded-lg transform duration-200 hover:shadow-md z-0 relative">
-                        <img src="/img/pool-group-desktop-2.png" alt="Бассейн"
-                            class="w-full h-full object-cover rounded-lg">
-                    </div>
-
-                    <!-- SWIMMING -->
-                    <div
-                        class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] transform duration-200 hover:shadow-md z-0 relative">
-                        <h3
-                            class="w-full uppercase px-2 py-[clamp(1.375rem,0.7425rem+2.8112vw,3.125rem)] text-[clamp(1.375rem,0.6973rem+3.012vw,3.25rem)] font-normal text-center text-light rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] bg-[#9E1D1D]">
-                            swimming</h3>
-                        <p class="text-[clamp(0.5625rem,0.2914rem+1.2048vw,1.3125rem)] p-3 md:py-5 md:px-10 text-light">
-                            Групповая тренировка для развития техники плавания и физической формы под руководством
-                            квалифицированного тренера.
-                        </p>
-                    </div>
-
-                    <!-- MIX -->
-                    <div
-                        class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] transform duration-200 hover:shadow-md z-0 relative">
-                        <h3
-                            class="w-full uppercase px-2 py-[clamp(1.375rem,0.7425rem+2.8112vw,3.125rem)] text-[clamp(1.375rem,0.6973rem+3.012vw,3.25rem)] font-normal text-center text-light rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] bg-[#9E1D1D]">
-                            mix</h3>
-                        <p class="text-[clamp(0.5625rem,0.2914rem+1.2048vw,1.3125rem)] p-3 md:py-5 md:px-10 text-light">
-                            Динамичная высокоинтенсивная тренировка, сочетающая аквааэробику и специальные упражнения
-                            для всех групп мышц.
-                        </p>
-                    </div>
-
-
-                    <!-- NOODLES/DUMBELLS -->
-                    <div
-                        class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] transform duration-200 hover:shadow-md z-0 relative">
-                        <h3
-                            class="w-full uppercase px-2 py-[clamp(1.375rem,0.7425rem+2.8112vw,3.125rem)] text-[clamp(1.375rem,0.6973rem+3.012vw,3.25rem)] font-normal text-center text-light rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] bg-[#9E1D1D]">
-                            noodles / dumbells
-                        </h3>
-                        <p class="text-[clamp(0.5625rem,0.2914rem+1.2048vw,1.3125rem)] p-3 md:py-5 md:px-10 text-light">
-                            Тренировка для развития координации и укрепления стабилизаторов с использованием аква-нудлов
-                            и специальных гантелей.
-                        </p>
-                    </div>
-
-                    <!-- ТЕХНИКА ПЛАВАНИЯ -->
-                    <div
-                        class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] transform duration-200 hover:shadow-md z-0 relative">
-                        <h3
-                            class="w-full uppercase px-2 py-[clamp(1.375rem,0.7425rem+2.8112vw,3.125rem)] text-[clamp(1.375rem,0.6973rem+3.012vw,3.25rem)] font-normal text-center text-light rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] bg-[#9E1D1D]">
-                            техника плавания</h3>
-                        <p class="text-[clamp(0.5625rem,0.2914rem+1.2048vw,1.3125rem)] p-3 md:py-5 md:px-10 text-light">
-                            Мастер-класс по совершенствованию техники плавания различных стилей с индивидуальными
-                            рекомендациями.
-                        </p>
-                    </div>
-
-                    <!-- ВОДНОЕ ПОЛО -->
-                    <div
-                        class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] transform duration-200 hover:shadow-md z-0 relative">
-                        <h3
-                            class="w-full uppercase px-2 py-[clamp(1.375rem,0.7425rem+2.8112vw,3.125rem)] text-[clamp(1.375rem,0.6973rem+3.012vw,3.25rem)] font-normal text-center text-light rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] bg-[#9E1D1D]">
-                            водное поло</h3>
-                        <p class="text-[clamp(0.5625rem,0.2914rem+1.2048vw,1.3125rem)] p-3 md:py-5 md:px-10 text-light">
-                            Групповая тренировка, посвященная игре в водное поло. Развитие командного взаимодействия и
-                            плавательных навыков.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Расписание pool-schedule.png-->
-        <section id="schedule"
-            class="pt-[clamp(1.4375rem,-0.2342rem+7.4297vw,6.0625rem)] pb-[clamp(3.4375rem,-0.0866rem+15.6627vw,13.1875rem)] bg-light text-light px-4">
+            <!-- Бассейн картинка -->
             <div
-                class="container bg-[url('/img/pool-schedule.png')] bg-no-repeat bg-cover bg-center py-[clamp(1rem,0.3675rem+2.8112vw,2.75rem)] px-4 lg:px-14 rounded-[clamp(0.875rem,0.1295rem+3.3133vw,2.9375rem)]">
-                <h3
-                    class="uppercase text-center text-[clamp(0.625rem,-0.0075rem+2.8112vw,2.375rem)] mb-[clamp(1.1875rem,1.0294rem+0.7028vw,1.625rem)]">
-                    свободное
-                    посещение бассейна</h3>
-                <div class="grid grid-cols-1 lg:grid-cols-4 gap-0 lg:gap-3 justify-around text-center lg:text-left">
-                    <div class="col-span-2 text-[clamp(1.1875rem,0.7583rem+1.9076vw,2.375rem)]">понедельник - пятница
-                    </div>
-                    <div
-                        class="col-span-1 relative items-center justify-center before:absolute before:h-[1px] before:bg-light before:w-full hidden lg:flex">
-                    </div>
-                    <div class="col-span-1 text-[clamp(1rem,0.503rem+2.2088vw,2.375rem)]">с 07:00 до 22:30</div>
-                </div>
-
-                <div class="h-[1px] bg-light w-full max-w-[83px] mx-auto my-2 lg:hidden"></div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-4 gap-0 lg:gap-3 justify-around text-center lg:text-left">
-                    <div class="col-span-1 text-[clamp(1.1875rem,0.7583rem+1.9076vw,2.375rem)]">выходные
-                    </div>
-                    <div
-                        class="col-span-2 relative items-center justify-center before:absolute before:h-[1px] before:bg-light before:w-full hidden lg:flex">
-                    </div>
-                    <div class="col-span-1 text-[clamp(1rem,0.503rem+2.2088vw,2.375rem)]">с 08:00 до 21:30</div>
-                </div>
+                class=" flex flex-col break-inside-avoid mb-6 rounded-lg transform duration-200 hover:shadow-md z-0 relative">
+                <picture>
+                    <source media="(min-width: 768px)" srcset="/img/pool-group-desktop-1.png">
+                    <img src="/img/pool-group-mobile.png" alt="Бассейн" class="w-full h-full object-cover rounded-lg">
+                </picture>
             </div>
-        </section>
 
-        <!-- Форма записи -->
-        {% include './src/partials/templates/form.html' %}
+            {% set items = [
+            {
+            "title":"гимнастика",
+            "text":"Групповая тренировка для укрепления суставов и улучшения их гибкости. Сочетает оздоровительное
+            плавание и специальные упражнения."
+            },
+            {
+            "title":"плавание в ластах",
+            "text":"Тренировка с ластами для увеличения нагрузки на мышцы, улучшения выносливости и сердечно-сосудистой
+            системы."
+            }
+            ] %}
+
+            {% for item in items %}
+            <div
+                class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] transform duration-200 hover:shadow-md z-0 relative">
+                <h3
+                    class="w-full uppercase px-2 py-[clamp(1.375rem,0.7425rem+2.8112vw,3.125rem)] text-[clamp(1.375rem,0.6973rem+3.012vw,3.25rem)] font-normal text-center text-light rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] bg-[#9E1D1D]">
+                    {{ item.title }}</h3>
+                <p class="text-[clamp(0.5625rem,0.2914rem+1.2048vw,1.3125rem)] p-3 md:py-5 md:px-10 text-light">
+                    {{ item.text }}
+                </p>
+                <p class="text-[clamp(0.5625rem,0.2914rem+1.2048vw,1.3125rem)] p-3 md:py-5 md:px-10 text-light">
+                    {{ item.second }}
+                </p>
+            </div>
+            {% endfor %}
+
+            <div
+                class=" flex flex-col break-inside-avoid mb-6 rounded-lg transform duration-200 hover:shadow-md z-0 relative">
+                <img src="/img/pool-group-desktop-2.png" alt="Бассейн" class="w-full h-full object-cover rounded-lg">
+            </div>
+
+
+            <!-- SWIMMING -->
+            <div
+                class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] transform duration-200 hover:shadow-md z-0 relative">
+                <h3
+                    class="w-full uppercase px-2 py-[clamp(1.375rem,0.7425rem+2.8112vw,3.125rem)] text-[clamp(1.375rem,0.6973rem+3.012vw,3.25rem)] font-normal text-center text-light rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] bg-[#9E1D1D]">
+                    swimming</h3>
+                <p class="text-[clamp(0.5625rem,0.2914rem+1.2048vw,1.3125rem)] p-3 md:py-5 md:px-10 text-light">
+                    Групповая тренировка для развития техники плавания и физической формы под руководством
+                    квалифицированного тренера.
+                </p>
+            </div>
+
+            <!-- MIX -->
+            <div
+                class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] transform duration-200 hover:shadow-md z-0 relative">
+                <h3
+                    class="w-full uppercase px-2 py-[clamp(1.375rem,0.7425rem+2.8112vw,3.125rem)] text-[clamp(1.375rem,0.6973rem+3.012vw,3.25rem)] font-normal text-center text-light rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] bg-[#9E1D1D]">
+                    mix</h3>
+                <p class="text-[clamp(0.5625rem,0.2914rem+1.2048vw,1.3125rem)] p-3 md:py-5 md:px-10 text-light">
+                    Динамичная высокоинтенсивная тренировка, сочетающая аквааэробику и специальные упражнения
+                    для всех групп мышц.
+                </p>
+            </div>
+
+
+            <!-- NOODLES/DUMBELLS -->
+            <div
+                class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] transform duration-200 hover:shadow-md z-0 relative">
+                <h3
+                    class="w-full uppercase px-2 py-[clamp(1.375rem,0.7425rem+2.8112vw,3.125rem)] text-[clamp(1.375rem,0.6973rem+3.012vw,3.25rem)] font-normal text-center text-light rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] bg-[#9E1D1D]">
+                    noodles / dumbells
+                </h3>
+                <p class="text-[clamp(0.5625rem,0.2914rem+1.2048vw,1.3125rem)] p-3 md:py-5 md:px-10 text-light">
+                    Тренировка для развития координации и укрепления стабилизаторов с использованием аква-нудлов
+                    и специальных гантелей.
+                </p>
+            </div>
+
+            <!-- ТЕХНИКА ПЛАВАНИЯ -->
+            <div
+                class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] transform duration-200 hover:shadow-md z-0 relative">
+                <h3
+                    class="w-full uppercase px-2 py-[clamp(1.375rem,0.7425rem+2.8112vw,3.125rem)] text-[clamp(1.375rem,0.6973rem+3.012vw,3.25rem)] font-normal text-center text-light rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] bg-[#9E1D1D]">
+                    техника плавания</h3>
+                <p class="text-[clamp(0.5625rem,0.2914rem+1.2048vw,1.3125rem)] p-3 md:py-5 md:px-10 text-light">
+                    Мастер-класс по совершенствованию техники плавания различных стилей с индивидуальными
+                    рекомендациями.
+                </p>
+            </div>
+
+            <!-- ВОДНОЕ ПОЛО -->
+            <div
+                class=" flex flex-col break-inside-avoid mb-6 bg-[#BB5F5F] rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] transform duration-200 hover:shadow-md z-0 relative">
+                <h3
+                    class="w-full uppercase px-2 py-[clamp(1.375rem,0.7425rem+2.8112vw,3.125rem)] text-[clamp(1.375rem,0.6973rem+3.012vw,3.25rem)] font-normal text-center text-light rounded-[clamp(0.5625rem,0.2688rem+1.3052vw,1.375rem)] bg-[#9E1D1D]">
+                    водное поло</h3>
+                <p class="text-[clamp(0.5625rem,0.2914rem+1.2048vw,1.3125rem)] p-3 md:py-5 md:px-10 text-light">
+                    Групповая тренировка, посвященная игре в водное поло. Развитие командного взаимодействия и
+                    плавательных навыков.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Расписание pool-schedule.png-->
+<section id="schedule"
+    class="pt-[clamp(1.4375rem,-0.2342rem+7.4297vw,6.0625rem)] pb-[clamp(3.4375rem,-0.0866rem+15.6627vw,13.1875rem)] bg-light text-light px-4">
+    <div
+        class="container bg-[url('/img/pool-schedule.png')] bg-no-repeat bg-cover bg-center py-[clamp(1rem,0.3675rem+2.8112vw,2.75rem)] px-4 lg:px-14 rounded-[clamp(0.875rem,0.1295rem+3.3133vw,2.9375rem)]">
+        <h3
+            class="uppercase text-center text-[clamp(0.625rem,-0.0075rem+2.8112vw,2.375rem)] mb-[clamp(1.1875rem,1.0294rem+0.7028vw,1.625rem)]">
+            свободное
+            посещение бассейна</h3>
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-0 lg:gap-3 justify-around text-center lg:text-left">
+            <div class="col-span-2 text-[clamp(1.1875rem,0.7583rem+1.9076vw,2.375rem)]">понедельник - пятница
+            </div>
+            <div
+                class="col-span-1 relative items-center justify-center before:absolute before:h-[1px] before:bg-light before:w-full hidden lg:flex">
+            </div>
+            <div class="col-span-1 text-[clamp(1rem,0.503rem+2.2088vw,2.375rem)]">с 07:00 до 22:30</div>
+        </div>
+
+        <div class="h-[1px] bg-light w-full max-w-[83px] mx-auto my-2 lg:hidden"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-0 lg:gap-3 justify-around text-center lg:text-left">
+            <div class="col-span-1 text-[clamp(1.1875rem,0.7583rem+1.9076vw,2.375rem)]">выходные
+            </div>
+            <div
+                class="col-span-2 relative items-center justify-center before:absolute before:h-[1px] before:bg-light before:w-full hidden lg:flex">
+            </div>
+            <div class="col-span-1 text-[clamp(1rem,0.503rem+2.2088vw,2.375rem)]">с 08:00 до 21:30</div>
+        </div>
+    </div>
+</section>
+
+<!-- Форма записи -->
+{% include './src/part/templates/pool_form.html' %}
 
 {% endblock %}
 
 {% block footer %}
-  {% include './src/partials/templates/footer.html' %}
+{% include './src/part/templates/footer.html' %}
 {% endblock %}
