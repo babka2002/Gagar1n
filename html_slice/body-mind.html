@@ -33,7 +33,7 @@
     </script>
 </head>
 
-<body class="bg-[#474747] text-white font-sans antialiased my-5">
+<body class="bg-dark text-white font-sans antialiased my-5">
     <!-- Header -->
     <div class="px-[1em]">
         <header class="container bg-light flex justify-between items-center gap-2 rounded-[30px] px-[20px] py-[14px] ">
@@ -582,7 +582,7 @@
                     </div>
                 </div>
 
-                <div class="container bg-[#1E1E1E] rounded-[45px] mx-auto my-4 grid grid-cols-1 gap-6 md:hidden p-5 ">
+                <div class="container bg-dark rounded-[45px] mx-auto my-4 grid grid-cols-1 gap-6 md:hidden p-5 ">
                     <h2 class="text-[38px] md:text-[76px] text-white font-bold mb-4 text-center px-5 leading-[1.2em]">
                         ИЩЕШЬ САЙКЛ ИЛИ КРОССФИТ?</h2>
                     <div class="grid grid-cols-2 gap-4">
@@ -606,6 +606,8 @@
                 </div>
             </div>
         </section>
+
+
 
         <!-- Форма записи -->
         <section class="py-8" id="contact">
@@ -639,44 +641,11 @@
                     </div>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-8 items-center justify-center">
-                    <div class="flex flex-col justify-start items-start md:w-full">
-                        <h2 class="text-[32px] md:text-[50px] mb-6 text-left leading-[1.2em] md:w-[400px]">
-                            СТАНЬ ЛУЧШЕЙ ВЕРСИЕЙ СЕБЯ
-                        </h2>
+                {% from './src/part/components.html' import formreg %}
+                <!-- formreg(title, submit, imgSrc) -->
+                {{ formreg("СТАНЬ ЛУЧШЕЙ ВЕРСИЕЙ СЕБЯ", "СТАТЬ БЛИЖЕ К СВОЕЙ ЦЕЛИ", "/img/fitness-contact-desktop.png")
+                }}
 
-                        <form class="space-y-2 md:w-full" id="contact-form">
-                            <div>
-                                <input type="text" placeholder="ИМЯ"
-                                    class="w-full p-3 bg-white rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-600"
-                                    required>
-                            </div>
-                            <div>
-                                <input type="tel" placeholder="НОМЕР ТЕЛЕФОНА"
-                                    class="w-full p-3 bg-white rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-600"
-                                    required>
-                            </div>
-                            <button type="submit"
-                                class="w-full bg-red-600 hover:bg-red-700 transition py-3 rounded-2xl font-bold">
-                                СТАТЬ БЛИЖЕ К СВОЕЙ ЦЕЛИ
-                            </button>
-                            <p class="text-[8px] text-center">
-                                Нажимая "Отправить" я согласен на обработку персональных данных
-                            </p>
-                        </form>
-                    </div>
-
-                    <div class="relative flex justify-start items-center">
-
-
-                        <picture>
-                            <source media="(max-width: 768px)" srcset="/img/fitness-contact.png">
-                            <!-- Изображение для мобильных устройств -->
-                            <img src="/img/fitness-contact-desktop.png" alt="Фитнес-центр Гагарин"
-                                class="w-[390px] md:w-4/5 object-cover rounded-[47px]" loading="lazy">
-                        </picture>
-                    </div>
-                </div>
             </div>
         </section>
     </main>
