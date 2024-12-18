@@ -305,94 +305,13 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-[#1E1E1E] py-14 px-4">
-        <div
-            class="container text-dark bg-light sm:grid sm:grid-cols-4 md:grid-cols-5 items-center gap-12 rounded-[77px] px-8 py-10">
+    {% block footer %}
+    {% from "./src/part/templates/footer.html" import footer %}
 
-            <a href="/" class="sm:col-span-4 md:col-span-1 flex justify-center items-center"><img
-                    src="/img/footer-pool.svg" alt="home" class="max-w-full block"></a>
-
-            <ul class="col-span-2">
-                <li class="">
-                    <a href=""
-                        class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light">команда</a>
-                </li>
-                <li class="">
-                    <a href=""
-                        class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light">ПАРТНЕРЫ</a>
-                </li>
-                <li class="">
-                    <a href=""
-                        class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light">ОПЛАТА</a>
-                </li>
-                <li class="">
-                    <a href=""
-                        class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light w-[100px] block">СОТРУДНИЧЕСТВО
-                        И РЕКЛАМА</a>
-                </li>
-                <li class="">
-                    <a href=""
-                        class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light">ПРАВИЛА
-                        КЛУБА</a>
-                </li>
-                <li class="">
-                    <a href=""
-                        class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light w-[100px] block">ПОЛИТИКА
-                        КОНФИДЕЦИАЛЬНОСТИ</a>
-                </li>
-                <li class="">
-                    <a href=""
-                        class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light">ДОГОВОР
-                        ОФЕРТЫ</a>
-                </li>
-                <li class="">
-                    <a href=""
-                        class="[font-size:_clamp(0.75rem,0.4025rem+1.7375vw,1.875rem)]  font-normal uppercase hover:border-b hover:border-light">КОНТАКТЫ</a>
-                </li>
-            </ul>
-
-            <ul class="col-span-2">
-                <li
-                    class=" [font-size:_clamp(1.125rem,0.7775rem+1.7375vw,2.25rem)] font-normal leading-5 text-right mb-3">
-                    8 800 500
-                    1598</li>
-
-                <li class="">
-                    <span class="block  text-right [font-size:_clamp(0.625rem,0.4706rem+0.7722vw,1.125rem)]">пн-пт
-                        7-23</span>
-                    <span class="block  text-right [font-size:_clamp(0.625rem,0.4706rem+0.7722vw,1.125rem)]">сб-вс,
-                        праздники 7-22</span>
-                </li>
-
-                <li class="flex items-center justify-end mb-4">
-                    <button class="hover:opacity-70 transition-all"><img src="/img/telegram_button_light.svg" alt=""
-                            class="max-w-[3.3125em] invert"></button>
-                    <button class="hover:opacity-70 transition-all"><img src="/img/vk_button_light.svg" alt=""
-                            class="max-w-[3.3125em] invert"></button>
-                </li>
-
-                <li class="">
-                    <p class="[font-size:_clamp(0.625rem,0.5092rem+0.5792vw,1rem)]  font-normal text-right">наше
-                        мобильное приложение</p>
-                </li>
-
-                <li class="flex items-center justify-end gap-4 py-4">
-                    <button class="border border-dark rounded-[64px] h-16 px-4 py-2 ">App Store</button>
-                    <button class="border border-dark rounded-[64px] h-16 px-4 py-2 ">Google Play</button>
-                </li>
-
-                <li class="flex justify-end items-center gap-5">
-                    <button class=""><img src="/img/yandex_button.svg" alt="" class="invert"></button>
-                    <p class=" [font-size:_clamp(0.5rem,0.3649rem+0.6757vw,0.9375rem)] font-normal">наш рейтинг <br>на
-                        Яндекс</p>
-                    <p class="[font-size:_clamp(1.3125rem,0.9457rem+1.834vw,2.5rem)]  font-normal">4,9</p>
-                </li>
-
-            </ul>
-
-        </div>
-    </footer>
+    <!-- TRUE - LIGHT VERSION FOOTER -->
+    <!-- {//{// footer(true) }} -->
+    {{ footer(true) }}
+    {% endblock %}
 
     <!-- Scripts -->
     <script>

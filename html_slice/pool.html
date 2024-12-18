@@ -268,5 +268,9 @@
 {% endblock %}
 
 {% block footer %}
-{% include './src/part/templates/footer.html' %}
+{% from "./src/part/templates/footer.html" import footer %}
+
+<!-- TRUE - LIGHT VERSION FOOTER -->
+<!-- {//{// footer(true) }} -->
+{{ footer(true) }}
 {% endblock %}

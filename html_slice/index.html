@@ -9,7 +9,7 @@
 {% block content %}
 
   <!-- START::HERO -->
-  <section class="py-8 md:pt-24 md:pb-28">
+  <section class="py-sectionPadding">
     <div class="container grid grid-cols-2 gap-11 px-[1em]">
       <div class="order-2 md:order-1 col-span-2 text-center md:col-span-1">
         <h1 class="uppercase text-light md:mb-5 md:mt-14 text-[clamp(2.3125rem,1.567rem+3.3133vw,4.375rem)]">
@@ -35,7 +35,7 @@
   <!-- END::HERO -->
 
   <!-- START::DIRECTION -->
-  <section class="pt-16 pb-[clamp(1.4375rem,-0.7538rem+9.739vw,7.5rem)] bg-light">
+  <section class="py-sectionPadding bg-light">
     <div class="container">
       <h2
         class="flex justify-center items-center text-3xl font-normal px-4 lg:px-0 text-black text-center text-[clamp(1.6875rem,0.8968rem+3.5141vw,3.875rem)] mb-6 leading-[1]">
@@ -342,7 +342,7 @@
 
   <!-- START::FORM -->
   <section
-    class="bg-light px-4 pt-[clamp(4.375rem,1.3253rem+13.5542vw,12.8125rem)] pb-[clamp(9.125rem,6.9111rem+9.8394vw,15.25rem)]">
+    class="bg-light px-4 py-sectionPadding">
     <div class="container md:grid md:grid-cols-2 gap-5 items-center leading-tight">
       <div class="text-dark uppercase mb-5 md:mb-0 text-center md:text-left">
         <h3 class="text-[clamp(2.9375rem,2.192rem+3.3133vw,5rem)]">стань членом клуба сейчас</h3>
@@ -368,5 +368,9 @@
 {% endblock %}
 
 {% block footer %}
-  {% include './src/part/templates/footer.html' %}
+{% from "./src/part/templates/footer.html" import footer %}
+
+<!-- TRUE - LIGHT VERSION FOOTER -->
+<!-- {//{// footer(true) }} -->
+{{ footer(false) }}
 {% endblock %}
