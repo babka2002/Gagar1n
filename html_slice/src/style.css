@@ -264,3 +264,25 @@ dialog[open]::backdrop {
     }
   }
 }
+
+/* ACCORDION */
+details {
+  cursor: pointer;
+  overflow: hidden;
+  margin-bottom: 1em;
+}
+
+/* Hide marker in non-Safari browsers */
+summary::marker {
+  content: none;
+}
+
+/* Hide marker in Safari */
+summary::-webkit-details-marker {
+  display: none;
+}
+
+&:has(input:checked) .details-content {
+  block-size: auto;
+  /* Or also:  height:auto; */
+}

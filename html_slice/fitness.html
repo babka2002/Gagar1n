@@ -1,3 +1,5 @@
+{% from './src/part/components.html' import redBlocks %}
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -129,181 +131,323 @@
         </header>
     </div>
 
-    <main class="mt-[2em] md:mt-[5em]">
-        <!-- Hero Section -->
-        <section class="px-[1em] mb-14">
-            <div class="container mx-auto">
-                <div class="relative">
-                    <img src="/img/fitness-hero.png" alt="Фитнес"
-                        class="w-full h-full object-cover rounded-[10px] px-4" />
-                    <!-- <div class="absolute inset-0 m-[0_15px] rounded-[30px] bg-gradient-to-b from-black/60 to-black/10 z-0 h-[670px]"></div> -->
+    <!-- Hero Section -->
+    <section class="px-4 py-sectionPadding">
+        <div class="container mx-auto">
+            <div class="relative">
+                <img src="/img/fitness-hero.png" alt="Фитнес" class="w-full h-full object-cover rounded-[10px] px-4" />
+                <!-- <div class="absolute inset-0 m-[0_15px] rounded-[30px] bg-gradient-to-b from-black/60 to-black/10 z-0 h-[670px]"></div> -->
 
-                    <div class="absolute inset-0 flex flex-col items-center justify-between z-9">
-                        <!-- Заголовок -->
-                        <h2
-                            class="text-light text-[clamp(2.125rem,-0.3373rem+10.9438vw,8.9375rem)] col-span-12 text-center relative -mt-[12px] md:-mt-[32px]">
-                            ФИТНЕС
-                        </h2>
+                <div class="absolute inset-0 flex flex-col items-center justify-between z-9">
+                    <!-- Заголовок -->
+                    <h2
+                        class="text-light text-[clamp(2.125rem,-0.3373rem+10.9438vw,8.9375rem)] col-span-12 text-center relative -mt-[12px] md:-mt-[32px]">
+                        ФИТНЕС
+                    </h2>
+                </div>
+                <!-- Характеристики -->
+                <div
+                    class="flex items-center justify-between mt-[clamp(1.6875rem,0.8065rem+3.9157vw,4.125rem)] z-10 relative">
+                    <div class="text-center">
+                        <span
+                            class="text-light text-[clamp(4.6875rem,0.7568rem+17.4699vw,15.5625rem)] block leading-none">3</span>
+                        <span class="text-light text-[clamp(1.25rem,0.2108rem+4.6185vw,4.125rem)] uppercase">зала</span>
                     </div>
-                    <!-- Характеристики -->
+
+                    <div class="text-center">
+                        <span
+                            class="text-light text-[clamp(4.6875rem,0.7568rem+17.4699vw,15.5625rem)] block leading-none">45</span>
+                        <span
+                            class="text-light text-[clamp(1.25rem,0.2108rem+4.6185vw,4.125rem)] uppercase">направлений</span>
+                    </div>
+
+                    <div class="text-center">
+                        <span
+                            class="text-light text-[clamp(4.6875rem,0.7568rem+17.4699vw,15.5625rem)] block leading-none">10</span>
+                        <span
+                            class="text-light text-[clamp(1.25rem,0.2108rem+4.6185vw,4.125rem)] uppercase">тренеров</span>
+                    </div>
+                </div>
+
+                <!-- Информация о системе очистки -->
+                <a href="#"
+                    class="relative z-9 flex items-center justify-center text-center bg-main-red rounded-[clamp(0.625rem,0.128rem+2.2088vw,2rem)] mt-[clamp(1.875rem,1.6039rem+1.2048vw,2.625rem)] py-[clamp(0.625rem,-0.2334rem+3.8153vw,3rem)] text-[clamp(1.25rem,0.8886rem+1.6064vw,2.25rem)] cursor-pointer transition-all hover:opacity-80">
+                    групповые тренировки на любой вкус
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-sectionPadding bg-light">
+        <div class="container text-dark px-4">
+
+            <!-- Силовые тренировки -->
+            <details>
+                <summary>
                     <div
-                        class="flex items-center justify-between mt-[clamp(1.6875rem,0.8065rem+3.9157vw,4.125rem)] z-10 relative">
-                        <div class="text-center">
-                            <span
-                                class="text-light text-[clamp(4.6875rem,0.7568rem+17.4699vw,15.5625rem)] block leading-none">3</span>
-                            <span
-                                class="text-light text-[clamp(1.25rem,0.2108rem+4.6185vw,4.125rem)] uppercase">зала</span>
-                        </div>
-
-                        <div class="text-center">
-                            <span
-                                class="text-light text-[clamp(4.6875rem,0.7568rem+17.4699vw,15.5625rem)] block leading-none">45</span>
-                            <span
-                                class="text-light text-[clamp(1.25rem,0.2108rem+4.6185vw,4.125rem)] uppercase">направлений</span>
-                        </div>
-
-                        <div class="text-center">
-                            <span
-                                class="text-light text-[clamp(4.6875rem,0.7568rem+17.4699vw,15.5625rem)] block leading-none">10</span>
-                            <span
-                                class="text-light text-[clamp(1.25rem,0.2108rem+4.6185vw,4.125rem)] uppercase">тренеров</span>
-                        </div>
+                        class="clamp(1.625rem,1.2184rem+1.8072vw,2.75rem)] flex items-center gap-6 relative overflow-hidden">
+                        <img src="/img/fitness-strength-training.png" alt="Силовые тренировки" class="flex-1">
+                        <p
+                            class="text-xl uppercase leading-none absolute right-4 bottom-4 text-right text-light lg:bottom-0 lg:right-0 lg:relative lg:text-dark lg:text-left">
+                            силовые <br>тренировки
+                        </p>
                     </div>
+                </summary>
 
-                    <!-- Информация о системе очистки -->
-                    <a href="#"
-                        class="relative z-9 flex items-center justify-center text-center bg-main-red rounded-[clamp(0.625rem,0.128rem+2.2088vw,2rem)] mt-[clamp(1.875rem,1.6039rem+1.2048vw,2.625rem)] py-[clamp(0.625rem,-0.2334rem+3.8153vw,3rem)] text-[clamp(1.25rem,0.8886rem+1.6064vw,2.25rem)] cursor-pointer transition-all hover:opacity-80">
-                        групповые тренировки на любой вкус
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
+                    {% set redBconf = [
+                    {
+                    "rub": false,
+                    "title": "UPPER BODY",
+                    "content": [
+                    {"text":"Тренировка, направленная на развитие и укрепление мышц спины, груди, плечевого пояса и
+                    мышц брюшного пресса с использованием дополнительного оборудования. "},
+                    {"text":"Рекомендуется для всех уровней подготовки."}
+                    ]
+                    },
+
+                    {
+                    "rub": false,
+                    "title": "LOWER BODY",
+                    "content": [
+                    {"text":"Тренировка, направленная на развитие и укрепление мышц ног, ягодиц и мышц брюшного пресса с
+                    использованием дополнительного оборудования."},
+                    {"text":"Рекомендуется для всех уровней подготовки."}
+                    ]
+                    },
+                    {
+                    "rub": false,
+                    "title": "BUMS + ABS",
+                    "content": [
+                    {"text":"включает комплекс упражнений для мышц ягодиц и брюшного пресса. Возможно применение
+                    дополнительного оборудования."},
+                    {"text":"Рекомендуется для всех уровней подготовки."}
+                    ]
+                    },
+                    {
+                    "rub": false,
+                    "title": "SUPER SCULPT",
+                    "content": [
+                    {"text":"включает комплекс упражнений для развития и укрепления основных мышц тела человека с
+                    использованием дополнительного оборудования."},
+                    {"text":"Рекомендуется для всех уровней подготовки."}
+                    ]
+                    },
+                    {
+                    "rub": false,
+                    "title": "TOTAL MAX & BOSU / FITBALL",
+                    "content": [
+                    {"text":"круговая тренировка на все группы мышц с использованием полусфер Bosu либо фитнес-мячей
+                    различных размеров, а также с применением какого-либо отягощения: гантели, бодибары, блины от штанги
+                    и т.п."},
+                    {"text":"Программа тренировки включает в себя 3 сета (круга) по 12 упражнений. Каждое упражнение
+                    выполняется с интервалом 40 сек. работы / 20 сек. пауза. После завершения каждого сета даётся
+                    полторы минуты отдыха."},
+                    {"text":"Данный вид тренинга способствует развитию мышечного корсета и координации, укреплению всех
+                    мышечных групп, проработке чувства равновесия, сжиганию калорий."},
+                    {"text":"Для людей среднего и выше среднего уровня физической подготовки."}
+                    ]
+                    },
+                    {
+                    "rub": true,
+                    "title": "РЕФОРМЕР ДУЭТ",
+                    "content": [
+                    {"text":"специализированная программа для ДВОИХ на специальном оборудовании - РЕФОРМЕР. Тренировки
+                    направлены на улучшение работы организма, поддержание правильного положения тела, укрепление мышц,
+                    формирование осанки, развитие гибкости.
+                    ОФП Pilates Reformer - это тренировка про дыхание;, здоровье тела, концентрацию; центрирование,
+                    управление, точность, поток."},
+                    {"text":"Рекомендуется для всех уровней подготовки."},
+                    {"text":"Данная программа поддерживает ряд упражнений от базовых до продвинутого уровня."}
+                    ]
+                    },
+                    {
+                    "rub": true,
+                    "title": "PUMP PRO",
+                    "content": [
+                    {"text":"Универсальная групповая силовая тренировка с мини штангами. Она одинаково подойдет и
+                    мужчинам, и женщинам. Во время занятия задействованы все группы мышц: плечи, руки, грудь, спина,
+                    пресс, ноги и ягодицы. Занятия направлены в первую очередь на похудение, сжигание жира и проработку
+                    рельефности мышц, Вместе с тем, значительно увеличиваются силовые показатели, выносливость,
+                    улучшается работа сердечно-сосудистой и дыхательной системы, ускоряется обмен веществ."},
+                    {"text":"Рекомендуется для всех уровней подготовки."}
+                    ]
+                    },
+                    {
+                    "rub": true,
+                    "title": "СИЛОВОЙ ФУНКЦИОНАЛ",
+                    "content": [
+                    {"text":"Тренировки высокой интенсивности, направленные на повышение выносливости, развитие силы,
+                    функциональности и подвижности тела, улучшение состояния опорно-двигательного аппарата и
+                    сердечно-сосудистой системы, развитие мышц-стабилизаторов, потерю лишнего веса. Программа тренировки
+                    строится по принципу интервального тренинга. 3-4 сета по 8-10 упражнений: 30-40 секунд - выполнение
+                    упражнения / 15-20 секунд отдыха. Перерыв между сетами 1,5-2 минуты. В тренинге используется как вес
+                    собственного тела, так и дополнительное оборудование, например канаты, гантели, гири, мячи, мешки,
+                    TRX, тумбы и т.д"},
+                    {"text":"Для людей среднего и выше среднего уровня физической подготовки."}
+                    ]
+                    }
+
+                    ] %}
+                    {{ redBlocks(redBconf) }}
+                </div>
+
+            </details>
+
+            <!-- Body & Mind -->
+            <details>
+                <summary>
+                    <div
+                        class="clamp(1.625rem,1.2184rem+1.8072vw,2.75rem)] flex items-center gap-6 relative overflow-hidden">
+                        <img src="/img/fitness-body-mind.png" alt="Силовые тренировки" class="flex-1 lg:flex-2 ">
+                        <p
+                            class="text-[clamp(2.125rem,1.3117rem+3.6145vw,4.375rem)] uppercase leading-none absolute right-4 bottom-4 text-right text-light lg:bottom-0 lg:right-0 lg:relative lg:text-dark lg:text-left ">
+                            body & mind
+                        </p>
+                    </div>
+                </summary>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
+                    {% set redBconf = [
+
+                    {
+                    "rub": false,
+                    "title": "",
+                    "content": [
+                    {"text":""},
+                    {"text":""}
+                    ]
+                    }
+
+                    ] %}
+                    {{ redBlocks(redBconf) }}
+                </div>
+
+            </details>
+
+        </div>
+    </section>
+
+    <section class="bg-light py-sectionPadding">
+        <div class="container px-4 py-[clamp(2.8125rem,1.2764rem+6.8273vw,7.0625rem)] flex flex-col gap-6">
+            <!-- Силовые тренировки -->
+            <a href="#" class="rounded-[clamp(1.625rem,1.2184rem+1.8072vw,2.75rem)]-- flex items-center gap-6 relative">
+                <img src="/img/fitness-strength-training.png" alt="Силовые тренировки" class="flex-1">
+                <p
+                    class="text-[clamp(2.125rem,1.3117rem+3.6145vw,4.375rem)] uppercase leading-none absolute right-4 bottom-4 text-right text-light lg:bottom-0 lg:right-0 lg:relative lg:text-dark lg:text-left">
+                    силовые <br>тренировки
+                </p>
+            </a>
+            <!-- Body & Mind -->
+            <a href="#" class="rounded-[clamp(1.625rem,1.2184rem+1.8072vw,2.75rem)]-- flex items-center gap-6 relative">
+                <img src="/img/fitness-body-mind.png" alt="Силовые тренировки" class="flex-1 lg:flex-2 ">
+                <p
+                    class="text-[clamp(2.125rem,1.3117rem+3.6145vw,4.375rem)] uppercase leading-none absolute right-4 bottom-4 text-right text-light lg:bottom-0 lg:right-0 lg:relative lg:text-dark lg:text-left ">
+                    body & mind
+                </p>
+            </a>
+            <!-- Танцевальные программы -->
+            <a href="#" class="rounded-[clamp(1.625rem,1.2184rem+1.8072vw,2.75rem)]-- flex items-center gap-6 relative">
+                <img src="/img/fitness-dance-programs.png" alt="Силовые тренировки" class="flex-1 lg:flex-2">
+                <p
+                    class="text-[clamp(2.125rem,1.3117rem+3.6145vw,4.375rem)] uppercase leading-none absolute right-4 bottom-4 text-right text-light lg:bottom-0 lg:right-0 lg:relative lg:text-dark lg:text-left ">
+                    танцевальные <br class="lg:hidden"> программы
+                </p>
+            </a>
+            <!-- Функциональные тренировки -->
+            <a href="#" class="rounded-[clamp(1.625rem,1.2184rem+1.8072vw,2.75rem)]-- flex items-center gap-6 relative">
+                <img src="/img/fitness-functional-training.png" alt="Силовые тренировки" class="flex-1 lg:flex-2">
+                <p
+                    class="text-[clamp(2.125rem,1.3117rem+3.6145vw,4.375rem)] uppercase leading-none absolute right-4 bottom-4 text-right text-light lg:bottom-0 lg:right-0 lg:relative lg:text-dark lg:text-left ">
+                    функциональные и смешанные тренировки
+                </p>
+            </a>
+        </div>
+    </section>
+
+    <section
+        class="bg-light lg:bg-dark pt-[clamp(2.5rem,1.7771rem+3.2129vw,4.5rem)] pb-[clamp(1.8125rem,-2.6604rem+19.8795vw,14.1875rem)] lg:mx-0 px-4">
+        <div class="container rounded-[40px] bg-dark p-4">
+            <h2
+                class="text-light uppercase text-center leading-none text-[clamp(2.4375rem,1.6017rem+3.7149vw,4.75rem)] mb-[clamp(0.5625rem,0.2236rem+1.506vw,1.5rem)]">
+                ищешь
+                сайкл или
+                кроссфит?</h2>
+
+            <div class="grid grid-cols-2 gap-6">
+                <div class="relative rounded-[clamp(1.125rem,0.5377rem+2.6104vw,2.75rem)] overflow-hidden">
+                    <img src="/img/fitness-cycle.png" alt=""
+                        class="object-center object-cover h-[clamp(9.4375rem,4.7613rem+20.7831vw,22.375rem)] block">
+                    <a href=""
+                        class="p-4 absolute bottom-0 flex flex-col gap-6 items-center justify-center w-full lg:flex-row lg:justify-arround transition-all hover:opacity-80">
+                        <span class="text-[clamp(1.625rem,0.7666rem+3.8153vw,4rem)] uppercase">сайкл </span>
+                        <svg viewBox="0 0 107 107" fill="none"
+                            class="w-[clamp(2.8125rem,1.4119rem+6.2249vw,6.6875rem)] block"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="53.5" cy="53.5" r="53.5" fill="#FFF8F8" />
+                            <path
+                                d="M76 48.9911C73.2336 48.9911 70.9911 51.2336 70.9911 54C70.9911 56.7664 73.2336 59.0089 76 59.0089V48.9911ZM82.5419 57.5419C84.498 55.5857 84.498 52.4143 82.5419 50.4581L50.6651 18.5814C48.709 16.6253 45.5375 16.6253 43.5814 18.5814C41.6253 20.5375 41.6253 23.709 43.5814 25.6651L71.9163 54L43.5814 82.3349C41.6253 84.291 41.6253 87.4625 43.5814 89.4186C45.5375 91.3747 48.709 91.3747 50.6651 89.4186L82.5419 57.5419ZM76 59.0089H79V48.9911H76V59.0089Z"
+                                fill="#1E1E1E" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="relative rounded-[clamp(1.125rem,0.5377rem+2.6104vw,2.75rem)] overflow-hidden">
+                    <img src="/img/fitness-crossfit.png" alt=""
+                        class="object-center object-cover h-[clamp(9.4375rem,4.7613rem+20.7831vw,22.375rem)] block">
+                    <a href=""
+                        class="p-4 absolute bottom-0 flex flex-col gap-6 items-center justify-center w-full lg:flex-row lg:justify-around transition-all hover:opacity-80">
+                        <span class="text-[clamp(1.625rem,0.7666rem+3.8153vw,4rem)] uppercase">кроссфит</span>
+                        <svg viewBox="0 0 107 107" fill="none"
+                            class="w-[clamp(2.8125rem,1.4119rem+6.2249vw,6.6875rem)] block"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="53.5" cy="53.5" r="53.5" fill="#FFF8F8" />
+                            <path
+                                d="M76 48.9911C73.2336 48.9911 70.9911 51.2336 70.9911 54C70.9911 56.7664 73.2336 59.0089 76 59.0089V48.9911ZM82.5419 57.5419C84.498 55.5857 84.498 52.4143 82.5419 50.4581L50.6651 18.5814C48.709 16.6253 45.5375 16.6253 43.5814 18.5814C41.6253 20.5375 41.6253 23.709 43.5814 25.6651L71.9163 54L43.5814 82.3349C41.6253 84.291 41.6253 87.4625 43.5814 89.4186C45.5375 91.3747 48.709 91.3747 50.6651 89.4186L82.5419 57.5419ZM76 59.0089H79V48.9911H76V59.0089Z"
+                                fill="#1E1E1E" />
+                        </svg>
                     </a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
 
-        <section class="bg-light">
-            <div class="container px-4 py-[clamp(2.8125rem,1.2764rem+6.8273vw,7.0625rem)] flex flex-col gap-6">
-                <!-- Силовые тренировки -->
-                <a href="#"
-                    class="rounded-[clamp(1.625rem,1.2184rem+1.8072vw,2.75rem)]-- flex items-center gap-6 relative">
-                    <img src="/img/fitness-strength-training.png" alt="Силовые тренировки" class="flex-1">
-                    <p
-                        class="text-[clamp(2.125rem,1.3117rem+3.6145vw,4.375rem)] uppercase leading-none absolute right-4 bottom-4 text-right text-light lg:bottom-0 lg:right-0 lg:relative lg:text-dark lg:text-left">
-                        силовые <br>тренировки
-                    </p>
-                </a>
-                <!-- Body & Mind -->
-                <a href="#"
-                    class="rounded-[clamp(1.625rem,1.2184rem+1.8072vw,2.75rem)]-- flex items-center gap-6 relative">
-                    <img src="/img/fitness-body-mind.png" alt="Силовые тренировки" class="flex-1 lg:flex-2 ">
-                    <p
-                        class="text-[clamp(2.125rem,1.3117rem+3.6145vw,4.375rem)] uppercase leading-none absolute right-4 bottom-4 text-right text-light lg:bottom-0 lg:right-0 lg:relative lg:text-dark lg:text-left ">
-                        body & mind
-                    </p>
-                </a>
-                <!-- Танцевальные программы -->
-                <a href="#"
-                    class="rounded-[clamp(1.625rem,1.2184rem+1.8072vw,2.75rem)]-- flex items-center gap-6 relative">
-                    <img src="/img/fitness-dance-programs.png" alt="Силовые тренировки" class="flex-1 lg:flex-2">
-                    <p
-                        class="text-[clamp(2.125rem,1.3117rem+3.6145vw,4.375rem)] uppercase leading-none absolute right-4 bottom-4 text-right text-light lg:bottom-0 lg:right-0 lg:relative lg:text-dark lg:text-left ">
-                        танцевальные <br class="lg:hidden"> программы
-                    </p>
-                </a>
-                <!-- Функциональные тренировки -->
-                <a href="#"
-                    class="rounded-[clamp(1.625rem,1.2184rem+1.8072vw,2.75rem)]-- flex items-center gap-6 relative">
-                    <img src="/img/fitness-functional-training.png" alt="Силовые тренировки" class="flex-1 lg:flex-2">
-                    <p
-                        class="text-[clamp(2.125rem,1.3117rem+3.6145vw,4.375rem)] uppercase leading-none absolute right-4 bottom-4 text-right text-light lg:bottom-0 lg:right-0 lg:relative lg:text-dark lg:text-left ">
-                        функциональные и смешанные тренировки
-                    </p>
-                </a>
-            </div>
-        </section>
+    <!-- Форма записи -->
+    <section class="bg-dark">
+        <div class="container grid grid-cols-1 items-center px-4 pt-[60px] lg:grid-cols-3 gap-y-5 lg:gap-24">
+            <div class="col-span-2">
+                <h3 class="text-[clamp(3rem,2.3675rem+2.8112vw,4.75rem)] leading-none uppercase mb-7">
+                    стань лучшей версией себя
+                </h3>
 
-        <section
-            class="bg-light lg:bg-dark pt-[clamp(2.5rem,1.7771rem+3.2129vw,4.5rem)] pb-[clamp(1.8125rem,-2.6604rem+19.8795vw,14.1875rem)] lg:mx-0 px-4">
-            <div class="container rounded-[40px] bg-dark p-4">
-                <h2
-                    class="text-light uppercase text-center leading-none text-[clamp(2.4375rem,1.6017rem+3.7149vw,4.75rem)] mb-[clamp(0.5625rem,0.2236rem+1.506vw,1.5rem)]">
-                    ищешь
-                    сайкл или
-                    кроссфит?</h2>
-
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="relative rounded-[clamp(1.125rem,0.5377rem+2.6104vw,2.75rem)] overflow-hidden">
-                        <img src="/img/fitness-cycle.png" alt=""
-                            class="object-center object-cover h-[clamp(9.4375rem,4.7613rem+20.7831vw,22.375rem)] block">
-                        <a href=""
-                            class="p-4 absolute bottom-0 flex flex-col gap-6 items-center justify-center w-full lg:flex-row lg:justify-arround transition-all hover:opacity-80">
-                            <span class="text-[clamp(1.625rem,0.7666rem+3.8153vw,4rem)] uppercase">сайкл </span>
-                            <svg viewBox="0 0 107 107" fill="none"
-                                class="w-[clamp(2.8125rem,1.4119rem+6.2249vw,6.6875rem)] block"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="53.5" cy="53.5" r="53.5" fill="#FFF8F8" />
-                                <path
-                                    d="M76 48.9911C73.2336 48.9911 70.9911 51.2336 70.9911 54C70.9911 56.7664 73.2336 59.0089 76 59.0089V48.9911ZM82.5419 57.5419C84.498 55.5857 84.498 52.4143 82.5419 50.4581L50.6651 18.5814C48.709 16.6253 45.5375 16.6253 43.5814 18.5814C41.6253 20.5375 41.6253 23.709 43.5814 25.6651L71.9163 54L43.5814 82.3349C41.6253 84.291 41.6253 87.4625 43.5814 89.4186C45.5375 91.3747 48.709 91.3747 50.6651 89.4186L82.5419 57.5419ZM76 59.0089H79V48.9911H76V59.0089Z"
-                                    fill="#1E1E1E" />
-                            </svg>
-                        </a>
+                <form id="contact-form" action="" method="get" class="flex flex-col gap-5">
+                    <div>
+                        <input type="text" placeholder="ИМЯ"
+                            class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-light rounded-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] focus:outline-none focus:ring-2 focus:ring-red-600"
+                            required>
                     </div>
-                    <div class="relative rounded-[clamp(1.125rem,0.5377rem+2.6104vw,2.75rem)] overflow-hidden">
-                        <img src="/img/fitness-crossfit.png" alt=""
-                            class="object-center object-cover h-[clamp(9.4375rem,4.7613rem+20.7831vw,22.375rem)] block">
-                        <a href=""
-                            class="p-4 absolute bottom-0 flex flex-col gap-6 items-center justify-center w-full lg:flex-row lg:justify-around transition-all hover:opacity-80">
-                            <span class="text-[clamp(1.625rem,0.7666rem+3.8153vw,4rem)] uppercase">кроссфит</span>
-                            <svg viewBox="0 0 107 107" fill="none"
-                                class="w-[clamp(2.8125rem,1.4119rem+6.2249vw,6.6875rem)] block"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="53.5" cy="53.5" r="53.5" fill="#FFF8F8" />
-                                <path
-                                    d="M76 48.9911C73.2336 48.9911 70.9911 51.2336 70.9911 54C70.9911 56.7664 73.2336 59.0089 76 59.0089V48.9911ZM82.5419 57.5419C84.498 55.5857 84.498 52.4143 82.5419 50.4581L50.6651 18.5814C48.709 16.6253 45.5375 16.6253 43.5814 18.5814C41.6253 20.5375 41.6253 23.709 43.5814 25.6651L71.9163 54L43.5814 82.3349C41.6253 84.291 41.6253 87.4625 43.5814 89.4186C45.5375 91.3747 48.709 91.3747 50.6651 89.4186L82.5419 57.5419ZM76 59.0089H79V48.9911H76V59.0089Z"
-                                    fill="#1E1E1E" />
-                            </svg>
-                        </a>
+                    <div>
+                        <input type="tel" placeholder="НОМЕР ТЕЛЕФОНА"
+                            class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)]  bg-light rounded-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] focus:outline-none focus:ring-2 focus:ring-red-600"
+                            required>
                     </div>
-                </div>
+                    <button type="submit"
+                        class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-red-600 hover:bg-red-700 transition py-3 rounded-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] font-bold">
+                        СТАТЬ БЛИЖЕ К СВОЕЙ ЦЕЛИ
+                    </button>
+                    <p class="text-[clamp(0.5rem,0.2741rem+1.004vw,1.125rem)] text-center">
+                        Нажимая "Отправить" я согласен на обработку персональных данных
+                    </p>
+                </form>
+
             </div>
-        </section>
-
-
-        <!-- Форма записи -->
-        <section class="bg-dark">
-            <div class="container grid grid-cols-1 items-center px-4 pt-[60px] lg:grid-cols-3 gap-y-5 lg:gap-24">
-                <div class="col-span-2">
-                    <h3 class="text-[clamp(3rem,2.3675rem+2.8112vw,4.75rem)] leading-none uppercase mb-7">
-                        стань лучшей версией себя
-                    </h3>
-
-                    <form id="contact-form" action="" method="get" class="flex flex-col gap-5">
-                        <div>
-                            <input type="text" placeholder="ИМЯ"
-                                class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-light rounded-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] focus:outline-none focus:ring-2 focus:ring-red-600"
-                                required>
-                        </div>
-                        <div>
-                            <input type="tel" placeholder="НОМЕР ТЕЛЕФОНА"
-                                class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)]  bg-light rounded-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] focus:outline-none focus:ring-2 focus:ring-red-600"
-                                required>
-                        </div>
-                        <button type="submit"
-                            class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-red-600 hover:bg-red-700 transition py-3 rounded-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] font-bold">
-                            СТАТЬ БЛИЖЕ К СВОЕЙ ЦЕЛИ
-                        </button>
-                        <p class="text-[clamp(0.5rem,0.2741rem+1.004vw,1.125rem)] text-center">
-                            Нажимая "Отправить" я согласен на обработку персональных данных
-                        </p>
-                    </form>
-
-                </div>
-                <div class="col-span-1">
-                    <img src="/img/fitness-contact-desktop.png" alt="" class="block w-full mx-auto">
-                </div>
+            <div class="col-span-1">
+                <img src="/img/fitness-contact-desktop.png" alt="" class="block w-full mx-auto">
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
+
 
     {% block footer %}
     {% from "./src/part/templates/footer.html" import footer %}

@@ -40,5 +40,44 @@
     </div>
   </div>
 </section>
+{% endmacro %}
+
+{% macro redBlocks(redBconf) %}
+
+{% for item in redBconf %}
+<div class="col-span-1 text-sm">
+  <div class="flex flex-col relative bg-[#7E2020] rounded-brxl overflow-hidden">
+    <div class="px-4 py-8 relative gap-4 bg-main-red/55 rounded-b-brxl">
+      {% if item.rub == true %}
+      <a href="#" class="flex items-center justify-center absolute top-3 left-3"><svg width="32" height="32"
+          viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g clip-path="url(#clip0_134_2358)">
+            <rect width="32" height="32" fill="url(#pattern0_134_2358)" />
+            <circle cx="15.5" cy="16.5" r="11.5" stroke="white" stroke-width="4" />
+          </g>
+          <defs>
+            <pattern id="pattern0_134_2358" patternContentUnits="objectBoundingBox" width="1" height="1">
+              <use xlink:href="#image0_134_2358" transform="scale(0.0111111)" />
+            </pattern>
+            <clipPath id="clip0_134_2358">
+              <rect width="32" height="32" fill="white" />
+            </clipPath>
+            <image id="image0_134_2358" width="90" height="90"
+              xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEYUlEQVR4nO2dO4yVRRTHj4ACarAzwEJ8gA3EBrXCBxi0MfGR+EhAEh5CISSAQGyNFRpDyCYWFlYWSIHro8BorDUGs8JSQLFAwUPZZRcrdyPLz5zcY7Ka/ZZd75z5Zr5vfsnX3Hxz73/+uXe+mTNnzhUpFAqFQqFQKBQKhcLMAOYCTwDbgQ+BL4HTwCAwAozbNWKvnbZ7PrA2j+t7zPDj2gWwDNgLfAP8QffcAL4G9gA90maAhcBm4HtgAj9uAt8BbwILpC0A99o37TLxuQa8B9wnTQW4EzgIXKd+VMN+1SRNAngKGCA9zgIbJHd0TAQ+Bm6RLqqtF5gvOQI8CPxEPvwCrJSc0J9joGlabHRa+KzkAPAK8Cf5Mg68ISkD7HSeE8dC+7BDUgR42RYHTWECeF1SQsc1YIzmMQ48LykAPJLpg282D8gVdZs836ZFTedkrfNsW4y0hd46l9Upr/hCo319JrbJ84BTtI+BqIEoi8K1lX0x48nDtJdh9SCG0e/W3dME2B9j++k3zx7I7DXNAe4HHrUQQB/wl6dG4Irrtpjt8bkiYXSuBI45S90UQmtVB3Qj1RUJq3e347f725BaJ4vuiRE0kvC6NY3BK+gUPpXBUfC/CC68o10TbDzY7SFWk1vckerPH5zi0hjEcY0dA3dP03a1U5y8z2MlqFEsd6Raw+04Bzw8TfsfHOSOBE0/s1w4EjcaiyTOibyafSyk0Zo8mIPRytMV7dfjw9aQRmtWZy5GH6hov8pJ8qGQRn9FPka/X9F+uZPkcA/EmCFR6d7oXRXt1zhJ7g9p9AXyMPqWDhEV7V90knw+pNHDmRj92TTtDztJHgpptG67p2z0BPCpRhcr2t5h82wPxppm9CdTXB8Bb0+3ULG2rzpKHmvU0PF/Ae6xPGhyGDouEgkJiA0ZnztLPp/09E6c0SATcBR/+pMOM4ojwAvAGeLwRdJLcAmblrbcEnr0xFU/cTnU1qBSbLa0MUxaB2tCn88ejaFa8jJ6NPi5cztbHQwJp6tOwj0IJ3VIjxUHQ8LpqpMpI4XddmhpyHQDCaerLtSLxaH68d9OaZUAVyQ9Q6s44WJy3SlhpMdG77PdruUfJA+jr1aFZLNJQpc8jH7H1eRJYcehFhs9HCUR3TqtRUXaavSeKCZPShH7lfYxEL1qDfBkOf4WCavc0haOxPK1KhasqbNN52fgrtqMNrNXxErprTFC95CkALAu86ozVWiaxXOSEsBLDSyM8pqkiB1xaEKpn5vAW5IyVvIn52FkLLkSP7cp/XMj0wffOskJ4AHgR/LhZO0lfbqcZ/cmvoJUbUdqnycHXK6fIj1U01ppEnQCUfs8Q6yzYMg2m+dJU6ETz9ZOXqrB4N8tbWyRtAU622KbtEqA80JH3/uE7vG1qvT8VABLrORDnx377ZYRe69dbikBuUMn/UyPqm3TTE3NBrIM0UErGf/P34Nct9f67R69d6u1LX8PUigUCoVCoVAoFAoyQ/4GeK/7aAMlfmAAAAAASUVORK5CYII=" />
+          </defs>
+        </svg>
+      </a>
+      {% endif %}
+
+      <h3 class="text-light text-lg leading-none uppercase text-center px-4 pt-2">{{ item.title }}</h3>
+    </div>
+    <div class="px-4 py-8">
+      {% for text in item.content %}
+      <p class="text-light mb-3 text-sm">{{ text.text }}</p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endfor %}
 
 {% endmacro %}
