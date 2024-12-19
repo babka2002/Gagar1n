@@ -1,45 +1,182 @@
-{% from './src/part/components.html' import heroImage, heroBtn, redBlocks, skileCrossfit %}
+{% from './src/part/components.html' import redBlocks, skileCrossfit %}
 
-{% extends 'src/part/base.html' %}
+<!DOCTYPE html>
+<html lang="ru">
 
-{% set title="Home" %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Фитнес-центр Гагарин. Индивидуальные и групповые тренировки, современные тренажеры.">
+    <meta name="keywords" content="фитнес, тренировки, тренажерный зал, групповые занятия, аэробика">
+    <title>Фитнес-центр Гагарин | Профессиональный фитнес</title>
 
-{% block header %}
-  {% include "./src/part/templates/header.html" %}
-{% endblock %}
+    <!-- Favicons -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-{% block content %}
+    <!-- Open Graph -->
+    <meta property="og:title" content="Фитнес-центр Гагарин">
+    <meta property="og:description"
+        content="Профессиональный фитнес-центр с современными тренажерами и группами тренировок">
+    <!-- <meta property="og:image" content="/path-to-fitness-image.jpg"> -->
 
-<section class="py-sectionPadding">
-    
-    {{ heroImage("/img/fitness-hero.jpg", "фитнес") }}
-    
+    <!-- Scripts -->
+    <!-- <script src="https://unpkg.com/nuejs"></script> -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
 
-    <!-- <div class="grid grid-cols-3 md:grid-cols-1 pt-sectionPadding  gap-2 hyphens-auto md:hidden"> -->
-    <!--     <div class="h-[1px] bg-main-red col-span-1 self-center md:block"></div> -->
-    <!--     <div class="uppercase text-light text-xl leading-none col-span-2 text-right">весь необходимый</div> -->
-    <!--     <div class="uppercase text-light text-xl leading-none col-span-3 text-right">инвентарь</div> -->
-    <!--     <div class="uppercase text-light text-xl leading-none col-span-2 sm:col-span-1">отдельная </div> -->
-    <!--     <div class="h-[1px] bg-main-red col-span-1 sm:col-span-2 self-center  md:block"></div> -->
-    <!--     <div class="uppercase text-light text-xl leading-none col-span-2">кроссфит - зона</div> -->
-    <!-- </div> -->
-    <!-- <div class="grid-cols-1 md:grid-cols-6 pt-sectionPadding  gap-6 hyphens-auto hidden md:grid"> -->
-    <!--     <div class="uppercase text-light text-xl leading-none col-span-2 ">отдельная</div> -->
-    <!--     <div class="h-[1px] bg-main-red col-span-1 self-center hidden md:block"></div> -->
-    <!--     <div class="uppercase text-light text-xl leading-none col-span-3 text-right">весь необходимый</div> -->
-    <!--     <div class="uppercase text-light text-xl leading-none col-span-2">кроссфит - зона</div> -->
-    <!--     <div class="h-[1px] bg-main-red col-span-2 self-center hidden md:block"></div> -->
-    <!--     <div class="uppercase text-light text-xl leading-none col-span-2 text-right">инвентарь</div> -->
-    <!-- </div> -->
-    
-<div class="pt-sectionPadding">
-    {{ heroBtn("тренеры - проффесионалы") }}
-</div>
+    <!-- Schema.org разметка -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Фитнес-центр Гагарин",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Город",
+        "streetAddress": "Адрес"
+      },
+      "openingHours": "Mo-Fr 07:00-22:30",
+      "telephone": "8 800 555 1234"
+    }
+    </script>
+</head>
 
+<body class="bg-[#1E1E1E] text-light font-sans antialiased my-5">
+    <!-- Header -->
+    <div class="px-[1em]">
+        <header class="container bg-light flex justify-between items-center gap-2 rounded-[30px] px-[20px] py-[14px] ">
+            <div class="flex items-center justify-center gap-[34px] relative ">
+                <button onclick="MobileMenu.toggle()"
+                    class="rounded-full bg-dark text-light flex items-center justify-center w-[3.75em] h-[3.75em] relative z-10"><svg
+                        width="34" height="22" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 2H32" stroke="#EBE7E7" stroke-width="4" stroke-linecap="round" />
+                        <path d="M2 11H32" stroke="#EBE7E7" stroke-width="4" stroke-linecap="round" />
+                        <path d="M2 20H32" stroke="#EBE7E7" stroke-width="4" stroke-linecap="round" />
+                    </svg>
+                </button>
+
+                <a href="/" class="p-0 m-0 relative z-10 hidden md:block">
+                    <img src="/img/logo.png" alt="" class="max-w-[13.625em]">
+                </a>
+
+                <ul
+                    class="absolute top-[90%] left-[-20px] bg-light rounded-b-[1.875em] p-5  min-w-[18.75em] menu-items z-9">
+                    <li>
+                        <a href="/power.html"
+                            class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">Силовые</a>
+                    </li>
+                    <li>
+                        <a href="/dance.html"
+                            class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">Танцы</a>
+                    </li>
+                    <li>
+                        <a href="/fitness.html"
+                            class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">Фитнес</a>
+                    </li>
+                    <li>
+                        <a href="/pool.html"
+                            class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">Бессейн</a>
+                    </li>
+                    <li>
+                        <a href="/body-mind.html"
+                            class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">Боди
+                            и майнд</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="uppercase leading-8 text-black font-normal block hover:underline hover:underline-offset-4">тренажерный
+                            зал</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="uppercase leading-8 text-black font-normal block hover:underline hover:underline-offset-4">групповые
+                            тренировки</a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="flex items-center justify-between gap-2 relative z-10">
+
+                <button type="button"
+                    class="w-[52px] md:w-[5.4375em] show grayscale-[1] hover:grayscale-0 transition-all"><img
+                        src="/img/грелка-лого.png" alt="" class="block hover:opacity-70 transition-all"></button>
+                <button type="button"
+                    class="w-[52px] md:w-[5.4375em] show grayscale-[1] hover:grayscale-0 transition-all"><img
+                        src="/img/лого-джуниор.png" alt="" class="block hover:opacity-70 transition-all"></button>
+                <button type="button"
+                    class="w-[52px] md:w-[5.4375em] show grayscale-[1] hover:grayscale-0 transition-all"><img
+                        src="/img/джифуд-лого.png" alt="" class="block hover:opacity-70 transition-all"></button>
+
+
+                <!-- <button type="button" class="w-[52px] md:w-[5.4375em]"><img src="/img/g1.png" alt="" -->
+                <!--     class="block show"></button> -->
+                <!-- <button type="button" class="w-[52px] md:w-[5.4375em]"><img src="/img/g1.png" alt="" -->
+                <!--     class="block filter grayscale-[.7] hover:grayscale-0 transition-all"></button> -->
+                <!-- <button type="button" class="w-[52px] md:w-[5.4375em]"><img src="/img/g1.png" alt="" -->
+                <!--     class="block filter grayscale hover:grayscale-0 transition-all"></button> -->
+            </div>
+
+            <div class="flex items-center justify-center">
+                <p
+                    class="text-black font-normal [font-size:_clamp(1rem,0.9228rem+0.3861vw,1.25rem)] hidden lg:block mr-5">
+                     г.
+                    Симферополь <br> ул.
+                    Киевская, 115</p>
+                <a href="#"
+                    class="flex items-center justify-center bg-main-red px-[10px] py-[19px] rounded-[30px] text-[20px] text-light hover:opacity-70 transition-all hidden lg:block">записаться</a>
+                <a href="#" class="flex items-center justify-center"><img src="/img/phone.png" alt=""
+                        class="min-w-[52px] h-[52px] flex-1 lg:hidden"></a>
+            </div>
+        </header>
     </div>
-</section>
 
+    <!-- Hero Section -->
+    <section class="px-4 py-sectionPadding">
+        <div class="container mx-auto">
+            <div class="relative">
+                <img src="/img/fitness-hero.png" alt="Фитнес" class="w-full h-full object-cover rounded-[10px] px-4" />
+                <!-- <div class="absolute inset-0 m-[0_15px] rounded-[30px] bg-gradient-to-b from-black/60 to-black/10 z-0 h-[670px]"></div> -->
 
+                <div class="absolute inset-0 flex flex-col items-center justify-between z-9">
+                    <!-- Заголовок -->
+                    <h2
+                        class="text-light text-[clamp(2.125rem,-0.3373rem+10.9438vw,8.9375rem)] col-span-12 text-center relative -mt-[12px] md:-mt-[32px]">
+                        ФИТНЕС
+                    </h2>
+                </div>
+                <!-- Характеристики -->
+                <div
+                    class="flex items-center justify-between mt-[clamp(1.6875rem,0.8065rem+3.9157vw,4.125rem)] z-10 relative">
+                    <div class="text-center">
+                        <span
+                            class="text-light text-[clamp(4.6875rem,0.7568rem+17.4699vw,15.5625rem)] block leading-none">3</span>
+                        <span class="text-light text-[clamp(1.25rem,0.2108rem+4.6185vw,4.125rem)] uppercase">зала</span>
+                    </div>
+
+                    <div class="text-center">
+                        <span
+                            class="text-light text-[clamp(4.6875rem,0.7568rem+17.4699vw,15.5625rem)] block leading-none">45</span>
+                        <span
+                            class="text-light text-[clamp(1.25rem,0.2108rem+4.6185vw,4.125rem)] uppercase">направлений</span>
+                    </div>
+
+                    <div class="text-center">
+                        <span
+                            class="text-light text-[clamp(4.6875rem,0.7568rem+17.4699vw,15.5625rem)] block leading-none">10</span>
+                        <span
+                            class="text-light text-[clamp(1.25rem,0.2108rem+4.6185vw,4.125rem)] uppercase">тренеров</span>
+                    </div>
+                </div>
+
+                <!-- Информация о системе очистки -->
+                <a href="#"
+                    class="relative z-9 flex items-center justify-center text-center bg-main-red rounded-[clamp(0.625rem,0.128rem+2.2088vw,2rem)] mt-[clamp(1.875rem,1.6039rem+1.2048vw,2.625rem)] py-[clamp(0.625rem,-0.2334rem+3.8153vw,3rem)] text-[clamp(1.25rem,0.8886rem+1.6064vw,2.25rem)] cursor-pointer transition-all hover:opacity-80">
+                    групповые тренировки на любой вкус
+                </a>
+            </div>
+        </div>
+    </section>
 
     <section class="py-sectionPadding bg-light">
         <div class="container text-dark px-4">
@@ -849,24 +986,53 @@
 
 
     {{ skileCrossfit() }}
-        
+
     <!-- Форма записи -->
     {% from "./src/part/components.html" import formreg %}
     {% set formSettings = {
-    "title": "ПРОКАЧАЙ СВОЕ ТЕЛО И ДУХ",
+    "title": "стань лучшей версией себя",
     "submit": "СТАТЬ БЛИЖЕ К СВОЕЙ ЦЕЛИ",
-    "img": "/img/crossfit-contact-desktop.png"
+    "img": "/img/fitness-contact-desktop.png"
     } %}
     {{ formreg(formSettings.title, formSettings.submit, formSettings.img) }}
 
 
-{% endblock %}
+    {% block footer %}
+    {% from "./src/part/templates/footer.html" import footer %}
 
-{% block footer %}
-{% from "./src/part/templates/footer.html" import footer %}
+    <!-- TRUE - LIGHT VERSION FOOTER -->
+    <!-- {//{// footer(true) }} -->
+    {{ footer(true) }}
+    {% endblock %}
 
-<!-- TRUE - LIGHT VERSION FOOTER -->
-<!-- {//{// footer(true) }} -->
-{{ footer(true) }}
-{% endblock %}
+    <!-- Scripts -->
+    <script>
+        // Компонент формы
+        const ContactForm = {
+            submit(e) {
+                e.preventDefault()
+                // Логика отправки формы
+            }
+        }
 
+        // Мобильное меню
+        const MobileMenu = {
+            toggle() {
+                const menu = document.querySelector('.menu-items');
+                if (menu) {
+                    menu.classList.toggle('hidden');
+                }
+            }
+        }
+        // Скрыть меню по умолчанию
+        document.addEventListener('DOMContentLoaded', () => {
+            const menu = document.querySelector('.menu-items');
+            if (menu) {
+                menu.classList.add('hidden'); // Добавлено: скрыть меню по умолчанию
+            }
+        });
+    </script>
+    <link rel="stylesheet" href="/src/style.css">
+</body>
+
+</html>
