@@ -14,7 +14,8 @@ export default defineConfig({
         input: {
             main: resolve(__dirname, 'index.html'),
             pool: resolve(__dirname, 'pool.html'),
-            trainers: resolve(__dirname, 'trainers.html')
+            trainers: resolve(__dirname, 'trainers.html'),
+            trainersingle: resolve(__dirname, 'trainer_single.html')
         }
     }
   }

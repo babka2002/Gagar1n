@@ -11,8 +11,6 @@
   font-display: swap;
 }
 
-
-
 *,
 *::after,
 *::before {
@@ -22,7 +20,6 @@
   outline: none;
   /* outline: 1px solid tomato; */
 }
-
 
 html,
 body {
@@ -317,6 +314,7 @@ summary::-webkit-details-marker {
     box-shadow: 10px -10px 0 #1f1f1f;
   }
 }
+
 .bblock-rounded {
   --sizes: clamp(1rem, 0.5934rem + 1.8072vw, 2.125rem);
   position: relative;
@@ -347,32 +345,33 @@ summary::-webkit-details-marker {
     box-shadow: 10px 13px 0 #FFF8F8;
   }
 }
+
 .tblock-rounded {
   /* --sizes: clamp(1rem, 0.5934rem + 1.8072vw, 2.125rem); */
   --sizes: 60px;
   position: relative;
 
   &:before {
-content: '';
-        position: absolute;
-        top: -2px;
-        right: -60px;
-        border-radius: var(--sizes);
-        width: var(--sizes);
-        height: var(--sizes);
-        background-color: transparent;
-        box-shadow: -17px -20px 0 #FFF8F8;
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -60px;
+    border-radius: var(--sizes);
+    width: var(--sizes);
+    height: var(--sizes);
+    background-color: transparent;
+    box-shadow: -17px -20px 0 #FFF8F8;
   }
 
   &:after {
-content: '';
-        position: absolute;
-        bottom: -60px;
-        left: 0px;
-        border-radius: var(--sizes);
-        width: var(--sizes);
-        height: var(--sizes);
-        background-color: transparent;
-        box-shadow: -28px -26px 0px 0px #fff8f8;
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: 0px;
+    border-radius: var(--sizes);
+    width: var(--sizes);
+    height: var(--sizes);
+    background-color: transparent;
+    box-shadow: -28px -26px 0px 0px #fff8f8;
   }
 }
