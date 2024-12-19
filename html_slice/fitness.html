@@ -12,9 +12,9 @@
 
 <section class="py-sectionPadding">
     
-    {{ heroImage("/img/fitness-hero.jpg", "фитнес") }}
+    {{ heroImage('img/fitness_hero.jpg', "фитнес") }}
     
-    <div class="text-light py-sectionPadding">
+    <div class="text-light pt-sectionPadding">
         <div class="flex items-center justify-around leading-none">
             <div class="flex flex-col items-center justify-center"><span class="text-[clamp(3.3125rem,0.805rem+11.1446vw,10.25rem)]">3</span><span class="md:text-lg">ЗАЛА</span></div>
             <div class="flex flex-col items-center justify-center"><span class="text-[clamp(3.3125rem,0.805rem+11.1446vw,10.25rem)]">45</span><span class="md:text-lg">НАПРАВЛЕНИЙ</span></div>
@@ -845,7 +845,7 @@
     {% set formSettings = {
     "title": "ПРОКАЧАЙ СВОЕ ТЕЛО И ДУХ",
     "submit": "СТАТЬ БЛИЖЕ К СВОЕЙ ЦЕЛИ",
-    "img": "/img/crossfit-contact-desktop.png"
+    "img": "/img/fitness-contact-desktop.png"
     } %}
     {{ formreg(formSettings.title, formSettings.submit, formSettings.img) }}
 

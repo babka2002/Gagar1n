@@ -123,14 +123,14 @@
 {% endmacro %}
 
 
-{% macro heroImage(img, title) %}
+{% macro heroImage(himg, title) %}
+
 <div class="container px-4">
   <div
-    class="bg-[url({{ img }})] bg-no-repeat bg-top bg-cover flex items-start justify-center rounded-brxl overflow-hidden  h-[625px] relative">
+    class="bg-[url({{himg}})] bg-no-repeat bg-top bg-cover flex items-start justify-center rounded-brxl overflow-hidden  h-[625px] relative">
     <h1
       class="text-xxl uppercase text-light rounded-b-brxl bg-dark px-6 md:px-24 py-0 text-center invert-border-crossfit hyphens-auto z-9">
       {{ title }}</h1>
-    <!-- <img src="img/team.jpg" alt="" class="absolute top-0 bottom-0 left-0 right-0 object-fill"> -->
   </div>
   {% endmacro %}
 
