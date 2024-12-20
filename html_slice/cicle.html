@@ -1,0 +1,134 @@
+{% from './src/part/components.html' import heroImage, heroBtn, skileCrossfit, redBlocks %}
+{% extends 'src/part/base.html' %}
+
+{% set title="Home" %}
+
+{% block header %}
+  {% include "./src/part/templates/header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<section class="py-sectionPadding">
+    {{ heroImage('../../public/img/direction-6.jpg', 'САЙКЛ') }}
+    
+    <div class="grid grid-cols-3 md:grid-cols-1 pt-sectionPadding  gap-2 hyphens-auto md:hidden">
+        <div class="h-[1px] bg-main-red col-span-1 self-center md:block"></div>
+        <div class="uppercase text-light text-lg md:text-xl leading-none col-span-2 text-right">НОВЫЕ СОВРЕМЕННЫЕ</div>
+        <div class="uppercase text-light text-lg md:text-xl leading-none col-span-3 text-right">ТРЕНАЖЕРЫ</div>
+        <div class="uppercase text-light text-lg md:text-xl leading-none col-span-2 sm:col-span-1">отдельный</div>
+        <div class="h-[1px] bg-main-red text-lg col-span-1 sm:col-span-2 self-center  md:block"></div>
+        <div class="uppercase text-light text-lg md:text-xl leading-none col-span-2">САЙКЛ- ЗАЛ</div>
+    </div>
+    <div class="grid-cols-1 md:grid-cols-6 pt-sectionPadding  gap-6 hyphens-auto hidden md:grid">
+        <div class="uppercase text-light text-xl leading-none col-span-2 ">отдельный</div>
+        <div class="h-[1px] bg-main-red col-span-1 self-center hidden md:block"></div>
+        <div class="uppercase text-light text-xl leading-none col-span-3 text-right">НОВЫЕ СОВРЕМЕННЫЕ</div>
+        <div class="uppercase text-light text-xl leading-none col-span-2">САЙКЛ- ЗАЛ</div>
+        <div class="h-[1px] bg-main-red col-span-2 self-center hidden md:block"></div>
+        <div class="uppercase text-light text-xl leading-none col-span-2 text-right">ТРЕНАЖЕРЫ</div>
+    </div>
+    
+    <div class="pt-sectionPadding">
+        {{ heroBtn("тренеры - проффесионалы") }}
+    </div>
+
+    </div>
+</section>
+
+
+<section class="py-sectionPadding px-4 bg-light">
+    <div class="container text-dark">
+
+        <div class="bg-[url(/img/crossfit-bordered.jpg)] bg-cover bg-top rounded-brxl overflow-hidden">
+           <div class="grid grid-cols-3 grid-rows-2 text-dark min-h-[615px] ">
+               <div class="self-start bg-light p-4 rounded-br-brxl tblock-rounded text-xl md:text-xxxl col-span-2 row-span-1">САЙКЛ -</div>
+               <div class="col-span-1"></div>
+               <div class="col-span-1"></div>
+               <div class="self-end bg-light p-4 rounded-tl-brxl bblock-rounded row-span-2 col-span-2 text-right text-base md:text-md">
+                    На наших высокоинтенсивных тренировках вы не только сделаете шаг к идеальной форме, но и зарядитесь прекрасным настроением. Для этого мы обеспечим вас лучшими тренерами и кардиомониторами Dexbee для более эффективной тренировки.
+                </div>
+           </div> 
+        <!-- <img src="./public/img/crossfit-bordered.jpg" alt="" class=""> -->
+        </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 pt-sectionPadding">
+
+                    <div class="col-span-1 text-sm flex flex-col gap-4">
+                        {% set redBconf = [
+                        {
+                        "rub": true,
+                        "title": "САЙКЛ HIIT",
+                        "content": [
+                        {"text":"Высокоинтенсивная тренировка под динамичную музыку, которая разгонит ваш метаболизм и запустит процесс жиросжигания. Польза: Сокращение
+жировой ткани в организме, что способствует насыщению кислородом, учащению пульс, Приведение в тонус всех мышечных групп, так как выполнение силовых упражнений укрепляет как ноги, так и плечи, туловище, Тренинг кардиореспираторной системы, улучшение функций дыхательных органов, укрепление сердца, сосудов, нормализация давления, Отсутствие нагрузки со стороны позвоночника/суставов. В противовес
+силовым занятиям компрессия на данные части тела не усиливается."},
+                        {"text":"Рекомендуется для всех уровней подготовки."},
+                        {"text":"При отсутствии
+противопоказаний сайклинг тренировка полностью безопасна в любом возрасте."},
+                        {"text":"Продолжительность тренинга составляет 55 минут."}
+                        ]
+                        }
+
+                        ] %}
+                        {{ redBlocks(redBconf) }}
+                    </div>
+                    <div class="col-span-1 text-sm flex flex-col gap-4">
+                        {% set redBconf = [
+                        {
+                        "rub": false,
+                        "title": "САЙКЛ START",
+                        "content": [
+                        {"text":"Групповая безударная кардио тренировка, с использованием
+специальных велотренажеров, громкой музыки и видеопроектора. Включает в себя
+имитацию настоящих заездов по склонам, горам и прочим рельефным поверхностям."},
+                        {"text":"Рекомендуется для всех уровней подготовки."},
+                        {"text":"Запись открывается за сутки, закрывается за 1 час до начала тренировки! В случае опоздания на тренировку вход по живой очереди."}
+                        ]
+                        } 
+                        ] %}
+                        {{ redBlocks(redBconf) }}
+                    </div>
+                    <div class="col-span-1 text-sm flex flex-col gap-4">
+                        {% set redBconf = [
+                        {
+                        "rub": true,
+                        "title": "САЙКЛ PRO",
+                        "content": [
+                        {"text":"рупповая безударная кардио тренировка, с использованием
+специальных велотренажеров, громкой музыки и видеопроектора. Включает в себя
+имитацию настоящих заездов по склонам, горам и прочим рельефным поверхностям.
+Рекомендуется для всех уровней подготовленности."},
+                        {"text":"Рекомендуется для среднего уровня подготовки."}
+                        ]
+                        }
+                        ] %}
+                        {{ redBlocks(redBconf) }}
+                    </div>
+
+                </div>
+
+    </div>
+</section>
+
+    {{ skileCrossfit() }}
+        
+    <!-- Форма записи -->
+    {% from "./src/part/components.html" import formreg %}
+    {% set formSettings = {
+    "title": "ПОЛУЧИ ЗАРЯД ЭНЕРГИИ ",
+    "submit": "СТАТЬ БЛИЖЕ К СВОЕЙ ЦЕЛИ",
+    "img": "/img/skail.jpg"
+    } %}
+    {{ formreg(formSettings.title, formSettings.submit, formSettings.img) }}
+
+
+{% endblock %}
+
+{% block footer %}
+{% from "./src/part/templates/footer.html" import footer %}
+
+<!-- TRUE - LIGHT VERSION FOOTER -->
+<!-- {//{// footer(true) }} -->
+{{ footer(true) }}
+{% endblock %}
+
