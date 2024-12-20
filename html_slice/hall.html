@@ -1,0 +1,108 @@
+{% extends "src/part/base.html" %}
+{% from './src/part/components.html' import formreg, heroImage, heroBtn, redBlocks, skileCrossfit %}
+
+{% set title = "Pool" %}
+
+{% block header %}
+{% include './src/part/templates/header.html' %}
+{% endblock %}
+
+{% block content %}
+
+<section class="py-sectionPadding">
+    
+    {{ heroImage('/img/hall_hero.jpg', "тренажерный зал") }}
+    
+    <div class="text-light pt-sectionPadding">
+        <div class="flex items-center justify-around leading-none">
+            <div class="flex flex-col items-center justify-center"><span class="text-[clamp(3.3125rem,0.805rem+11.1446vw,10.25rem)]">1700 </span><span class="md:text-lg">кв.метров</span></div>
+            <div class="flex flex-col items-center justify-center"><span class="text-[clamp(3.3125rem,0.805rem+11.1446vw,10.25rem)]">100+</span><span class="md:text-lg">ТРЕНАЖЕРОВ</span></div>
+        </div>
+    </div>
+    
+    <div class="pt-sectionPadding">
+        {{ heroBtn("Самый крупный в республике Крым полноформатный фитнес клуб") }}
+    </div>
+
+    </div>
+</section>
+
+<section class="py-sectionPadding px-4 bg-light">
+    <div class="container text-dark">
+
+        <div class="bg-[url(/img/hall_bordered.jpg)] bg-cover bg-top rounded-brxl overflow-hidden">
+           <div class="grid grid-cols-3 grid-rows-2 text-dark min-h-[615px] ">
+               <div class="self-start bg-light p-4 rounded-br-brxl tblock-rounded text-xl md:text-xxl col-span-2 row-span-1 uppercase hyphens-auto">тренажерный зал</div>
+               <div class="col-span-1"></div>
+               <div class="col-span-1"></div>
+               <div class="self-end bg-light p-4 rounded-tl-brxl bblock-rounded row-span-2 col-span-2 text-right text-base md:text-md"> На площади в 1700 кв.м стоит более 100 современных тренажеров. В кардиозоне – тренажеры Technogym с панорамным видом на улицу Киевская. Отдельная зона для функциональных тренировок с профессиональным оборудованием Foreman.</div>
+           </div> 
+        </div>
+                    
+        <div class="pt-sectionPadding">
+            <h2 class="text-center uppercase text-xxl md:text-xxxl col-span-1 md:col-span-2 lg:col-span-3 xl:col-span-3 leading-none mb-5">зоны и возможности</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                 <a href="#" class="block rounded-brxl overflow-hidden relative group">
+                      <img src="img/hall_zone_1.jpg" alt="" class="group-hover:scale-110 transition-all object-cover max-h-[370px] w-full object-left-top opacity-80 group-hover:opacity-100 bg-dark">
+                      <div class="uppercase text-lg lg:text-xl px-5 absolute text-light bottom-7 group-hover:scale-95 transition-all leading-tight">функциональный тренинг</div>
+                 </a>
+                 
+                 <a href="#" class="block rounded-brxl overflow-hidden relative group">
+                      <img src="img/hall_zone_1.jpg" alt="" class="group-hover:scale-110 transition-all object-cover max-h-[370px] w-full object-left-top opacity-80 group-hover:opacity-100 bg-dark">
+                      <div class="uppercase text-lg lg:text-xl px-5 absolute text-light bottom-7 group-hover:scale-95 transition-all leading-tight">зона свободных весов</div>
+                 </a>
+                 
+                 <a href="#" class="block rounded-brxl overflow-hidden relative group">
+                      <img src="img/hall_zone_1.jpg" alt="" class="group-hover:scale-110 transition-all object-cover max-h-[370px] w-full object-left-top opacity-80 group-hover:opacity-100 bg-dark">
+                      <div class="uppercase text-lg lg:text-xl px-5 absolute text-light bottom-7 group-hover:scale-95 transition-all leading-tight">блочные тренажеры</div>
+                 </a>
+                 
+                 <a href="#" class="block rounded-brxl overflow-hidden relative group">
+                      <img src="img/hall_zone_1.jpg" alt="" class="group-hover:scale-110 transition-all object-cover max-h-[370px] w-full object-left-top opacity-80 group-hover:opacity-100 bg-dark">
+                      <div class="uppercase text-lg lg:text-xl px-5 absolute text-light bottom-7 group-hover:scale-95 transition-all leading-tight">кардио зона</div>
+                 </a>
+                 
+                 <a href="#" class="block rounded-brxl overflow-hidden relative group">
+                      <img src="img/hall_zone_1.jpg" alt="" class="group-hover:scale-110 transition-all object-cover max-h-[370px] w-full object-left-top opacity-80 group-hover:opacity-100 bg-dark">
+                      <div class="uppercase text-lg lg:text-xl px-5 absolute text-light bottom-7 group-hover:scale-95 transition-all leading-tight">зона кроссфита</div>
+                 </a>
+                 
+                 <a href="#" class="block rounded-brxl overflow-hidden relative group">
+                      <img src="img/hall_zone_1.jpg" alt="" class="group-hover:scale-110 transition-all object-cover max-h-[370px] w-full object-left-top opacity-80 group-hover:opacity-100 bg-dark">
+                      <div class="uppercase text-lg lg:text-xl px-5 absolute text-light bottom-7 group-hover:scale-95 transition-all leading-tight">ринг</div>
+                 </a>
+            </div>
+            
+            <div class="py-5">
+               {{ heroBtn("свободное посещение зала ежедневно с 7 до 23") }}
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% from "./src/part/trainers/trainers_func.html" import trainersHero, titleTrainer, sliderTrainer, dkhts, coach %}
+<section class="py-sectionPadding px-4 bg-light">
+  <div class="container">
+    {{ dkhts() }}    
+  </div>
+</section>
+
+<!-- Форма записи -->
+{% set formSettings = {
+  "title": "НЕ УПУСТИ ЭТУ ВОЗМОЖНОСТЬ",
+  "submit": "СТАТЬ БЛИЖЕ К СВОЕЙ ЦЕЛИ",
+  "img": "/img/pool-contact.png"
+} %}
+{{ formreg(formSettings.title, formSettings.submit, formSettings.img) }}
+
+{% endblock %}
+
+{% block footer %}
+{% from "./src/part/templates/footer.html" import footer %}
+
+<!-- TRUE - LIGHT VERSION FOOTER -->
+<!-- {//{// footer(true) }} -->
+{{ footer(true) }}
+{% endblock %}

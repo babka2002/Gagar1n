@@ -16,7 +16,8 @@ export default defineConfig({
             pool: resolve(__dirname, 'pool.html'),
             trainers: resolve(__dirname, 'trainers.html'),
             trainersingle: resolve(__dirname, 'trainer_single.html'),
-            cicle: resolve(__dirname, 'cicle.html')
+            cicle: resolve(__dirname, 'cicle.html'),
+            hall: resolve(__dirname, 'hall.html')
         }
     }
   }
