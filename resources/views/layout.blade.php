@@ -12,11 +12,11 @@
         {{-- @antlers
         {{ vite src="resources/js/site.js|resources/css/site.css" }}
         @endantlers --}}
-        @vite([
+        {{-- @vite([
             'vendor/mkocansey/bladewind/public/css/animate.min.css',
             'vendor/mkocansey/bladewind/public/css/bladewind-ui.min.css',
             'vendor/mkocansey/bladewind/public/js/helpers.js'
-        ])
+        ]) --}}
         @vite(['resources/css/site.css', 'resources/js/site.js'])
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     </head>
@@ -35,28 +35,45 @@
                 </button>
 
                 <a href="/" class="p-0 m-0 relative z-10 hidden md:block">
-                <img src="<s:glide src='/assets/img/logo.png' />" alt="" class="max-w-[13.625em]">
-
+                    <img src="<s:glide src='/assets/img/logo.png' />" alt="" class="max-w-[13.625em]">
                 </a>
 
                 <ul class="absolute top-[90%] left-[-20px] bg-light rounded-b-[1.875em] p-5  min-w-[18.75em] menu-items z-9">
                 <li>
-                    <a href="/fitness.html"
-                    class="uppercase leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all text-[clamp(1.4375rem,1.302rem+0.6024vw,1.8125rem)]">Фитнес</a>
+                    <a href="/"
+                    class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">ГЛАВНАЯ СТРАНИЦА</a>
                 </li>
                 <li>
-                    <a href="/pool.html"
-                    class="uppercase leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all text-[clamp(1.4375rem,1.302rem+0.6024vw,1.8125rem)]">Бессейн</a>
+                    <a href="cicle"
+                    class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">САЙКЛ</a>
                 </li>
                 <li>
-                    <a href="#"
-                    class="uppercase leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all text-[clamp(1.4375rem,1.302rem+0.6024vw,1.8125rem)]">тренажерный
-                    зал</a>
+                    <a href="crossfit"
+                    class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">Кроссфит</a>
                 </li>
                 <li>
-                    <a href="#"
-                    class="uppercase leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all text-[clamp(1.4375rem,1.302rem+0.6024vw,1.8125rem)]">групповые
-                    тренировки</a>
+                    <a href="fitness"
+                    class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">фитнес</a>
+                </li>
+                <li>
+                    <a href="hall"
+                    class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">тренажерный зал</a>
+                </li>
+                <li>
+                    <a href="pool"
+                    class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">бассейн</a>
+                </li>
+                <li>
+                    <a href="schedule"
+                    class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">Календарь</a>
+                </li>
+                <li>
+                    <a href="trainers"
+                    class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">ТРЕНЕРЫ</a>
+                </li>
+                <li>
+                    <a href="trainer"
+                    class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">Страница тренера</a>
                 </li>
                 </ul>
 
@@ -64,23 +81,12 @@
 
             <div class="flex items-center justify-between gap-2 relative z-10">
 
-                <button type="button" class="w-[52px] md:w-[5.4375em] show grayscale-[1] hover:grayscale-0 transition-all">
-                    <img src="<s:glide src='/assets/img/grelka-logo.png' />" alt="" class="block hover:opacity-70 transition-all" />
-                </button>
-                <button type="button" class="w-[52px] md:w-[5.4375em] show grayscale-[1] hover:grayscale-0 transition-all">
-                    <img src="<s:glide src='/assets/img/logo-dzhunior.png' />" alt="" class="block hover:opacity-70 transition-all"/>
-                </button>
-                <button type="button" class="w-[52px] md:w-[5.4375em] show grayscale-[1] hover:grayscale-0 transition-all">
-                    <img src="<s:glide src='/assets/img/dzhifud-logo.png' />" alt="" class="block hover:opacity-70 transition-all" />
-                </button>
-
-
-                <!-- <button type="button" class="w-[52px] md:w-[5.4375em]"><img src="/img/g1.png" alt="" -->
-                <!--     class="block show"></button> -->
-                <!-- <button type="button" class="w-[52px] md:w-[5.4375em]"><img src="/img/g1.png" alt="" -->
-                <!--     class="block filter grayscale-[.7] hover:grayscale-0 transition-all"></button> -->
-                <!-- <button type="button" class="w-[52px] md:w-[5.4375em]"><img src="/img/g1.png" alt="" -->
-                <!--     class="block filter grayscale hover:grayscale-0 transition-all"></button> -->
+                <button type="button" class="w-[52px] md:w-[5.4375em] show grayscale-[1] hover:grayscale-0 transition-all"><img
+                    src="<s:glide src='/assets/img/grelka-logo.png' />" alt="" class="block hover:opacity-70 transition-all"></button>
+                <button type="button" class="w-[52px] md:w-[5.4375em] show grayscale-[1] hover:grayscale-0 transition-all"><img
+                    src="<s:glide src='/assets/img/logo-dzhunior.png' />" alt="" class="block hover:opacity-70 transition-all"></button>
+                <button type="button" class="w-[52px] md:w-[5.4375em] show grayscale-[1] hover:grayscale-0 transition-all"><img
+                    src="<s:glide src='/assets/img/dzhifud-logo.png' />" alt="" class="block hover:opacity-70 transition-all"></button>
             </div>
 
             <div class="flex items-center justify-center">
@@ -190,6 +196,44 @@
         </footer>
         <!-- END::FOOTER -->
 
+        <dialog id="dialog" class="dialog-glass text-light w-[95%] max-w-[1183px] p-8 lg:p-16 rounded-brxl">
+            <div class="flex flex-col mx-4">
+                <button class="close hover:scale-90 transition-all ml-auto">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="30" cy="30" r="30" fill="#D9D9D9" />
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M21.4866 16.5368C20.1132 15.1765 17.8867 15.1765 16.5134 16.5368C15.1401 17.8972 15.1401 20.1027 16.5134 21.463L25.5268 30.3913L16.0683 39.7603C14.695 41.1207 14.695 43.3262 16.0683 44.6865C17.4416 46.0468 19.6682 46.0468 21.0415 44.6865L30.5 35.3175L39.9584 44.6865C41.3317 46.0468 43.5583 46.0468 44.9316 44.6865C46.3049 43.3262 46.3049 41.1207 44.9316 39.7603L35.4731 30.3913L44.4865 21.463C45.8599 20.1027 45.8599 17.8972 44.4865 16.5368C43.1132 15.1765 40.8867 15.1765 39.5134 16.5368L30.5 25.4651L21.4866 16.5368Z"
+                    fill="#3D3D3D" />
+                </svg>
+                </button>
+
+                <div class="h-auto">
+                <h2 class="text-xxxl font-normal uppercase leading-none">
+                    название</h2>
+                <p class="text-lg">текст акции</p>
+
+                <form action="" method="post" class="mt-16 flex flex-col lg:flex-row items-center justify-between gap-4 pb-4">
+
+                    <input type="text" name="" id="" placeholder="имя"
+                    class="rounded-brxl text-base px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase">
+
+                    <input type="tel" name="" id="" placeholder="номер"
+                    class="rounded-brxl text-base px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase rounded-brxl">
+
+                    <button type="submit" class="transition-all hover:opacity-70">
+                    <svg width="161" height="81" viewBox="0 0 161 81" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="161" height="81" rx="33" fill="#E23333" />
+                        <path
+                        d="M133.121 42.1213C134.293 40.9497 134.293 39.0503 133.121 37.8787L114.029 18.7868C112.858 17.6152 110.958 17.6152 109.787 18.7868C108.615 19.9584 108.615 21.8579 109.787 23.0294L126.757 40L109.787 56.9706C108.615 58.1421 108.615 60.0416 109.787 61.2132C110.958 62.3848 112.858 62.3848 114.029 61.2132L133.121 42.1213ZM29 43H131V37H29V43Z"
+                        fill="#FFF8F8" />
+                    </svg>
+                    </button>
+
+                </form>
+                </div>
+            </div>
+            </dialog>
+
         <!-- Swiper JS -->
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -219,22 +263,61 @@
                 },
             },
             });
+
+            // TRAINER SLIDER
+            var swiper = new Swiper(".mySwiper2", {
+            slidesPerView: 1,
+            spaceBetween: 16,
+            // centeredSlides: false,
+            centeredSlides: true,
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                dynamicBullets: true,
+            },
+            breakpoints: {
+                640: {
+                slidesPerView: 2,
+                spaceBetween: 16,
+                },
+                768: {
+                slidesPerView: 2,
+                spaceBetween: 16,
+                },
+                1024: {
+                slidesPerView: 3,
+                spaceBetween: 16,
+                },
+                1440: {
+                slidesPerView: 4,
+                spaceBetween: 16,
+                },
+                1600: {
+                slidesPerView: 5,
+                spaceBetween: 16,
+                },
+            },
+            });
             // Компонент формы
             const ContactForm = {
-            submit(e) {
-                e.preventDefault()
-                // Логика отправки формы
-            }
+                submit(e) {
+                    e.preventDefault()
+                    // Логика отправки формы
+                }
             }
 
             // Мобильное меню
             const MobileMenu = {
-            toggle() {
-                const menu = document.querySelector('.menu-items');
-                if (menu) {
-                menu.classList.toggle('hidden');
+                toggle() {
+                    const menu = document.querySelector('.menu-items');
+                    if (menu) {
+                    menu.classList.toggle('hidden');
+                    }
                 }
-            }
             }
             // Скрыть меню по умолчанию
             document.addEventListener('DOMContentLoaded', () => {

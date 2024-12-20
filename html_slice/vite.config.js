@@ -18,7 +18,9 @@ export default defineConfig({
             trainersingle: resolve(__dirname, 'trainer_single.html'),
             cicle: resolve(__dirname, 'cicle.html'),
             hall: resolve(__dirname, 'hall.html'),
-            schedule: resolve(__dirname, 'schedule.html')
+            schedule: resolve(__dirname, 'schedule.html'),
+            crossfit: resolve(__dirname, 'crossfit.html'),
+            fitness: resolve(__dirname, 'fitness.html')
         }
     }
   }
