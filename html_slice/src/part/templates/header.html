@@ -15,37 +15,53 @@
       </a>
 
       <ul class="absolute top-[90%] left-[-20px] bg-light rounded-b-[1.875em] p-5  min-w-[18.75em] menu-items z-9">
+
+
+        {% set items=[
+        {
+        "link":"/index.html",
+        "title": "ГЛАВНАЯ СТРАНИЦА"
+        },
+        {
+        "link": "cicle.html",
+        "title": "САЙКЛ"
+        },
+        {
+        "link": "crossfit.html",
+        "title": "Кроссфит"
+        },
+        {
+        "link": "fitness.html",
+        "title": "фитнес"
+        },
+        {
+        "link": "hall.html",
+        "title": "тренажерный зал"
+        },
+        {
+        "link": "pool.html",
+        "title": "бассейн"
+        },
+        {
+        "link": "schedule.html",
+        "title": "Календарь"
+        },
+        {
+        "link": "trainers.html",
+        "title": "ТРЕНЕРЫ"
+        },
+        {
+        "link": "trainer_single.html",
+        "title": "Страница тренера"
+        }
+        ] %}
+
+        {% for item in items %}
         <li>
-          <a href="/power.html"
-            class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">Силовые</a>
+          <a href="{{item.link}}"
+            class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">{{item.title}}</a>
         </li>
-        <li>
-          <a href="/dance.html"
-            class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">Танцы</a>
-        </li>
-        <li>
-          <a href="/fitness.html"
-            class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">Фитнес</a>
-        </li>
-        <li>
-          <a href="/pool.html"
-            class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">Бессейн</a>
-        </li>
-        <li>
-          <a href="/body-mind.html"
-            class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">Боди
-            и майнд</a>
-        </li>
-        <li>
-          <a href="#"
-            class="uppercase leading-8 text-black font-normal block hover:underline hover:underline-offset-4">тренажерный
-            зал</a>
-        </li>
-        <li>
-          <a href="#"
-            class="uppercase leading-8 text-black font-normal block hover:underline hover:underline-offset-4">групповые
-            тренировки</a>
-        </li>
+        {% endfor %}
       </ul>
 
     </div>
