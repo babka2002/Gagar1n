@@ -1,7 +1,8 @@
     <section class="py-sectionPadding">
         <div class="container px-4">
 
-            <div style="background-image: url('/assets/img/pool_hero.jpg');"
+            <div
+                style="background-image: url('{{ glide:data_url src='/assets/img/pool_hero.jpg' quality='75' format='webp' }}')"
                 class="bg-[url(/assets/img/pool_hero.jpg)] bg-no-repeat bg-top bg-cover flex items-start justify-center rounded-brxl overflow-hidden h-[625px] relative"
             >
                 <h1
@@ -47,7 +48,8 @@
 
     <section class="py-sectionPadding px-4 bg-light">
         <div class="container text-dark">
-            <div style="background-image: url('/assets/img/pool_bordered.jpg');"
+            <div
+                style="background-image: url('{{ glide:data_url src='/assets/img/pool_bordered.jpg' quality='75' format='webp' }}')"
                 class="bg-[{{ glide src='/assets/img/pool_bordered.jpg' }}] bg-cover bg-top rounded-brxl overflow-hidden"
             >
                 <div
@@ -185,14 +187,14 @@
                     </div>
                     <div class="hidden md:block md:col-span-2 self-center">
                         <img
-                            src="{{ glide src='/assets/img/pool_right_sm.jpg' }}"
+                            src="{{ glide:data_url src='/assets/img/pool_right_sm.jpg' quality='75' format='webp' }}"
                             alt=""
                             class="object-cover h-auto max-h-48 w-full rounded-brxl"
                         />
                     </div>
                     <div class="self-center">
                         <img
-                            src="/assets/img/pool_left_sm.jpg"
+                            src="{{ glide:data_url src='/assets/img/pool_left_sm.jpg' quality='75' format='webp' }}"
                             alt=""
                             class="object-cover h-auto max-h-48 w-full rounded-brxl"
                         />
@@ -326,6 +328,7 @@
     <!-- Расписание pool-schedule.png-->
     <section id="schedule" class="py-sectionPadding bg-light text-light px-4">
         <div
+            style="background-image: url('{{ glide:data_url src='/assets/img/pool-schedule.png' quality='75' format='webp' }}')"
             class="container bg-[{{ glide src='/assets/img/pool-schedule.png' }}] bg-no-repeat bg-cover bg-center py-[clamp(1rem,0.3675rem+2.8112vw,2.75rem)] px-4 lg:px-14 rounded-[clamp(0.875rem,0.1295rem+3.3133vw,2.9375rem)]"
         >
             <h3
@@ -424,7 +427,7 @@
             </div>
             <div class="col-span-1">
                 <img
-                    src="{{ glide src='/assets/img/pool-contact.png' }}"
+                    src="{{ glide:data_url src='/assets/img/pool-contact.png' quality='75' format='webp' }}"
                     alt=""
                     class="block w-full mx-auto rounded-brxl"
                 />

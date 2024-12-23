@@ -1,7 +1,7 @@
 <section class="py-sectionPadding">
     <div class="container px-4">
         <div
-            style="background-image: url('/assets/img/crossfit.jpg');"
+            style="background-image: url('{{ glide:data_url src='/assets/img/crossfit.jpg' quality='75' format='webp' }}')"
             class="bg-[url(../../public/img/crossfit.jpg)] bg-no-repeat bg-top bg-cover flex items-start justify-center rounded-brxl overflow-hidden h-[625px] relative"
         >
             <h1
@@ -81,7 +81,7 @@
 <section class="py-sectionPadding px-4 bg-light">
     <div class="container text-dark">
         <div
-            style="background-image: url('/assets/img/crossfit-bordered.jpg');"
+            style="background-image: url('{{ glide:data_url src='/assets/img/crossfit-bordered.jpg' quality='75' format='webp' }}')"
             class="bg-[url(/img/crossfit-bordered.jpg)] bg-cover bg-top rounded-brxl overflow-hidden"
         >
             <div class="grid grid-cols-3 grid-rows-2 text-dark min-h-[615px]">
@@ -230,7 +230,7 @@
                 class="rounded-brxl relative group overflow-hidden max-h-80 flex text-light"
             >
                 <img
-                    src="/assets/img/skail.jpg"
+                    src="{{ glide:data_url src='/assets/img/skail.jpg' quality='75' format='webp' }}"
                     alt=""
                     class="group-hover:scale-125 group-hover:opacity-90 transition-all object-cover opacity-35 w-full"
                 />
@@ -261,7 +261,7 @@
                 class="rounded-brxl relative group overflow-hidden max-h-80 flex text-light"
             >
                 <img
-                    src="/assets/img/fitness.jpg"
+                    src="{{ glide:data_url src='/assets/img/fitness.jpg' quality='75' format='webp' }}"
                     alt=""
                     class="group-hover:scale-125 group-hover:opacity-90 transition-all object-cover opacity-35 w-full"
                 />
@@ -340,7 +340,8 @@
         </div>
         <div class="col-span-1">
             <img
-                src="/assets/img/crossfit-contact-desktop.png"
+                src="{{ glide:data_url src='/assets/img/crossfit-contact-desktop.png' quality='75' format='webp' }}"
+                loading="lazy"
                 alt=""
                 class="block w-full mx-auto rounded-brxl"
             />
