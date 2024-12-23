@@ -35,7 +35,7 @@
                 </button>
 
                 <a href="/" class="p-0 m-0 relative z-10 hidden md:block transition-all">
-                    <img src="<s:glide src='/assets/img/logo.png' />" alt="" class="max-w-[13.625em]">
+                    <img src="<s:glide:data_url src='/assets/img/logo.png' quality='75' format='webp' />" alt="" class="max-w-[13.625em]">
                 </a>
 
                 <ul class="absolute top-[90%] left-[-20px] bg-light rounded-b-[1.875em] p-5  min-w-[18.75em] menu-items z-9">
@@ -81,12 +81,22 @@
 
             <div class="flex items-center justify-between gap-2 relative z-10">
 
-                <button type="button" class="w-[52px] md:w-[5.4375em] show grayscale-[1] hover:grayscale-0 transition-all"><img
-                    src="<s:glide src='/assets/img/grelka-logo.png' />" alt="" class="block hover:opacity-70 transition-all"></button>
-                <button type="button" class="w-[52px] md:w-[5.4375em] show grayscale-[1] hover:grayscale-0 transition-all"><img
-                    src="<s:glide src='/assets/img/logo-dzhunior.png' />" alt="" class="block hover:opacity-70 transition-all"></button>
-                <button type="button" class="w-[52px] md:w-[5.4375em] show grayscale-[1] hover:grayscale-0 transition-all"><img
-                    src="<s:glide src='/assets/img/dzhifud-logo.png' />" alt="" class="block hover:opacity-70 transition-all"></button>
+                <button type="button" class="w-[52px] md:w-[5.4375em] show grayscale-[1] hover:grayscale-0 transition-all">
+                    <img
+                    src="<s:glide:data_url src='/assets/img/grelka-logo.png' quality='75' format='webp' />" alt="" class="block hover:opacity-70 transition-all"
+                    alt="">
+                </button>
+                <button type="button" class="w-[52px] md:w-[5.4375em] show grayscale-[1] hover:grayscale-0 transition-all">
+                    <img
+                    src="<s:glide:data_url src='/assets/img/logo-dzhunior.png' quality='75' format='webp' />" alt="" class="block hover:opacity-70 transition-all"
+                    alt=""
+                    >
+                </button>
+                <button type="button" class="w-[52px] md:w-[5.4375em] show grayscale-[1] hover:grayscale-0 transition-all">
+                    <img
+                    src="<s:glide:data_url src='/assets/img/dzhifud-logo.png' quality='75' format='webp' />" alt="" class="block hover:opacity-70 transition-all"
+                    alt="">
+                </button>
             </div>
 
             <div class="flex items-center justify-center">
@@ -236,9 +246,6 @@
 
         <!-- Swiper JS -->
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-
-
 
         </script>
     </body>
