@@ -26,6 +26,9 @@ document.addEventListener("click", (e) => {
             document.body.innerHTML = text;
             window.history.pushState({}, "", target.href);
 
+            // Прокручиваем к верхней части страницы
+            window.scrollTo(0, 0);
+
             // Применяем класс fade-in после обновления DOM
             document.body.classList.remove("fade-out"); // Удаляем класс fade-out
             document.body.classList.add("fade-in"); // Применяем класс fade-in
@@ -51,5 +54,8 @@ window.addEventListener("beforeunload", () => {
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "hidden") {
         document.body.classList.add("fade-out"); // Применяем класс fade-out при скрытии страницы
+    } else {
+        document.body.classList.remove("fade-out"); // Удаляем класс fade-out при возвращении на страницу
+        document.body.classList.add("fade-in"); // Применяем класс fade-in при возвращении на страницу
     }
 });
