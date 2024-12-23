@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="view-transition" content="same-origin">
         <title>
             @antlers
                 {{ title ?? site:name }}
@@ -34,7 +35,7 @@
                 </svg>
                 </button>
 
-                <a href="/" class="p-0 m-0 relative z-10 hidden md:block">
+                <a href="/" class="p-0 m-0 relative z-10 hidden md:block transition-all">
                     <img src="<s:glide src='/assets/img/logo.png' />" alt="" class="max-w-[13.625em]">
                 </a>
 
@@ -333,12 +334,14 @@
             const closeBtn = document.querySelector(".close");
 
             showBtn.addEventListener("click", () => {
-            dialogElem.showModal();
+                dialogElem.showModal();
             });
 
             closeBtn.addEventListener("click", () => {
-            dialogElem.close();
+                dialogElem.close();
             });
+
+
 
         </script>
     </body>
