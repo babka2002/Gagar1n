@@ -26,8 +26,7 @@
         <div class="container px-[1em] my-5 sticky top-4 z-20">
             <header class="container bg-light flex justify-between items-center gap-2 rounded-[30px] px-[20px] py-[14px] ">
             <div class="flex items-center justify-center gap-[34px] relative ">
-                <button onclick="MobileMenu.toggle()"
-                class="rounded-full bg-dark text-light flex items-center justify-center w-[3.75em] h-[3.75em] relative z-10"><svg
+                <button class="menu-toggle rounded-full bg-dark text-light flex items-center justify-center w-[3.75em] h-[3.75em] relative z-10"><svg
                     width="34" height="22" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2 2H32" stroke="#EBE7E7" stroke-width="4" stroke-linecap="round" />
                     <path d="M2 11H32" stroke="#EBE7E7" stroke-width="4" stroke-linecap="round" />
@@ -238,108 +237,6 @@
         <!-- Swiper JS -->
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-        <!-- Initialize Swiper -->
-        <script>
-            var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            centeredSlides: true,
-            freeMode: true,
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: false,
-            },
-            breakpoints: {
-                640: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-                },
-                768: {
-                slidesPerView: 2,
-                spaceBetween: 40,
-                },
-                1024: {
-                slidesPerView: 3,
-                spaceBetween: 50,
-                },
-            },
-            });
-
-            // TRAINER SLIDER
-            var swiper = new Swiper(".mySwiper2", {
-            slidesPerView: 1,
-            spaceBetween: 16,
-            // centeredSlides: false,
-            centeredSlides: true,
-            autoplay: {
-                delay: 2000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-                dynamicBullets: true,
-            },
-            breakpoints: {
-                640: {
-                slidesPerView: 2,
-                spaceBetween: 16,
-                },
-                768: {
-                slidesPerView: 2,
-                spaceBetween: 16,
-                },
-                1024: {
-                slidesPerView: 3,
-                spaceBetween: 16,
-                },
-                1440: {
-                slidesPerView: 4,
-                spaceBetween: 16,
-                },
-                1600: {
-                slidesPerView: 5,
-                spaceBetween: 16,
-                },
-            },
-            });
-            // Компонент формы
-            const ContactForm = {
-                submit(e) {
-                    e.preventDefault()
-                    // Логика отправки формы
-                }
-            }
-
-            // Мобильное меню
-            const MobileMenu = {
-                toggle() {
-                    const menu = document.querySelector('.menu-items');
-                    if (menu) {
-                    menu.classList.toggle('hidden');
-                    }
-                }
-            }
-            // Скрыть меню по умолчанию
-            document.addEventListener('DOMContentLoaded', () => {
-            const menu = document.querySelector('.menu-items');
-            if (menu) {
-                menu.classList.add('hidden'); // Добавлено: скрыть меню по умолчанию
-            }
-            });
-
-            // DIALOG
-            const dialogElem = document.getElementById("dialog");
-            const showBtn = document.querySelector(".show");
-            const closeBtn = document.querySelector(".close");
-
-            showBtn.addEventListener("click", () => {
-                dialogElem.showModal();
-            });
-
-            closeBtn.addEventListener("click", () => {
-                dialogElem.close();
-            });
 
 
 
