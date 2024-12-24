@@ -322,7 +322,7 @@ summary::-webkit-details-marker {
         content: "";
         position: absolute;
         top: -34px;
-        right: -1px;
+        right: 0px;
         border-radius: var(--sizes);
         width: var(--sizes);
         height: var(--sizes);
