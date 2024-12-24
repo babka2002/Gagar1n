@@ -13,7 +13,7 @@ return [
 
     'enabled' => env('CP_ENABLED', true),
 
-    'route' => env('CP_ROUTE', 'cp'),
+    'route' => env('CP_ROUTE', 'cp_admin'),
 
     /*
     |--------------------------------------------------------------------------
@@ -27,7 +27,7 @@ return [
 
     'auth' => [
         'enabled' => true,
-        'redirect_to' => null,
+        'redirect_to' => 'dashboard',
     ],
 
     /*
@@ -120,7 +120,7 @@ return [
     |
     */
 
-    'theme' => env('STATAMIC_THEME', 'rad'),
+    'theme' => env('STATAMIC_THEME', 'business'),
 
     /*
     |--------------------------------------------------------------------------
@@ -133,15 +133,15 @@ return [
     |
     */
 
-    'custom_cms_name' => env('STATAMIC_CUSTOM_CMS_NAME', 'Statamic'),
+    'custom_cms_name' => env('STATAMIC_CUSTOM_CMS_NAME', 'Gagarin'),
 
-    'custom_logo_url' => env('STATAMIC_CUSTOM_LOGO_URL', null),
+    'custom_logo_url' => env('STATAMIC_CUSTOM_LOGO_URL', '/assets/img/logo.png'),
 
     'custom_dark_logo_url' => env('STATAMIC_CUSTOM_DARK_LOGO_URL', null),
 
-    'custom_logo_text' => env('STATAMIC_CUSTOM_LOGO_TEXT', null),
+    'custom_logo_text' => env('STATAMIC_CUSTOM_LOGO_TEXT', 'Gagarin'),
 
-    'custom_favicon_url' => env('STATAMIC_CUSTOM_FAVICON_URL', null),
+    'custom_favicon_url' => env('STATAMIC_CUSTOM_FAVICON_URL', '/assets/favicon.ico'),
 
     'custom_css_url' => env('STATAMIC_CUSTOM_CSS_URL', null),
 
