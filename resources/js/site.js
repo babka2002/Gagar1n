@@ -7,6 +7,11 @@ var swiper = new Swiper(".mySwiper", {
     spaceBetween: 20,
     centeredSlides: true,
     freeMode: true,
+    autoHeight: false,
+    autoplay: {
+        delay: 2000,
+        disableOnInteraction: false,
+    },
     pagination: {
         el: ".swiper-pagination",
         clickable: false,
@@ -31,7 +36,6 @@ var swiper = new Swiper(".mySwiper", {
 var swiper = new Swiper(".mySwiper2", {
     slidesPerView: 1,
     spaceBetween: 16,
-    // centeredSlides: false,
     centeredSlides: true,
     autoplay: {
         delay: 2000,
@@ -42,6 +46,7 @@ var swiper = new Swiper(".mySwiper2", {
         clickable: true,
         dynamicBullets: true,
     },
+    autoHeight: false,
     breakpoints: {
         640: {
             slidesPerView: 2,

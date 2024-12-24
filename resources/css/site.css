@@ -74,8 +74,8 @@ body {
     justify-content: space-between;
     gap: 2em;
 
-    > .front,
-    > .back {
+    >.front,
+    >.back {
         display: block;
         transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
         transition-duration: 0.5s;
@@ -84,11 +84,11 @@ body {
         display: block;
     }
 
-    > .front {
+    >.front {
         transform: rotateY(0deg);
     }
 
-    > .back {
+    >.back {
         position: absolute;
         opacity: 0;
         top: 0px;
@@ -99,51 +99,51 @@ body {
     }
 
     &:hover {
-        > .front {
+        >.front {
             transform: rotateY(180deg);
         }
 
-        > .back {
+        >.back {
             opacity: 1;
             transform: rotateY(0deg);
         }
     }
 
     &.flip-vertical {
-        > .back {
+        >.back {
             transform: rotateX(-180deg);
         }
 
         &:hover {
-            > .front {
+            >.front {
                 transform: rotateX(180deg);
             }
 
-            > .back {
+            >.back {
                 transform: rotateX(0deg);
             }
         }
     }
 }
 
-.swiper {
+.mySwiper .swiper {
     width: 100%;
     height: 100%;
 }
 
-.swiper-slide {
+.mySwiper .swiper-slide {
     text-align: center;
     font-size: 18px;
 }
 
-.swiper-slide img {
+.mySwiper .swiper-slide img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
 
-.swiper-pagination-bullet-active {
+.mySwiper .swiper-pagination-bullet-active {
     background-color: #1e1e1e;
 }
 
@@ -390,6 +390,7 @@ summary::-webkit-details-marker {
         filter: blur(5px);
         opacity: 1;
     }
+
     100% {
         filter: blur(5px);
         opacity: 0;
@@ -401,12 +402,25 @@ summary::-webkit-details-marker {
         filter: blur(5px);
         opacity: 0;
     }
+
     80% {
         filter: blur(0);
         opacity: 0;
     }
+
     100% {
         filter: blur(0);
         opacity: 1;
     }
+}
+
+.mySwiper2 .swiper-wrapper {}
+
+.mySwiper2 .swiper-slide {
+    display: flex;
+    height: auto;
+}
+
+.mySwiper2 .swiper-slide img {
+    height: auto;
 }
