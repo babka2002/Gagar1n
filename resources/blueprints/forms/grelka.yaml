@@ -1,0 +1,11 @@
+fields:
+  - handle: full_name
+    field:
+      display: Имя
+      type: text
+      validate: required
+  - handle: phone
+    field:
+      display: Телефон
+      type: text
+      validate: required

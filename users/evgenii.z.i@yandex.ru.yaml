@@ -3,6 +3,6 @@ super: true
 id: 9fcd11e1-673b-479c-8888-c690f9401ee3
 password_hash: $2y$12$o1EtSjyB00OTXq5KiRoW4OHJ0xCq0NIzJiewPUg.Mx3PdMk9T0L5K
 preferences:
-  locale: en
+  locale: ru
   start_page: /
   favorites: {  }

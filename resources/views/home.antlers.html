@@ -735,7 +735,64 @@
                 текст акции
             </p>
 
-            <form
+
+        {{ form:grelka attr:x-ref="form" js="alpine" }}
+            <div
+                x-data='{
+                    form: $form(
+                        "post",
+                        $refs.form.getAttribute("action"),
+                        JSON.parse($refs.form.getAttribute("x-data"))
+                    ).setErrors({{ error | json }}),
+                }' @submit.prevent="form.submit()"
+                class="mt-16 flex flex-col lg:flex-row items-center justify-between gap-4 pb-4"
+            >
+
+                {{ if success }}
+                    <div class="bg-green-300 text-white p-2">
+                        {{ success }}
+                    </div>
+                {{ /if }}
+
+                <template x-if="form.hasErrors">
+                    <div>
+                        <div class="bg-red-300 text-white p-2">
+                            Errors!
+                            <ul>
+                                <template x-for="error in form.errors">
+                                    <li x-text="error"></li>
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+                </template>
+
+                <input type="text" name="full_name" value="" x-model="full_name" required="" placeholder="Имя" class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase" />
+                <input type="tel" name="phone" value="" x-model="phone" required="" placeholder="Номер" class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase" />
+                <small x-show="form.invalid('{{ handle }}')" x-text="form.errors.{{ handle }}"></small>
+
+                <input type="text" class="hidden" name="{{ honeypot ?? 'honeypot' }}">
+
+                <button :disabled="form.processing" class="transition-all hover:opacity-70">
+                    <svg
+                        width="161"
+                        height="81"
+                        viewBox="0 0 161 81"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <rect width="161" height="81" rx="33" fill="#E23333" />
+                        <path
+                            d="M133.121 42.1213C134.293 40.9497 134.293 39.0503 133.121 37.8787L114.029 18.7868C112.858 17.6152 110.958 17.6152 109.787 18.7868C108.615 19.9584 108.615 21.8579 109.787 23.0294L126.757 40L109.787 56.9706C108.615 58.1421 108.615 60.0416 109.787 61.2132C110.958 62.3848 112.858 62.3848 114.029 61.2132L133.121 42.1213ZM29 43H131V37H29V43Z"
+                            fill="#FFF8F8"
+                        />
+                    </svg>
+                </button>
+
+            </div>
+        {{ /form:grelka }}
+
+            <!-- <form
                 action=""
                 method="post"
                 class="mt-16 flex flex-col lg:flex-row items-center justify-between gap-4 pb-4"
@@ -771,7 +828,7 @@
                         />
                     </svg>
                 </button>
-            </form>
+            </form> -->
         </div>
     </div>
 </dialog>
