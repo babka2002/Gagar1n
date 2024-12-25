@@ -293,8 +293,8 @@
                             </div>
                         </template>
 
-                        <input type="text" name="full_name" value="" x-model="full_name" required="" placeholder="Имя" class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase" />
-                        <input type="tel" name="phone" value="" x-model="phone" required="" placeholder="Номер" class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase" />
+                        <input type="text" name="full_name"  value="" autocomplete="name" x-model="full_name" required="" placeholder="Имя" class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase" />
+                        <input type="tel" name="phone" value="" autocomplete="name" x-model="phone" required="" placeholder="Номер" class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase" />
                         <small x-show="form.invalid('{{ handle }}')" x-text="form.errors.{{ handle }}"></small>
 
                         <input type="text" class="hidden" name="{{ honeypot ?? 'honeypot' }}">
