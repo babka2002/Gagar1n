@@ -105,8 +105,12 @@
                 Киевская, 115</p>
                 <a href="#"
                 class="flex items-center justify-center bg-main-red px-[10px] py-[19px] rounded-[30px] text-[20px] text-light hover:opacity-70 transition-all hidden lg:block">записаться</a>
-                <a href="#" class="flex items-center justify-center"><img src="<s:glide src='/assets/img/phone.png' />" alt=""
-                    class="min-w-[52px] h-[52px] flex-1 lg:hidden"></a>
+                <a href="#" class="flex items-center justify-center">
+                    <img
+                    src="<s:glide:data_url src='/assets/img/phone' quality='75' format='webp' />"
+                    alt=""
+                    class="min-w-[52px] h-[52px] flex-1 lg:hidden">
+                </a>
             </div>
             </header>
         </div>
