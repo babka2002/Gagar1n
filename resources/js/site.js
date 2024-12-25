@@ -150,42 +150,42 @@ closeBtn.addEventListener("click", () => {
 });
 
 // Init ViewTransition
-document.addEventListener("click", (e) => {
-    const target = e.target.closest("a[href]");
-    if (target) {
-        e.preventDefault();
+// document.addEventListener("click", (e) => {
+//     const target = e.target.closest("a[href]");
+//     if (target) {
+//         e.preventDefault();
 
-        // Закрываем меню перед переходом
-        MobileMenu.close();
+//         // Закрываем меню перед переходом
+//         MobileMenu.close();
 
-        if (!document.startViewTransition) {
-            window.location = target.href;
-            return;
-        }
+//         if (!document.startViewTransition) {
+//             window.location = target.href;
+//             return;
+//         }
 
-        document.body.classList.add("fade-out");
+//         document.body.classList.add("fade-out");
 
-        document.startViewTransition(async () => {
-            try {
-                const response = await fetch(target.href);
-                const text = await response.text();
+//         document.startViewTransition(async () => {
+//             try {
+//                 const response = await fetch(target.href);
+//                 const text = await response.text();
 
-                document.body.innerHTML = text;
-                window.history.pushState({}, "", target.href);
-                window.scrollTo(0, 0);
+//                 document.body.innerHTML = text;
+//                 window.history.pushState({}, "", target.href);
+//                 window.scrollTo(0, 0);
 
-                document.body.classList.remove("fade-out");
-                document.body.classList.add("fade-in");
+//                 document.body.classList.remove("fade-out");
+//                 document.body.classList.add("fade-in");
 
-                // Переинициализируем меню на новой странице
-                MobileMenu.init();
-            } catch (error) {
-                console.error("Ошибка при переходе:", error);
-                window.location = target.href; // Fallback при ошибке
-            }
-        });
-    }
-});
+//                 // Переинициализируем меню на новой странице
+//                 MobileMenu.init();
+//             } catch (error) {
+//                 console.error("Ошибка при переходе:", error);
+//                 window.location = target.href; // Fallback при ошибке
+//             }
+//         });
+//     }
+// });
 
 // Добавляем анимацию при загрузке страницы
 document.addEventListener("DOMContentLoaded", () => {

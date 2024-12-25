@@ -38,7 +38,7 @@
                     <img src="<s:glide:data_url src='/assets/img/logo.png' quality='75' format='webp' />" alt="" class="max-w-[13.625em]">
                 </a>
 
-                <ul class="absolute top-[90%] left-[-20px] bg-light rounded-b-[1.875em] p-5  min-w-[17.9375em] menu-items z-9">
+                <ul class="absolute top-[90%] left-[-20px] bg-light rounded-b-[1.875em] p-5  min-w-[17.9375em] menu-items z-9 hidden">
                 <li>
                     <a href="/"
                     class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">ГЛАВНАЯ СТРАНИЦА</a>
