@@ -121,8 +121,12 @@
         <footer class="bg-light py-10 md:py-24 px-4">
             <div class="container sm:grid sm:grid-cols-4 md:grid-cols-5 items-center gap-12 bg-dark rounded-[clamp(3rem,2.3449rem+2.9116vw,4.8125rem)] px-[clamp(2.375rem,1.7877rem+2.6104vw,4rem)] py-10">
 
-            <a href="" class="sm:col-span-4 md:col-span-1 flex justify-center items-center"><img src="<s:glide src='/assets/img/footer-logo.svg' />"
-                alt="" class="max-w-full block"></a>
+            <a href="" class="sm:col-span-4 md:col-span-1 flex justify-center items-center">
+                <img
+                    src="<s:glide:data_url src='/assets/img/footer-logo.svg' quality='75' format='webp' />"
+                    alt=""
+                    class="max-w-full block">
+            </a>
 
             <ul class="col-span-2">
                 <li class="">
@@ -177,9 +181,16 @@
                 </li>
 
                 <li class="flex items-center justify-end mb-4">
-                <button class="hover:opacity-70 transition-all"><img src="<s:glide src='/assets/img/telegram_button_light.svg' />" alt=""
-                    class="max-w-[3.3125em]"></button>
-                <button class="hover:opacity-70 transition-all"><img src="<s:glide src='/assets/img/vk_button_light.svg' />" alt=""
+                <button class="hover:opacity-70 transition-all">
+                    <img
+                    src="<s:glide:data_url src='/assets/img/telegram_button_light.svg' quality='75' format='webp' />"
+                    alt=""
+                    class="max-w-[3.3125em]">
+                </button>
+                <button class="hover:opacity-70 transition-all">
+                    <img
+                    src="<s:glide:data_url src='/assets/img/vk_button_light.svg' quality='75' format='webp' />"
+                    alt=""
                     class="max-w-[3.3125em]"></button>
                 </li>
 
@@ -194,7 +205,11 @@
                 </li>
 
                 <li class="flex justify-end items-center gap-5">
-                <button class=""><img src="<s:glide src='/assets/img/yandex_button.svg' />" alt=""></button>
+                <button class="">
+                    <img
+                        src="<s:glide:data_url src='/assets/img/yandex_button.svg' quality='75' format='webp' />"
+                        alt="">
+                </button>
                 <p class="text-light [font-size:_clamp(0.5rem,0.3649rem+0.6757vw,0.9375rem)] font-normal">наш рейтинг <br>на
                     Яндекс</p>
                 <p class="[font-size:_clamp(1.3125rem,0.9457rem+1.834vw,2.5rem)] text-light font-normal">4,9</p>
