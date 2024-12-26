@@ -1,6 +1,12 @@
 // This is all you.
 
 // Initialize Swiper
+import Swiper from 'swiper/bundle';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 
 var swiper = new Swiper(".mySwiper", {
     slidesPerView: 1,
@@ -33,7 +39,7 @@ var swiper = new Swiper(".mySwiper", {
 });
 
 // TRAINER SLIDER
-var swiper = new Swiper(".mySwiper2", {
+var swiper2 = new Swiper(".mySwiper2", {
     slidesPerView: 1,
     spaceBetween: 16,
     centeredSlides: true,

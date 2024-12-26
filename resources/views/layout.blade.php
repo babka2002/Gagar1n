@@ -10,16 +10,12 @@
                 {{ title ?? site:name }}
             @endantlers
         </title>
-        {{-- @antlers
-        {{ vite src="resources/js/site.js|resources/css/site.css" }}
-        @endantlers --}}
         {{-- @vite([
             'vendor/mkocansey/bladewind/public/css/animate.min.css',
             'vendor/mkocansey/bladewind/public/css/bladewind-ui.min.css',
             'vendor/mkocansey/bladewind/public/js/helpers.js'
         ]) --}}
         @vite(['resources/css/site.css', 'resources/js/site.js'])
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     </head>
     <body class="bg-dark">
         <!-- START::HEADER -->
@@ -359,10 +355,5 @@
                 </div>
             </div>
         </dialog>
-
-        <!-- Swiper JS -->
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-        </script>
     </body>
 </html>
