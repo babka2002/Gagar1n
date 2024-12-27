@@ -5,6 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="view-transition" content="same-origin">
+        @antlers
+            {{ icon | favicon }}
+        @endantlers
         <title>
             @antlers
                 {{ title ?? site:name }}
@@ -107,7 +110,7 @@
                 class="flex items-center justify-center bg-main-red px-[10px] py-[19px] rounded-[30px] text-[20px] text-light hover:opacity-70 transition-all hidden lg:block">записаться</a>
                 <a href="#" class="flex items-center justify-center">
                     <img
-                    src="<s:glide:data_url src='/assets/img/phone' quality='75' format='webp' />"
+                    src="<s:glide:data_url src='/assets/img/phone.png' quality='75' format='webp' />"
                     alt=""
                     class="min-w-[52px] h-[52px] flex-1 lg:hidden">
                 </a>
@@ -120,6 +123,9 @@
             @antlers
             {{ template_content }}
             @endantlers
+            @yield('trainersContent')
+            @yield('trainerContent')
+            @yield('scheduleContent')
 
         <!-- START::FOOTER -->
         <footer class="bg-light py-10 md:py-24 px-4">
@@ -127,7 +133,8 @@
 
             <a href="" class="sm:col-span-4 md:col-span-1 flex justify-center items-center">
                 <img
-                    src="<s:glide:data_url src='/assets/img/footer-logo.svg' quality='75' format='webp' />"
+                    {{-- src="<s:glide:data_url src='/assets/img/footer-logo.svg' quality='75' format='webp' />" --}}
+                    src="/assets/img/footer-logo.svg"
                     alt=""
                     class="max-w-full block">
             </a>
@@ -187,13 +194,15 @@
                 <li class="flex items-center justify-end mb-4">
                 <button class="hover:opacity-70 transition-all">
                     <img
-                    src="<s:glide:data_url src='/assets/img/telegram_button_light.svg' quality='75' format='webp' />"
+                    {{-- src="<s:glide:data_url src='/assets/img/telegram_button_light.svg' quality='75' format='webp' />" --}}
+                    src="/assets/img/telegram_button_light.svg"
                     alt=""
                     class="max-w-[3.3125em]">
                 </button>
                 <button class="hover:opacity-70 transition-all">
                     <img
-                    src="<s:glide:data_url src='/assets/img/vk_button_light.svg' quality='75' format='webp' />"
+                    {{-- src="<s:glide:data_url src='/assets/img/vk_button_light.svg' quality='75' format='webp' />" --}}
+                    src="/assets/img/vk_button_light.svg"
                     alt=""
                     class="max-w-[3.3125em]"></button>
                 </li>
@@ -211,7 +220,8 @@
                 <li class="flex justify-end items-center gap-5">
                 <button class="">
                     <img
-                        src="<s:glide:data_url src='/assets/img/yandex_button.svg' quality='75' format='webp' />"
+                        {{-- src="<s:glide:data_url src='/assets/img/yandex_button.svg' quality='75' format='webp' />" --}}
+                        src="/assets/img/yandex_button.svg"
                         alt="">
                 </button>
                 <p class="text-light [font-size:_clamp(0.5rem,0.3649rem+0.6757vw,0.9375rem)] font-normal">наш рейтинг <br>на
