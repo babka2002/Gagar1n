@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\DTOs\EmployeeDTO;
 use App\DTOs\TrainerDTO;
 use App\Exceptions\ApiException;
 use Exception;
@@ -24,6 +25,46 @@ class TrainerService
         $this->apiKey = config('services.fitness.api_key');
         $this->userToken = config('services.fitness.user_token');
         $this->basicAuth = config('services.fitness.basic_auth');
+    }
+
+    public function getTrainerById(string $employeeId): EmployeeDTO
+    {
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json',
+            'apikey' => $this->apiKey,
+            'usertoken' => $this->userToken,
+            'Authorization' => "Basic {$this->basicAuth}"
+        ])->get(self::API_URL . "/employee", [
+            'employee_id' => $employeeId
+        ]);
+
+        if (!$response->successful()) {
+            throw new ApiException('Failed to fetch employee data', $response->status());
+        }
+
+        $data = $response->json('data', []);
+
+        // Проверяем, есть ли фото у тренера
+        if (!empty($data['photo'])) {
+
+            // Проверяем, существует ли изображение в хранилище
+            $imageName = basename($data['photo']);
+            $path = 'trainers/' . $imageName;
+            if (Storage::disk('public')->exists($path)) {
+                // Если изображение существует, используем его
+                $data['localPhotoPath'] = Storage::disk('public')->url($path);
+
+            } else {
+                // Если изображения нет, загружаем его
+                $trainerDTO = EmployeeDTO::fromArray($data);
+                $data['localPhotoPath'] = $this->downloadImage($trainerDTO);
+            }
+        } else {
+            // Если фото нет, загружаем его
+            $trainerDTO = EmployeeDTO::fromArray($data);
+            $data['localPhotoPath'] = $this->downloadImage($trainerDTO);
+        }
+        return EmployeeDTO::fromArray($data);
     }
 
     public function getTrainers(string $clubId): array

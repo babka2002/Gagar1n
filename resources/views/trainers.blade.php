@@ -34,7 +34,7 @@
                                             <div class="bg-neutral-800 relative overflow-hidden h-[392px] max-h-[392px]">
                                                 {{-- <img src="{{ $trainer->photo }}" alt="{{ $trainer->name }} {{ $trainer->last_name }}" class="hover:scale-105 transition-all" /> --}}
                                                 <img src="{{ $trainer->localPhotoPath }}" alt="{{ $trainer->name }} {{ $trainer->second_name }} {{ $trainer->last_name }}" class="hover:scale-105 transition-all" />
-                                                <a href="#" class="rounded-full bg-light p-4 absolute right-4 bottom-4 flex items-center justify-center hover:scale-110 transition-all">
+                                                <a href="{{ route('trainers.show', ['employeeId' => $trainer->id]) }}" class="rounded-full bg-light p-4 absolute right-4 bottom-4 flex items-center justify-center hover:scale-110 transition-all">
                                                     <svg class="w-4 h-4" viewBox="0 0 30 52" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M23.4258 22.5555C21.4889 22.5555 19.9188 24.1256 19.9188 26.0625C19.9188 27.9994 21.4889 29.5695 23.4258 29.5695V22.5555ZM28.2989 28.5423C29.6685 27.1728 29.6685 24.9522 28.2989 23.5827L5.98041 1.26419C4.61084 -0.105382 2.39032 -0.105382 1.02075 1.26419C-0.348826 2.63376 -0.348826 4.85428 1.02075 6.22385L20.8594 26.0625L1.02075 45.9011C-0.348826 47.2707 -0.348826 49.4912 1.02075 50.8608C2.39032 52.2304 4.61084 52.2304 5.98041 50.8608L28.2989 28.5423ZM23.4258 29.5695H25.8191V22.5555H23.4258V29.5695Z" fill="#4F4E4E" />
                                                     </svg>

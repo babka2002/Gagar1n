@@ -8,7 +8,8 @@ use App\Http\Controllers\TrainerController;
 //    'title' => 'Example'
 // ]);
 
-$router->get('/trainers', [TrainerController::class, 'showTrainers']);
+$router->get('/trainers', [TrainerController::class, 'showTrainers'])->name('trainers.list');
+$router->get('/trainers/{employeeId}', [TrainerController::class, 'showTrainer'])->name('trainers.show');
 // Route::statamic('trainers', 'trainers', [
 //     'title' => 'Список тренеров',
 //     'description' => 'Здесь вы можете найти всех наших тренеров.'
