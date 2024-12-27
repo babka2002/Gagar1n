@@ -121,6 +121,7 @@
             @endantlers
             @yield('trainersContent')
             @yield('trainerContent')
+            @yield('scheduleContent')
 
         <!-- START::FOOTER -->
         <footer class="bg-light py-10 md:py-24 px-4">
