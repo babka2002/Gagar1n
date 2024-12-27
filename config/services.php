@@ -34,5 +34,10 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+    'fitness' => [
+        'api_key' => env('FITNESS_API_KEY'),
+        'user_token' => env('FITNESS_USER_TOKEN'),
+        'basic_auth' => env('FITNESS_BASIC_AUTH'),
+    ]
 
 ];
