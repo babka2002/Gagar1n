@@ -93,7 +93,7 @@ class TrainerService
         });
     }
 
-    private function downloadImage(TrainerDTO $trainer): string
+    private function downloadImage($trainer): string
     {
         $url = $trainer->photo;
         if (empty($url)) {
