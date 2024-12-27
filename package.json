@@ -19,6 +19,7 @@
   ],
   "type": "module",
   "dependencies": {
+    "aos": "^2.3.4",
     "swiper": "^11.1.15"
   }
 }

@@ -24,10 +24,15 @@
     /* outline: 1px solid mediumseagreen; */
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 html,
 body {
     /* font-family: 'Gothic No60'; */
     color: #1e1e1e;
+    text-wrap: balance;
 }
 
 .container {
@@ -425,4 +430,18 @@ summary::-webkit-details-marker {
 
 .mySwiper2 .swiper-slide img {
     height: auto;
+}
+
+section {
+    animation: fadesection linear;
+}
+
+@keyframes fadesection {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
