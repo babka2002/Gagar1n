@@ -3,6 +3,7 @@
     <section class="bg-dark pt-sectionPadding px-4">
         <div class="container text-light relative">
             <h1
+            data-aos="zoom-in"
                 class="text-light text-xl md:text-xxl leading-tight uppercase xl:absolute xl:max-w-[58%] right-0 -top-6 z-9 xl:text-right text-center">
                 каждый тренер в нашей команде уникален
                 xl <span class="text-xl md:text-xxl block">НАЙДИ СВОЕГО</span>
@@ -122,11 +123,11 @@
     <section class="py-sectionPadding px-4 bg-light">
         <div class="container">
             <div class="">
-                <h2 class="text-dark text-xl md:text-xxxl uppercase leading-tight mb-6">
+                <h2 class="text-dark text-xl md:text-xxxl uppercase leading-tight mb-6" data-aos="zoom-in">
                     не знаешь как начать?
                 </h2>
 
-                <div class="rounded-brxl bg-dark text-light p-[clamp(1rem,0.4127rem+2.6104vw,2.625rem)]">
+                <div class="rounded-brxl bg-dark text-light p-[clamp(1rem,0.4127rem+2.6104vw,2.625rem)]"  data-aos="zoom-in">
                     <div class="max-h-[409px] object-center object-cover overflow-hidden rounded-brxl mb-6">
                         <img
                             {{-- src="{{ glide:data_url src='/assets/img/trainer-hero.jpg' quality='75' format='webp' }}" --}}
@@ -154,7 +155,7 @@
 
             <div class="grid grid-cols-4 gap-4 my-5 lg:my-14">
                 <div
-                    class="col-span-3 text-light bg-main-red rounded-brxl p-[clamp(1rem,0.4127rem+2.6104vw,2.625rem)] grid grid-cols-1 lg:gap-9 lg:grid-cols-3 items-center">
+                    class="col-span-3 text-light bg-main-red rounded-brxl p-[clamp(1rem,0.4127rem+2.6104vw,2.625rem)] grid grid-cols-1 lg:gap-9 lg:grid-cols-3 items-center" data-aos="fade-right">
                     <div class="col-span-2 mb-5 lg:mb-0">
                         <h3 class="text-base md:text-lg leading-tight uppercase mb-5">
                             хочешь стать тренером?
@@ -173,7 +174,7 @@
                             alt="" />
                     </div>
                 </div>
-                <a href=""
+                <a href="" data-aos="fade-left"
                     class="bg-dark rounded-brxl text-light flex items-center justify-center transition-all hover:scale-105">
                     <svg class="h-[clamp(3rem,0.9217rem+9.2369vw,8.75rem)] fill-[#fff8f8]" viewBox="0 0 80 140" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -190,11 +191,11 @@
     <section class="bg-dark">
         <div class="container grid grid-cols-1 items-center px-4 lg:grid-cols-3 gap-y-5 lg:gap-24 py-sectionPadding">
             <div class="col-span-2">
-                <h3 class="text-xl md:text-xxl leading-none uppercase mb-7 text-light max-w-full md:max-w-[60%]">
+                <h3 class="text-xl md:text-xxl leading-none uppercase mb-7 text-light max-w-full md:max-w-[60%]" data-aos="zoom-in">
                     ТВОЙ ТРЕНЕР УЖЕ ЖДЕТ!
                 </h3>
 
-                <form id="contact-form" action="" method="get" class="flex flex-col gap-5">
+                <form id="contact-form" action="" method="get" class="flex flex-col gap-5" data-aos="zoom-in" data-aos-delay="1000">
                     <div>
                         <input type="text" placeholder="ИМЯ"
                             class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-light rounded-brxl focus:outline-none focus:ring-2 focus:ring-red-600"
@@ -215,7 +216,7 @@
                     </p>
                 </form>
             </div>
-            <div class="col-span-1">
+            <div class="col-span-1" data-aos="zoom-in">
                 <img
                     {{-- src="{{ glide:data_url src='/assets/img/pool-contact.png' quality='75' format='webp' }}" --}}
                     src="<s:glide:data_url src='/assets/img/pool-contact.png' quality='75' format='webp' />"
