@@ -19,8 +19,8 @@
             'vendor/mkocansey/bladewind/public/js/helpers.js'
         ]) --}}
 
-        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        {{-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> --}}
 
         @vite(['resources/css/site.css', 'resources/js/site.js'])
     </head>
