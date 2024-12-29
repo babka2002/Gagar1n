@@ -4,6 +4,8 @@ tabs:
     display: Main
     sections:
       -
+        display: Hero
+        instructions: hero
         fields:
           -
             handle: title
@@ -13,30 +15,151 @@ tabs:
               validate:
                 - required
           -
-            handle: content
+            handle: hero_title
             field:
-              type: markdown
-              display: Content
-              localizable: true
+              type: text
+              validate:
+                - required
+              display: 'Hero Title'
           -
-            handle: code_field
+            handle: hero_desc_group
             field:
-              type: code
-              display: 'Code Field'
+              type: group
+              display: 'Hero Desc Group'
+              fields:
+                -
+                  handle: pole_text_1
+                  field:
+                    type: text
+                    display: 'Поле Text 1'
+                -
+                  handle: pole_text_discont
+                  field:
+                    type: text
+                    display: 'Поле Text Discont'
+                -
+                  handle: pole_text_2
+                  field:
+                    type: text
+                    display: 'Поле Text 2'
+                -
+                  handle: pole_text_3
+                  field:
+                    type: text
+                    display: 'Поле Text 3'
           -
-            handle: author
+            handle: hero_1
             field:
-              type: users
-              display: Author
-              default: current
-              localizable: true
-              max_items: 1
+              container: assets
+              type: assets
+              display: 'Hero 1'
+              max_files: 1
+              min_files: 1
+          -
+            handle: hero_2
+            field:
+              container: assets
+              type: assets
+              display: 'Hero 2'
+              max_files: 1
+              min_files: 1
           -
             handle: template
             field:
               type: template
               display: Template
               localizable: true
+      -
+        display: Direction
+        instructions: direction
+        fields:
+          -
+            handle: direction_title
+            field:
+              type: text
+              display: 'Direction Title'
+          -
+            handle: direction_replicator
+            field:
+              type: replicator
+              display: 'DIRECTION Replicator'
+              sets:
+                novaya_gruppa_naborov:
+                  display: 'Новая группа наборов'
+                  sets:
+                    direction:
+                      display: Direction
+                      fields:
+                        -
+                          handle: inversion
+                          field:
+                            type: toggle
+                            display: Inversion
+                        -
+                          handle: direction_title
+                          field:
+                            type: text
+                            display: 'DIRECTION Title'
+                        -
+                          handle: direction_image
+                          field:
+                            max_files: 1
+                            min_files: 1
+                            container: assets
+                            type: assets
+                            display: 'DIRECTION image'
+          -
+            handle: template_2
+            field:
+              type: template
+              display: Template
+      -
+        display: ABONIMENT
+        instructions: ABONIMENT
+        fields:
+          -
+            handle: aboniment_title
+            field:
+              type: text
+              display: 'ABONIMENT Title'
+          -
+            handle: aboniment_type
+            field:
+              type: replicator
+              display: 'ABONIMENT Type'
+              sets:
+                novaya_gruppa_naborov:
+                  display: 'Новая группа наборов'
+                  sets:
+                    novyy_nabor:
+                      display: 'Новый набор'
+                      fields:
+                        -
+                          handle: aboniment_image_front
+                          field:
+                            max_files: 1
+                            min_files: 1
+                            container: assets
+                            type: assets
+                            display: 'ABONIMENT image front'
+                        -
+                          handle: aboniment_image_rear
+                          field:
+                            max_files: 1
+                            min_files: 1
+                            container: assets
+                            type: assets
+                            display: 'ABONIMENT image rear'
+                        -
+                          handle: aboniment_link
+                          field:
+                            collections:
+                              - pages
+                            type: link
+                            display: 'Aboniment link'
+      -
+        display: FORM
+        instructions: FORM
   sidebar:
     display: Sidebar
     sections:

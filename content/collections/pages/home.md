@@ -58,5 +58,105 @@ code_field:
   mode: htmlmixed
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1734984343
+updated_at: 1735485049
+hero_title: 'Тренируйся с g1'
+pole_markdown: |-
+  получи выгоду 
+  на годовой абонемент до
+hero_discount: 30%
+hero_1: img/hero1.jpg
+hero_2: img/hero2.jpg
+hero_desc_group:
+  pole_text_1: 'получи выгоду до'
+  pole_text_discont: 30%
+  pole_text_2: годовой
+  pole_text_3: абонемент
+direction_title: 'ВЫБЕРИ НАПРАВЛЕНИЕ СЕБЕ ПО ДУШЕ'
+direction_replicator:
+  -
+    id: m59op92h
+    direction_title: 'Индивидуальные <br />занятия'
+    direction_image: img/direction-1.jpg
+    type: direction
+    enabled: true
+    inversion: false
+  -
+    id: m59otj1t
+    inversion: true
+    direction_title: 'Теренажерный зал'
+    direction_image: img/direction-2.jpg
+    type: direction
+    enabled: true
+  -
+    id: m59ou41s
+    inversion: false
+    direction_title: Фитнес
+    direction_image: img/direction-3.jpg
+    type: direction
+    enabled: true
+  -
+    id: m59ouhwp
+    inversion: true
+    direction_title: Бассейн
+    direction_image: img/direction-5.jpg
+    type: direction
+    enabled: true
+  -
+    id: m59ov5fd
+    inversion: false
+    direction_title: 'Сайкл студия'
+    direction_image: img/direction-6.jpg
+    type: direction
+    enabled: true
+  -
+    id: m59piemo
+    inversion: true
+    direction_title: Кроссфит
+    direction_image: img/direction-4.jpg
+    type: direction
+    enabled: true
+aboniment_title: 'один абонемент - безграничные возможности'
+aboniment_type:
+  -
+    id: m59ptf5i
+    aboniment_image_front: img/cards/beisik-1.png
+    aboniment_image_rear: img/cards/beisik-2.png
+    type: novyy_nabor
+    enabled: true
+    aboniment_link: '#'
+  -
+    id: m59pycmp
+    aboniment_image_front: img/cards/day-1.png
+    aboniment_image_rear: img/cards/day-2.png
+    type: novyy_nabor
+    enabled: true
+    aboniment_link: '#'
+  -
+    id: m59q5q8j
+    aboniment_image_front: img/cards/biznes-1.png
+    aboniment_image_rear: img/cards/biznes-2.png
+    type: novyy_nabor
+    enabled: true
+    aboniment_link: '#'
+  -
+    id: m59q6d6p
+    aboniment_image_front: img/cards/daimond-1.png
+    aboniment_image_rear: img/cards/daimond-2.png
+    type: novyy_nabor
+    enabled: true
+    aboniment_link: '#'
+  -
+    id: m59q71us
+    aboniment_image_front: img/cards/polden-1.png
+    aboniment_image_rear: img/cards/polden-2.png
+    type: novyy_nabor
+    enabled: true
+    aboniment_link: '#'
+  -
+    id: m59q7k1u
+    aboniment_image_front: img/cards/studentam-1.png
+    aboniment_image_rear: img/cards/studentam-2.png
+    type: novyy_nabor
+    enabled: true
+    aboniment_link: '#'
 ---

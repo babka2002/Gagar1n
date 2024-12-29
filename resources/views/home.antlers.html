@@ -5,21 +5,23 @@
             <h1
                 class="uppercase text-light md:mb-5 md:mt-14 text-[clamp(2.3125rem,1.567rem+3.3133vw,4.375rem)]"
             >
-                тренируйся с g1
+                {{ hero_title }}
             </h1>
+            {{ hero_desc_group }}
             <p
                 class="text-light mb-14 text-[clamp(1.4375rem,1.1212rem+1.4056vw,2.3125rem)]"
             >
-                получи выгоду до
+                {{ pole_text_1 }}
                 <span class="motion-preset-seesaw inline-block bg-main-red px-2 py-1 rounded-xl text-dark"
-                    >30%</span
+                    >{{ pole_text_discont }}</span
                 >
                 <br />на
                 <span class="border-dashed border-main-red border-b-[4px]"
-                    >годовой</span
+                    >{{ pole_text_2 }}</span
                 >
-                абонемент
+                {{ pole_text_3 }}
             </p>
+            {{ /hero_desc_group }}
             <a
                 href="#"
                 class="flex items-center justify-center bg-light rounded-[clamp(1.125rem,0.8539rem+1.2048vw,1.875rem)] px-4 py-[clamp(0.375rem,0.262rem+0.502vw,0.6875rem)] text-main-red uppercase text-[clamp(1.5rem,1.1386rem+1.6064vw,2.5rem)] hover:opacity-70 transition-all"
@@ -29,7 +31,7 @@
             <div
                 class="h-[284px] mt-[34px] bg-neutral-800 rounded-[46px] overflow-hidden hidden md:block"
             >
-                <img src="{{ glide:data_url src="/assets/img/hero1.jpg"
+                <img src="{{ glide:data_url src="{{ hero_1 }}"
                 quality="75" format="webp" }}" alt="" class="rounded-[46px]
                 object-cover object-center" />
             </div>
@@ -38,7 +40,7 @@
             class="flex items-center justify-center bg-neutral-800 rounded-[20px] overflow-hidden h-[300px] md:h-auto col-span-2 order-1 md:order-2 md:col-span-1 md:max-h-[75Hks|<GwQ:C\=iw@]0px]"
         >
             <img
-                src="{{ glide:data_url src="/assets/img/hero2.jpg" quality="75" format="webp" }}"
+                src="{{ glide:data_url src="{{  hero_2 }}" quality="75" format="webp" }}"
                 alt=""
                 class="object-cover object-top w-full h-full" />
         </div>
@@ -53,98 +55,47 @@
             data-aos="zoom-in"
             class="text-lg md:text-xxl flex justify-center items-center font-normal px-4 lg:px-0 text-black mb-6 leading-[1]"
         >
-            ВЫБЕРИ НАПРАВЛЕНИЕ СЕБЕ ПО ДУШЕ
+            {{ direction_title }}
         </h2>
         <div
             class="bg-dark rounded-[74px] px-[45px] py-[40px] md:grid-cols-3 gap-5 hidden md:grid"
         >
-            <a
-                href="#"
-                data-aos="zoom-in-up"
-                class="rounded-[46px] bg-light flex flex-col transition-all hover:opacity-70"
-            >
-                <img
-                    src="{{ glide:data_url src="/assets/img/direction-1.jpg" quality="75" format="webp" }}"
-                    alt=""
-                    class="object-cover object-center rounded-[30px] h-[196px] w-full" />
-                <p
-                    class="text-center text-base font-normal flex-1 flex items-center justify-center my-2"
-                >
-                    Индивидуальные <br />
-                    занятия
-                </p>
-            </a>
-            <a
-                href="#"
-                data-aos="zoom-in-down"
-                class="rounded-[46px] bg-light flex flex-col transition-all hover:opacity-70"
-            >
-                <p
-                    class="text-center text-base font-normal flex-1 flex items-center justify-center my-2"
-                >
-                    Теренажерный зал
-                </p>
-                <img src="{{ glide:data_url src="/assets/img/direction-2.jpg"
-                quality="75" format="webp" }}" alt="" class="object-cover
-                object-center rounded-[30px] h-[196px] w-full" />
-            </a>
-            <a
-                href="#"
-                data-aos="zoom-in-up"
-                class="rounded-[46px] bg-light flex flex-col transition-all hover:opacity-70"
-            >
-                <img src="{{ glide:data_url src="/assets/img/direction-3.jpg"
-                quality="75" format="webp" }}" alt="" class="object-cover
-                object-center rounded-[30px] h-[196px] w-full" />
-                <p
-                    class="text-center text-base font-normal flex-1 flex items-center justify-center my-2"
-                >
-                    Фитнес
-                </p>
-            </a>
+            {{ direction_replicator }}
+                {{ if inversion }}
+                    <a
+                        href="#"
+                        data-aos="zoom-in-down"
+                        class="rounded-[46px] bg-light flex flex-col transition-all hover:opacity-70"
+                    >
+                        <p
+                            class="text-center text-base font-normal flex-1 flex items-center justify-center my-2"
+                        >
+                            {{ direction_title }}
+                        </p>
+                        <img src="{{ glide:data_url src="{{ direction_image }}"
+                        quality="75" format="webp" }}" alt="" class="object-cover
+                        object-center rounded-[30px] h-[196px] w-full" />
+                    </a>
+                {{ else }}
+                    <a
+                        href="#"
+                        data-aos="zoom-in-up"
+                        class="rounded-[46px] bg-light flex flex-col transition-all hover:opacity-70"
+                    >
+                        <img
+                            src="{{ glide:data_url src="{{ direction_image }}" quality="75" format="webp" }}"
+                            alt=""
+                            class="object-cover object-center rounded-[30px] h-[196px] w-full" />
+                        <p
+                            class="text-center text-base font-normal flex-1 flex items-center justify-center my-2"
+                        >
+                            {{ direction_title }}
+                        </p>
+                    </a>
 
-            <a
-                href=""
-                data-aos="zoom-in-down"
-                class="rounded-[46px] bg-light flex flex-col transition-all hover:opacity-70"
-            >
-                <img src="{{ glide:data_url src="/assets/img/direction-4.jpg"
-                quality="75" format="webp" }}" alt="" class="object-cover
-                object-top rounded-[30px] h-[196px] w-full" />
-                <p
-                    class="text-center text-base font-normal flex-1 flex items-center justify-center my-2"
-                >
-                    Кроссфит
-                </p>
-            </a>
-            <a
-                href="#"
-                data-aos="zoom-in-up"
-                class="rounded-[46px] bg-light flex flex-col transition-all hover:opacity-70"
-            >
-                <p
-                    class="text-center text-base font-normal flex-1 flex items-center justify-center my-2"
-                >
-                    Бассейн
-                </p>
-                <img src="{{ glide:data_url src="/assets/img/direction-5.jpg"
-                quality="75" format="webp" }}" alt="" class="object-cover
-                object-center rounded-[30px] h-[196px] w-full" />
-            </a>
-            <a
-                href="#"
-                data-aos="zoom-in-down"
-                class="rounded-[46px] bg-light flex flex-col gap-3 transition-all hover:opacity-70"
-            >
-                <img src="{{ glide:data_url src="/assets/img/direction-6.jpg"
-                quality="75" format="webp" }}" alt="" class="object-cover
-                object-center rounded-[30px] h-[196px] w-full" />
-                <p
-                    class="text-center text-base font-normal flex-1 flex items-center justify-center my-2"
-                >
-                    Сайкл студия
-                </p>
-            </a>
+                {{ /if }}
+            {{ /direction_replicator }}
+
         </div>
 
         <div
@@ -522,7 +473,7 @@
             class="container uppercase text-light px-4 text-center md:text-left"
         >
             <h3 class="text-md md:text-xl" data-aos="zoom-in">
-                один абонемент - безграничные возможности
+                {{ aboniment_title }}
             </h3>
         </div>
 
@@ -531,66 +482,18 @@
         <div class="mx-4 lg:mx-0 my-8" data-aos="zoom-in">
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
+                    {{ aboniment_type }}
                     <div class="swiper-slide">
-                        <a href="#" class="flip_card">
+                        <a href="{{  aboniment_link }}" class="flip_card">
                             <img src="{{ glide:data_url
-                            src="/assets/img/cards/beisik-1.png" quality="75"
+                            src="{{ aboniment_image_front }}" quality="75"
                             format="webp" }}" alt="" class="fron" /> <img
                             src="{{ glide:data_url
-                            src="/assets/img/cards/beisik-2.png" quality="75"
+                            src="{{ aboniment_image_rear }}" quality="75"
                             format="webp" }}" alt="" class="back" />
                         </a>
                     </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="flip_card">
-                            <img src="{{ glide:data_url
-                            src="/assets/img/cards/day-1.png" quality="75"
-                            format="webp" }}" alt="" class="fron" /> <img
-                            src="{{ glide:data_url
-                            src="/assets/img/cards/day-2.png" quality="75"
-                            format="webp" }}" alt="" class="back" />
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="flip_card">
-                            <img src="{{ glide:data_url
-                            src="/assets/img/cards/biznes-1.png" quality="75"
-                            format="webp" }}" alt="" class="fron" /> <img
-                            src="{{ glide:data_url
-                            src="/assets/img/cards/biznes-2.png" quality="75"
-                            format="webp" }}" alt="" class="back" />
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="flip_card">
-                            <img src="{{ glide:data_url
-                            src="/assets/img/cards/daimond-1.png" quality="75"
-                            format="webp" }}" alt="" class="fron" /> <img
-                            src="{{ glide:data_url
-                            src="/assets/img/cards/daimond-2.png" quality="75"
-                            format="webp" }}" alt="" class="back" />
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="flip_card">
-                            <img src="{{ glide:data_url
-                            src="/assets/img/cards/polden-1.png" quality="75"
-                            format="webp" }}" alt="" class="fron" /> <img
-                            src="{{ glide:data_url
-                            src="/assets/img/cards/polden-2.png" quality="75"
-                            format="webp" }}" alt="" class="back" />
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="flip_card">
-                            <img src="{{ glide:data_url
-                            src="/assets/img/cards/studentam-1.png" quality="75"
-                            format="webp" }}" alt="" class="fron" /> <img
-                            src="{{ glide:data_url
-                            src="/assets/img/cards/studentam-2.png" quality="75"
-                            format="webp" }}" alt="" class="back" />
-                        </a>
-                    </div>
+                    {{ /aboniment_type }}
 
                     <!-- <div class="swiper-pagination"></div> -->
                 </div>
