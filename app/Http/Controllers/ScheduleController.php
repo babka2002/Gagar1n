@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\ScheduleService;
 use Illuminate\Http\Request;
 use Statamic\View\View;
+use Illuminate\Support\Str;
 
 class ScheduleController extends Controller
 {
@@ -40,18 +41,27 @@ class ScheduleController extends Controller
 
         // Применяем фильтры
         $filteredData = $this->applyFilters($scheduleData, $request);
-// dd(count($filteredData), $request->all());
+        // dd(count($filteredData), $request->all());
         // Подготовка данных для отображения
-        $timeSlots = ['07:00', '08:00', '09:00']; // Пример временных слотов
+        // $timeSlots = ['07:00', '08:00', '09:00'];
+        $timeSlots = ['07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'];
+        // $timeSlots = [];
+        // for ($hour = 7; $hour <= 18; $hour++) { // Рабочий день с 07:00 до 18:00
+        //     $timeSlots[] = sprintf('%02d:00', $hour);
+        // }
         $daysOfWeek = $this->prepareDaysOfWeek($filteredData);
-// dd(count($daysOfWeek));
+        $currentDay = \Carbon\Carbon::now()->locale('ru')->isoFormat('dddd');
+        // dd(count($daysOfWeek));
         // Передаем данные в шаблон
+        // dd($timeSlots, $daysOfWeek, $filteredData);
         return (new View)
             ->template('schedule')
             ->layout('layout')
             ->with([
                 'timeSlots' => $timeSlots,
                 'daysOfWeek' => $daysOfWeek,
+                'filteredData' => $filteredData,
+                'currentDay' => $currentDay,
             ]);
     }
 
@@ -84,9 +94,9 @@ class ScheduleController extends Controller
         if ($request->has('age_category') && !empty($request->input('age_category'))) {
             $filteredData = array_filter($filteredData, function ($item) use ($request) {
                 $isKids = str_contains(strtoupper($item['service']['title']), 'KIDS') ||
-                        str_contains(strtoupper($item['room']['title']), 'KIDS');
+                    str_contains(strtoupper($item['room']['title']), 'KIDS');
 
-                switch($request->input('age_category')) {
+                switch ($request->input('age_category')) {
                     case 'kids':
                         return $isKids;
                     case 'adults':
@@ -100,7 +110,7 @@ class ScheduleController extends Controller
         // Фильтр по стоимости
         if ($request->has('cost_type') && !empty($request->input('cost_type'))) {
             $filteredData = array_filter($filteredData, function ($item) use ($request) {
-                switch($request->input('cost_type')) {
+                switch ($request->input('cost_type')) {
                     case 'paid':
                         return $item['commercial'] === true;
                     case 'free':
@@ -143,12 +153,10 @@ class ScheduleController extends Controller
     {
         $daysOfWeek = [];
 
-        // Группируем занятия по дням
         foreach ($scheduleData as $item) {
             $date = \Carbon\Carbon::parse($item['start_date'])->format('Y-m-d');
             $dayName = \Carbon\Carbon::parse($item['start_date'])->translatedFormat('l');
 
-            // Если день еще не добавлен, создаем новый элемент
             if (!isset($daysOfWeek[$date])) {
                 $daysOfWeek[$date] = [
                     'date' => \Carbon\Carbon::parse($item['start_date'])->format('d'),
@@ -157,11 +165,13 @@ class ScheduleController extends Controller
                 ];
             }
 
-            // Добавляем занятие в соответствующий день
+            // Добавляем форматированное время
+            $item['start_time'] = \Carbon\Carbon::parse($item['start_date'])->format('H:i');
+            $item['end_time'] = \Carbon\Carbon::parse($item['end_date'])->format('H:i');
+
             $daysOfWeek[$date]['schedule'][] = $item;
         }
 
-        // Преобразуем массив дней в индексированный массив
         return array_values($daysOfWeek);
     }
 }
