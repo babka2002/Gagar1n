@@ -282,8 +282,8 @@
         </div>
     </section>
 
-    <section class="schedule-data">
-        <div class="container rounded-brxl bg-light grid grid-cols-8 py-6">
+    <section class="schedule-data mb-5">
+        <div class="container rounded-brxl bg-light grid-cols-8 py-6 hidden md:grid">
             <div class="border-r-dark border-dashed border-r-[2px] py-[141px]">
                 @foreach($timeSlots as $timeSlot)
                     <div class="text-sm lg:text-lg text-center bg-gradient-to-b from-main-red/25 rounded-t-brxl py-4 min-h-40">
@@ -320,109 +320,110 @@
                 </div>
             @endforeach
         </div>
+
+        <!-- SHEDULE MOBILE VIEW -->
+        <div class="grid grid-cols-8 rounded-brxl p-4 bg-light gap-2  md:hidden">
+            <div class="col-span-8">
+                <ul class="flex justify-between items-center space-x-1">
+                    <li class="flex flex-col items-center justify-center rounded-lg bg-main-red px-2 text-light">
+                        <span class="text-base">21</span>
+                        <span class="text-sm">Пн</span>
+                    </li>
+                    <li
+                        class="flex flex-col items-center justify-center rounded-lg transition-all hover:bg-main-red px-2 hover:text-light">
+                        <span class="text-base">22</span>
+                        <span class="text-sm">Вт</span>
+                    </li>
+                    <li
+                        class="flex flex-col items-center justify-center rounded-lg transition-all hover:bg-main-red px-2 hover:text-light">
+                        <span class="text-base">23</span>
+                        <span class="text-sm">Ср</span>
+                    </li>
+                    <li
+                        class="flex flex-col items-center justify-center rounded-lg transition-all hover:bg-main-red px-2 hover:text-light">
+                        <span class="text-base">24</span>
+                        <span class="text-sm">Чт</span>
+                    </li>
+                    <li
+                        class="flex flex-col items-center justify-center rounded-lg transition-all hover:bg-main-red px-2 hover:text-light">
+                        <span class="text-base">25</span>
+                        <span class="text-sm">Пт</span>
+                    </li>
+                    <li
+                        class="flex flex-col items-center justify-center rounded-lg transition-all hover:bg-main-red px-2 hover:text-light">
+                        <span class="text-base">26</span>
+                        <span class="text-sm">Сб</span>
+                    </li>
+                    <li
+                        class="flex flex-col items-center justify-center rounded-lg transition-all hover:bg-main-red px-2 hover:text-light">
+                        <span class="text-base">27</span>
+                        <span class="text-sm">Вс</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-span-8">
+                <div class="bg-main-red/45 px-4 py-2 rounded-xl text-center text-base">ПОНЕДЕЛЬНИК</div>
+            </div>
+            <div class="col-span-2 flex h-full gap-0">
+                <div class="bg-gradient-to-b rounded-lg from-main-red/25 text-sm text-center p-1 w-full">07:00</div>
+            </div>
+            <div class="col-span-6">
+                <div class="grid grid-cols-8 gap-1 mb-2 bg-main-red/10 rounded-md">
+                    <div class="col-span-5 rounded-md overflow-hidden  border-l-[10px] px-1 border-main-red">
+                        <h5 class="text-base">PILATES</h5>
+                        <p class="text-sm">11:00-11:55</p>
+                        <p class="text-sm">фахрутдинова рузана</p>
+                    </div>
+                    <div class="col-span-3 flex gap-0 justify-end items-baseline text-sm p-1">
+                        ЗАЛ №2
+                        <svg class="h-[18px]" viewBox="-3 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="Dribbble-Light-Preview" transform="translate(-223.000000, -5399.000000)"
+                                    fill="#000000">
+                                    <g id="icons" transform="translate(56.000000, 160.000000)">
+                                        <path
+                                            d="M174,5248.219 C172.895,5248.219 172,5247.324 172,5246.219 C172,5245.114 172.895,5244.219 174,5244.219 C175.105,5244.219 176,5245.114 176,5246.219 C176,5247.324 175.105,5248.219 174,5248.219 M174,5239 C170.134,5239 167,5242.134 167,5246 C167,5249.866 174,5259 174,5259 C174,5259 181,5249.866 181,5246 C181,5242.134 177.866,5239 174,5239"
+                                            id="pin_fill_sharp_circle-[#634]">
+
+                                        </path>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="grid grid-cols-8 gap-1 mb-2 bg-main-red/10 rounded-md">
+                    <div class="col-span-5 rounded-md overflow-hidden  border-l-[10px] px-1 border-main-red">
+                        <h5 class="text-base">PILATES</h5>
+                        <p class="text-sm">11:00-11:55</p>
+                        <p class="text-sm">фахрутдинова рузана</p>
+                    </div>
+                    <div class="col-span-3 flex gap-0 justify-end items-baseline text-sm p-1">
+                        ЗАЛ №2
+                        <svg class="h-[18px]" viewBox="-3 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="Dribbble-Light-Preview" transform="translate(-223.000000, -5399.000000)"
+                                    fill="#000000">
+                                    <g id="icons" transform="translate(56.000000, 160.000000)">
+                                        <path
+                                            d="M174,5248.219 C172.895,5248.219 172,5247.324 172,5246.219 C172,5245.114 172.895,5244.219 174,5244.219 C175.105,5244.219 176,5245.114 176,5246.219 C176,5247.324 175.105,5248.219 174,5248.219 M174,5239 C170.134,5239 167,5242.134 167,5246 C167,5249.866 174,5259 174,5259 C174,5259 181,5249.866 181,5246 C181,5242.134 177.866,5239 174,5239"
+                                            id="pin_fill_sharp_circle-[#634]">
+
+                                        </path>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
 
-<!-- SHEDULE MOBILE VIEW -->
 
-    <div class="grid grid-cols-8 rounded-brxl p-4 bg-light gap-2">
-        <div class="col-span-8">
-            <ul class="flex justify-between items-center space-x-1">
-                <li class="flex flex-col items-center justify-center rounded-lg bg-main-red px-2 text-light">
-                    <span class="text-base">21</span>
-                    <span class="text-sm">Пн</span>
-                </li>
-                <li
-                    class="flex flex-col items-center justify-center rounded-lg transition-all hover:bg-main-red px-2 hover:text-light">
-                    <span class="text-base">22</span>
-                    <span class="text-sm">Вт</span>
-                </li>
-                <li
-                    class="flex flex-col items-center justify-center rounded-lg transition-all hover:bg-main-red px-2 hover:text-light">
-                    <span class="text-base">23</span>
-                    <span class="text-sm">Ср</span>
-                </li>
-                <li
-                    class="flex flex-col items-center justify-center rounded-lg transition-all hover:bg-main-red px-2 hover:text-light">
-                    <span class="text-base">24</span>
-                    <span class="text-sm">Чт</span>
-                </li>
-                <li
-                    class="flex flex-col items-center justify-center rounded-lg transition-all hover:bg-main-red px-2 hover:text-light">
-                    <span class="text-base">25</span>
-                    <span class="text-sm">Пт</span>
-                </li>
-                <li
-                    class="flex flex-col items-center justify-center rounded-lg transition-all hover:bg-main-red px-2 hover:text-light">
-                    <span class="text-base">26</span>
-                    <span class="text-sm">Сб</span>
-                </li>
-                <li
-                    class="flex flex-col items-center justify-center rounded-lg transition-all hover:bg-main-red px-2 hover:text-light">
-                    <span class="text-base">27</span>
-                    <span class="text-sm">Вс</span>
-                </li>
-            </ul>
-        </div>
-        <div class="col-span-8">
-            <div class="bg-main-red/45 px-4 py-2 rounded-xl text-center text-base">ПОНЕДЕЛЬНИК</div>
-        </div>
-        <div class="col-span-2 flex h-full gap-0">
-            <div class="bg-gradient-to-b rounded-lg from-main-red/25 text-sm text-center p-1 w-full">07:00</div>
-        </div>
-        <div class="col-span-6">
-            <div class="grid grid-cols-8 gap-1 mb-2 bg-main-red/10 rounded-md">
-                <div class="col-span-5 rounded-md overflow-hidden  border-l-[10px] px-1 border-main-red">
-                    <h5 class="text-base">PILATES</h5>
-                    <p class="text-sm">11:00-11:55</p>
-                    <p class="text-sm">фахрутдинова рузана</p>
-                </div>
-                <div class="col-span-3 flex gap-0 justify-end items-baseline text-sm p-1">
-                    ЗАЛ №2
-                    <svg class="h-[18px]" viewBox="-3 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g id="Dribbble-Light-Preview" transform="translate(-223.000000, -5399.000000)"
-                                fill="#000000">
-                                <g id="icons" transform="translate(56.000000, 160.000000)">
-                                    <path
-                                        d="M174,5248.219 C172.895,5248.219 172,5247.324 172,5246.219 C172,5245.114 172.895,5244.219 174,5244.219 C175.105,5244.219 176,5245.114 176,5246.219 C176,5247.324 175.105,5248.219 174,5248.219 M174,5239 C170.134,5239 167,5242.134 167,5246 C167,5249.866 174,5259 174,5259 C174,5259 181,5249.866 181,5246 C181,5242.134 177.866,5239 174,5239"
-                                        id="pin_fill_sharp_circle-[#634]">
-
-                                    </path>
-                                </g>
-                            </g>
-                        </g>
-                    </svg>
-                </div>
-            </div>
-            <div class="grid grid-cols-8 gap-1 mb-2 bg-main-red/10 rounded-md">
-                <div class="col-span-5 rounded-md overflow-hidden  border-l-[10px] px-1 border-main-red">
-                    <h5 class="text-base">PILATES</h5>
-                    <p class="text-sm">11:00-11:55</p>
-                    <p class="text-sm">фахрутдинова рузана</p>
-                </div>
-                <div class="col-span-3 flex gap-0 justify-end items-baseline text-sm p-1">
-                    ЗАЛ №2
-                    <svg class="h-[18px]" viewBox="-3 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g id="Dribbble-Light-Preview" transform="translate(-223.000000, -5399.000000)"
-                                fill="#000000">
-                                <g id="icons" transform="translate(56.000000, 160.000000)">
-                                    <path
-                                        d="M174,5248.219 C172.895,5248.219 172,5247.324 172,5246.219 C172,5245.114 172.895,5244.219 174,5244.219 C175.105,5244.219 176,5245.114 176,5246.219 C176,5247.324 175.105,5248.219 174,5248.219 M174,5239 C170.134,5239 167,5242.134 167,5246 C167,5249.866 174,5259 174,5259 C174,5259 181,5249.866 181,5246 C181,5242.134 177.866,5239 174,5239"
-                                        id="pin_fill_sharp_circle-[#634]">
-
-                                    </path>
-                                </g>
-                            </g>
-                        </g>
-                    </svg>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 
