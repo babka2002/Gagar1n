@@ -283,6 +283,7 @@
     </section>
 
     <section class="schedule-data mb-5">
+        <!-- SHEDULE DESKTOP VIEW -->
         <div class="container rounded-brxl bg-light grid-cols-8 py-6 hidden md:grid">
             <div class="border-r-dark border-dashed border-r-[2px] py-[141px]">
                 @foreach($timeSlots as $timeSlot)
@@ -322,20 +323,20 @@
         </div>
 
         <!-- SHEDULE MOBILE VIEW -->
-        <div class="grid grid-cols-8 rounded-brxl p-4 bg-light gap-2  md:hidden">
+        <div class="grid grid-cols-8 rounded-brxl p-4 bg-light gap-2 md:hidden">
             <div class="col-span-8">
                 <ul class="flex justify-between items-center space-x-1">
-                    @foreach($daysOfWeek as $day)
-                    <li class="flex flex-col items-center justify-center rounded-lg {{ $loop->first ? 'bg-main-red text-light' : 'hover:bg-main-red hover:text-light' }} px-2">
+                    @foreach($daysOfWeek as $index => $day)
+                    <li class="flex flex-col items-center justify-center rounded-lg day-selector {{ $loop->first ? 'bg-main-red text-light' : 'hover:bg-main-red hover:text-light' }} px-2" data-day-index="{{ $index }}">
                         <span class="text-base">{{ $day['date'] }}</span>
-                        <span class="text-sm">{{ substr($day['name'], 0, 2) }}</span>
+                        <span class="text-sm uppercase">{{ getDayAbbreviation($day['name']) }}</span>
                     </li>
                     @endforeach
                 </ul>
             </div>
 
             <div class="col-span-8">
-                <div class="bg-main-red/45 px-4 py-2 rounded-xl text-center text-base">
+                <div class="bg-main-red/45 px-4 py-2 rounded-xl text-center text-base" id="selected-day-name">
                     {{ strtoupper($daysOfWeek[0]['name']) }}
                 </div>
             </div>
@@ -347,22 +348,26 @@
                 </div>
             </div>
             <div class="col-span-6">
-                @foreach($daysOfWeek[0]['schedule'] as $item)
-                    @if(\Carbon\Carbon::parse($item['start_date'])->format('H:i') === $timeSlot)
-                    <div class="grid grid-cols-8 gap-1 mb-2 bg-main-red/10 rounded-md">
-                        <div class="col-span-5 rounded-md overflow-hidden border-l-[10px] px-1" style="border-color: {{ $item['service']['color'] }}">
-                            <h5 class="text-base">{{ $item['service']['title'] }}</h5>
-                            <p class="text-sm">{{ \Carbon\Carbon::parse($item['start_date'])->format('H:i') }} - {{ \Carbon\Carbon::parse($item['end_date'])->format('H:i') }}</p>
-                            <p class="text-sm">{{ $item['employee']['name'] }}</p>
+                @foreach($daysOfWeek as $index => $day)
+                <div class="day-schedule" data-day-index="{{ $index }}" style="{{ $loop->first ? '' : 'display: none;' }}">
+                    @foreach($day['schedule'] as $item)
+                        @if(\Carbon\Carbon::parse($item['start_date'])->format('H:i') === $timeSlot)
+                        <div class="grid grid-cols-8 gap-1 mb-2 bg-main-red/10 rounded-md">
+                            <div class="col-span-5 rounded-md overflow-hidden border-l-[10px] px-1" style="border-color: {{ $item['service']['color'] }}">
+                                <h5 class="text-base">{{ $item['service']['title'] }}</h5>
+                                <p class="text-sm">{{ \Carbon\Carbon::parse($item['start_date'])->format('H:i') }} - {{ \Carbon\Carbon::parse($item['end_date'])->format('H:i') }}</p>
+                                <p class="text-sm">{{ $item['employee']['name'] }}</p>
+                            </div>
+                            <div class="col-span-3 flex gap-0 justify-end items-baseline text-sm p-1">
+                                {{ $item['room']['title'] }}
+                                <svg class="h-[18px]" viewBox="-3 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <!-- SVG код без изменений -->
+                                </svg>
+                            </div>
                         </div>
-                        <div class="col-span-3 flex gap-0 justify-end items-baseline text-sm p-1">
-                            {{ $item['room']['title'] }}
-                            <svg class="h-[18px]" viewBox="-3 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <!-- SVG код без изменений -->
-                            </svg>
-                        </div>
-                    </div>
-                    @endif
+                        @endif
+                    @endforeach
+                </div>
                 @endforeach
             </div>
             @endforeach
@@ -370,6 +375,36 @@
     </section>
 @endsection
 {{-- </s:locales:ru> --}}
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const daySelectors = document.querySelectorAll('.day-selector');
+    const daySchedules = document.querySelectorAll('.day-schedule');
+    const selectedDayName = document.getElementById('selected-day-name');
+
+    daySelectors.forEach(selector => {
+        selector.addEventListener('click', () => {
+            const dayIndex = selector.getAttribute('data-day-index');
+
+            // Обновляем отображение активного дня
+            daySelectors.forEach(s => s.classList.remove('bg-main-red', 'text-light'));
+            selector.classList.add('bg-main-red', 'text-light');
+
+            // Обновляем отображение расписания
+            daySchedules.forEach(schedule => {
+                if (schedule.getAttribute('data-day-index') === dayIndex) {
+                    schedule.style.display = '';
+                } else {
+                    schedule.style.display = 'none';
+                }
+            });
+
+            // Обновляем название выбранного дня
+            selectedDayName.textContent = selector.querySelector('span.text-sm').textContent.toUpperCase();
+        });
+    });
+});
+</script>
 
 
 

@@ -74,10 +74,10 @@
                     <a href="trainers"
                     class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">ТРЕНЕРЫ</a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="trainer"
                     class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">Страница тренера</a>
-                </li>
+                </li> --}}
                 </ul>
 
             </div>
