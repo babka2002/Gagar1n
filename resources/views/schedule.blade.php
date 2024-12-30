@@ -3,21 +3,21 @@
 {{-- <s:locales:ru> --}}
     <section class="py-sectionPadding px-4">
         <div class="container grid grid-cols-12 gap-5 items-center">
-            <div class="col-span-9">
+            <div class="col-span-12 md:col-span-9">
                 <a
                     href="#"
-                    class="rounded-brxl bg-main-red w-full py-12 px-4 flex items-center justify-center text-center text-light text-md uppercase transition-all hover:scale-90"
+                    class="rounded-brxl bg-main-red w-full py-4 md:py-12 px-4 flex items-center justify-center text-center text-light text-sm md:text-md uppercase transition-all hover:scale-90"
                     >расписание групповых тренировок</a
                 >
             </div>
-            <div class="col-span-3">
+            <div class="col-span-12 md:col-span-3">
                 <a
                     href="#"
-                    class="rounded-brxl bg-main-red w-full py-2 px-4 flex items-center justify-center text-center text-light text-md uppercase transition-all hover:scale-90"
+                    class="rounded-brxl bg-main-red w-full py-2 px-4 flex items-center justify-center text-center text-light text-sm md:text-md uppercase transition-all hover:scale-90"
                 >
-                    <span class=""> описание групповых тренировок </span>
+                    <span class="mr-2"> описание групповых тренировок </span>
                     <svg
-                        class="w-full h-full"
+                        class="w-[32px] h-[32px] md:w-full md:h-full"
                         viewBox="0 0 76 76"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -31,14 +31,13 @@
                 </a>
             </div>
 
-            <div class="col-span-2 h-full">
+            <div class="col-span-2 h-full flex w-full md:w-auto">
                 <a
                     href="#"
-                    class="rounded-brxl bg-light flex items-center justify-center flex-col text-xl hover:opacity-80 transition-all"
+                    class="rounded-brxl p-2 bg-light flex items-center justify-center flex-col text-base md:text-xl hover:opacity-80 transition-all"
                 >
                     <svg
-                        width="61"
-                        height="86"
+                        class="w=[24px] h-[24px] md:w-[61px] md:h-[86px]"
                         viewBox="0 0 61 86"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -69,100 +68,100 @@
                             />
                         </defs>
                     </svg>
-                    где
+                <span class="-rotate-90 md:rotate-0 mt-2 ">где</span>
                 </a>
             </div>
             <div class="col-span-10">
                 <div class="flex flex-wrap gap-2">
                     <a
                         href="#"
-                        class="inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
                         >тренажерный зал</a
                     >
 
                     <a
                         href="#"
-                        class="inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
                         >зона кроссфита</a
                     >
 
                     <a
                         href="#"
-                        class="inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
                         >ринг</a
                     >
 
                     <a
                         href="#"
-                        class="inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
                         >зона йоги</a
                     >
 
                     <a
                         href="#"
-                        class="inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
                         >зал пилатеса</a
                     >
 
                     <a
                         href="#"
-                        class="inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
                         >сайкл студия</a
                     >
 
                     <a
                         href="#"
-                        class="inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
                         >зал для групповых занятий №1</a
                     >
 
                     <a
                         href="#"
-                        class="inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
                         >зал для групповых занятий №2</a
                     >
 
                     <a
                         href="#"
-                        class="inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
                         >аква зона</a
                     >
 
                     <a
                         href="#"
-                        class="inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
                         >малый бассейн</a
                     >
 
                     <a
                         href="#"
-                        class="inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
                         >зал единоборств KIDS</a
                     >
 
                     <a
                         href="#"
-                        class="inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
                         >эстетический зал KIDS</a
                     >
 
                     <a
                         href="#"
-                        class="inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
                         >студия ИНТЕЛЛЕКТ KIDS</a
                     >
 
                     <a
                         href="#"
-                        class="inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
                         >студия КРЕАТИВ KIDS</a
                     >
                 </div>
             </div>
-            <div class="col-span-12 flex items-center justify-between gap-4">
+            <div class="col-span-12 flex flex-wrap items-center  gap-2">
                 <a
                     href="#"
-                    class="inline-flex items-center justify-center border border-light rounded-xl py-2 px-2 transition-all text-dark bg-light leading-none gap-2 text-base"
+                    class="inline-flex items-center justify-center border border-light rounded-xl py-2 px-2 transition-all text-dark bg-light leading-none gap-2 text-sm"
                 >
                     <svg
                         width="31"
@@ -204,25 +203,25 @@
 
                 <a
                     href="#"
-                    class="inline-flex items-center justify-center border border-light rounded-xl text-light py-2 px-4 transition-all hover:text-dark hover:bg-light"
+                    class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-2 px-4 transition-all hover:text-dark hover:bg-light"
                     >ЛЮБЫЕ</a
                 >
 
                 <a
                     href="#"
-                    class="inline-flex items-center justify-center border border-light rounded-xl text-light py-2 px-4 transition-all hover:text-dark hover:bg-light"
+                    class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-2 px-4 transition-all hover:text-dark hover:bg-light"
                     >ВЗРОСЛЫЕ</a
                 >
 
                 <a
                     href="#"
-                    class="inline-flex items-center justify-center border border-light rounded-xl text-light py-2 px-4 transition-all hover:text-dark hover:bg-light"
+                    class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-2 px-4 transition-all hover:text-dark hover:bg-light"
                     >ДЕТСКИЕ</a
                 >
 
                 <a
                     href="#"
-                    class="inline-flex items-center justify-center border border-light rounded-xl py-2 px-2 transition-all text-dark bg-light leading-none gap-2 text-base"
+                    class="text-sm inline-flex items-center justify-center border border-light rounded-xl py-2 px-2 transition-all text-dark bg-light leading-none gap-2 text-base"
                 >
                     <svg
                         width="32"
@@ -264,19 +263,19 @@
 
                 <a
                     href="#"
-                    class="inline-flex items-center justify-center border border-light rounded-xl text-light py-2 px-4 transition-all hover:text-dark hover:bg-light"
+                    class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-2 px-4 transition-all hover:text-dark hover:bg-light"
                     >НЕВАЖНО</a
                 >
 
                 <a
                     href="#"
-                    class="inline-flex items-center justify-center border border-light rounded-xl text-light py-2 px-4 transition-all hover:text-dark hover:bg-light"
+                    class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-2 px-4 transition-all hover:text-dark hover:bg-light"
                     >ПЛАТНО</a
                 >
 
                 <a
                     href="#"
-                    class="inline-flex items-center justify-center border border-light rounded-xl text-light py-2 px-4 transition-all hover:text-dark hover:bg-light"
+                    class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-2 px-4 transition-all hover:text-dark hover:bg-light"
                     >БЕСПАЛаНТНО</a
                 >
             </div>
@@ -287,17 +286,17 @@
         <div class="container rounded-brxl bg-light grid grid-cols-8 py-6">
             <div class="border-r-dark border-dashed border-r-[2px] py-[141px]">
                 @foreach($timeSlots as $timeSlot)
-                    <div class="text-lg text-center bg-gradient-to-b from-main-red/25 rounded-t-brxl py-4 min-h-40">
+                    <div class="text-sm lg:text-lg text-center bg-gradient-to-b from-main-red/25 rounded-t-brxl py-4 min-h-40">
                         {{ $timeSlot }}
                     </div>
                 @endforeach
             </div>
 
             @foreach($daysOfWeek as $day)
-                <div class="border-r-dark border-dashed border-r-[2px] last:border-none px-4 py-4">
+                <div class="border-r-dark border-dashed border-r-[2px] last:border-none px-1 md:px-4 py-4">
                     <div class="mb-6">
-                        <span class="text-xxl block text-center">{{ $day['date'] }}</span>
-                        <span class="text-sm block text-center">{{ $day['name'] }}</span>
+                        <span class="text-base font-bold lg:font-normal lg:text-xxl block text-center">{{ $day['date'] }}</span>
+                        <span class="text-sm block text-center overflow-hidden text-nowrap w-full">{{ $day['name'] }}</span>
                     </div>
 
                     <div class="-mx-4">
@@ -322,5 +321,114 @@
             @endforeach
         </div>
     </section>
+
+
+<!-- SHEDULE MOBILE VIEW -->
+
+    <div class="grid grid-cols-8 rounded-brxl p-4 bg-light gap-2">
+        <div class="col-span-8">
+            <ul class="flex justify-between items-center space-x-1">
+                <li class="flex flex-col items-center justify-center rounded-lg bg-main-red px-2 text-light">
+                    <span class="text-base">21</span>
+                    <span class="text-sm">Пн</span>
+                </li>
+                <li
+                    class="flex flex-col items-center justify-center rounded-lg transition-all hover:bg-main-red px-2 hover:text-light">
+                    <span class="text-base">22</span>
+                    <span class="text-sm">Вт</span>
+                </li>
+                <li
+                    class="flex flex-col items-center justify-center rounded-lg transition-all hover:bg-main-red px-2 hover:text-light">
+                    <span class="text-base">23</span>
+                    <span class="text-sm">Ср</span>
+                </li>
+                <li
+                    class="flex flex-col items-center justify-center rounded-lg transition-all hover:bg-main-red px-2 hover:text-light">
+                    <span class="text-base">24</span>
+                    <span class="text-sm">Чт</span>
+                </li>
+                <li
+                    class="flex flex-col items-center justify-center rounded-lg transition-all hover:bg-main-red px-2 hover:text-light">
+                    <span class="text-base">25</span>
+                    <span class="text-sm">Пт</span>
+                </li>
+                <li
+                    class="flex flex-col items-center justify-center rounded-lg transition-all hover:bg-main-red px-2 hover:text-light">
+                    <span class="text-base">26</span>
+                    <span class="text-sm">Сб</span>
+                </li>
+                <li
+                    class="flex flex-col items-center justify-center rounded-lg transition-all hover:bg-main-red px-2 hover:text-light">
+                    <span class="text-base">27</span>
+                    <span class="text-sm">Вс</span>
+                </li>
+            </ul>
+        </div>
+        <div class="col-span-8">
+            <div class="bg-main-red/45 px-4 py-2 rounded-xl text-center text-base">ПОНЕДЕЛЬНИК</div>
+        </div>
+        <div class="col-span-2 flex h-full gap-0">
+            <div class="bg-gradient-to-b rounded-lg from-main-red/25 text-sm text-center p-1 w-full">07:00</div>
+        </div>
+        <div class="col-span-6">
+            <div class="grid grid-cols-8 gap-1 mb-2 bg-main-red/10 rounded-md">
+                <div class="col-span-5 rounded-md overflow-hidden  border-l-[10px] px-1 border-main-red">
+                    <h5 class="text-base">PILATES</h5>
+                    <p class="text-sm">11:00-11:55</p>
+                    <p class="text-sm">фахрутдинова рузана</p>
+                </div>
+                <div class="col-span-3 flex gap-0 justify-end items-baseline text-sm p-1">
+                    ЗАЛ №2
+                    <svg class="h-[18px]" viewBox="-3 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="Dribbble-Light-Preview" transform="translate(-223.000000, -5399.000000)"
+                                fill="#000000">
+                                <g id="icons" transform="translate(56.000000, 160.000000)">
+                                    <path
+                                        d="M174,5248.219 C172.895,5248.219 172,5247.324 172,5246.219 C172,5245.114 172.895,5244.219 174,5244.219 C175.105,5244.219 176,5245.114 176,5246.219 C176,5247.324 175.105,5248.219 174,5248.219 M174,5239 C170.134,5239 167,5242.134 167,5246 C167,5249.866 174,5259 174,5259 C174,5259 181,5249.866 181,5246 C181,5242.134 177.866,5239 174,5239"
+                                        id="pin_fill_sharp_circle-[#634]">
+
+                                    </path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <div class="grid grid-cols-8 gap-1 mb-2 bg-main-red/10 rounded-md">
+                <div class="col-span-5 rounded-md overflow-hidden  border-l-[10px] px-1 border-main-red">
+                    <h5 class="text-base">PILATES</h5>
+                    <p class="text-sm">11:00-11:55</p>
+                    <p class="text-sm">фахрутдинова рузана</p>
+                </div>
+                <div class="col-span-3 flex gap-0 justify-end items-baseline text-sm p-1">
+                    ЗАЛ №2
+                    <svg class="h-[18px]" viewBox="-3 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="Dribbble-Light-Preview" transform="translate(-223.000000, -5399.000000)"
+                                fill="#000000">
+                                <g id="icons" transform="translate(56.000000, 160.000000)">
+                                    <path
+                                        d="M174,5248.219 C172.895,5248.219 172,5247.324 172,5246.219 C172,5245.114 172.895,5244.219 174,5244.219 C175.105,5244.219 176,5245.114 176,5246.219 C176,5247.324 175.105,5248.219 174,5248.219 M174,5239 C170.134,5239 167,5242.134 167,5246 C167,5249.866 174,5259 174,5259 C174,5259 181,5249.866 181,5246 C181,5242.134 177.866,5239 174,5239"
+                                        id="pin_fill_sharp_circle-[#634]">
+
+                                    </path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
 @endsection
 {{-- </s:locales:ru> --}}
+
+
+
