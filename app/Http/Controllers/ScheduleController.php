@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\ScheduleService;
 use Illuminate\Http\Request;
 use Statamic\View\View;
-use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class ScheduleController extends Controller
 {
@@ -18,42 +18,34 @@ class ScheduleController extends Controller
 
     public function index(Request $request)
     {
-        // Устанавливаем значения по умолчанию для start_date и end_date
         if (!$request->has('start_date') || empty($request->input('start_date'))) {
-            $request->merge(['start_date' => \Carbon\Carbon::now()->startOfWeek()->format('Y-m-d H:i')]);
+            $request->merge(['start_date' => Carbon::now()->startOfWeek()->format('Y-m-d H:i')]);
         }
 
         if (!$request->has('end_date') || empty($request->input('end_date'))) {
-            $request->merge(['end_date' => \Carbon\Carbon::now()->endOfWeek()->format('Y-m-d H:i')]);
+            $request->merge(['end_date' => Carbon::now()->endOfWeek()->format('Y-m-d H:i')]);
         }
 
         $clubId = '49964502-5659-11eb-e291-ac162d836873';
         $params = $request->only(['start_date', 'end_date', 'service_id', 'employee_id']);
         $params['club_id'] = $clubId;
 
-        // Получаем расписание
         $scheduleData = $this->scheduleService->getSchedule($params);
 
-        // Проверяем, есть ли данные
         if (empty($scheduleData)) {
             return response()->json(['message' => 'Нет данных для отображения.'], 404);
         }
 
-        // Применяем фильтры
         $filteredData = $this->applyFilters($scheduleData, $request);
-        // dd(count($filteredData), $request->all());
-        // Подготовка данных для отображения
-        // $timeSlots = ['07:00', '08:00', '09:00'];
-        $timeSlots = ['07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'];
-        // $timeSlots = [];
-        // for ($hour = 7; $hour <= 18; $hour++) { // Рабочий день с 07:00 до 18:00
-        //     $timeSlots[] = sprintf('%02d:00', $hour);
-        // }
-        $daysOfWeek = $this->prepareDaysOfWeek($filteredData);
-        $currentDay = \Carbon\Carbon::now()->locale('ru')->isoFormat('dddd');
-        // dd(count($daysOfWeek));
-        // Передаем данные в шаблон
-        // dd($timeSlots, $daysOfWeek, $filteredData);
+
+        // Generate time slots based on actual events
+        $timeSlots = $this->generateTimeSlots($filteredData);
+
+        // Prepare days with events
+        $daysOfWeek = $this->prepareDaysOfWeek($filteredData, $timeSlots);
+
+        $currentDay = Carbon::now()->locale('ru')->isoFormat('dddd');
+
         return (new View)
             ->template('schedule')
             ->layout('layout')
@@ -65,113 +57,88 @@ class ScheduleController extends Controller
             ]);
     }
 
-    private function applyFilters(array $scheduleData, Request $request): array
+    private function generateTimeSlots(array $scheduleData): array
     {
-        $filteredData = $scheduleData;
-
-        // Фильтр по типу услуги
-        if ($request->has('service_id') && !empty($request->input('service_id'))) {
-            $filteredData = array_filter($filteredData, function ($item) use ($request) {
-                return $item['service']['id'] === $request->input('service_id');
-            });
+        // Get all unique hours that have events
+        $hours = [];
+        foreach ($scheduleData as $item) {
+            $startHour = Carbon::parse($item['start_date'])->startOfHour()->format('H:00');
+            $hours[$startHour] = true;
         }
 
-        // Фильтр по тренеру
-        if ($request->has('employee_id') && !empty($request->input('employee_id'))) {
-            $filteredData = array_filter($filteredData, function ($item) use ($request) {
-                return $item['employee']['id'] === $request->input('employee_id');
-            });
+        // Only include hours that have events
+        $timeSlots = [];
+        for ($hour = 7; $hour <= 20; $hour++) {
+            $timeStr = sprintf('%02d:00', $hour);
+            if (isset($hours[$timeStr])) {
+                $timeSlots[] = $timeStr;
+            }
         }
 
-        // Фильтр по помещению (room)
-        if ($request->has('room_id') && !empty($request->input('room_id'))) {
-            $filteredData = array_filter($filteredData, function ($item) use ($request) {
-                return $item['room']['id'] === $request->input('room_id');
-            });
-        }
-
-        // Фильтр по возрастной категории
-        if ($request->has('age_category') && !empty($request->input('age_category'))) {
-            $filteredData = array_filter($filteredData, function ($item) use ($request) {
-                $isKids = str_contains(strtoupper($item['service']['title']), 'KIDS') ||
-                    str_contains(strtoupper($item['room']['title']), 'KIDS');
-
-                switch ($request->input('age_category')) {
-                    case 'kids':
-                        return $isKids;
-                    case 'adults':
-                        return !$isKids;
-                    default: // 'all'
-                        return true;
-                }
-            });
-        }
-
-        // Фильтр по стоимости
-        if ($request->has('cost_type') && !empty($request->input('cost_type'))) {
-            $filteredData = array_filter($filteredData, function ($item) use ($request) {
-                switch ($request->input('cost_type')) {
-                    case 'paid':
-                        return $item['commercial'] === true;
-                    case 'free':
-                        return $item['commercial'] === false;
-                    default: // 'any'
-                        return true;
-                }
-            });
-        }
-
-
-        // Фильтр по диапазону дат
-        if ($request->has('start_date') && !empty($request->input('start_date'))) {
-            $requestStartDate = \Carbon\Carbon::parse($request->input('start_date'))->startOfDay();
-
-            $filteredData = array_filter($filteredData, function ($item) use ($requestStartDate) {
-                $itemStartDate = \Carbon\Carbon::parse($item['start_date']);
-                return $itemStartDate->greaterThanOrEqualTo($requestStartDate);
-            });
-        }
-
-        if ($request->has('end_date') && !empty($request->input('end_date'))) {
-            $requestEndDate = \Carbon\Carbon::parse($request->input('end_date'))->endOfDay();
-
-            $filteredData = array_filter($filteredData, function ($item) use ($requestEndDate) {
-                $itemEndDate = \Carbon\Carbon::parse($item['end_date']);
-                return $itemEndDate->lessThanOrEqualTo($requestEndDate);
-            });
-        }
-
-        // Добавим отладочную информацию
-        \Log::info('Filtered Data Count: ' . count($filteredData));
-        \Log::info('Request Params: ', $request->all());
-        \Log::info('First Item in Filtered Data: ', !empty($filteredData) ? [array_values($filteredData)[0]] : ['No data']);
-
-        return array_values($filteredData); // Переиндексируем массив
+        return $timeSlots;
     }
 
-    private function prepareDaysOfWeek(array $scheduleData): array
+    private function prepareDaysOfWeek(array $scheduleData, array $timeSlots): array
     {
         $daysOfWeek = [];
 
+        // First, organize events by day
         foreach ($scheduleData as $item) {
-            $date = \Carbon\Carbon::parse($item['start_date'])->format('Y-m-d');
-            $dayName = \Carbon\Carbon::parse($item['start_date'])->translatedFormat('l');
+            $dayName = Carbon::parse($item['start_date'])->translatedFormat('l');
+            $hourSlot = Carbon::parse($item['start_date'])->format('H:00');
 
-            if (!isset($daysOfWeek[$date])) {
-                $daysOfWeek[$date] = [
-                    'date' => \Carbon\Carbon::parse($item['start_date'])->format('d'),
+            if (!isset($daysOfWeek[$dayName])) {
+                $daysOfWeek[$dayName] = [
+                    'date' => Carbon::parse($item['start_date'])->format('d'),
                     'name' => $dayName,
-                    'schedule' => []
+                    'schedule' => [],
                 ];
             }
 
-            // Добавляем форматированное время
-            $item['start_time'] = \Carbon\Carbon::parse($item['start_date'])->format('H:i');
-            $item['end_time'] = \Carbon\Carbon::parse($item['end_date'])->format('H:i');
+            // Add all events to their corresponding hour slot
+            foreach ($timeSlots as $timeSlot) {
+                $slotHour = Carbon::parse($timeSlot)->format('H:00');
+                $itemHour = Carbon::parse($item['start_date'])->format('H:00');
 
-            $daysOfWeek[$date]['schedule'][] = $item;
+                if ($slotHour === $itemHour) {
+                    $item['start_time'] = Carbon::parse($item['start_date'])->format('H:i');
+                    $item['end_time'] = Carbon::parse($item['end_date'])->format('H:i');
+                    $daysOfWeek[$dayName]['schedule'][] = $item;
+                }
+            }
         }
 
-        return array_values($daysOfWeek);
+        // Add empty slots only for hours that have events
+        foreach ($daysOfWeek as $day => $data) {
+            $existingSlots = array_map(function($event) {
+                return Carbon::parse($event['start_time'])->format('H:00');
+            }, $data['schedule']);
+
+            foreach ($timeSlots as $timeSlot) {
+                $slotHour = Carbon::parse($timeSlot)->format('H:00');
+                if (!in_array($slotHour, $existingSlots)) {
+                    $daysOfWeek[$day]['schedule'][] = [
+                        'start_time' => $timeSlot,
+                        'end_time' => Carbon::parse($timeSlot)->addHour()->format('H:i'),
+                        'event' => null
+                    ];
+                }
+            }
+        }
+
+        // Sort schedule by time for each day
+        foreach ($daysOfWeek as &$day) {
+            usort($day['schedule'], function($a, $b) {
+                return strtotime($a['start_time']) - strtotime($b['start_time']);
+            });
+        }
+
+        return $daysOfWeek;
+    }
+
+    private function applyFilters(array $scheduleData, Request $request): array
+    {
+        $filteredData = $scheduleData;
+        return array_values($filteredData);
     }
 }

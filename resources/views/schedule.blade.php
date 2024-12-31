@@ -284,40 +284,64 @@
 
     <section class="schedule-data mb-5">
         <!-- SHEDULE DESKTOP VIEW -->
-        <div class="container rounded-brxl bg-light grid-cols-8 py-6 hidden md:grid">
-            <div class="border-r-dark border-dashed border-r-[2px] py-[141px]">
-                @foreach($timeSlots as $timeSlot)
-                    <div class="text-sm lg:text-lg text-center bg-gradient-to-b from-main-red/25 rounded-t-brxl py-4 min-h-40">
-                        {{ $timeSlot }}
+        <div class="container rounded-brxl bg-light py-6 hidden md:grid">
+            <!-- Заголовок с днями недели -->
+            <div class="grid grid-cols-8">
+                <div class=" "></div> <!-- Пустая ячейка для временных слотов -->
+                @foreach($daysOfWeek as $dayName => $day)
+                    <div class="mb-6">
+                        <span class="text-base font-bold lg:font-normal lg:text-xxl block text-center">{{ $day['date'] }}</span>
+                        <span class="text-sm block text-center overflow-hidden text-nowrap w-full">{{ $dayName }}</span>
                     </div>
                 @endforeach
             </div>
 
-            @foreach($daysOfWeek as $day)
-                <div class="border-r-dark border-dashed border-r-[2px] last:border-none px-1 md:px-4 py-4">
-                    <div class="mb-6">
-                        <span class="text-base font-bold lg:font-normal lg:text-xxl block text-center">{{ $day['date'] }}</span>
-                        <span class="text-sm block text-center overflow-hidden text-nowrap w-full">{{ $day['name'] }}</span>
+            <!-- Строки с временными слотами и событиями -->
+            @foreach($timeSlots as $timeSlot)
+                <div class="grid grid-cols-8 border-t border-dashed">
+                    <!-- Временной слот -->
+                    <div class="text-sm lg:text-lg text-center bg-gradient-to-b from-main-red/25 rounded-t-brxl py-4 min-h-40">
+                        {{ $timeSlot }}
                     </div>
 
-                    <div class="-mx-4">
-                        <div class="grid grid-cols-4 text-[9px]">
-                            @foreach($day['schedule'] as $item)
-                                <div class="rounded-l-xl col-span-1 mb-2" style="background-color: {{ $item['service']['color'] }};"></div>
-                                <div class="col-span-2 px-1 mb-2">
-                                    <h4 class="uppercase ">{{ $item['service']['title'] }}</h4>
-                                    <p class="">{{ \Carbon\Carbon::parse($item['start_date'])->format('H:i') }} - {{ \Carbon\Carbon::parse($item['end_date'])->format('H:i') }}</p>
-                                    <p class="">{{ $item['employee']['name'] }}</p>
+                    <!-- События для каждого дня недели -->
+                    @foreach($daysOfWeek as $day)
+                        @php
+                            $currentSlotStart = \Carbon\Carbon::parse($timeSlot)->format('H:i');
+                            $currentSlotEnd = \Carbon\Carbon::parse($timeSlot)->addHour()->format('H:i');
+
+                            // Фильтруем события для текущего временного интервала
+                            $eventsInSlot = array_filter($day['schedule'], function($item) use ($currentSlotStart, $currentSlotEnd) {
+                                if (!isset($item['service'])) return false;
+                                $eventStart = \Carbon\Carbon::parse($item['start_date'])->format('H:i');
+                                $eventEnd = \Carbon\Carbon::parse($item['end_date'])->format('H:i');
+                                return ($eventStart >= $currentSlotStart && $eventStart < $currentSlotEnd) ||
+                                       ($eventEnd > $currentSlotStart && $eventEnd <= $currentSlotEnd) ||
+                                       ($eventStart <= $currentSlotStart && $eventEnd >= $currentSlotEnd);
+                            });
+                        @endphp
+
+                        <div class="py-4 border-l-dark border-dashed border-l-[2px]">
+                            @foreach($eventsInSlot as $item)
+                                @if(isset($item['service']))
+                                <div class="grid grid-cols-4 text-[9px]">
+                                    <div class="rounded-l-xl col-span-1 mb-2" style="background-color: {{ $item['service']['color'] }};"></div>
+                                    <div class="col-span-2 px-1 mb-2">
+                                        <h4 class="uppercase">{{ $item['service']['title'] }}</h4>
+                                        <p>{{ \Carbon\Carbon::parse($item['start_date'])->format('H:i') }} - {{ \Carbon\Carbon::parse($item['end_date'])->format('H:i') }}</p>
+                                        <p>{{ $item['employee']['name'] }}</p>
+                                    </div>
+                                    <div class="col-span-1">
+                                        <span>{{ $item['room']['title'] }}</span>
+                                        <a href="">
+                                            <img src="/assets/img/location.png" alt="" class="w-6" />
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="col-span-1">
-                                    <span>{{ $item['room']['title'] }}</span>
-                                    <a href="">
-                                        <img src="/assets/img/location.png" alt="" class="w-6" />
-                                    </a>
-                                </div>
+                                @endif
                             @endforeach
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             @endforeach
         </div>
@@ -337,39 +361,51 @@
 
             <div class="col-span-8">
                 <div class="bg-main-red/45 px-4 py-2 rounded-xl text-center text-base" id="selected-day-name">
-                    {{ strtoupper($daysOfWeek[0]['name']) }}
+                    {{-- {{ strtoupper($daysOfWeek[0]['name']) }} --}}
                 </div>
             </div>
 
             @foreach($timeSlots as $timeSlot)
-            <div class="col-span-2 flex h-full gap-0">
-                <div class="bg-gradient-to-b rounded-lg from-main-red/25 text-sm text-center p-1 w-full">
-                    {{ $timeSlot }}
+                @php
+                    $slotStart = \Carbon\Carbon::parse($timeSlot);
+                    $slotEnd = \Carbon\Carbon::parse($timeSlot)->addHour();
+                @endphp
+
+                <div class="col-span-2 flex h-full gap-0">
+                    <div class="bg-gradient-to-b rounded-lg from-main-red/25 text-sm text-center p-1 w-full">
+                        {{ $timeSlot }}
+                    </div>
                 </div>
-            </div>
-            <div class="col-span-6">
-                @foreach($daysOfWeek as $index => $day)
-                <div class="day-schedule" data-day-index="{{ $index }}" style="{{ $loop->first ? '' : 'display: none;' }}">
-                    @foreach($day['schedule'] as $item)
-                        @if(\Carbon\Carbon::parse($item['start_date'])->format('H:i') === $timeSlot)
-                        <div class="grid grid-cols-8 gap-1 mb-2 bg-main-red/10 rounded-md">
-                            <div class="col-span-5 rounded-md overflow-hidden border-l-[10px] px-1" style="border-color: {{ $item['service']['color'] }}">
-                                <h5 class="text-base">{{ $item['service']['title'] }}</h5>
-                                <p class="text-sm">{{ \Carbon\Carbon::parse($item['start_date'])->format('H:i') }} - {{ \Carbon\Carbon::parse($item['end_date'])->format('H:i') }}</p>
-                                <p class="text-sm">{{ $item['employee']['name'] }}</p>
-                            </div>
-                            <div class="col-span-3 flex gap-0 justify-end items-baseline text-sm p-1">
-                                {{ $item['room']['title'] }}
-                                <svg class="h-[18px]" viewBox="-3 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                    <!-- SVG код без изменений -->
-                                </svg>
-                            </div>
+                <div class="col-span-6">
+                    @foreach($daysOfWeek as $index => $day)
+                        <div class="day-schedule" data-day-index="{{ $index }}" style="{{ $loop->first ? '' : 'display: none;' }}">
+                            @foreach($day['schedule'] as $item)
+                                @php
+                                    if (!isset($item['service'])) continue;
+                                    $eventStart = \Carbon\Carbon::parse($item['start_date']);
+                                    $eventStartHour = $eventStart->format('H');
+                                    $slotHour = $slotStart->format('H');
+                                @endphp
+
+                                @if($eventStartHour === $slotHour)
+                                    <div class="grid grid-cols-8 gap-1 mb-2 bg-main-red/10 rounded-md">
+                                        <div class="col-span-5 rounded-md overflow-hidden border-l-[10px] px-1" style="border-color: {{ $item['service']['color'] }}">
+                                            <h5 class="text-base">{{ $item['service']['title'] }}</h5>
+                                            <p class="text-sm">{{ $eventStart->format('H:i') }} - {{ \Carbon\Carbon::parse($item['end_date'])->format('H:i') }}</p>
+                                            <p class="text-sm">{{ $item['employee']['name'] }}</p>
+                                        </div>
+                                        <div class="col-span-3 flex gap-0 justify-end items-baseline text-sm p-1">
+                                            {{ $item['room']['title'] }}
+                                            <svg class="h-[18px]" viewBox="-3 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                <!-- SVG код без изменений -->
+                                            </svg>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
                         </div>
-                        @endif
                     @endforeach
                 </div>
-                @endforeach
-            </div>
             @endforeach
         </div>
     </section>
@@ -393,9 +429,9 @@ document.addEventListener("DOMContentLoaded", () => {
             // Обновляем отображение расписания
             daySchedules.forEach(schedule => {
                 if (schedule.getAttribute('data-day-index') === dayIndex) {
-                    schedule.style.display = '';
+                    schedule.style.display = ''; // Показываем расписание для выбранного дня
                 } else {
-                    schedule.style.display = 'none';
+                    schedule.style.display = 'none'; // Скрываем расписание для других дней
                 }
             });
 
