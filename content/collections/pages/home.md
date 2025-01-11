@@ -58,7 +58,7 @@ code_field:
   mode: htmlmixed
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1735485049
+updated_at: 1736604530
 hero_title: 'Тренируйся с g1'
 pole_markdown: |-
   получи выгоду 
@@ -87,6 +87,7 @@ direction_replicator:
     direction_image: img/direction-2.jpg
     type: direction
     enabled: true
+    direction_link: 'entry::a267c986-92d4-4a99-ae75-f52576f4138f'
   -
     id: m59ou41s
     inversion: false
@@ -94,6 +95,7 @@ direction_replicator:
     direction_image: img/direction-3.jpg
     type: direction
     enabled: true
+    direction_link: 'entry::1a368219-e91e-4931-847e-e5f08c54124e'
   -
     id: m59ouhwp
     inversion: true
@@ -101,6 +103,7 @@ direction_replicator:
     direction_image: img/direction-5.jpg
     type: direction
     enabled: true
+    direction_link: 'entry::8771a89e-9aaf-4ec0-b401-ace886f362e6'
   -
     id: m59ov5fd
     inversion: false
@@ -108,6 +111,7 @@ direction_replicator:
     direction_image: img/direction-6.jpg
     type: direction
     enabled: true
+    direction_link: 'entry::93f7fc77-894c-445e-a257-239a1838c6fe'
   -
     id: m59piemo
     inversion: true
@@ -115,6 +119,7 @@ direction_replicator:
     direction_image: img/direction-4.jpg
     type: direction
     enabled: true
+    direction_link: 'entry::e79d3f34-1bf7-4e1c-ac9c-fee15c7f1fc5'
 aboniment_title: 'один абонемент - безграничные возможности'
 aboniment_type:
   -

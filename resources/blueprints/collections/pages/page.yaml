@@ -108,6 +108,11 @@ tabs:
                             container: assets
                             type: assets
                             display: 'DIRECTION image'
+                        -
+                          handle: direction_link
+                          field:
+                            type: link
+                            display: Ссылка
           -
             handle: template_2
             field:
