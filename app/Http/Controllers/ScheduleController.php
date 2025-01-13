@@ -31,12 +31,73 @@ class ScheduleController extends Controller
         $params['club_id'] = $clubId;
 
         $scheduleData = $this->scheduleService->getSchedule($params);
-
         if (empty($scheduleData)) {
             return response()->json(['message' => 'Нет данных для отображения.'], 404);
         }
 
-        $filteredData = $this->applyFilters($scheduleData, $request);
+        $filters = [
+            'тренажерный зал' => [
+                'САЙКЛ START',
+                'САЙКЛ PRO ₽',
+                'HIIT',
+                'TOTAL BODY ₽',
+                'SUPER SCULPT',
+                'FUNCTIONAL TRAINING',
+                'TRX ₽',
+                'BODY SCULPT',
+                'PUMP PRO ₽',
+                'ABS+CORE',
+                'DYNAMIC STRETCHING',
+                'STRETCHING',
+                'STRETCHING MOBILITY',
+                'KICKBOXING KIDS',
+                'CROSSFIT',
+                'CROSSFIT ₽',
+                'CROSSFIT KIDS',
+                'CROSSFIT WORK',
+                'ZUMBA',
+                'DANCE MIX KIDS',
+                'AEROBIC DANCE',
+                'ART FUNCTIONAL',
+                'FITBOX',
+                'ORIENTAL FIT',
+                'TAE-BO',
+                'LATINA',
+                'WINTER CYCLING FESTIVAL MK',
+            ],
+            'аква зона' => [
+                'AQUA NOODLES / DUMBBELLS',
+                'AQUA MIX',
+                'AQUA SWIMMING',
+                'AQUA ПЛАВАНИЕ KIDS',
+                'AQUA МАМА И МАЛЫШ KIDS',
+                'AQUA ГИМНАСТИКА',
+                'AQUA ШЕЙПИНГ ₽',
+                'AQUA СПОРТ ПОДГОТОВКА KIDS',
+                'AQUA НЕ БОЙСЯ ВОДЫ KIDS',
+                'Аква ПЛАВАНИЕ KIDS',
+            ],
+            'йога' => [
+                'HATHA YOGA',
+                'NIRVANA YOGA',
+                'STRETCHING',
+            ],
+            'детские занятия' => [
+                'Аква ПЛАВАНИЕ KIDS',
+                'КАРАТЭ KIDS',
+                'BOXING KIDS',
+                'CROSSFIT KIDS',
+                'Аква НЕ БОЙСЯ ВОДЫ KIDS',
+                'ГРЭППЛИНГ KIDS',
+                'АКРОБАТИКА KIDS',
+                'РИТМИКА KIDS',
+                'DANCE MIX KIDS',
+                'MINI ГРУППА ЛФК ₽',
+            ],
+            // Добавьте другие категории по мере необходимости
+        ];
+
+        $filteredData = $this->applyFilters($scheduleData, $request, $filters);
 
         // Generate time slots based on actual events
         $timeSlots = $this->generateTimeSlots($filteredData);
@@ -110,7 +171,7 @@ class ScheduleController extends Controller
 
         // Add empty slots only for hours that have events
         foreach ($daysOfWeek as $day => $data) {
-            $existingSlots = array_map(function($event) {
+            $existingSlots = array_map(function ($event) {
                 return Carbon::parse($event['start_time'])->format('H:00');
             }, $data['schedule']);
 
@@ -128,7 +189,7 @@ class ScheduleController extends Controller
 
         // Sort schedule by time for each day
         foreach ($daysOfWeek as &$day) {
-            usort($day['schedule'], function($a, $b) {
+            usort($day['schedule'], function ($a, $b) {
                 return strtotime($a['start_time']) - strtotime($b['start_time']);
             });
         }
@@ -136,9 +197,29 @@ class ScheduleController extends Controller
         return $daysOfWeek;
     }
 
-    private function applyFilters(array $scheduleData, Request $request): array
+    private function applyFilters(array $scheduleData, Request $request, array $filters): array
     {
-        $filteredData = $scheduleData;
+        $filteredData = [];
+        $selectedFilters = $request->input('filters', []);
+
+        // Если фильтры не выбраны, возвращаем все данные
+        if (empty($selectedFilters)) {
+            return $scheduleData;
+        }
+
+        // Фильтруем данные на основе выбранных фильтров
+        foreach ($selectedFilters as $filter) {
+            if (isset($filters[$filter])) {
+                foreach ($filters[$filter] as $serviceTitle) {
+                    foreach ($scheduleData as $item) {
+                        if ($item['service']['title'] === $serviceTitle) {
+                            $filteredData[] = $item;
+                        }
+                    }
+                }
+            }
+        }
+// dd($filteredData);
         return array_values($filteredData);
     }
 }

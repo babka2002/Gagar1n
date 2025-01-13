@@ -75,85 +75,99 @@
                 <div class="flex flex-wrap gap-2">
                     <a
                         href="#"
-                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light filter-item"
+                        data-filter="тренажерный зал"
                         >тренажерный зал</a
                     >
 
                     <a
                         href="#"
-                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light filter-item"
+                        data-filter="зона кроссфита"
                         >зона кроссфита</a
                     >
 
                     <a
                         href="#"
-                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light filter-item"
+                        data-filter="ринг"
                         >ринг</a
                     >
 
                     <a
                         href="#"
-                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light filter-item"
+                        data-filter="зона йоги"
                         >зона йоги</a
                     >
 
                     <a
                         href="#"
-                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light filter-item"
+                        data-filter="зал пилатеса"
                         >зал пилатеса</a
                     >
 
                     <a
                         href="#"
-                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light filter-item"
+                        data-filter="сайкл студия"
                         >сайкл студия</a
                     >
 
                     <a
                         href="#"
-                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light filter-item"
+                        data-filter="зал для групповых занятий №1"
                         >зал для групповых занятий №1</a
                     >
 
                     <a
                         href="#"
-                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light filter-item"
+                        data-filter="зал для групповых занятий №2"
                         >зал для групповых занятий №2</a
                     >
 
                     <a
                         href="#"
-                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light filter-item"
+                        data-filter="аква зона"
                         >аква зона</a
                     >
 
                     <a
                         href="#"
-                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light filter-item"
+                        data-filter="малый бассейн"
                         >малый бассейн</a
                     >
 
                     <a
                         href="#"
-                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light filter-item"
+                        data-filter="зал единоборств KIDS"
                         >зал единоборств KIDS</a
                     >
 
                     <a
                         href="#"
-                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light filter-item"
+                        data-filter="эстетический зал KIDS"
                         >эстетический зал KIDS</a
                     >
 
                     <a
                         href="#"
-                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light filter-item"
+                        data-filter="студия ИНТЕЛЛЕКТ KIDS"
                         >студия ИНТЕЛЛЕКТ KIDS</a
                     >
 
                     <a
                         href="#"
-                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light"
+                        class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light filter-item"
+                        data-filter="студия КРЕАТИВ KIDS"
                         >студия КРЕАТИВ KIDS</a
                     >
                 </div>
@@ -282,9 +296,9 @@
         </div>
     </section>
 
-    <section class="schedule-data mb-5">
+    <section id="schedule" class="schedule-data mb-5">
         <!-- SHEDULE DESKTOP VIEW -->
-        <div class="container rounded-brxl bg-light py-6 hidden md:grid">
+        <div id="schedule-container" class="container rounded-brxl bg-light py-6 hidden md:grid">
             <!-- Заголовок с днями недели -->
             <div class="grid grid-cols-8">
                 <div class=" "></div> <!-- Пустая ячейка для временных слотов -->
@@ -437,6 +451,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Обновляем название выбранного дня
             selectedDayName.textContent = selector.querySelector('span.text-sm').textContent.toUpperCase();
+        });
+    });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const filterItems = document.querySelectorAll('.filter-item');
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedFilters = urlParams.getAll('filters[]');
+
+    // Выделяем выбранные фильтры
+    filterItems.forEach(item => {
+        const filterId = item.getAttribute('data-filter');
+        if (selectedFilters.includes(filterId)) {
+            item.classList.add('bg-main-red', 'text-light'); // Добавляем классы для выделения
+        }
+
+        item.addEventListener('click', (event) => {
+            event.preventDefault(); // Предотвращаем переход по ссылке
+            const filterId = item.getAttribute('data-filter');
+
+            // Получаем текущие параметры URL
+            const urlParams = new URLSearchParams(window.location.search);
+
+            // Добавляем или удаляем фильтр из параметров
+            if (urlParams.has('filters[]')) {
+                const filters = urlParams.getAll('filters[]');
+                if (filters.includes(filterId)) {
+                    // Если фильтр уже выбран, удаляем его
+                    const index = filters.indexOf(filterId);
+                    if (index > -1) {
+                        filters.splice(index, 1);
+                    }
+                } else {
+                    // Если фильтр не выбран, добавляем его
+                    filters.push(filterId);
+                }
+                // Обновляем параметры URL
+                urlParams.delete('filters[]');
+                filters.forEach(filter => urlParams.append('filters[]', filter));
+            } else {
+                // Если фильтров нет, добавляем текущий
+                urlParams.append('filters[]', filterId);
+            }
+
+            // Перезагружаем страницу с новыми параметрами
+            window.location.search = urlParams.toString();
         });
     });
 });
