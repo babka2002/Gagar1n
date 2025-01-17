@@ -272,62 +272,118 @@
                     </p>
 
                     @antlers
-                {{ form:grelka attr:x-ref="form" js="alpine" }}
-                    <div
-                        x-data='{
-                            form: $form(
-                                "post",
-                                $refs.form.getAttribute("action"),
-                                JSON.parse($refs.form.getAttribute("x-data"))
-                            ).setErrors({{ error | json }}),
-                        }' @submit.prevent="form.submit()"
-                        class="mt-16 flex flex-col lg:flex-row items-center justify-between gap-4 pb-4"
-                    >
-
-                        {{-- {{ if success }}
-                            <div class="bg-green-300 text-white p-2">
-                                {{ success }}
-                            </div>
-                        {{ /if }} --}}
-
-                        <template x-if="form.hasErrors">
-                            <div>
-                                <div class="bg-red-300 text-white p-2">
-                                    Errors!
-                                    <ul>
-                                        <template x-for="error in form.errors">
-                                            <li x-text="error"></li>
-                                        </template>
-                                    </ul>
+                        {{ form:grelka }}
+                            <div class="mt-16 flex flex-col lg:flex-row items-center justify-between gap-4 pb-4">
+                                <!-- Индикатор состояния -->
+                                <div id="formStatus" class="fixed top-4 right-4 p-4 rounded-lg hidden">
+                                    <p class="text-white"></p>
                                 </div>
-                            </div>
-                        </template>
 
-                        <input type="text" name="full_name"  value="" autocomplete="name" x-model="full_name" required="" placeholder="Имя" class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase" />
-                        <input type="tel" name="phone" value="" autocomplete="name" x-model="phone" required="" placeholder="Номер" class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase" />
-                        <small x-show="form.invalid('{{ handle }}')" x-text="form.errors.{{ handle }}"></small>
-
-                        <input type="text" class="hidden" name="{{ honeypot ?? 'honeypot' }}">
-
-                        <button :disabled="form.processing" class="transition-all hover:opacity-70">
-                            <svg
-                                width="161"
-                                height="81"
-                                viewBox="0 0 161 81"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <rect width="161" height="81" rx="33" fill="#E23333" />
-                                <path
-                                    d="M133.121 42.1213C134.293 40.9497 134.293 39.0503 133.121 37.8787L114.029 18.7868C112.858 17.6152 110.958 17.6152 109.787 18.7868C108.615 19.9584 108.615 21.8579 109.787 23.0294L126.757 40L109.787 56.9706C108.615 58.1421 108.615 60.0416 109.787 61.2132C110.958 62.3848 112.858 62.3848 114.029 61.2132L133.121 42.1213ZM29 43H131V37H29V43Z"
-                                    fill="#FFF8F8"
+                                <input
+                                    type="text"
+                                    name="full_name"
+                                    required
+                                    placeholder="Имя"
+                                    class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase"
                                 />
-                            </svg>
-                        </button>
 
-                    </div>
-                {{ /form:grelka }}
-                @endantlers
+                                <input
+                                    type="tel"
+                                    name="phone"
+                                    required
+                                    placeholder="Номер"
+                                    class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase"
+                                />
+
+                                <button
+                                    type="submit"
+                                    class="transition-all hover:opacity-70"
+                                >
+                                    <svg width="161" height="81" viewBox="0 0 161 81" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="161" height="81" rx="33" fill="#E23333" />
+                                        <path d="M133.121 42.1213C134.293 40.9497 134.293 39.0503 133.121 37.8787L114.029 18.7868C112.858 17.6152 110.958 17.6152 109.787 18.7868C108.615 19.9584 108.615 21.8579 109.787 23.0294L126.757 40L109.787 56.9706C108.615 58.1421 108.615 60.0416 109.787 61.2132C110.958 62.3848 112.858 62.3848 114.029 61.2132L133.121 42.1213ZM29 43H131V37H29V43Z" fill="#FFF8F8" />
+                                    </svg>
+                                </button>
+                            </div>
+                        {{ /form:grelka }}
+
+                        <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            let form = document.querySelector('form[action*="/!/forms/grelka"]');
+                            const status = document.getElementById('formStatus');
+
+                            function showStatus(message, type = 'success') {
+                                status.className = `fixed top-4 right-4 p-4 rounded-lg ${type === 'success' ? 'bg-green-500' : 'bg-red-500'}`;
+                                status.querySelector('p').textContent = message;
+                                status.classList.remove('hidden');
+                                setTimeout(() => status.classList.add('hidden'), 3000);
+                            }
+
+                            if (form) {
+                                const oldForm = form.cloneNode(true);
+                                form.parentNode.replaceChild(oldForm, form);
+                                form = oldForm;
+
+                                form.addEventListener('submit', async function(e) {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+
+                                    const formData = new FormData(this);
+                                    const token = document.querySelector('input[name="_token"]').value;
+                                    const submitButton = form.querySelector('button[type="submit"]');
+
+                                    // Блокируем кнопку
+                                    submitButton.disabled = true;
+
+                                    try {
+                                        // Отправляем на вебхук
+                                        const webhookResponse = await fetch('http://147.45.187.4:3000/webhook', {
+                                            method: 'POST',
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                            },
+                                            body: JSON.stringify({
+                                                callerphone: formData.get('phone')?.replace('+', ''),
+                                                fio: formData.get('full_name'),
+                                                subject: formData.get('full_name'),
+                                                source: 'gagar1n.ru',
+                                                medium: 'gagar1n.ru',
+                                                leadtype: 'request'
+                                            })
+                                        });
+
+                                        // Отправляем в Statamic
+                                        const statamicResponse = await fetch(this.action, {
+                                            method: 'POST',
+                                            headers: {
+                                                'X-Requested-With': 'XMLHttpRequest',
+                                                'X-CSRF-TOKEN': token
+                                            },
+                                            body: formData
+                                        });
+
+                                        const statamicData = await statamicResponse.json();
+
+                                        if (statamicData.success) {
+                                            showStatus('Форма успешно отправлена!', 'success');
+                                            this.reset();
+                                        } else {
+                                            showStatus('Ошибка при отправке формы', 'error');
+                                        }
+                                    } catch (error) {
+                                        console.error('Error:', error);
+                                        showStatus('Произошла ошибка при отправке формы', 'error');
+                                    } finally {
+                                        // Разблокируем кнопку
+                                        submitButton.disabled = false;
+                                    }
+
+                                    return false;
+                                });
+                            }
+                        });
+                        </script>
+                    @endantlers
 
                     <!-- <form
                         action=""
