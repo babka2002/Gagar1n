@@ -1,8 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\TrainerController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Http;
+
+
 
 
 // Route::statamic('example', 'example-view', [
@@ -21,3 +25,9 @@ use App\Http\Controllers\ScheduleController;
 $router->get('/trainers', [TrainerController::class, 'showTrainers'])->name('trainers.list');
 $router->get('/trainers/{employeeId}', [TrainerController::class, 'showTrainer'])->name('trainers.show');
 $router->get('/schedule', [ScheduleController::class, 'index'])->name('schedule.show');
+
+
+Route::post('/webhook-proxy', function (Request $request) {
+    $response = Http::post('http://147.45.187.4:3000/webhook', $request->all());
+    return $response->json();
+});
