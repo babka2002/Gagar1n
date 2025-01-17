@@ -272,117 +272,105 @@
                     </p>
 
                     @antlers
-{{ form:grelka }}
-    <div class="mt-16 flex flex-col lg:flex-row items-center justify-between gap-4 pb-4">
-        <input
-            type="text"
-            name="full_name"
-            required
-            placeholder="Имя"
-            class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase"
-        />
+                    {{ form:grelka }}
+                        <div class="mt-16 flex flex-col lg:flex-row items-center justify-between gap-4 pb-4">
+                            <input
+                                type="text"
+                                name="full_name"
+                                required
+                                placeholder="Имя"
+                                class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase"
+                            />
 
-        <input
-            type="tel"
-            name="phone"
-            required
-            placeholder="Номер"
-            class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase"
-        />
+                            <input
+                                type="tel"
+                                name="phone"
+                                required
+                                placeholder="Номер"
+                                class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase"
+                            />
 
-        <button
-            type="submit"
-            class="transition-all hover:opacity-70"
-        >
-            <svg width="161" height="81" viewBox="0 0 161 81" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="161" height="81" rx="33" fill="#E23333" />
-                <path d="M133.121 42.1213C134.293 40.9497 134.293 39.0503 133.121 37.8787L114.029 18.7868C112.858 17.6152 110.958 17.6152 109.787 18.7868C108.615 19.9584 108.615 21.8579 109.787 23.0294L126.757 40L109.787 56.9706C108.615 58.1421 108.615 60.0416 109.787 61.2132C110.958 62.3848 112.858 62.3848 114.029 61.2132L133.121 42.1213ZM29 43H131V37H29V43Z" fill="#FFF8F8" />
-            </svg>
-        </button>
-    </div>
-{{ /form:grelka }}
+                            <button
+                                type="submit"
+                                class="transition-all hover:opacity-70"
+                            >
+                                <svg width="161" height="81" viewBox="0 0 161 81" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="161" height="81" rx="33" fill="#E23333" />
+                                    <path d="M133.121 42.1213C134.293 40.9497 134.293 39.0503 133.121 37.8787L114.029 18.7868C112.858 17.6152 110.958 17.6152 109.787 18.7868C108.615 19.9584 108.615 21.8579 109.787 23.0294L126.757 40L109.787 56.9706C108.615 58.1421 108.615 60.0416 109.787 61.2132C110.958 62.3848 112.858 62.3848 114.029 61.2132L133.121 42.1213ZM29 43H131V37H29V43Z" fill="#FFF8F8" />
+                                </svg>
+                            </button>
+                        </div>
+                    {{ /form:grelka }}
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Ищем форму по действию, которое мы видели в HTML
-    const form = document.querySelector('form[action*="/!/forms/grelka"]');
-    console.log('Form found:', !!form);
-    console.log('Form action:', form?.action);
+                    <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const form = document.querySelector('form[action*="/!/forms/grelka"]');
+                        console.log('Form found:', !!form);
 
-    if (form) {
-        // Добавляем класс для отладки
-        form.classList.add('intercepted-form');
+                        if (form) {
+                            form.addEventListener('submit', async function(e) {
+                                e.preventDefault();
+                                console.log('Form submitted');
 
-        form.addEventListener('submit', async function(e) {
-            console.log('Submit event triggered');
-            e.preventDefault();
-            e.stopPropagation(); // Останавливаем всплытие события
+                                const formData = new FormData(this);
+                                const token = document.querySelector('input[name="_token"]').value;
+                                const submitButton = form.querySelector('button[type="submit"]');
 
-            const formData = new FormData(this);
-            const token = document.querySelector('input[name="_token"]').value;
+                                // Блокируем кнопку
+                                submitButton.disabled = true;
 
-            // Логируем данные для отладки
-            console.log('Form data:', {
-                name: formData.get('full_name'),
-                phone: formData.get('phone'),
-                token: token
-            });
+                                try {
+                                    // Сначала отправляем в Statamic
+                                    console.log('Sending to Statamic...');
+                                    const statamicResponse = await fetch(this.action, {
+                                        method: 'POST',
+                                        headers: {
+                                            'X-Requested-With': 'XMLHttpRequest',
+                                            'X-CSRF-TOKEN': token
+                                        },
+                                        body: formData
+                                    });
 
-            try {
-                console.log('Sending to webhook...');
-                // Отправляем на вебхук
-                const webhookResponse = await fetch('/webhook-proxy', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': token // Добавляем CSRF-токен для Laravel
-    },
-    body: JSON.stringify({
-        callerphone: formData.get('phone')?.replace('+', ''),
-        fio: formData.get('full_name'),
-        subject: formData.get('full_name'),
-        source: 'gagar1n.ru',
-        medium: 'gagar1n.ru',
-        leadtype: 'request'
-    })
-});
-                console.log('Webhook response:', await webhookResponse.json());
+                                    const statamicResult = await statamicResponse.json();
+                                    console.log('Statamic response:', statamicResult);
 
-                console.log('Sending to Statamic...');
-                // Отправляем в Statamic
-                const statamicResponse = await fetch(this.action, {
-                    method: 'POST',
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest',
-                        'X-CSRF-TOKEN': token
-                    },
-                    body: formData
-                });
-                const statamicResult = await statamicResponse.json();
-                console.log('Statamic response:', statamicResult);
+                                    if (statamicResult.success) {
+                                        // Если Statamic успешно принял форму, отправляем на вебхук
+                                        console.log('Sending to webhook...');
+                                        await fetch('/webhook-proxy', {
+                                            method: 'POST',
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                                'X-CSRF-TOKEN': token
+                                            },
+                                            body: JSON.stringify({
+                                                callerphone: formData.get('phone')?.replace('+', ''),
+                                                fio: formData.get('full_name'),
+                                                subject: formData.get('full_name'),
+                                                source: 'gagar1n.ru',
+                                                medium: 'gagar1n.ru',
+                                                leadtype: 'request'
+                                            })
+                                        });
 
-                alert('Форма успешно отправлена!');
-                this.reset();
-            } catch (error) {
-                console.error('Detailed error:', {
-                    message: error.message,
-                    stack: error.stack
-                });
-                alert('Произошла ошибка при отправке формы');
-            }
-        });
-
-        // Добавляем обработчик для отладки кнопки отправки
-        const submitButton = form.querySelector('button[type="submit"]');
-        if (submitButton) {
-            submitButton.addEventListener('click', function(e) {
-                console.log('Submit button clicked');
-            });
-        }
-    }
-});
-</script>
-@endantlers
+                                        // Очищаем форму и показываем сообщение об успехе
+                                        this.reset();
+                                        alert('Форма успешно отправлена!');
+                                    } else {
+                                        throw new Error('Ошибка отправки формы в Statamic');
+                                    }
+                                } catch (error) {
+                                    console.error('Error:', error);
+                                    alert('Произошла ошибка при отправке формы');
+                                } finally {
+                                    // Разблокируем кнопку
+                                    submitButton.disabled = false;
+                                }
+                            });
+                        }
+                    });
+                    </script>
+                    @endantlers
 
                     <!-- <form
                         action=""
