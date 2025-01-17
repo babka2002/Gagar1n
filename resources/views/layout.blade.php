@@ -275,7 +275,7 @@
                         {{ form:grelka }}
                             <div class="mt-16 flex flex-col lg:flex-row items-center justify-between gap-4 pb-4">
                                 <!-- Индикатор состояния -->
-                                <div id="formStatus" class="fixed top-4 right-4 p-4 rounded-lg hidden">
+                                <div id="formStatus" class="fixed top-4 right-4 p-4 rounded-lg hidden z-50">
                                     <p class="text-white"></p>
                                 </div>
 
@@ -313,7 +313,7 @@
                             const status = document.getElementById('formStatus');
 
                             function showStatus(message, type = 'success') {
-                                status.className = `fixed top-4 right-4 p-4 rounded-lg ${type === 'success' ? 'bg-green-500' : 'bg-red-500'}`;
+                                status.className = `fixed top-4 right-4 p-4 rounded-lg z-50 ${type === 'success' ? 'bg-green-500' : 'bg-red-500'}`;
                                 status.querySelector('p').textContent = message;
                                 status.classList.remove('hidden');
                                 setTimeout(() => status.classList.add('hidden'), 3000);
@@ -336,8 +336,8 @@
                                     submitButton.disabled = true;
 
                                     try {
-                                        // Отправляем на вебхук
-                                        const webhookResponse = await fetch('http://147.45.187.4:3000/webhook', {
+                                        // Отправляем на вебхук (теперь используем HTTPS)
+                                        const webhookResponse = await fetch('https://147.45.187.4:3000/webhook', {
                                             method: 'POST',
                                             headers: {
                                                 'Content-Type': 'application/json',
@@ -383,7 +383,7 @@
                             }
                         });
                         </script>
-                    @endantlers
+                        @endantlers
 
                     <!-- <form
                         action=""
