@@ -26,8 +26,12 @@ $router->get('/trainers', [TrainerController::class, 'showTrainers'])->name('tra
 $router->get('/trainers/{employeeId}', [TrainerController::class, 'showTrainer'])->name('trainers.show');
 $router->get('/schedule', [ScheduleController::class, 'index'])->name('schedule.show');
 
-
 Route::post('/webhook-proxy', function (Request $request) {
-    $response = Http::post('http://147.45.187.4:3000/webhook', $request->all());
-    return $response->json();
+    try {
+        $response = Http::post('http://147.45.187.4:3000/webhook', $request->all());
+
+        return $response->json();
+    } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
 });

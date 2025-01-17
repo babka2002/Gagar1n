@@ -274,10 +274,6 @@
                     @antlers
 {{ form:grelka }}
     <div class="mt-16 flex flex-col lg:flex-row items-center justify-between gap-4 pb-4">
-        <div id="formStatus" class="fixed top-4 right-4 p-4 rounded-lg hidden z-50">
-            <p class="text-white"></p>
-        </div>
-
         <input
             type="text"
             name="full_name"
@@ -308,49 +304,51 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    let form = document.querySelector('form[action*="/!/forms/grelka"]');
-    const status = document.getElementById('formStatus');
-
-    function showStatus(message, type = 'success') {
-        status.className = `fixed top-4 right-4 p-4 rounded-lg z-50 ${type === 'success' ? 'bg-green-500' : 'bg-red-500'}`;
-        status.querySelector('p').textContent = message;
-        status.classList.remove('hidden');
-        setTimeout(() => status.classList.add('hidden'), 3000);
-    }
+    // Ищем форму по действию, которое мы видели в HTML
+    const form = document.querySelector('form[action*="/!/forms/grelka"]');
+    console.log('Form found:', !!form);
+    console.log('Form action:', form?.action);
 
     if (form) {
-        const oldForm = form.cloneNode(true);
-        form.parentNode.replaceChild(oldForm, form);
-        form = oldForm;
+        // Добавляем класс для отладки
+        form.classList.add('intercepted-form');
 
         form.addEventListener('submit', async function(e) {
+            console.log('Submit event triggered');
             e.preventDefault();
-            e.stopPropagation();
+            e.stopPropagation(); // Останавливаем всплытие события
 
             const formData = new FormData(this);
             const token = document.querySelector('input[name="_token"]').value;
-            const submitButton = form.querySelector('button[type="submit"]');
 
-            submitButton.disabled = true;
+            // Логируем данные для отладки
+            console.log('Form data:', {
+                name: formData.get('full_name'),
+                phone: formData.get('phone'),
+                token: token
+            });
 
             try {
-                // Используем локальный прокси вместо прямого обращения к вебхуку
+                console.log('Sending to webhook...');
+                // Отправляем на вебхук
                 const webhookResponse = await fetch('/webhook-proxy', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': token
-                    },
-                    body: JSON.stringify({
-                        callerphone: formData.get('phone')?.replace('+', ''),
-                        fio: formData.get('full_name'),
-                        subject: formData.get('full_name'),
-                        source: 'gagar1n.ru',
-                        medium: 'gagar1n.ru',
-                        leadtype: 'request'
-                    })
-                });
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': token // Добавляем CSRF-токен для Laravel
+    },
+    body: JSON.stringify({
+        callerphone: formData.get('phone')?.replace('+', ''),
+        fio: formData.get('full_name'),
+        subject: formData.get('full_name'),
+        source: 'gagar1n.ru',
+        medium: 'gagar1n.ru',
+        leadtype: 'request'
+    })
+});
+                console.log('Webhook response:', await webhookResponse.json());
 
+                console.log('Sending to Statamic...');
                 // Отправляем в Statamic
                 const statamicResponse = await fetch(this.action, {
                     method: 'POST',
@@ -360,24 +358,27 @@ document.addEventListener('DOMContentLoaded', function() {
                     },
                     body: formData
                 });
+                const statamicResult = await statamicResponse.json();
+                console.log('Statamic response:', statamicResult);
 
-                const statamicData = await statamicResponse.json();
-
-                if (statamicData.success) {
-                    showStatus('Форма успешно отправлена!', 'success');
-                    this.reset();
-                } else {
-                    showStatus('Ошибка при отправке формы', 'error');
-                }
+                alert('Форма успешно отправлена!');
+                this.reset();
             } catch (error) {
-                console.error('Error:', error);
-                showStatus('Произошла ошибка при отправке формы', 'error');
-            } finally {
-                submitButton.disabled = false;
+                console.error('Detailed error:', {
+                    message: error.message,
+                    stack: error.stack
+                });
+                alert('Произошла ошибка при отправке формы');
             }
-
-            return false;
         });
+
+        // Добавляем обработчик для отладки кнопки отправки
+        const submitButton = form.querySelector('button[type="submit"]');
+        if (submitButton) {
+            submitButton.addEventListener('click', function(e) {
+                console.log('Submit button clicked');
+            });
+        }
     }
 });
 </script>
