@@ -3,10 +3,11 @@ phone_number: '8 800 500 1598'
 work_hours_weekdays: 'пн-пт 7-23'
 work_hours_weekends: 'сб-вс, праздники 7-22'
 copyright: G1
-telegram_link: '#'
+telegram_link: 'https://t.me/GAGAR1N_G1'
+vk_link: 'https://vk.com/gagar1n_fitness'
 mobile_app_text: 'наше мобильное приложение'
-app_store_link: '#'
-google_play_link: '#'
+app_store_link: 'https://apps.apple.com/ru/app/gagarin-фитнес/id1556427863'
+google_play_link: 'https://play.google.com/store/search?q=gagarin+фитнес&c=apps&hl=ru&gl=US'
 yandex_rating: '4,9'
 footer_menu:
   -
