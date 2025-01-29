@@ -148,7 +148,7 @@
                 <ul class="col-span-2">
                     <!-- Телефон -->
                     <li class="text-light [font-size:_clamp(1.125rem,0.7775rem+1.7375vw,2.25rem)] font-normal leading-5 text-right mb-3">
-                        {{ $footer->phone_number }}
+                        <a href="tel:{{ $footer->phone_number }}">{{ $footer->phone_number }}</a>
                     </li>
 
                     <!-- Часы работы -->
