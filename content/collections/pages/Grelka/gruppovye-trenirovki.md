@@ -1,0 +1,10 @@
+---
+id: 20f7e8b8-41e6-4fd9-adec-7fbac8d06df4
+blueprint: tipovaia
+title: 'Групповые тренировки'
+tipovaya_text: 'Текст - Групповые тренировки'
+updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
+updated_at: 1738083681
+tipovoya_template: typovaya
+tipovaya_title: 'Групповые тренировки'
+---

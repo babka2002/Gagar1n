@@ -1,0 +1,26 @@
+tabs:
+  main:
+    display: Основное
+    sections:
+      -
+        fields:
+          -
+            handle: popup_title
+            field:
+              type: text
+              display: заголовок
+              localizable: false
+          -
+            handle: popap_text
+            field:
+              type: textarea
+              display: описание
+              localizable: false
+          -
+            handle: pole_forma
+            field:
+              placeholder: 'popup form'
+              max_items: 1
+              type: form
+              display: 'Поле Форма'
+              localizable: false

@@ -1,0 +1,41 @@
+tree:
+  -
+    id: bb9534e4-0456-45ec-b443-d00e0838c751
+    title: 'Главная страница'
+    url: /
+  -
+    id: 3ac344ce-a525-46d2-8e5d-4c62d11e5995
+    title: 'ТРЕНАЖЕРНЫЙ ЗАЛ'
+    url: /hall
+  -
+    id: acaf7cad-33c0-4184-a6ba-3ee973178d59
+    title: 'ГРУППОВЫЕ ТРЕНИРОВКИ'
+    url: /gruppovye-trenirovki
+  -
+    id: 6be26158-3bee-467a-81d1-021649980d0b
+    title: БАССЕЙН
+    url: /pool
+  -
+    id: 877c1c89-1ccc-4b47-998d-dcbb9b9c50da
+    title: РАСПИСАНИЕ
+    url: /schedule
+  -
+    id: d7000734-1c74-4eb2-9c31-60a9fc427dbc
+    title: ТРЕНЕРЫ
+    url: /trainers
+  -
+    id: 3376eb1f-1789-40c0-9a87-761e1a0c29f3
+    title: 'АКАДЕМИЯ ФИТНЕСА'
+    url: /akademiya-fitnesa
+  -
+    id: 360b451d-689e-49c6-8297-26e43773753f
+    title: Мероприятия
+    url: /meropriyatiya
+  -
+    id: 9a1aae38-b6e9-4f90-8f62-78553053fd46
+    title: Блог
+    url: /blog
+  -
+    id: 935173a5-68b6-4af9-981f-008cd2559184
+    title: Контакты
+    url: /kontakty

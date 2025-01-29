@@ -1,5 +1,15 @@
-default:
-  name: '{{ config:app:name }}'
+Grelka:
+  name: 'grelka'
   url: /
+  locale: ru_RU
+  lang: ru
+Gun1or:
+  name: gun1or
+  url: /gun1or/
+  locale: ru_RU
+  lang: ru
+GFoodcafe:
+  name: gfoodcafe
+  url: /gfoodcafe/
   locale: ru_RU
   lang: ru

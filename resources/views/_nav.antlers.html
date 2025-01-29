@@ -1,0 +1,65 @@
+<ul
+    class="absolute top-[90%] left-[-20px] bg-light rounded-b-[1.875em] p-5 min-w-[17.9375em] menu-items z-9 hidden"
+>
+    {{ nav:glavnaya_navigatsiya include_home="true" }}
+    <li>
+        <a
+            href="{{ url }}"
+            class="{{ is_current ?= 'text-red-700'}} uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all"
+            >{{ title }}</a>
+    </li>
+    {{ /nav:glavnaya_navigatsiya }}
+    <!-- <li>
+        <a
+            href="cicle"
+            class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all"
+            >САЙКЛ</a
+        >
+    </li>
+    <li>
+        <a
+            href="crossfit"
+            class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all"
+            >Кроссфит</a
+        >
+    </li>
+    <li>
+        <a
+            href="fitness"
+            class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all"
+            >фитнес</a
+        >
+    </li>
+    <li>
+        <a
+            href="hall"
+            class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all"
+            >тренажерный зал</a
+        >
+    </li>
+    <li>
+        <a
+            href="pool"
+            class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all"
+            >бассейн</a
+        >
+    </li>
+    <li>
+        <a
+            href="schedule"
+            class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all"
+            >Календарь</a
+        >
+    </li>
+    <li>
+        <a
+            href="trainers"
+            class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all"
+            >ТРЕНЕРЫ</a
+        >
+    </li> -->
+    <!-- {{-- <li>
+        <a href="trainer"
+        class="uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all">Страница тренера</a>
+    </li> --}} -->
+</ul>

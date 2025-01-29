@@ -1,7 +1,7 @@
 ---
 id: home
 blueprint: pages
-title: Home
+title: Главная
 template: home
 code_field:
   code: |-
@@ -58,7 +58,7 @@ code_field:
   mode: htmlmixed
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1736604530
+updated_at: 1738156492
 hero_title: 'Тренируйся с g1'
 pole_markdown: |-
   получи выгоду 
@@ -128,40 +128,48 @@ aboniment_type:
     aboniment_image_rear: img/cards/beisik-2.png
     type: novyy_nabor
     enabled: true
-    aboniment_link: '#'
+    aboniment_link: 'entry::890b4426-5239-4a45-92c4-bcf0809aa080'
   -
     id: m59pycmp
     aboniment_image_front: img/cards/day-1.png
     aboniment_image_rear: img/cards/day-2.png
     type: novyy_nabor
     enabled: true
-    aboniment_link: '#'
+    aboniment_link: 'entry::fb3939e7-faac-45c4-b113-72656639dbfc'
   -
     id: m59q5q8j
     aboniment_image_front: img/cards/biznes-1.png
     aboniment_image_rear: img/cards/biznes-2.png
     type: novyy_nabor
     enabled: true
-    aboniment_link: '#'
+    aboniment_link: 'entry::370e20e5-8168-44e9-a197-832f48314d14'
   -
     id: m59q6d6p
     aboniment_image_front: img/cards/daimond-1.png
     aboniment_image_rear: img/cards/daimond-2.png
     type: novyy_nabor
     enabled: true
-    aboniment_link: '#'
+    aboniment_link: 'entry::a862bf94-d820-41a3-96a2-51eef76ce101'
   -
     id: m59q71us
     aboniment_image_front: img/cards/polden-1.png
     aboniment_image_rear: img/cards/polden-2.png
     type: novyy_nabor
     enabled: true
-    aboniment_link: '#'
+    aboniment_link: 'entry::2990a2cb-a73d-48ea-bc02-e2924fab4455'
   -
     id: m59q7k1u
     aboniment_image_front: img/cards/studentam-1.png
     aboniment_image_rear: img/cards/studentam-2.png
     type: novyy_nabor
     enabled: true
-    aboniment_link: '#'
+    aboniment_link: 'entry::efae2e6a-4108-41b6-8fd4-b1168e4d7465'
+aboniment_raspisanie_zagolovok: расписание
+aboniment_raspisanie_text: '300+ тренеровок в неделю на выбор'
+aboniment_raspisanie_link: 'entry::b7c0207a-bca0-41b0-90cc-6e73d78cf0e0'
+aboniment_our_team_pretitle: 'более 70 видов тренировок специально для тебя'
+aboniment_our_team_title: 'наша команда'
+aboniment_our_team_description: 'самые высоквалифицированные тренеры симферополя'
+aboniment_our_team_image: img/team.jpg
+aboniment_our_team_link: 'entry::689557e0-2877-4aeb-af2f-e03270ca1d44'
 ---

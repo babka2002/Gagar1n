@@ -1,0 +1,22 @@
+tabs:
+  main:
+    display: Основное
+    sections:
+      -
+        fields:
+          -
+            handle: name
+            field:
+              type: text
+              display: Имя
+              localizable: false
+              validate:
+                - required
+          -
+            handle: phone
+            field:
+              type: text
+              display: Телефон
+              localizable: false
+              validate:
+                - required

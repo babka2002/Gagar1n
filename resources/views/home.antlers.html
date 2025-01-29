@@ -23,8 +23,9 @@
             </p>
             {{ /hero_desc_group }}
             <a
+                data-dialog="dialog-more"
                 href="#"
-                class="flex items-center justify-center bg-light rounded-[clamp(1.125rem,0.8539rem+1.2048vw,1.875rem)] px-4 py-[clamp(0.375rem,0.262rem+0.502vw,0.6875rem)] text-main-red uppercase text-[clamp(1.5rem,1.1386rem+1.6064vw,2.5rem)] hover:opacity-70 transition-all"
+                class="show flex items-center justify-center bg-light rounded-[clamp(1.125rem,0.8539rem+1.2048vw,1.875rem)] px-4 py-[clamp(0.375rem,0.262rem+0.502vw,0.6875rem)] text-main-red uppercase text-[clamp(1.5rem,1.1386rem+1.6064vw,2.5rem)] hover:opacity-70 transition-all"
                 >подробнее</a
             >
 
@@ -217,10 +218,10 @@
                     <h3
                         class="text-center uppercase text-md md:text-lg text-light"
                     >
-                        расписание
+                        {{ aboniment_raspisanie_zagolovok }}
                     </h3>
                     <p class="text-center uppercase text-sm text-light mb-4">
-                        300+ тренеровок в неделю на выбор
+                        {{ aboniment_raspisanie_text }}
                     </p>
 
                     <div class="text-dark flex flex-col gap-3">
@@ -387,7 +388,7 @@
                     </div>
 
                     <a
-                        href="#"
+                        href="{{ aboniment_raspisanie_link }}"
                         class="absolute bottom-5 right-5 z-10 hover:scale-90 transition-all h-[clamp(5.25rem,4.7304rem+2.3092vw,6.6875rem)]"
                     >
                         <svg
@@ -415,7 +416,7 @@
                 <div
                         class="rounded-bl-[clamp(1.375rem,1.1943rem+0.8032vw,1.875rem)] bg-light w-full col-span-2 h-[60px] px-4 hidden lg:block text-base"
                     >
-                    <span data-aos="zoom-in">более 70 видов тренировок специально для тебя</span>
+                    <span data-aos="zoom-in">{{ aboniment_our_team_pretitle }}</span>
                     </div>
                 <div
                         data-aos="zoom-in"
@@ -424,9 +425,9 @@
                     <h3
                         class="text-light uppercase font-normal mb-4 text-lg md:text-xxl flex items-center justify-between"
                     >
-                        наша команда
+                        {{ aboniment_our_team_title }}
                         <a
-                            href=""
+                            href="{{ aboniment_our_team_link }}"
                             class="h-[clamp(5.25rem,4.7304rem+2.3092vw,6.6875rem)] flex items-center justify-center transition-all hover:scale-90"
                             ><svg
                                 width="100%"
@@ -451,14 +452,14 @@
                     <div
                         class="relative flex items-center justify-center after:absolute after:top-0 after:bottom-0 after:left-0 after:right-0 after:bg-dark/50 rounded-[clamp(1.375rem,1.1943rem+0.8032vw,1.875rem)] overflow-hidden"
                     >
-                        <img src="{{ glide:data_url src="/assets/img/team.jpg"
+                        <img src="{{ glide:data_url src="{{ aboniment_our_team_image }}"
                         quality="75" format="webp" }}" alt=""
                         class="max-h-[322px] object-center object-cover w-full"
                         />
                         <p
                             class="uppercase absolute right-4 bottom-4 max-w-[615px] text-light text-right text-sm sm:text-base md:text-lg z-10"
                         >
-                            самые высоквалифицированные тренеры симферополя
+                            {{ aboniment_our_team_description }}
                         </p>
                     </div>
                 </div>
@@ -525,13 +526,14 @@
             </p>
         </div>
         <div class="" data-aos="fade-in" data-aos-delay="1000">
-            <form action="" method="post">
+            <form id="mainContactForm">
                 <input
                     type="text"
                     id="name"
                     name="name"
                     autocomplete="name"
                     placeholder="имя"
+                    required
                     class="block w-full bg-dark text-light px-5 py-2 uppercase rounded-[clamp(0.625rem,0.3991rem+1.004vw,1.25rem)] text-[clamp(0.875rem,0.5587rem+1.4056vw,1.75rem)]"
                 />
                 <input
@@ -540,24 +542,93 @@
                     name="phone"
                     autocomplete="tel"
                     placeholder="номер телефона"
+                    required
                     class="block w-full bg-dark text-light px-5 py-2 uppercase rounded-[clamp(0.625rem,0.3991rem+1.004vw,1.25rem)] text-[clamp(0.875rem,0.5587rem+1.4056vw,1.75rem)] my-2"
                 />
                 <input
                     type="submit"
                     value="стать ближе к своей цели"
-                    pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                    required
                     class="block w-full bg-main-red px-5 py-2 text-light uppercase rounded-[clamp(0.625rem,0.3991rem+1.004vw,1.25rem)] text-[clamp(0.875rem,0.5587rem+1.4056vw,1.75rem)]"
                 />
-                <span
-                    class="block mt-2 text-center text-[clamp(0.5rem,0.3645rem+0.6024vw,0.875rem)]"
-                    >Нажимая "Отправить" я согласен на обработку персональных
-                    данных</span
-                >
+                <span class="block mt-2 text-center text-[clamp(0.5rem,0.3645rem+0.6024vw,0.875rem)]">
+                    Нажимая "Отправить" я согласен на обработку персональных данных
+                </span>
+
+                <!-- Индикатор состояния -->
+                <div id="formStatus" class="mt-4 p-4 rounded-lg hidden">
+                    <p class="text-center"></p>
+                </div>
             </form>
         </div>
+
     </div>
 </section>
+
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('mainContactForm');
+    const formStatus = document.getElementById('formStatus');
+
+    if (form) {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const name = form.querySelector('[name="name"]').value;
+            const phone = form.querySelector('[name="phone"]').value;
+
+            const apiData = {
+                leadtype: "request",
+                callerphone: phone,
+                requestDate: new Date().toISOString().slice(0, 19).replace('T', ' '),
+                subject: "Заявка с сайта",
+                fio: name,
+                source: window.location.hostname,
+                medium: document.referrer || "direct",
+                siteName: window.location.hostname,
+                city: "Симферополь"
+            };
+
+            try {
+                const response = await fetch('http://147.45.187.4:5557/api/leads', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(apiData)
+                });
+
+                formStatus.classList.remove('hidden', 'bg-red-500', 'bg-green-500');
+
+                if (response.ok) {
+                    form.reset();
+                    formStatus.classList.add('bg-green-500');
+                    formStatus.querySelector('p').textContent = 'Спасибо! Ваша заявка отправлена.';
+                } else {
+                    formStatus.classList.add('bg-red-500');
+                    formStatus.querySelector('p').textContent = 'Произошла ошибка. Пожалуйста, попробуйте еще раз.';
+                }
+
+                formStatus.classList.remove('hidden');
+
+                // Скрываем статус через 3 секунды
+                setTimeout(() => {
+                    formStatus.classList.add('hidden');
+                }, 3000);
+
+            } catch (error) {
+                console.error('Ошибка:', error);
+                formStatus.classList.remove('hidden');
+                formStatus.classList.add('bg-red-500');
+                formStatus.querySelector('p').textContent = 'Произошла ошибка. Пожалуйста, попробуйте еще раз.';
+            }
+        });
+    }
+});
+</script>
+@endpush
+
 <!-- END::FORM -->
 <!-- <article class="mt-4 bg-white p-8 shadow-xl rounded-xl max-w-xl prose">
     {{ content | widont }}

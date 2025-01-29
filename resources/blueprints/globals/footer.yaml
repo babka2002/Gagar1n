@@ -1,11 +1,112 @@
 tabs:
   main:
-    display: Main
+    display: 'Основные настройки'
     sections:
       -
         fields:
+          -
+            handle: footer_logo
+            field:
+              type: assets
+              container: assets
+              display: 'Логотип футера'
+              localizable: false
+              max_files: 1
+              min_files: 1
+          -
+            handle: phone_number
+            field:
+              type: text
+              display: 'Номер телефона'
+              instructions: 'Введите номер телефона в формате 8 800 500 1598'
+              localizable: false
+          -
+            handle: work_hours_weekdays
+            field:
+              type: text
+              display: 'Часы работы (будни)'
+              instructions: 'Например: пн-пт 7-23'
+              localizable: false
+          -
+            handle: work_hours_weekends
+            field:
+              type: text
+              display: 'Часы работы (выходные)'
+              instructions: 'Например: сб-вс, праздники 7-22'
+              localizable: false
           -
             handle: copyright
             field:
               type: text
               display: Copyright
+              localizable: false
+  social:
+    display: 'Соцсети и приложения'
+    sections:
+      -
+        fields:
+          -
+            handle: telegram_link
+            field:
+              type: text
+              display: 'Ссылка Telegram'
+              instructions: 'Полный URL канала Telegram'
+              localizable: false
+          -
+            handle: vk_link
+            field:
+              type: text
+              display: 'Ссылка VK'
+              instructions: 'Полный URL группы VK'
+              localizable: false
+          -
+            handle: mobile_app_text
+            field:
+              type: text
+              display: 'Текст о мобильном приложении'
+              default: 'наше мобильное приложение'
+              localizable: false
+          -
+            handle: app_store_link
+            field:
+              type: text
+              display: 'Ссылка App Store'
+              localizable: false
+          -
+            handle: google_play_link
+            field:
+              type: text
+              display: 'Ссылка Google Play'
+              localizable: false
+          -
+            handle: yandex_rating
+            field:
+              type: text
+              display: 'Рейтинг Яндекс'
+              instructions: 'Введите число рейтинга, например: 4.9'
+              localizable: false
+  menu:
+    display: 'Меню футера'
+    sections:
+      -
+        fields:
+          -
+            handle: footer_menu
+            field:
+              type: grid
+              display: 'Пункты меню'
+              instructions: 'Добавьте пункты меню футера'
+              mode: stacked
+              add_row: 'Добавить пункт меню'
+              localizable: false
+              fields:
+                -
+                  handle: title
+                  field:
+                    type: text
+                    display: 'Название пункта'
+                -
+                  handle: link
+                  field:
+                    type: text
+                    display: Ссылка

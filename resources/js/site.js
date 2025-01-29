@@ -41,6 +41,34 @@ var swiper = new Swiper(".mySwiper", {
         },
     },
 });
+// Инициализация обработчиков событий Swiper, если элемент существует
+function initializeSwiperEvents() {
+    const swiperContainer = document.querySelector('.mySwiper');
+
+    // Инициализируем события только если контейнер Swiper существует
+    if (swiperContainer && typeof swiper !== 'undefined') {
+        // События мыши
+        swiperContainer.addEventListener('mouseenter', () => {
+            swiper.autoplay.stop();
+        });
+
+        swiperContainer.addEventListener('mouseleave', () => {
+            swiper.autoplay.start();
+        });
+
+        // События касания
+        swiperContainer.addEventListener('touchstart', () => {
+            swiper.autoplay.stop();
+        });
+
+        swiperContainer.addEventListener('touchend', () => {
+            swiper.autoplay.start();
+        });
+    }
+}
+
+// Инициализация событий при загрузке DOM
+document.addEventListener('DOMContentLoaded', initializeSwiperEvents);
 
 // TRAINER SLIDER
 var swiper2 = new Swiper(".mySwiper2", {
@@ -147,17 +175,55 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // DIALOG
-const dialogElem = document.getElementById("dialog");
-const showBtn = document.querySelector(".show");
-const closeBtn = document.querySelector(".close");
+const showBtns = document.querySelectorAll(".show"); // Получаем все элементы с классом show
+const closeBtns = document.querySelectorAll(".close"); // Получаем все элементы с классом close
 
-showBtn.addEventListener("click", () => {
-    dialogElem.showModal();
-});
+// Добавляем обработчик для каждой кнопки
+if (showBtns.length > 0) {
+    showBtns.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault(); // Предотвращаем стандартное поведение ссылки
+            const dialogId = btn.getAttribute("data-dialog"); // Получаем ID модального окна
+            const dialogElem = document.getElementById(dialogId); // Находим модальное окно по ID
+            if (dialogElem) {
+                dialogElem.showModal(); // Открываем модальное окно
+            }
+        });
+    });
+}
 
-closeBtn.addEventListener("click", () => {
-    dialogElem.close();
-});
+// Добавляем обработчик для каждой кнопки закрытия
+if (closeBtns.length > 0) {
+    closeBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const dialogElem = btn.closest("dialog"); // Находим родительское модальное окно
+            if (dialogElem) {
+                dialogElem.close(); // Закрываем модальное окно
+            }
+        });
+    });
+}
+// const dialogElem = document.getElementById("dialog");
+// const showBtns = document.querySelectorAll(".show"); // Получаем все элементы с классом show
+// const closeBtn = document.querySelector(".close");
+
+
+// // Добавляем обработчик для каждой кнопки
+// if (dialogElem && showBtns.length > 0) {
+//     showBtns.forEach(btn => {
+//         btn.addEventListener("click", (e) => {
+//             e.preventDefault(); // Предотвращаем стандартное поведение ссылки
+//             dialogElem.showModal();
+//         });
+//     });
+// }
+
+// if (closeBtn && dialogElem) {
+//     closeBtn.addEventListener("click", () => {
+//         dialogElem.close();
+//     });
+// }
+
 
 // Init ViewTransition
 // document.addEventListener("click", (e) => {

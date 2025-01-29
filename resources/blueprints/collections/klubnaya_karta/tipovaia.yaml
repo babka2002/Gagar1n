@@ -1,0 +1,49 @@
+title: Типовая
+tabs:
+  main:
+    display: Основное
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              localizable: false
+              validate:
+                - required
+              display: Заголовок
+          -
+            handle: tipovaya_image
+            field:
+              container: assets
+              type: assets
+              display: Картинка
+              localizable: false
+          -
+            handle: tipovaya_text
+            field:
+              type: textarea
+              display: Текст
+              localizable: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - pages
+              max_items: 1
+              listable: false
+              localizable: true

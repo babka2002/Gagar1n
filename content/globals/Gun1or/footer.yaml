@@ -1,0 +1,43 @@
+footer_logo: img/footer-logo.svg
+phone_number: '8 800 500 1598'
+work_hours_weekdays: 'пн-пт 7-23'
+work_hours_weekends: 'сб-вс, праздники 7-22'
+telegram_link: '#'
+vk_link: '#'
+mobile_app_text: 'наше мобильное приложение'
+app_store_link: '#'
+google_play_link: '#'
+yandex_rating: '4,9'
+footer_menu:
+  -
+    id: m6i9mp1k
+    title: Команда
+    link: /team
+  -
+    id: m6i9msjv
+    title: Партнеры
+    link: /partnery
+  -
+    id: m6i9mvi1
+    title: Оплата
+    link: /oplata
+  -
+    id: m6i9myit
+    title: 'Сотрудничество и реклама'
+    link: /sotrudnichestvo-i-reklama
+  -
+    id: m6i9n1cv
+    title: 'Правила клуба'
+    link: /pravila-kluba
+  -
+    id: m6i9n3i8
+    title: 'Политика конфиденциальности'
+    link: /policy
+  -
+    id: m6i9nb4e
+    title: 'Договор оферты'
+    link: /dogovor-oferty
+  -
+    id: m6i9ndfy
+    title: Контакты
+    link: /kontakty

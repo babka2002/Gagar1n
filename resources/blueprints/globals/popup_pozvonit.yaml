@@ -1,0 +1,19 @@
+tabs:
+  main:
+    display: Основное
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              display: Заголовок
+              localizable: false
+          -
+            handle: text
+            field:
+              type: textarea
+              display: Описание
+              localizable: false
+              antlers: true

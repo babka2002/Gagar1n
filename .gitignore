@@ -23,3 +23,9 @@ yarn-error.log
 /.vscode
 /.zed
 .history/
+
+public/static/
+
+public/assets/.meta/
+
+public/assets/img/.meta/
