@@ -4,19 +4,191 @@ tabs:
     display: Main
     sections:
       -
+        display: 'Первая секция'
         fields:
           -
             handle: title
             field:
               type: text
               required: true
+              localizable: false
               validate:
                 - required
           -
-            handle: code_field
+            handle: first_section_title
             field:
-              type: code
-              display: 'Code Field'
+              type: text
+              validate:
+                - required
+              localizable: false
+              display: Заголовок
+          -
+            handle: pool_image_1
+            field:
+              max_files: 1
+              container: assets
+              type: assets
+              display: 'Поле Ресурсы'
+              localizable: false
+          -
+            handle: metry
+            field:
+              type: text
+              display: Метры
+              localizable: false
+          -
+            handle: glubina
+            field:
+              type: text
+              display: Глубина
+              localizable: false
+          -
+            handle: dorozhek
+            field:
+              type: text
+              display: Дорожек
+              localizable: false
+          -
+            handle: knopka_tekst
+            field:
+              type: text
+              display: 'Кнопка текст'
+              localizable: false
+      -
+        display: 'Вторая секция'
+        fields:
+          -
+            handle: second_section_title
+            field:
+              type: text
+              display: Заголовок
+              localizable: false
+          -
+            handle: kartinka
+            field:
+              max_files: 1
+              container: assets
+              type: assets
+              display: Картинка
+              localizable: false
+          -
+            handle: tekst_opisanie
+            field:
+              type: textarea
+              display: 'Текст описание'
+              localizable: false
+          -
+            handle: gruppovye_zagolovok
+            field:
+              type: text
+              display: 'Групповые заголовок'
+              localizable: false
+          -
+            handle: gruppovye_bloki
+            field:
+              type: replicator
+              display: 'Групповые блоки'
+              localizable: false
+              sets:
+                novaya_gruppa_naborov:
+                  display: 'Новая группа наборов'
+                  sets:
+                    novyy_nabor:
+                      display: 'Новый набор'
+                      fields:
+                        -
+                          handle: second_blok_zagolovok
+                          field:
+                            type: text
+                            display: 'Блок заголовок'
+                            localizable: false
+                        -
+                          handle: blok_opisanie
+                          field:
+                            type: textarea
+                            display: 'Блок описание'
+                            localizable: false
+          -
+            handle: second_images
+            field:
+              type: replicator
+              display: 'Групповые Картинки'
+              localizable: false
+              sets:
+                novaya_gruppa_naborov:
+                  display: 'Новая группа наборов'
+                  sets:
+                    novyy_nabor:
+                      display: 'Новый набор'
+                      fields:
+                        -
+                          handle: second_replicator_blok_image
+                          field:
+                            max_files: 1
+                            container: assets
+                            type: assets
+                            display: 'Блок картинка'
+                            localizable: false
+      -
+        display: Расписание
+        fields:
+          -
+            handle: raspisanie_title
+            field:
+              type: text
+              display: Заголовок
+              localizable: false
+          -
+            handle: pn_pt
+            field:
+              type: replicator
+              display: Пн-Пт
+              localizable: false
+              sets:
+                novaya_gruppa_naborov:
+                  display: 'Новая группа наборов'
+                  sets:
+                    novyy_nabor:
+                      display: 'Новый набор'
+                      fields:
+                        -
+                          handle: raspisanie_block_title
+                          field:
+                            type: text
+                            display: Заголовок
+                            localizable: false
+                        -
+                          handle: vremya
+                          field:
+                            type: text
+                            display: Время
+                            localizable: false
+          -
+            handle: raspisanie_bg
+            field:
+              container: assets
+              type: assets
+              display: 'Расписание картинка'
+              localizable: false
+              max_files: 1
+      -
+        display: Форма
+        fields:
+          -
+            handle: form_title
+            field:
+              type: text
+              display: Заголовок
+              localizable: false
+      -
+        display: Шаблон
+        fields:
+          -
+            handle: template
+            field:
+              type: template
+              display: Шаблон
+              localizable: false
   sidebar:
     display: Sidebar
     sections:
