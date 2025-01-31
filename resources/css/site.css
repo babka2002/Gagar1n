@@ -6,7 +6,8 @@
 
 @font-face {
     font-family: "Gothic No60";
-    src: url("../fonts/Gothic60-Regular.woff2") format("woff2"),
+    src:
+        url("../fonts/Gothic60-Regular.woff2") format("woff2"),
         url("../fonts/Gothic60-Regular.woff") format("woff");
     font-weight: normal;
     font-style: normal;
@@ -81,8 +82,8 @@ body {
     justify-content: space-between;
     gap: 2em;
 
-    >.front,
-    >.back {
+    > .front,
+    > .back {
         display: block;
         transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
         transition-duration: 0.5s;
@@ -91,11 +92,11 @@ body {
         display: block;
     }
 
-    >.front {
+    > .front {
         transform: rotateY(0deg);
     }
 
-    >.back {
+    > .back {
         position: absolute;
         opacity: 0;
         top: 0px;
@@ -106,27 +107,27 @@ body {
     }
 
     &:hover {
-        >.front {
+        > .front {
             transform: rotateY(180deg);
         }
 
-        >.back {
+        > .back {
             opacity: 1;
             transform: rotateY(0deg);
         }
     }
 
     &.flip-vertical {
-        >.back {
+        > .back {
             transform: rotateX(-180deg);
         }
 
         &:hover {
-            >.front {
+            > .front {
                 transform: rotateX(180deg);
             }
 
-            >.back {
+            > .back {
                 transform: rotateX(0deg);
             }
         }
@@ -421,7 +422,8 @@ summary::-webkit-details-marker {
     }
 }
 
-.mySwiper2 .swiper-wrapper {}
+.mySwiper2 .swiper-wrapper {
+}
 
 .mySwiper2 .swiper-slide {
     display: flex;
@@ -444,4 +446,54 @@ section {
     to {
         opacity: 1;
     }
+}
+/* * { */
+/*     outline: 1px solid red; */
+/* } */
+
+.faq-accordion-details {
+    margin-bottom: 24px;
+}
+
+.faq-accordion summary {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 24px;
+}
+.faq-accordion summary span {
+    display: block;
+    flex-shrink: 0;
+}
+@media (width <= 768px) {
+    .faq-accordion summary span {
+        flex-shrink: 1;
+    }
+}
+.faq-accordion summary::after {
+    content: "";
+    background-image: url("data:image/svg+xml,%3Csvg width='675' height='16' viewBox='0 0 675 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M674.707 8.52748C675.098 8.13695 675.098 7.50379 674.707 7.11326L668.343 0.749303C667.953 0.358779 667.319 0.358779 666.929 0.749303C666.538 1.13983 666.538 1.77299 666.929 2.16352L672.586 7.82037L666.929 13.4772C666.538 13.8677 666.538 14.5009 666.929 14.8914C667.319 15.282 667.953 15.282 668.343 14.8914L674.707 8.52748ZM-8.74228e-08 8.82031L674 8.82037L674 6.82037L8.74228e-08 6.82031L-8.74228e-08 8.82031Z' fill='black'/%3E%3C/svg%3E%0A");
+    width: 100%;
+    max-width: 100%;
+    height: 16px;
+    background-position: 100% 0;
+    background-repeat: no-repeat;
+    margin-left: auto;
+    flex-shrink: 1;
+}
+.faq-accordion-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: all 0.3s ease;
+}
+.faq-accordion-content--body {
+    overflow: hidden;
+}
+.faq-accordion-details[open] {
+    background-color: #f1f1f1;
+    padding: 16px;
+    transition: all 0.3s ease;
+}
+.faq-accordion-details[open] > .faq-accordion-content {
+    grid-template-rows: 1fr;
 }
