@@ -309,3 +309,30 @@ AOS.init({
   mirror: false, // whether elements should animate out while scrolling past them
   anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.toggle-button');
+    const contents = document.querySelectorAll('.content');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const targetContent = document.getElementById(targetId);
+
+            if (targetContent.classList.contains('active')) {
+                // Если целевой блок уже активен, скрываем его
+                targetContent.classList.remove('active');
+                this.classList.remove('active');
+            } else {
+                // Скрываем все блоки и убираем активный класс с кнопок
+                contents.forEach(content => content.classList.remove('active'));
+                buttons.forEach(btn => btn.classList.remove('active'));
+
+                // Показываем целевой блок и делаем кнопку активной
+                targetContent.classList.add('active');
+                this.classList.add('active');
+            }
+        });
+    });
+});
