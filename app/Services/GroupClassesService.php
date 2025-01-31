@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 
-class ScheduleService
+class GroupClassesService implements ScheduleServiceInterface
 {
     private const API_URL = 'http://fitness1c.phys.su:8080/fitness1c_chat/hs/api/v3/classes/';
     private const CACHE_TTL = 3600;
-    private const CACHE_FILE = 'schedule.json';
+    private const CACHE_FILE = 'group_schedule.json';
 
     private string $apiKey;
     private string $userToken;

@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 
-class ScheduleService
+class PersonalClassesService implements ScheduleServiceInterface
 {
-    private const API_URL = 'http://fitness1c.phys.su:8080/fitness1c_chat/hs/api/v3/classes/';
+    private const API_URL = 'http://fitness1c.phys.su:8080/fitness1c_chat/hs/api/v3/appointment_dates/';
     private const CACHE_TTL = 3600;
-    private const CACHE_FILE = 'schedule.json';
+    private const CACHE_FILE = 'personal_schedule.json';
 
     private string $apiKey;
     private string $userToken;
@@ -32,15 +32,7 @@ class ScheduleService
         // Проверяем, существует ли кэшированный файл
         if (Storage::disk('public')->exists(self::CACHE_FILE)) {
             $cachedData = json_decode(Storage::disk('public')->get(self::CACHE_FILE), true);
-            // dd( $cachedData);
-            // dd([
-            //     'all_data' => $cachedData,
-            //     'filtered_personal' => array_filter($cachedData['data'] ?? [], function($item) {
-            //         return isset($item['type']) && $item['type'] === 'classes';
-            //     }),
-            //     'params' => $params
-            // ]);
-            // Проверяем, актуален ли кэш
+
             if ($this->isCacheValid($cachedData)) {
                 return $cachedData['data'];
             }

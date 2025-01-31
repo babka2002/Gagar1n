@@ -2,18 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\ScheduleService;
+use App\Services\GroupClassesService;
+use App\Services\PersonalClassesService;
 use Illuminate\Http\Request;
 use Statamic\View\View;
 use Carbon\Carbon;
 
 class ScheduleController extends Controller
 {
-    private ScheduleService $scheduleService;
+    private GroupClassesService $groupService;
+    private PersonalClassesService $personalService;
 
-    public function __construct(ScheduleService $scheduleService)
-    {
-        $this->scheduleService = $scheduleService;
+    public function __construct(
+        GroupClassesService $groupService,
+        PersonalClassesService $personalService
+    ) {
+        $this->groupService = $groupService;
+        $this->personalService = $personalService;
     }
 
     public function index(Request $request)
@@ -30,10 +35,23 @@ class ScheduleController extends Controller
         $params = $request->only(['start_date', 'end_date', 'service_id', 'employee_id']);
         $params['club_id'] = $clubId;
 
-        $scheduleData = $this->scheduleService->getSchedule($params);
+        // Получаем тип расписания
+        $scheduleType = $request->input('schedule_type', 'classes');
+
+        // Выбираем нужный сервис
+        $service = $scheduleType === 'personal'
+            ? $this->personalService
+            : $this->groupService;
+
+        $scheduleData = $service->getSchedule($params);
         if (empty($scheduleData)) {
             return response()->json(['message' => 'Нет данных для отображения.'], 404);
         }
+
+        // Фильтруем данные по типу
+        $scheduleData = array_filter($scheduleData, function ($item) use ($scheduleType) {
+            return isset($item['type']) && $item['type'] === $scheduleType;
+        });
 
         $filters = [
             'тренажерный зал' => [
@@ -98,13 +116,8 @@ class ScheduleController extends Controller
         ];
 
         $filteredData = $this->applyFilters($scheduleData, $request, $filters);
-
-        // Generate time slots based on actual events
         $timeSlots = $this->generateTimeSlots($filteredData);
-
-        // Prepare days with events
         $daysOfWeek = $this->prepareDaysOfWeek($filteredData, $timeSlots);
-
         $currentDay = Carbon::now()->locale('ru')->isoFormat('dddd');
 
         return (new View)
@@ -115,6 +128,7 @@ class ScheduleController extends Controller
                 'daysOfWeek' => $daysOfWeek,
                 'filteredData' => $filteredData,
                 'currentDay' => $currentDay,
+                'scheduleType' => $scheduleType
             ]);
     }
 
@@ -219,7 +233,7 @@ class ScheduleController extends Controller
                 }
             }
         }
-// dd($filteredData);
+        // dd($filteredData);
         return array_values($filteredData);
     }
 }
