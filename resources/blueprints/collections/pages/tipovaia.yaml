@@ -26,6 +26,22 @@ tabs:
               type: textarea
               display: Текст
               localizable: false
+          -
+            handle: custom_html_script
+            field:
+              type: code
+              display: 'Html Script'
+              localizable: false
+              antlers: true
+      -
+        display: Шаблон
+        fields:
+          -
+            handle: template
+            field:
+              type: template
+              display: 'Поле Шаблон'
+              localizable: false
   sidebar:
     display: Sidebar
     sections:
