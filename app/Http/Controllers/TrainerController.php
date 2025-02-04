@@ -63,15 +63,16 @@ class TrainerController extends Controller
     public function showTrainer(string $employeeId)
     {
         // $trainer = $this->trainerService->getTrainerById($employeeId);
-        try {
-            // Пытаемся получить тренера из API
-            $apiTrainer = $this->trainerService->getTrainerById($employeeId);
-            if ($apiTrainer) {
-                $trainer = $this->formatTrainerData($apiTrainer, 'api');
-            }
-        } catch (\Exception $e) {
-            $apiTrainer = null;
-        }
+
+        // try {
+        //     // Пытаемся получить тренера из API
+        //     $apiTrainer = $this->trainerService->getTrainerById($employeeId);
+        //     if ($apiTrainer) {
+        //         $trainer = $this->formatTrainerData($apiTrainer, 'api');
+        //     }
+        // } catch (\Exception $e) {
+        //     $apiTrainer = null;
+        // }
 
         // Пытаемся найти тренера в Statamic
         $statamicTrainer = Entry::query()
@@ -99,57 +100,90 @@ class TrainerController extends Controller
                 'trainer' => $trainer,
             ]);
     }
-
     public function showTrainers()
-    {
-        $clubId = '49964502-5659-11eb-e291-ac162d836873';
-        $trainers = $this->trainerService->getTrainers($clubId);
+{
+    // Временно отключаем получение тренеров из API
+    // $clubId = '49964502-5659-11eb-e291-ac162d836873';
+    // $trainers = $this->trainerService->getTrainers($clubId);
 
-        // Получаем тренеров из Statamic
-        $statamicTrainers = Entry::query()
-            ->where('collection', 'trainers')
-            ->where('is_active', true)
-            ->get();
+    // Получаем только тренеров из Statamic
+    $statamicTrainers = Entry::query()
+        ->where('collection', 'trainers')
+        ->where('is_active', true)
+        ->get();
 
-        // Группируем тренеров по отделам
-        $trainersByDepartment = [];
+    $trainersByDepartment = [];
 
-        // Обрабатываем тренеров из API
-        foreach ($trainers as $trainer) {
-            $formattedTrainer = $this->formatTrainerData($trainer, 'api');
-            $departmentTitle = $formattedTrainer->department->title ?? null;
+    // Обрабатываем только Statamic тренеров
+    foreach ($statamicTrainers as $trainer) {
+        $formattedTrainer = $this->formatTrainerData($trainer, 'statamic');
+        $departmentTitle = $formattedTrainer->department->title ?? $formattedTrainer->position->title ?? 'Не определена';
 
-            if (empty($departmentTitle)) {
-                $departmentTitle = $formattedTrainer->position->title ?? 'Не определена';
-            }
-
-            if (!empty($departmentTitle)) {
-                if (!isset($trainersByDepartment[$departmentTitle])) {
-                    $trainersByDepartment[$departmentTitle] = [];
-                }
-                $trainersByDepartment[$departmentTitle][] = $formattedTrainer;
-            }
+        if (!isset($trainersByDepartment[$departmentTitle])) {
+            $trainersByDepartment[$departmentTitle] = [];
         }
 
-        // Добавляем тренеров из Statamic
-        foreach ($statamicTrainers as $trainer) {
-            if (!$trainer->get('external_id')) {
-                $formattedTrainer = $this->formatTrainerData($trainer, 'statamic');
-                $departmentTitle = $formattedTrainer->department->title ?? $formattedTrainer->position->title ?? 'Не определена';
-
-                if (!isset($trainersByDepartment[$departmentTitle])) {
-                    $trainersByDepartment[$departmentTitle] = [];
-                }
-
-                $trainersByDepartment[$departmentTitle][] = $formattedTrainer;
-            }
-        }
-
-        return (new View)
-            ->template('trainers')
-            ->layout('layout')
-            ->with([
-                'trainersByDepartment' => $trainersByDepartment,
-            ]);
+        $trainersByDepartment[$departmentTitle][] = $formattedTrainer;
     }
+
+    return (new View)
+        ->template('trainers')
+        ->layout('layout')
+        ->with([
+            'trainersByDepartment' => $trainersByDepartment,
+        ]);
+}
+
+    // public function showTrainers()
+    // {
+    //     $clubId = '49964502-5659-11eb-e291-ac162d836873';
+    //     $trainers = $this->trainerService->getTrainers($clubId);
+
+    //     // Получаем тренеров из Statamic
+    //     $statamicTrainers = Entry::query()
+    //         ->where('collection', 'trainers')
+    //         ->where('is_active', true)
+    //         ->get();
+
+    //     // Группируем тренеров по отделам
+    //     $trainersByDepartment = [];
+
+    //     // Обрабатываем тренеров из API
+    //     foreach ($trainers as $trainer) {
+    //         $formattedTrainer = $this->formatTrainerData($trainer, 'api');
+    //         $departmentTitle = $formattedTrainer->department->title ?? null;
+
+    //         if (empty($departmentTitle)) {
+    //             $departmentTitle = $formattedTrainer->position->title ?? 'Не определена';
+    //         }
+
+    //         if (!empty($departmentTitle)) {
+    //             if (!isset($trainersByDepartment[$departmentTitle])) {
+    //                 $trainersByDepartment[$departmentTitle] = [];
+    //             }
+    //             $trainersByDepartment[$departmentTitle][] = $formattedTrainer;
+    //         }
+    //     }
+
+    //     // Добавляем тренеров из Statamic
+    //     foreach ($statamicTrainers as $trainer) {
+    //         if (!$trainer->get('external_id')) {
+    //             $formattedTrainer = $this->formatTrainerData($trainer, 'statamic');
+    //             $departmentTitle = $formattedTrainer->department->title ?? $formattedTrainer->position->title ?? 'Не определена';
+
+    //             if (!isset($trainersByDepartment[$departmentTitle])) {
+    //                 $trainersByDepartment[$departmentTitle] = [];
+    //             }
+
+    //             $trainersByDepartment[$departmentTitle][] = $formattedTrainer;
+    //         }
+    //     }
+
+    //     return (new View)
+    //         ->template('trainers')
+    //         ->layout('layout')
+    //         ->with([
+    //             'trainersByDepartment' => $trainersByDepartment,
+    //         ]);
+    // }
 }
