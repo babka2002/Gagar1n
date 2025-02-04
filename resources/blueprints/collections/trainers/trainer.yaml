@@ -1,0 +1,145 @@
+title: Тренера
+tabs:
+  основное:
+    display: 'Основная информация'
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              display: ФИО
+              instructions: 'Полное имя тренера (будет отображаться в списках)'
+              localizable: false
+              validate:
+                - required
+          -
+            handle: name
+            field:
+              type: text
+              display: Имя
+              localizable: false
+              validate:
+                - required
+          -
+            handle: second_name
+            field:
+              type: text
+              display: Отчество
+              localizable: false
+          -
+            handle: last_name
+            field:
+              type: text
+              display: Фамилия
+              localizable: false
+              validate:
+                - required
+          -
+            handle: content
+            field:
+              type: markdown
+              display: Описание
+              instructions: 'Полное описание тренера'
+              localizable: false
+          -
+            handle: external_id
+            field:
+              type: text
+              display: 'ID из API'
+              instructions: 'Идентификатор тренера из внешней системы'
+              localizable: false
+  медиа:
+    display: Медиа
+    sections:
+      -
+        fields:
+          -
+            handle: localPhotoPath
+            field:
+              type: assets
+              container: trainers
+              folder: trainers
+              max_files: 1
+              display: Фото
+              localizable: false
+  специализация:
+    display: Специализация
+    sections:
+      -
+        fields:
+          -
+            handle: position
+            field:
+              type: terms
+              taxonomies:
+                - positions
+              mode: select
+              display: Позиция
+              localizable: false
+              validate:
+                - required
+          -
+            handle: department
+            field:
+              type: terms
+              taxonomies:
+                - departments
+              mode: select
+              display: Отдел
+              localizable: false
+          -
+            handle: specializations
+            field:
+              type: terms
+              taxonomies:
+                - specializations
+              mode: select
+              multiple: true
+              display: Специализации
+              localizable: false
+          -
+            handle: experience
+            field:
+              type: text
+              display: 'Опыт работы'
+              localizable: false
+  настройки:
+    display: Настройки
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate:
+                - required
+                - 'max:200'
+              display: URL
+              instructions: 'URL адрес страницы тренера'
+          -
+            handle: template
+            field:
+              type: template
+              display: Шаблон
+              default: trainer_single
+              localizable: false
+          -
+            handle: is_active
+            field:
+              type: toggle
+              display: Активен
+              default: true
+              localizable: false
+          -
+            handle: author
+            field:
+              type: users
+              display: Автор
+              default: current
+              max_items: 1
+              localizable: false

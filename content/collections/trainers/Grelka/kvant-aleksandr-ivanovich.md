@@ -1,0 +1,17 @@
+---
+id: 052d9008-23fb-41c1-8e02-74bf789ab925
+blueprint: trainer
+title: 'Квант Александр Иванович'
+name: Александр
+second_name: Иванович
+last_name: Квант
+localPhotoPath: trainers/tanjiro-kamado.jpeg
+position:
+  - personalnyy-trener
+template: trainer_single
+is_active: true
+author: 9fcd11e1-673b-479c-8888-c690f9401ee3
+updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
+updated_at: 1738658864
+---
+Тестовый тренер
