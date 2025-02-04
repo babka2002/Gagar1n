@@ -94,6 +94,7 @@
                 <a
                     href="#"
                     data-dialog="dialog"
+                    aria-label="call button"
                     class="show flex items-center justify-center bg-main-red px-[10px] py-[19px] rounded-[30px] text-[20px] text-light hover:opacity-70 transition-all hidden lg:block">
                     записаться
                 </a>
