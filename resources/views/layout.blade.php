@@ -29,7 +29,7 @@
         <div class="container px-[1em] my-5 sticky top-4 z-20">
             <header class="container bg-light flex justify-between items-center gap-2 rounded-[30px] px-[20px] py-[14px] ">
             <div class="flex items-center justify-center gap-[34px] relative ">
-                <button class="menu-toggle rounded-full bg-dark text-light flex items-center justify-center w-[3.75em] h-[3.75em] relative z-10"><svg
+                <button aria-label="menu button" class="menu-toggle rounded-full bg-dark text-light flex items-center justify-center w-[3.75em] h-[3.75em] relative z-10"><svg
                     width="34" height="22" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2 2H32" stroke="#EBE7E7" stroke-width="4" stroke-linecap="round" />
                     <path d="M2 11H32" stroke="#EBE7E7" stroke-width="4" stroke-linecap="round" />
