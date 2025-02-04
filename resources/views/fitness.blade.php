@@ -111,7 +111,7 @@
             {{ $third_block_title }}
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6" data-aos="zoom-in">
-            <a href="#" class="rounded-brxl relative group overflow-hidden max-h-80 flex text-light">
+            <a href="{{ $left_link }}" class="rounded-brxl relative group overflow-hidden max-h-80 flex text-light">
                 <img src="<s:glide:data_url src='{{ $left_image }}' quality='75' format='webp' />" alt=""
                     class="group-hover:scale-125 group-hover:opacity-90 transition-all object-cover opacity-35 w-full" />
 
@@ -124,7 +124,7 @@
                     </span>
                 </div>
             </a>
-            <a href="#" class="rounded-brxl relative group overflow-hidden max-h-80 flex text-light">
+            <a href="{{ $right_ssylka }}" class="rounded-brxl relative group overflow-hidden max-h-80 flex text-light">
                 <img src="<s:glide:data_url src='{{ $right_kartinka }}' quality='75' format='webp' />" alt=""
                     class="group-hover:scale-125 group-hover:opacity-90 transition-all object-cover opacity-35 w-full" />
 
