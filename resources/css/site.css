@@ -29,6 +29,10 @@ html {
     scroll-behavior: smooth;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 html,
 body {
     /* font-family: 'Gothic No60'; */
@@ -515,3 +519,5 @@ section {
     display: block;
     opacity: 1;
 }
+
+/* DJUNIOR */

@@ -1,32 +1,44 @@
 <!-- START::HERO -->
 <section
-    class="djunior-bg-1 relative py-8 md:pt-24 md:pb-28 motion-preset-compress motion-duration-700 bg-gradient-to-b from-[#3F61B5] to-[#FFF8F8]"
+    class="py-8 md:pt-24 md:pb-28 motion-preset-compress motion-duration-700"
 >
-    <div class="container grid grid-cols-2 gap-11 px-[1em]"
-            style="background-image: url('{{ glide:data_url src='/assets/img/ners.jpg' quality='75' format='webp' }}')"
-    >
+    <div class="container grid grid-cols-2 gap-11 px-[1em]">
         <div class="order-2 md:order-1 col-span-2 text-center md:col-span-1">
             <h1
-                class="uppercase text-left text-light md:mb-5 md:mt-14 text-xl flex flex-col items-start"
+                class="uppercase text-light md:mb-5 md:mt-14 text-[clamp(2.3125rem,1.567rem+3.3133vw,4.375rem)]"
             >
-Выберите идеальную тренировку
-для ребенка в центре развития
-                <span class="rounded-2xl bg-[#FFF8F8] px-2 py-1 text-dark inline-block">G1unior</span>
+                {{ hero_title }}
             </h1>
             {{ hero_desc_group }}
             <p
-                class="text-light text-left mb-14 text-[clamp(1.4375rem,1.1212rem+1.4056vw,2.3125rem)]"
+                class="text-light mb-14 text-[clamp(1.4375rem,1.1212rem+1.4056vw,2.3125rem)]"
             >
-доп текст
+                {{ pole_text_1 }}
+                <span
+                    class="motion-preset-seesaw inline-block bg-main-red px-2 py-1 rounded-xl text-dark"
+                    >{{ pole_text_discont }}</span
+                >
+                <br />на
+                <span class="border-dashed border-main-red border-b-[4px]"
+                    >{{ pole_text_2 }}</span
+                >
+                {{ pole_text_3 }}
             </p>
             {{ /hero_desc_group }}
             <a
                 data-dialog="dialog-more"
                 href="#"
-                class="show flex items-center justify-center bg-light rounded-[clamp(1.125rem,0.8539rem+1.2048vw,1.875rem)] px-4 py-[clamp(0.375rem,0.262rem+0.502vw,0.6875rem)] text-main-red uppercase text-[clamp(1.5rem,1.1386rem+1.6064vw,2.5rem)] hover:opacity-70 transition-all text=[#CA74E2]"
+                class="show flex items-center justify-center bg-light rounded-[clamp(1.125rem,0.8539rem+1.2048vw,1.875rem)] px-4 py-[clamp(0.375rem,0.262rem+0.502vw,0.6875rem)] text-main-red uppercase text-[clamp(1.5rem,1.1386rem+1.6064vw,2.5rem)] hover:opacity-70 transition-all"
                 >подробнее</a
             >
 
+            <div
+                class="h-[284px] mt-[34px] bg-neutral-800 rounded-[46px] overflow-hidden hidden md:block"
+            >
+                <img src="{{ glide:data_url src="{{ hero_1 }}" quality="75"
+                format="webp" }}" alt="" class="rounded-[46px] object-cover
+                object-center" />
+            </div>
         </div>
         <div
             class="flex items-center justify-center bg-neutral-800 rounded-[20px] overflow-hidden h-[300px] md:h-auto col-span-2 order-1 md:order-2 md:col-span-1 md:max-h-[75Hks|<GwQ:C\=iw@]0px]"
@@ -44,12 +56,12 @@
     <div class="container">
         <h2
             data-aos="zoom-in"
-            class="text-lg md:text-xxl text-center flex justify-center items-center font-normal px-4 lg:px-0 text-[#2C498D] mb-6 leading-[1]"
+            class="text-lg md:text-xxl flex justify-center items-center font-normal px-4 lg:px-0 text-black mb-6 leading-[1]"
         >
-Мы предлагаем комплексное развитие для Вашего ребенка
+            {{ direction_title }}
         </h2>
         <div
-            class="bg-[#2C498D] rounded-[74px] px-[45px] py-[40px] md:grid-cols-3 gap-5 hidden md:grid"
+            class="bg-dark rounded-[74px] px-[45px] py-[40px] md:grid-cols-3 gap-5 hidden md:grid"
         >
             {{ direction_replicator }} {{ if inversion }}
             <a
@@ -235,23 +247,32 @@
 
 <!-- START::ABONIMENT -->
 
-<section class="py-sectionPadding bg-gradient-to-b from-[#FFF8F8] to-[#3F61B5]">
-    <div class="container mx-auto px-4 pb-sectionPadding">
-        <div class="grid grid-cols-12 gap-8">
-            <div data-aos="zoom-in" class="col-span-12 lg:col-span-5 rounded-brxl bg-[#CBCCDA] p-6">
+<section class="bg-dark">
+    <div class="aboniment-block">
+        <div
+            class="md:h-[60px] md:bg-light md:rounded-br-[clamp(1.375rem,1.1943rem+0.8032vw,1.875rem)] md:min-w-4"
+        ></div>
+        <div class="lg:grid lg:grid-cols-3">
+            <div
+                class="bg-dark text-light rounded-tl-[clamp(1.375rem,1.1943rem+0.8032vw,1.875rem)] col-span-1 rounded-tr-[clamp(1.375rem,1.1943rem+0.8032vw,1.875rem)] md:-mt-[30px] px-4 py-8"
+            >
+                <div
+                    data-aos="zoom-in"
+                    class="rounded-[clamp(1.375rem,1.1943rem+0.8032vw,1.875rem)] overflow-hidden bg-light/25 text-dark py-4 px-5 relative after:bg-gradient-to-t after:from-[#000000] 0% after:to-[#FFF8F838] 100% after:absolute after:bottom-0 after:left-0 after:right-0 after:top-0 after:opacity-55"
+                >
                     <h3
-                        class="text-center uppercase text-md md:text-lg text-[#2C498D]"
+                        class="text-center uppercase text-md md:text-lg text-light"
                     >
                         {{ aboniment_raspisanie_zagolovok }}
                     </h3>
-                    <p class="text-center uppercase text-sm text-[#2C498D] mb-4">
-100+ ТРЕНЕРОВОК В НЕДЕЛЮ НА ВЫБОР
+                    <p class="text-center uppercase text-sm text-light mb-4">
+                        {{ aboniment_raspisanie_text }}
                     </p>
 
-                    <div class="text-dark flex flex-col gap-3 min-h-[200px]">
-                        <div class="flex gap-4 bg-light/25 rounded-[20px] text-[#062B50]">
+                    <div class="text-dark flex flex-col gap-3">
+                        <div class="flex gap-4 bg-light/25 rounded-[20px]">
                             <div
-                                class="bg-[#CA74E2] w-[50px] rounded-l-[20px]"
+                                class="bg-main-red/80 w-[50px] rounded-l-[20px]"
                             ></div>
                             <div class="py-2">
                                 <h4
@@ -281,9 +302,9 @@
                                 >
                             </div>
                         </div>
-                        <div class="flex gap-4 bg-light/25 rounded-[20px] text-[#062B50]">
+                        <div class="flex gap-4 bg-light/25 rounded-[20px]">
                             <div
-                                class="bg-[#CA74E2] w-[50px] rounded-l-[20px]"
+                                class="bg-main-red/80 w-[50px] rounded-l-[20px]"
                             ></div>
                             <div class="py-2">
                                 <h4
@@ -313,9 +334,9 @@
                                 >
                             </div>
                         </div>
-                        <div class="flex gap-4 bg-light/25 rounded-[20px] text-[#062B50]">
+                        <div class="flex gap-4 bg-light/25 rounded-[20px]">
                             <div
-                                class="bg-[#CA74E2] w-[50px] rounded-l-[20px]"
+                                class="bg-main-red/80 w-[50px] rounded-l-[20px]"
                             ></div>
                             <div class="py-2">
                                 <h4
@@ -345,9 +366,9 @@
                                 >
                             </div>
                         </div>
-                        <div class="flex gap-4 bg-light/25 rounded-[20px] text-[#062B50]">
+                        <div class="flex gap-4 bg-light/25 rounded-[20px]">
                             <div
-                                class="bg-[#CA74E2] w-[50px] rounded-l-[20px]"
+                                class="bg-main-red/80 w-[50px] rounded-l-[20px]"
                             ></div>
                             <div class="py-2">
                                 <h4
@@ -377,9 +398,9 @@
                                 >
                             </div>
                         </div>
-                        <div class="flex gap-4 bg-light/25 rounded-[20px] text-[#062B50]">
+                        <div class="flex gap-4 bg-light/25 rounded-[20px]">
                             <div
-                                class="bg-[#CA74E2] w-[50px] rounded-l-[20px]"
+                                class="bg-main-red/80 w-[50px] rounded-l-[20px]"
                             ></div>
                             <div class="py-2">
                                 <h4
@@ -426,25 +447,27 @@
                                 cx="53.5"
                                 cy="53.5"
                                 r="53.5"
-                                fill="#2C498D"
+                                fill="#1E1E1E"
                             />
                             <path
                                 d="M76 47.9911C73.2336 47.9911 70.9911 50.2336 70.9911 53C70.9911 55.7664 73.2336 58.0089 76 58.0089V47.9911ZM82.5419 56.5419C84.498 54.5857 84.498 51.4143 82.5419 49.4581L50.6651 17.5814C48.709 15.6253 45.5375 15.6253 43.5814 17.5814C41.6253 19.5375 41.6253 22.709 43.5814 24.6651L71.9163 53L43.5814 81.3349C41.6253 83.291 41.6253 86.4625 43.5814 88.4186C45.5375 90.3747 48.709 90.3747 50.6651 88.4186L82.5419 56.5419ZM76 58.0089H79V47.9911H76V58.0089Z"
-                                fill="#FFF8F8"
+                                fill="#4F4E4E"
                             />
                         </svg>
                     </a>
+                </div>
             </div>
-            <div class="col-span-12 lg:col-span-7">
-                <div class="text-base text-[#062B50]">
-                    <span data-aos="zoom-in">
-Более 20 групповых программ и персональные
-тренировки детей от 1 года до 16 лет
-                    </span>
+            <div class="col-span-2">
+                <div
+                    class="rounded-bl-[clamp(1.375rem,1.1943rem+0.8032vw,1.875rem)] bg-light w-full col-span-2 h-[60px] px-4 hidden lg:block text-base"
+                >
+                    <span data-aos="zoom-in"
+                        >{{ aboniment_our_team_pretitle }}</span
+                    >
                 </div>
                 <div
                     data-aos="zoom-in"
-                    class="bg-[#CA74E2] rounded-[clamp(1.375rem,1.1943rem+0.8032vw,1.875rem)] mt-4 px-8 py-6 mx-4"
+                    class="bg-main-red/40 rounded-[clamp(1.375rem,1.1943rem+0.8032vw,1.875rem)] mt-4 px-8 py-6 mx-4"
                 >
                     <h3
                         class="text-light uppercase font-normal mb-4 text-lg md:text-xxl flex items-center justify-between"
@@ -464,11 +487,11 @@
                                     cx="51.5"
                                     cy="51.5"
                                     r="51.5"
-                                    fill="#2C498D"
+                                    fill="#1E1E1E"
                                 />
                                 <path
                                     d="M73 45.8469C70.154 45.8469 67.8469 48.154 67.8469 51C67.8469 53.846 70.154 56.1531 73 56.1531V45.8469ZM79.6438 54.6438C81.6562 52.6314 81.6562 49.3686 79.6438 47.3562L46.8498 14.5622C44.8374 12.5498 41.5746 12.5498 39.5622 14.5622C37.5498 16.5746 37.5498 19.8374 39.5622 21.8498L68.7124 51L39.5622 80.1502C37.5498 82.1626 37.5498 85.4254 39.5622 87.4378C41.5746 89.4502 44.8374 89.4502 46.8498 87.4378L79.6438 54.6438ZM73 56.1531H76V45.8469H73V56.1531Z"
-                                    fill="#FFF8F8"
+                                    fill="#4F1818"
                                 />
                             </svg>
                         </a>
@@ -481,7 +504,7 @@
                         }}" alt="" class="max-h-[322px] object-center
                         object-cover w-full" />
                         <p
-                            class="uppercase absolute right-4 bottom-4 max-w-[615px] text-light text-right text-sm md:text-md z-10"
+                            class="uppercase absolute right-4 bottom-4 max-w-[615px] text-light text-right text-sm sm:text-base md:text-lg z-10"
                         >
                             {{ aboniment_our_team_description }}
                         </p>
@@ -489,9 +512,21 @@
                 </div>
             </div>
         </div>
+        <div
+            class="bg-light h-[60px] md:min-w-4 md:rounded-bl-[30px] lg:rounded-none"
+        ></div>
     </div>
+    <div class="py-sectionPadding">
+        <div
+            class="container uppercase text-light px-4 text-center md:text-left"
+        >
+            <h3 class="text-md md:text-xl" data-aos="zoom-in">
+                {{ aboniment_title }}
+            </h3>
+        </div>
+
         <!-- Swiper -->
-    <h2 class="px-4 text-center text-xl text-[#FFF8F8]">СКОЛЬКО ЛЕТ ВАШЕМУ РЕБЕНКУ?</h2>
+
         <div class="mx-4 lg:mx-0 my-8" data-aos="zoom-in">
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
@@ -521,6 +556,7 @@
                 <span class="block">подобрать подходящие условия</span>
             </div>
         </div>
+    </div>
 </section>
 
 <!-- END::ABONIMENT -->
