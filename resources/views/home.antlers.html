@@ -1,14 +1,8 @@
 <!-- START::HERO -->
 <section
-    class=" relative py-8 md:pt-24 md:pb-28 motion-preset-compress motion-duration-700 bg-gradient-to-b from-[#3F61B5] to-[#FFF8F8]"
+    class="bg-hero-djunior-1 md:overflow-hidden lg:overflow-visible relative py-8 md:pt-24 md:pb-28 motion-preset-compress motion-duration-700 bg-gradient-to-b from-[#3F61B5] to-[#FFF8F8]"
 >
-                    <img
-                        src="{{ glide:data_url src='/assets/img/djunior-bg-1.png' quality='75' format='webp' }}"
-                        alt=""
-                        class="absolute -z-[1] h-[1060px] w-[1060px] -right-[20%] -bottom-[50%] "
-                    />
     <div class="container grid grid-cols-2 gap-11 px-[1em]"
-            style="background-image: url('{{ glide:data_url src='/assets/img/ners.jpg' quality='75' format='webp' }}')"
     >
         <div class="order-2 md:order-1 col-span-2 text-center md:col-span-1">
             <h1
@@ -54,7 +48,7 @@
 Мы предлагаем комплексное развитие для Вашего ребенка
         </h2>
         <div
-            class="bg-[#2C498D] rounded-[74px] px-[45px] py-[40px] md:grid-cols-3 gap-5 hidden md:grid"
+            class="bg-[#2C498D] rounded-[74px] px-[45px] py-[40px] md:grid-cols-3 gap-5 hidden md:grid relative z-10 "
         >
             {{ direction_replicator }} {{ if inversion }}
             <a
@@ -91,7 +85,7 @@
         </div>
 
         {{# Показываем секцию на мобильных устройствах #}}
-<div class="bg-dark rounded-[20px] px-3 py-6 grid gap-3 mx-4 md:hidden">
+<div class="bg-[#2C498D] rounded-[20px] px-3 py-6 grid gap-3 mx-4 md:hidden">
     {{ direction_replicator scope="block" }}
         {{ if index == 0 }}
             <a href="{{ block:direction_link }}"
@@ -239,7 +233,7 @@
 <!-- END::DIRECTION -->
 
 <!-- START::ABONIMENT -->
-<section class="py-sectionPadding bg-gradient-to-b from-[#FFF8F8] to-[#3F61B5]">
+<section class="bg-hero-djunior-2 py-sectionPadding bg-gradient-to-b from-[#FFF8F8] to-[#3F61B5]">
     <div class="container mx-auto px-4 pb-sectionPadding">
         <div class="grid grid-cols-12 gap-8">
             <div data-aos="zoom-in" class="col-span-12 lg:col-span-5 rounded-brxl bg-[#CBCCDA] p-6">
@@ -528,8 +522,8 @@
 </section>
 <!-- END::ABONIMENT -->
 
-<section class="py-sectionPadding bg-gradient-to-b from-[#3F61B5] to-[#FFF8F8]">
-    <div class="container px-4">
+<section class="bg-hero-djunior-3 py-sectionPadding bg-gradient-to-b from-[#3F61B5] to-[#FFF8F8]">
+    <div class="container px-4 relative z-10">
         <h2
             data-aos="zoom-in"
             class="text-lg md:text-xxl flex justify-center items-center font-normal px-4 lg:px-0 text-[#FFF8F8] mb-6 leading-[1]"
