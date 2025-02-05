@@ -2,7 +2,7 @@
 <section
     class="py-8 md:pt-24 md:pb-28 motion-preset-compress motion-duration-700"
 >
-    <div class="container grid grid-cols-2 gap-11 px-[1em]">
+    <div class="container grid grid-cols-2 gap-11 px-4">
         <div class="order-2 md:order-1 col-span-2 text-center md:col-span-1">
             <h1
                 class="uppercase text-light md:mb-5 md:mt-14 text-[clamp(2.3125rem,1.567rem+3.3133vw,4.375rem)]"
@@ -35,17 +35,28 @@
             <div
                 class="h-[284px] mt-[34px] bg-neutral-800 rounded-[46px] overflow-hidden hidden md:block"
             >
-                <img src="{{ glide:data_url src="{{ hero_1 }}" quality="75"
-                format="webp" }}" alt="" class="rounded-[46px] object-cover
-                object-center" />
+                <img
+                    src="{{ hero_1 }}"
+                    alt=""
+                    class="rounded-[46px] object-cover object-center"
+                    loading="lazy"
+                />
             </div>
+
+            <!-- Hero image preload -->
+            <link rel="preload" as="image" href="{{ hero_1 }}" />
         </div>
         <div
             class="flex items-center justify-center bg-neutral-800 rounded-[20px] overflow-hidden h-[300px] md:h-auto col-span-2 order-1 md:order-2 md:col-span-1 md:max-h-[75Hks|<GwQ:C\=iw@]0px]"
         >
-            <img src="{{ glide:data_url src="{{ hero_2 }}" quality="75"
-            format="webp" }}" alt="" class="object-cover object-top w-full
-            h-full" />
+            <img
+                src="{{ hero_2 }}"
+                alt="Hero image"
+                class="object-cover object-top w-full h-full"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
+            />
         </div>
     </div>
 </section>
@@ -74,9 +85,12 @@
                 >
                     {{ direction_title }}
                 </p>
-                <img src="{{ glide:data_url src="{{ direction_image }}"
-                quality="75" format="webp" }}" alt="" class="object-cover
-                object-center rounded-[30px] h-[196px] w-full" />
+                <img
+                    src="{{ direction_image }}"
+                    alt=""
+                    class="object-cover object-center rounded-[30px] h-[196px] w-full"
+                    loading="lazy"
+                />
             </a>
             {{ else }}
             <a
@@ -84,9 +98,12 @@
                 data-aos="zoom-in-up"
                 class="rounded-[46px] bg-light flex flex-col transition-all hover:opacity-70"
             >
-                <img src="{{ glide:data_url src="{{ direction_image }}"
-                quality="75" format="webp" }}" alt="" class="object-cover
-                object-center rounded-[30px] h-[196px] w-full" />
+                <img
+                    src="{{ direction_image }}"
+                    alt=""
+                    class="object-cover object-center rounded-[30px] h-[196px] w-full"
+                    loading="lazy"
+                />
                 <p
                     class="text-center text-base font-normal flex-1 flex items-center justify-center my-2"
                 >
@@ -98,51 +115,67 @@
         </div>
 
         {{# Показываем секцию на мобильных устройствах #}}
-<div class="bg-dark rounded-[20px] px-3 py-6 grid gap-3 mx-4 md:hidden">
-    {{ direction_replicator scope="block" }}
-        {{ if index == 0 }}
-            <a href="{{ block:direction_link }}"
-               data-aos="zoom-in"
-               class="rounded-[46px] bg-light flex flex-col transition-all hover:opacity-70">
-                <img src="{{ glide:block:direction_image quality="75" format="webp" }}"
-                     alt=""
-                     class="object-cover object-center rounded-[30px] h-[196px] w-full">
-                <p class="text-center text-[clamp(1.25rem,1.137rem+0.502vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2">
+        <div class="bg-dark rounded-[20px] px-3 py-6 grid gap-3 mx-4 md:hidden">
+            {{ direction_replicator scope="block" }} {{ if index == 0 }}
+            <a
+                href="{{ block:direction_link }}"
+                data-aos="zoom-in"
+                class="rounded-[46px] bg-light flex flex-col transition-all hover:opacity-70"
+            >
+                <img
+                    src="{{ direction_image }}"
+                    alt=""
+                    class="object-cover object-center rounded-[30px] h-[196px] w-full"
+                    loading="lazy"
+                />
+                <p
+                    class="text-center text-[clamp(1.25rem,1.137rem+0.502vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2"
+                >
                     {{ block:direction_title }}
                 </p>
             </a>
-        {{ elseif index == 5 }}
-            <a href="{{ block:direction_link }}"
-               data-aos="zoom-in"
-               class="rounded-[20px] bg-light flex flex-col transition-all hover:opacity-70">
-                <p class="text-center text-[clamp(1.25rem,1.137rem+0.502vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2">
+            {{ elseif index == 5 }}
+            <a
+                href="{{ block:direction_link }}"
+                data-aos="zoom-in"
+                class="rounded-[20px] bg-light flex flex-col transition-all hover:opacity-70"
+            >
+                <p
+                    class="text-center text-[clamp(1.25rem,1.137rem+0.502vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2"
+                >
                     {{ block:direction_title }}
                 </p>
-                <img src="{{ glide:block:direction_image quality="75" format="webp" }}"
-                     alt=""
-                     class="object-cover object-center rounded-[20px] h-[196px] w-full">
+                <img
+                    src="{{ direction_image }}"
+                    alt=""
+                    class="object-cover object-center rounded-[20px] h-[196px] w-full"
+                    loading="lazy"
+                />
             </a>
-        {{ else }}
-            {{ if index == 1 || index == 3 }}
-                <div class="grid grid-cols-2 gap-2">
-            {{ /if }}
-                <a href="{{ block:direction_link }}"
-                   data-aos="zoom-in"
-                   class="rounded-[20px] bg-light flex flex-col transition-all hover:opacity-70">
-                    <img src="{{ glide:block:direction_image quality="75" format="webp" }}"
-                         alt=""
-                         class="object-cover object-center rounded-[20px] h-[125px] w-full">
-                    <p class="text-center text-[clamp(0.8125rem,0.5414rem+1.2048vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2">
+            {{ else }} {{ if index == 1 || index == 3 }}
+            <div class="grid grid-cols-2 gap-2">
+                {{ /if }}
+                <a
+                    href="{{ block:direction_link }}"
+                    data-aos="zoom-in"
+                    class="rounded-[20px] bg-light flex flex-col transition-all hover:opacity-70"
+                >
+                    <img
+                        src="{{ direction_image }}"
+                        alt=""
+                        class="object-cover object-center rounded-[20px] h-[125px] w-full"
+                        loading="lazy"
+                    />
+                    <p
+                        class="text-center text-[clamp(0.8125rem,0.5414rem+1.2048vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2"
+                    >
                         {{ block:direction_title }}
                     </p>
                 </a>
-            {{ if index == 2 || index == 4 }}
-                </div>
-            {{ /if }}
-        {{ /if }}
-    {{ /direction_replicator }}
-</div>
-
+                {{ if index == 2 || index == 4 }}
+            </div>
+            {{ /if }} {{ /if }} {{ /direction_replicator }}
+        </div>
 
         <!-- <div
             class="bg-dark rounded-[20px] px-3 py-6 grid md:grid-cols-3 gap-3 md:hidden mx-4"
@@ -298,7 +331,8 @@
                                 <a href=""
                                     ><img src="{{ glide:data_url
                                     src="/assets/img/location.png" quality="75"
-                                    format="webp" }}" alt="" class="w-6" /></a
+                                    format="webp" }}" alt="" class="w-6"
+                                    loading="lazy"/></a
                                 >
                             </div>
                         </div>
@@ -330,7 +364,8 @@
                                 <a href=""
                                     ><img src="{{ glide:data_url
                                     src="/assets/img/location.png" quality="75"
-                                    format="webp" }}" alt="" class="w-6" /></a
+                                    format="webp" }}" alt="" class="w-6"
+                                    loading="lazy"/></a
                                 >
                             </div>
                         </div>
@@ -362,7 +397,8 @@
                                 <a href=""
                                     ><img src="{{ glide:data_url
                                     src="/assets/img/location.png" quality="75"
-                                    format="webp" }}" alt="" class="w-6" /></a
+                                    format="webp" }}" alt="" class="w-6"
+                                    loading="lazy"/></a
                                 >
                             </div>
                         </div>
@@ -394,7 +430,8 @@
                                 <a href=""
                                     ><img src="{{ glide:data_url
                                     src="/assets/img/location.png" quality="75"
-                                    format="webp" }}" alt="" class="w-6" /></a
+                                    format="webp" }}" alt="" class="w-6"
+                                    loading="lazy"/></a
                                 >
                             </div>
                         </div>
@@ -426,7 +463,8 @@
                                 <a href=""
                                     ><img src="{{ glide:data_url
                                     src="/assets/img/location.png" quality="75"
-                                    format="webp" }}" alt="" class="w-6" /></a
+                                    format="webp" }}" alt="" class="w-6"
+                                    loading="lazy"/></a
                                 >
                             </div>
                         </div>
@@ -499,10 +537,12 @@
                     <div
                         class="relative flex items-center justify-center after:absolute after:top-0 after:bottom-0 after:left-0 after:right-0 after:bg-dark/50 rounded-[clamp(1.375rem,1.1943rem+0.8032vw,1.875rem)] overflow-hidden"
                     >
-                        <img src="{{ glide:data_url src="{{
-                        aboniment_our_team_image }}" quality="75" format="webp"
-                        }}" alt="" class="max-h-[322px] object-center
-                        object-cover w-full" />
+                        <img
+                            src="{{ aboniment_our_team_image }}"
+                            alt=""
+                            class="max-h-[322px] object-center object-cover w-full"
+                            loading="lazy"
+                        />
                         <p
                             class="uppercase absolute right-4 bottom-4 max-w-[615px] text-light text-right text-sm sm:text-base md:text-lg z-10"
                         >
@@ -533,11 +573,17 @@
                     {{ aboniment_type }}
                     <div class="swiper-slide">
                         <a href="{{  aboniment_link }}" class="flip_card">
-                            <img src="{{ glide:data_url src="{{
-                            aboniment_image_front }}" quality="75" format="webp"
-                            }}" alt="" class="fron" /> <img src="{{
-                            glide:data_url src="{{ aboniment_image_rear }}"
-                            quality="75" format="webp" }}" alt="" class="back"
+                            <img
+                                src="{{ aboniment_image_front }}"
+                                alt=""
+                                class="fron"
+                                loading="lazy"
+                            />
+                            <img
+                                src="{{ aboniment_image_rear }}"
+                                alt=""
+                                class="back"
+                                loading="lazy"
                             />
                         </a>
                     </div>
@@ -697,9 +743,69 @@
         }
     });
 </script>
+
+<!-- Performance Optimizations -->
+<script>
+    // Defer non-critical CSS
+    const loadDeferredStyles = () => {
+        const additionalStyles = document.getElementById("deferred-styles");
+        if (additionalStyles) {
+            const replacement = document.createElement("div");
+            replacement.innerHTML = additionalStyles.textContent;
+            document.body.appendChild(replacement);
+            additionalStyles.parentElement.removeChild(additionalStyles);
+        }
+    };
+
+    // Load non-critical styles after page load
+    if (window.addEventListener) {
+        window.addEventListener("load", loadDeferredStyles);
+    } else if (window.attachEvent) {
+        window.attachEvent("onload", loadDeferredStyles);
+    }
+
+    // Intersection Observer for lazy loading
+    const observeImages = () => {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.remove("lazy");
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        document.querySelectorAll("img.lazy").forEach((img) => {
+            imageObserver.observe(img);
+        });
+    };
+
+    // Initialize after DOM load
+    document.addEventListener("DOMContentLoaded", observeImages);
+</script>
 @endpush
 
 <!-- END::FORM -->
 <!-- <article class="mt-4 bg-white p-8 shadow-xl rounded-xl max-w-xl prose">
     {{ content | widont }}
 </article> -->
+
+<style>
+    /* Critical CSS */
+    .lazy {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .lazy.loaded {
+        opacity: 1;
+    }
+
+    /* Optimize paint performance */
+    img {
+        will-change: transform;
+        transform: translateZ(0);
+    }
+</style>

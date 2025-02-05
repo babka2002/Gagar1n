@@ -7,7 +7,7 @@ code_field:
   mode: htmlmixed
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1738576016
+updated_at: 1738661777
 template: fitness
 first_title: Фитнес
 first_bg: img/fitness-hero.png
@@ -918,4 +918,6 @@ right_kartinka: img/fitness.jpg
 forma_title: 'ПРОКАЧАЙ СВОЕ ТЕЛО И ДУХ'
 forma_image: img/fitness-contact-desktop.png
 form_bg: img/fitness-contact-desktop.png
+left_link: 'entry::93f7fc77-894c-445e-a257-239a1838c6fe'
+right_ssylka: 'entry::e79d3f34-1bf7-4e1c-ac9c-fee15c7f1fc5'
 ---

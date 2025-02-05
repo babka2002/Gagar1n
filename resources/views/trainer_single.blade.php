@@ -16,7 +16,7 @@
 
                     <h2 class="text-right md:text-left md:flex items-start justify-between mb-4">
                         <span class="text-xl uppercase">{{ $trainer->name }}</span>
-                        <span class="text-md text-right uppercase hidden md:block">{{ $trainer->position['title'] ?? 'Не определена' }}</span>
+                        <span class="text-md text-right uppercase hidden md:block">{{ $trainer->position->title ?? 'Не определена' }}</span>
                     </h2>
                     <div class="text-right md:text-left text-md mb-4">{{ $trainer->experience ?? 'Не указано' }} ГОДА ОПЫТА</div>
                     <div class="text-right md:text-left text-md mb-4">{!! nl2br(e($trainer->description ?? '')) !!}</div>
@@ -28,7 +28,7 @@
                             <li class="leading-tight">{{ $trainer->awards }}</li>
                         @endif
                     </ul>
-                    <div class="text-lg text-right uppercase md:hidden my-5">{{ $trainer->position['title'] ?? 'Не определена' }}</div>
+                    <div class="text-lg text-right uppercase md:hidden my-5">{{ $trainer->position->title ?? 'Не определена' }}</div>
 
                     <a href="#"
                         class="rounded-brxl px-6 py-2 leading-none text-dark bg-light text-md uppercase flex items-center justify-between gap-2 mb-5 mt-auto hover:scale-105 transition-all">

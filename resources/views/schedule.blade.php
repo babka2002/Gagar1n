@@ -14,15 +14,21 @@
 
                 <!-- Кнопка индивидуальных тренировок -->
                 <a
-                    href="{{ route('schedule.show', array_merge(request()->except('schedule_type'), ['schedule_type' => 'personal'])) }}"
+                    href="/personal-training"
                     class="rounded-brxl bg-main-red w-1/2 py-4 md:py-12 px-4 flex items-center justify-center text-center text-light text-sm md:text-md uppercase transition-all hover:scale-90 {{ $scheduleType === 'personal' ? 'opacity-100' : 'opacity-70' }}"
                 >
                     <span>Индивидуальные тренировки</span>
                 </a>
+                {{-- <a
+                    href="{{ route('schedule.show', array_merge(request()->except('schedule_type'), ['schedule_type' => 'personal'])) }}"
+                    class="rounded-brxl bg-main-red w-1/2 py-4 md:py-12 px-4 flex items-center justify-center text-center text-light text-sm md:text-md uppercase transition-all hover:scale-90 {{ $scheduleType === 'personal' ? 'opacity-100' : 'opacity-70' }}"
+                >
+                    <span>Индивидуальные тренировки</span>
+                </a> --}}
             </div>
             <div class="col-span-12 md:col-span-3">
                 <a
-                    href="#"
+                    href="/gruppovye-trenirovki"
                     class="rounded-brxl bg-main-red w-full py-2 px-4 flex items-center justify-center text-center text-light text-sm md:text-md uppercase transition-all hover:scale-90"
                 >
                     <span class="mr-2"> описание групповых тренировок </span>
