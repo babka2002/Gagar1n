@@ -4,5 +4,9 @@ blueprint: tipovaia
 title: 'Политика конфиденциальности'
 tipovaya_text: 'Политика конфиденциальности  Описание'
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1738160655
+updated_at: 1738946568
+template: grelka/pages/politika-konfidetsialnosti
+custom_html_script:
+  code: null
+  mode: htmlmixed
 ---

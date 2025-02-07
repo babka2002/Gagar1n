@@ -7,8 +7,8 @@ code_field:
   mode: htmlmixed
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1738661777
-template: fitness
+updated_at: 1738950168
+template: grelka/fitness
 first_title: Фитнес
 first_bg: img/fitness-hero.png
 zal: '3'

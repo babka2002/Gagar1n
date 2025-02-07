@@ -1,1 +1,5 @@
-{  }
+popup_title: 'Автоплей заголовок'
+popap_text: 'Автоплей текст'
+popup_delay: 3
+popup_interval: 7
+popup_enabled: true

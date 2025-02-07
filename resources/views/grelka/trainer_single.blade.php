@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('grelka.layout')
 @section('trainerContent')
     <section class="py-sectionPadding px-4">
         <div class="container text-light">

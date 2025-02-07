@@ -2,7 +2,7 @@
 id: home
 blueprint: pages
 title: Главная
-template: home
+template: grelka/home
 code_field:
   code: |-
     <!-- START::HERO 0-->

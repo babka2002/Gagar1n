@@ -24,7 +24,8 @@
 
         @vite(['resources/css/site.css', 'resources/js/site.js'])
     </head>
-    <body class="bg-dark">
+    <body class="bg-blue-300">
+    {{-- <body class="bg-dark"> --}}
         <!-- START::HEADER -->
         <div class="container px-[1em] my-5 sticky top-4 z-20">
             <header class="container bg-light flex justify-between items-center gap-2 rounded-[30px] px-[20px] py-[14px] ">
@@ -42,7 +43,8 @@
                 </a>
 
                 @antlers
-                {{ partial:nav }}
+                {{ partial:gun1or/_nav }}
+                {{-- {{ partial:nav }} --}}
                 @endantlers
 
             </div>
@@ -117,10 +119,10 @@
         @antlers
         {{ template_content }}
         @endantlers
-        @yield('trainersContent')
+        {{-- @yield('trainersContent')
         @yield('trainerContent')
         @yield('scheduleContent')
-        @yield('fitness')
+        @yield('fitness') --}}
 
 
         <!-- START::FOOTER -->
@@ -381,43 +383,6 @@
                     </script>
                     @endantlers
 
-                    <!-- <form
-                        action=""
-                        method="post"
-                        class="mt-16 flex flex-col lg:flex-row items-center justify-between gap-4 pb-4"
-                    >
-                        <input
-                            type="text"
-                            name=""
-                            id=""
-                            placeholder="имя"
-                            class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase"
-                        />
-
-                        <input
-                            type="tel"
-                            name=""
-                            id=""
-                            placeholder="номер"
-                            class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase"
-                        />
-
-                        <button type="submit" class="transition-all hover:opacity-70">
-                            <svg
-                                width="161"
-                                height="81"
-                                viewBox="0 0 161 81"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <rect width="161" height="81" rx="33" fill="#E23333" />
-                                <path
-                                    d="M133.121 42.1213C134.293 40.9497 134.293 39.0503 133.121 37.8787L114.029 18.7868C112.858 17.6152 110.958 17.6152 109.787 18.7868C108.615 19.9584 108.615 21.8579 109.787 23.0294L126.757 40L109.787 56.9706C108.615 58.1421 108.615 60.0416 109.787 61.2132C110.958 62.3848 112.858 62.3848 114.029 61.2132L133.121 42.1213ZM29 43H131V37H29V43Z"
-                                    fill="#FFF8F8"
-                                />
-                            </svg>
-                        </button>
-                    </form> -->
                 </div>
             </div>
         </dialog>
@@ -539,14 +504,16 @@
 
                 <div class="h-auto">
 
-                    <img
-                        src="{{ $popup_autoplay->popap_image->url() }}"
-                        srcset="<s:glide:data_url src='{{ $popup_autoplay->popap_image }}' width='640' quality='75' format='webp' /> 640w,
-                            <s:glide:data_url src='{{ $popup_autoplay->popap_image }}' width='768' quality='75' format='webp' /> 768w,
-                            <s:glide:data_url src='{{ $popup_autoplay->popap_image }}' width='1024' quality='75' format='webp' /> 1024w"
-                        alt="{{ $popup_autoplay->popup_title }}"
-                        class="w-full h-auto object-cover max-h-[50vh] lg:max-h-[60vh] rounded-2xl pb-2"
-                    >
+                    @if($popup_autoplay->popap_image && $popup_autoplay->popap_image->url())
+                        <img
+                            src="{{ $popup_autoplay->popap_image->url() }}"
+                            srcset="<s:glide:data_url src='{{ $popup_autoplay->popap_image }}' width='640' quality='75' format='webp' /> 640w,
+                                <s:glide:data_url src='{{ $popup_autoplay->popap_image }}' width='768' quality='75' format='webp' /> 768w,
+                                <s:glide:data_url src='{{ $popup_autoplay->popap_image }}' width='1024' quality='75' format='webp' /> 1024w"
+                            alt="{{ $popup_autoplay->popup_title }}"
+                            class="w-full h-auto object-cover max-h-[50vh] lg:max-h-[60vh] rounded-2xl pb-2"
+                        >
+                    @endif
 
                     <h2
                         class="[font-size:_clamp(1.625rem,-0.2494rem+6.0465vw,4.875rem)] font-normal uppercase leading-none"

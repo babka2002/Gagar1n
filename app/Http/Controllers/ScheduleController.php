@@ -6,6 +6,7 @@ use App\Services\GroupClassesService;
 use App\Services\PersonalClassesService;
 use Illuminate\Http\Request;
 use Statamic\View\View;
+use Statamic\Facades\Site;
 use Carbon\Carbon;
 
 class ScheduleController extends Controller
@@ -23,6 +24,8 @@ class ScheduleController extends Controller
 
     public function index(Request $request)
     {
+        $currentSite = strtolower(Site::current()->handle());
+
         if (!$request->has('start_date') || empty($request->input('start_date'))) {
             $request->merge(['start_date' => Carbon::now()->startOfWeek()->format('Y-m-d H:i')]);
         }
@@ -121,8 +124,8 @@ class ScheduleController extends Controller
         $currentDay = Carbon::now()->locale('ru')->isoFormat('dddd');
 
         return (new View)
-            ->template('schedule')
-            ->layout('layout')
+            ->layout($currentSite . '/layout')
+            ->template($currentSite . '/schedule')
             ->with([
                 'timeSlots' => $timeSlots,
                 'daysOfWeek' => $daysOfWeek,

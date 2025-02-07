@@ -24,8 +24,7 @@
 
         @vite(['resources/css/site.css', 'resources/js/site.js'])
     </head>
-    <body class="bg-red-500">
-    {{-- <body class="bg-dark"> --}}
+    <body class="bg-dark">
         <!-- START::HEADER -->
         <div class="container px-[1em] my-5 sticky top-4 z-20">
             <header class="container bg-light flex justify-between items-center gap-2 rounded-[30px] px-[20px] py-[14px] ">
@@ -43,7 +42,7 @@
                 </a>
 
                 @antlers
-                {{ partial:nav }}
+                {{ partial:grelka/_nav }}
                 @endantlers
 
             </div>
@@ -540,14 +539,16 @@
 
                 <div class="h-auto">
 
-                    <img
-                        src="{{ $popup_autoplay->popap_image->url() }}"
-                        srcset="<s:glide:data_url src='{{ $popup_autoplay->popap_image }}' width='640' quality='75' format='webp' /> 640w,
-                            <s:glide:data_url src='{{ $popup_autoplay->popap_image }}' width='768' quality='75' format='webp' /> 768w,
-                            <s:glide:data_url src='{{ $popup_autoplay->popap_image }}' width='1024' quality='75' format='webp' /> 1024w"
-                        alt="{{ $popup_autoplay->popup_title }}"
-                        class="w-full h-auto object-cover max-h-[50vh] lg:max-h-[60vh] rounded-2xl pb-2"
-                    >
+                    @if($popup_autoplay->popap_image && $popup_autoplay->popap_image->url())
+                        <img
+                            src="{{ $popup_autoplay->popap_image->url() }}"
+                            srcset="<s:glide:data_url src='{{ $popup_autoplay->popap_image }}' width='640' quality='75' format='webp' /> 640w,
+                                <s:glide:data_url src='{{ $popup_autoplay->popap_image }}' width='768' quality='75' format='webp' /> 768w,
+                                <s:glide:data_url src='{{ $popup_autoplay->popap_image }}' width='1024' quality='75' format='webp' /> 1024w"
+                            alt="{{ $popup_autoplay->popup_title }}"
+                            class="w-full h-auto object-cover max-h-[50vh] lg:max-h-[60vh] rounded-2xl pb-2"
+                        >
+                    @endif
 
                     <h2
                         class="[font-size:_clamp(1.625rem,-0.2494rem+6.0465vw,4.875rem)] font-normal uppercase leading-none"

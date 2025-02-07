@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\TrainerService;
 use Statamic\Facades\Entry;
 use Statamic\View\View;
+use Statamic\Facades\Site;
 
 class TrainerController extends Controller
 {
@@ -62,19 +63,8 @@ class TrainerController extends Controller
 
     public function showTrainer(string $employeeId)
     {
-        // $trainer = $this->trainerService->getTrainerById($employeeId);
+        $currentSite = strtolower(Site::current()->handle());
 
-        // try {
-        //     // Пытаемся получить тренера из API
-        //     $apiTrainer = $this->trainerService->getTrainerById($employeeId);
-        //     if ($apiTrainer) {
-        //         $trainer = $this->formatTrainerData($apiTrainer, 'api');
-        //     }
-        // } catch (\Exception $e) {
-        //     $apiTrainer = null;
-        // }
-
-        // Пытаемся найти тренера в Statamic
         $statamicTrainer = Entry::query()
             ->where('collection', 'trainers')
             ->where('is_active', true)
@@ -88,51 +78,45 @@ class TrainerController extends Controller
             $trainer = $this->formatTrainerData($statamicTrainer, 'statamic');
         }
 
-        // Если тренер не найден нигде
         if (!isset($trainer)) {
             abort(404, 'Тренер не найден');
         }
 
         return (new View)
-            ->template('trainer_single')
-            ->layout('layout')
+            ->template($currentSite . '/trainer_single')
+            ->layout($currentSite . '/layout')
             ->with([
-                'trainer' => $trainer,
+                'trainer' => $trainer
             ]);
     }
     public function showTrainers()
-{
-    // Временно отключаем получение тренеров из API
-    // $clubId = '49964502-5659-11eb-e291-ac162d836873';
-    // $trainers = $this->trainerService->getTrainers($clubId);
+    {
+        $currentSite = strtolower(Site::current()->handle());
 
-    // Получаем только тренеров из Statamic
-    $statamicTrainers = Entry::query()
-        ->where('collection', 'trainers')
-        ->where('is_active', true)
-        ->get();
+        $statamicTrainers = Entry::query()
+            ->where('collection', 'trainers')
+            ->where('is_active', true)
+            ->get();
 
-    $trainersByDepartment = [];
+        $trainersByDepartment = [];
+        foreach ($statamicTrainers as $trainer) {
+            $formattedTrainer = $this->formatTrainerData($trainer, 'statamic');
+            $departmentTitle = $formattedTrainer->department->title ?? $formattedTrainer->position->title ?? 'Не определена';
 
-    // Обрабатываем только Statamic тренеров
-    foreach ($statamicTrainers as $trainer) {
-        $formattedTrainer = $this->formatTrainerData($trainer, 'statamic');
-        $departmentTitle = $formattedTrainer->department->title ?? $formattedTrainer->position->title ?? 'Не определена';
+            if (!isset($trainersByDepartment[$departmentTitle])) {
+                $trainersByDepartment[$departmentTitle] = [];
+            }
 
-        if (!isset($trainersByDepartment[$departmentTitle])) {
-            $trainersByDepartment[$departmentTitle] = [];
+            $trainersByDepartment[$departmentTitle][] = $formattedTrainer;
         }
 
-        $trainersByDepartment[$departmentTitle][] = $formattedTrainer;
+        return (new View)
+            ->template($currentSite . '/trainers')
+            ->layout($currentSite . '/layout')
+            ->with([
+                'trainersByDepartment' => $trainersByDepartment
+            ]);
     }
-
-    return (new View)
-        ->template('trainers')
-        ->layout('layout')
-        ->with([
-            'trainersByDepartment' => $trainersByDepartment,
-        ]);
-}
 
     // public function showTrainers()
     // {

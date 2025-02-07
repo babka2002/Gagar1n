@@ -4,6 +4,15 @@ tabs:
     display: Main
     sections:
       -
+        display: Шаблон
+        fields:
+          -
+            handle: template
+            field:
+              type: template
+              display: Шаблон
+              localizable: false
+      -
         display: Hero
         instructions: hero
         fields:
@@ -57,7 +66,6 @@ tabs:
               type: assets
               display: 'Hero 1'
               max_files: 1
-              min_files: 1
               localizable: false
           -
             handle: hero_2
@@ -66,14 +74,7 @@ tabs:
               type: assets
               display: 'Hero 2'
               max_files: 1
-              min_files: 1
               localizable: false
-          -
-            handle: template
-            field:
-              type: template
-              display: Template
-              localizable: true
           -
             handle: hero_onlick_html
             field:
@@ -128,12 +129,6 @@ tabs:
                           field:
                             type: link
                             display: Ссылка
-          -
-            handle: template_2
-            field:
-              type: template
-              display: Template
-              localizable: false
       -
         display: Абонемент
         instructions: ABONIMENT
@@ -178,7 +173,6 @@ tabs:
             handle: aboniment_our_team_image
             field:
               max_files: 1
-              min_files: 1
               container: assets
               type: assets
               display: 'Наша команда картинка'

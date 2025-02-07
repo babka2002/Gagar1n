@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('grelka.layout')
 @section('trainersContent')
     <section class="bg-dark pt-sectionPadding px-4">
         <div class="container text-light relative">

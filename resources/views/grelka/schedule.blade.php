@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('grelka.layout')
 @section('scheduleContent')
 {{-- <s:locales:ru> --}}
     <section class="py-sectionPadding px-4">

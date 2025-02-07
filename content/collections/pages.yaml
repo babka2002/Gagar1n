@@ -1,10 +1,10 @@
-title: Pages
+title: Страницы
 sites:
   - Grelka
-  - Gun1or
   - GFoodcafe
+  - Gun1or
 propagate: false
-template: pages/dogovor-oferty
+template: default
 layout: layout
 revisions: false
 route: '{parent_uri}/{slug}'
