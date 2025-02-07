@@ -4813,16 +4813,16 @@
         },
         {
             "name": "statamic/cms",
-            "version": "v5.42.1",
+            "version": "v5.46.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/statamic/cms.git",
-                "reference": "d62cc13484aa28ec532f814669630f8c5c4a3915"
+                "reference": "779a92a223d16ee16f6af6de0b6a9acfc95be082"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/statamic/cms/zipball/d62cc13484aa28ec532f814669630f8c5c4a3915",
-                "reference": "d62cc13484aa28ec532f814669630f8c5c4a3915",
+                "url": "https://api.github.com/repos/statamic/cms/zipball/779a92a223d16ee16f6af6de0b6a9acfc95be082",
+                "reference": "779a92a223d16ee16f6af6de0b6a9acfc95be082",
                 "shasum": ""
             },
             "require": {
@@ -4832,7 +4832,7 @@
                 "guzzlehttp/guzzle": "^6.3 || ^7.0",
                 "james-heinrich/getid3": "^1.9.21",
                 "laravel/framework": "^10.40 || ^11.34",
-                "laravel/prompts": "^0.1.16",
+                "laravel/prompts": "^0.1.16 || ^0.2.0 || ^0.3.0",
                 "league/commonmark": "^2.2",
                 "league/csv": "^9.0",
                 "league/glide": "^2.3",
@@ -4907,7 +4907,7 @@
             ],
             "support": {
                 "issues": "https://github.com/statamic/cms/issues",
-                "source": "https://github.com/statamic/cms/tree/v5.42.1"
+                "source": "https://github.com/statamic/cms/tree/v5.46.1"
             },
             "funding": [
                 {
@@ -4915,7 +4915,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-12-11T21:36:25+00:00"
+            "time": "2025-02-04T15:32:24+00:00"
         },
         {
             "name": "statamic/ssg",
@@ -10515,12 +10515,12 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }
