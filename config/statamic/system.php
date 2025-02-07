@@ -203,6 +203,6 @@ return [
     |
     */
 
-    'layout' => env('STATAMIC_LAYOUT', 'layout'),
+    'layout' => env('STATAMIC_LAYOUT', 'grelka/layout'),
 
 ];
