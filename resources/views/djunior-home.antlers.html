@@ -1,0 +1,732 @@
+<!-- START::HERO -->
+<section
+    class="bg-hero-djunior-1 md:overflow-hidden lg:overflow-visible relative py-8 md:pt-24 md:pb-28 motion-preset-compress motion-duration-700 bg-gradient-to-b from-[#3F61B5] to-[#FFF8F8]"
+>
+    <div class="container grid grid-cols-2 gap-11 px-[1em]"
+    >
+        <div class="order-2 md:order-1 col-span-2 text-center md:col-span-1">
+            <h1
+                class="uppercase text-left text-light md:mb-5 md:mt-14 text-xl flex flex-col items-start"
+            >
+Выберите идеальную тренировку
+для ребенка в центре развития
+                <span class="rounded-2xl bg-[#FFF8F8] px-2 py-1 text-dark inline-block">G1unior</span>
+            </h1>
+            {{ hero_desc_group }}
+            <p
+                class="text-light text-left mb-14 text-[clamp(1.4375rem,1.1212rem+1.4056vw,2.3125rem)]"
+            >
+доп текст
+            </p>
+            {{ /hero_desc_group }}
+            <a
+                data-dialog="dialog-more"
+                href="#"
+                class="show flex items-center justify-center bg-light rounded-[clamp(1.125rem,0.8539rem+1.2048vw,1.875rem)] px-4 py-[clamp(0.375rem,0.262rem+0.502vw,0.6875rem)] text-main-red uppercase text-[clamp(1.5rem,1.1386rem+1.6064vw,2.5rem)] hover:opacity-70 transition-all text=[#CA74E2]"
+                >подробнее</a
+            >
+
+        </div>
+        <div
+            class="flex items-center justify-center bg-neutral-800 rounded-[20px] overflow-hidden h-[300px] md:h-auto col-span-2 order-1 md:order-2 md:col-span-1 md:max-h-[75Hks|<GwQ:C\=iw@]0px]"
+        >
+            <img src="{{ glide:data_url src="{{ hero_2 }}" quality="75"
+            format="webp" }}" alt="" class="object-cover object-top w-full
+            h-full" />
+        </div>
+    </div>
+</section>
+<!-- END::HERO -->
+
+<!-- START::DIRECTION -->
+<section class="pt-16 pb-sectionPadding bg-light">
+    <div class="container">
+        <h2
+            data-aos="zoom-in"
+            class="text-lg md:text-xxl text-center flex justify-center items-center font-normal px-4 lg:px-0 text-[#2C498D] mb-6 leading-[1]"
+        >
+Мы предлагаем комплексное развитие для Вашего ребенка
+        </h2>
+        <div
+            class="bg-[#2C498D] rounded-[74px] px-[45px] py-[40px] md:grid-cols-3 gap-5 hidden md:grid relative z-10 "
+        >
+            {{ direction_replicator }} {{ if inversion }}
+            <a
+                href="{{ direction_link }}"
+                data-aos="zoom-in-down"
+                class="rounded-[46px] bg-light flex flex-col transition-all hover:opacity-70"
+            >
+                <p
+                    class="text-center text-base font-normal flex-1 flex items-center justify-center my-2"
+                >
+                    {{ direction_title }}
+                </p>
+                <img src="{{ glide:data_url src="{{ direction_image }}"
+                quality="75" format="webp" }}" alt="" class="object-cover
+                object-center rounded-[30px] h-[196px] w-full" />
+            </a>
+            {{ else }}
+            <a
+                href="{{ direction_link }}"
+                data-aos="zoom-in-up"
+                class="rounded-[46px] bg-light flex flex-col transition-all hover:opacity-70"
+            >
+                <img src="{{ glide:data_url src="{{ direction_image }}"
+                quality="75" format="webp" }}" alt="" class="object-cover
+                object-center rounded-[30px] h-[196px] w-full" />
+                <p
+                    class="text-center text-base font-normal flex-1 flex items-center justify-center my-2"
+                >
+                    {{ direction_title }}
+                </p>
+            </a>
+
+            {{ /if }} {{ /direction_replicator }}
+        </div>
+
+        {{# Показываем секцию на мобильных устройствах #}}
+<div class="bg-[#2C498D] rounded-[20px] px-3 py-6 grid gap-3 mx-4 md:hidden">
+    {{ direction_replicator scope="block" }}
+        {{ if index == 0 }}
+            <a href="{{ block:direction_link }}"
+               data-aos="zoom-in"
+               class="rounded-[46px] bg-light flex flex-col transition-all hover:opacity-70">
+                <img src="{{ glide:block:direction_image quality="75" format="webp" }}"
+                     alt=""
+                     class="object-cover object-center rounded-[30px] h-[196px] w-full">
+                <p class="text-center text-[clamp(1.25rem,1.137rem+0.502vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2">
+                    {{ block:direction_title }}
+                </p>
+            </a>
+        {{ elseif index == 5 }}
+            <a href="{{ block:direction_link }}"
+               data-aos="zoom-in"
+               class="rounded-[20px] bg-light flex flex-col transition-all hover:opacity-70">
+                <p class="text-center text-[clamp(1.25rem,1.137rem+0.502vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2">
+                    {{ block:direction_title }}
+                </p>
+                <img src="{{ glide:block:direction_image quality="75" format="webp" }}"
+                     alt=""
+                     class="object-cover object-center rounded-[20px] h-[196px] w-full">
+            </a>
+        {{ else }}
+            {{ if index == 1 || index == 3 }}
+                <div class="grid grid-cols-2 gap-2">
+            {{ /if }}
+                <a href="{{ block:direction_link }}"
+                   data-aos="zoom-in"
+                   class="rounded-[20px] bg-light flex flex-col transition-all hover:opacity-70">
+                    <img src="{{ glide:block:direction_image quality="75" format="webp" }}"
+                         alt=""
+                         class="object-cover object-center rounded-[20px] h-[125px] w-full">
+                    <p class="text-center text-[clamp(0.8125rem,0.5414rem+1.2048vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2">
+                        {{ block:direction_title }}
+                    </p>
+                </a>
+            {{ if index == 2 || index == 4 }}
+                </div>
+            {{ /if }}
+        {{ /if }}
+    {{ /direction_replicator }}
+</div>
+
+
+        <!-- <div
+            class="bg-dark rounded-[20px] px-3 py-6 grid md:grid-cols-3 gap-3 md:hidden mx-4"
+        >
+            <a
+                href="#"
+                data-aos="zoom-in"
+                class="rounded-[46px] bg-light flex flex-col transition-all hover:opacity-70"
+            >
+                <img src="{{ glide:data_url src="/assets/img/direction-1.jpg"
+                quality="75" format="webp" }}" alt="" class="object-cover
+                object-center rounded-[30px] h-[196px] w-full" />
+                <p
+                    class="text-center text-[clamp(1.25rem,1.137rem+0.502vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2"
+                >
+                    Индивидуальные <br />
+                    занятия
+                </p>
+            </a>
+            <div class="grid grid-cols-2 gap-2">
+                <a
+                    href="#"
+                    data-aos="zoom-in"
+                    class="rounded-[20px] bg-light flex flex-col transition-all hover:opacity-70"
+                >
+                    <img src="{{ glide:data_url
+                    src="/assets/img/direction-2.jpg" quality="75" format="webp"
+                    }}" alt="" class="object-cover object-center rounded-[20px]
+                    h-[125px] w-full" />
+                    <p
+                        class="text-center text-[clamp(0.8125rem,0.5414rem+1.2048vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2"
+                    >
+                        Тренажерный зал
+                    </p>
+                </a>
+                <a
+                    href="#"
+                    data-aos="zoom-in"
+                    class="rounded-[20px] bg-light flex flex-col transition-all hover:opacity-70"
+                >
+                    <img src="{{ glide:data_url
+                    src="/assets/img/direction-3.jpg" quality="75" format="webp"
+                    }}" alt="" class="object-cover object-center rounded-[20px]
+                    h-[125px] w-full" />
+                    <p
+                        class="text-center text-[clamp(0.8125rem,0.5414rem+1.2048vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2"
+                    >
+                        Фитнес
+                    </p>
+                </a>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+                <a
+                    href=""
+                    data-aos="zoom-in"
+                    class="rounded-[20px] bg-light flex flex-col transition-all hover:opacity-70"
+                >
+                    <img src="{{ glide:data_url
+                    src="/assets/img/direction-4.jpg" quality="75" format="webp"
+                    }}" alt="" class="object-cover object-top rounded-[20px]
+                    h-[125px] w-full" />
+                    <p
+                        class="text-center text-[clamp(0.8125rem,0.5414rem+1.2048vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2"
+                    >
+                        Кроссфит
+                    </p>
+                </a>
+                <a
+                    href="#"
+                    data-aos="zoom-in"
+                    class="rounded-[20px] bg-light flex flex-col gap-3 transition-all hover:opacity-70"
+                >
+                    <img src="{{ glide:data_url
+                    src="/assets/img/direction-6.jpg" quality="75" format="webp"
+                    }}" alt="" class="object-cover object-center rounded-[20px]
+                    h-[125px] w-full" />
+                    <p
+                        class="text-center text-[clamp(0.8125rem,0.5414rem+1.2048vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2"
+                    >
+                        Сайкл студия
+                    </p>
+                </a>
+            </div>
+            <a
+                href="#"
+                data-aos="zoom-in"
+                class="rounded-[20px] bg-light flex flex-col transition-all hover:opacity-70"
+            >
+                <p
+                    class="text-center text-[clamp(1.25rem,1.137rem+0.502vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2"
+                >
+                    Бассейн
+                </p>
+                <img src="{{ glide:data_url src="/assets/img/direction-5.jpg"
+                quality="75" format="webp" }}" alt="" class="object-cover
+                object-center rounded-[20px] h-[196px] w-full" />
+            </a>
+        </div> -->
+    </div>
+</section>
+<!-- END::DIRECTION -->
+
+<!-- START::ABONIMENT -->
+<section class="bg-hero-djunior-2 py-sectionPadding bg-gradient-to-b from-[#FFF8F8] to-[#3F61B5]">
+    <div class="container mx-auto px-4 pb-sectionPadding">
+        <div class="grid grid-cols-12 gap-8">
+            <div data-aos="zoom-in" class="col-span-12 lg:col-span-5 rounded-brxl bg-[#CBCCDA] p-6">
+                    <h3
+                        class="text-center uppercase text-md md:text-lg text-[#2C498D]"
+                    >
+                        {{ aboniment_raspisanie_zagolovok }}
+                    </h3>
+                    <p class="text-center uppercase text-sm text-[#2C498D] mb-4">
+100+ ТРЕНЕРОВОК В НЕДЕЛЮ НА ВЫБОР
+                    </p>
+
+                    <div class="text-dark flex flex-col gap-3 min-h-[200px]">
+                        <div class="flex gap-4 bg-light/25 rounded-[20px] text-[#062B50]">
+                            <div
+                                class="bg-[#CA74E2] w-[50px] rounded-l-[20px]"
+                            ></div>
+                            <div class="py-2">
+                                <h4
+                                    class="uppercase [font-size:_clamp(1rem,0.9614rem+0.1931vw,1.125rem)]"
+                                >
+                                    силовая йога
+                                </h4>
+                                <p
+                                    class="[font-size:_clamp(0.5rem,0.4614rem+0.1931vw,0.625rem)]"
+                                >
+                                    09:00-09:55
+                                </p>
+                                <p
+                                    class="[font-size:_clamp(0.5rem,0.4421rem+0.2896vw,0.6875rem)]"
+                                >
+                                    рогозинская елена
+                                </p>
+                            </div>
+                            <div
+                                class="flex gap-2 ml-auto py-2 pr-[20px] items-start justify-end"
+                            >
+                                <span>зал №2</span>
+                                <a href=""
+                                    ><img src="{{ glide:data_url
+                                    src="/assets/img/location.png" quality="75"
+                                    format="webp" }}" alt="" class="w-6" /></a
+                                >
+                            </div>
+                        </div>
+                        <div class="flex gap-4 bg-light/25 rounded-[20px] text-[#062B50]">
+                            <div
+                                class="bg-[#CA74E2] w-[50px] rounded-l-[20px]"
+                            ></div>
+                            <div class="py-2">
+                                <h4
+                                    class="uppercase [font-size:_clamp(1rem,0.9614rem+0.1931vw,1.125rem)]"
+                                >
+                                    силовая йога
+                                </h4>
+                                <p
+                                    class="[font-size:_clamp(0.5rem,0.4614rem+0.1931vw,0.625rem)]"
+                                >
+                                    09:00-09:55
+                                </p>
+                                <p
+                                    class="[font-size:_clamp(0.5rem,0.4421rem+0.2896vw,0.6875rem)]"
+                                >
+                                    рогозинская елена
+                                </p>
+                            </div>
+                            <div
+                                class="flex gap-2 ml-auto py-2 pr-[20px] items-start justify-end"
+                            >
+                                <span>зал №2</span>
+                                <a href=""
+                                    ><img src="{{ glide:data_url
+                                    src="/assets/img/location.png" quality="75"
+                                    format="webp" }}" alt="" class="w-6" /></a
+                                >
+                            </div>
+                        </div>
+                        <div class="flex gap-4 bg-light/25 rounded-[20px] text-[#062B50]">
+                            <div
+                                class="bg-[#CA74E2] w-[50px] rounded-l-[20px]"
+                            ></div>
+                            <div class="py-2">
+                                <h4
+                                    class="uppercase [font-size:_clamp(1rem,0.9614rem+0.1931vw,1.125rem)]"
+                                >
+                                    силовая йога
+                                </h4>
+                                <p
+                                    class="[font-size:_clamp(0.5rem,0.4614rem+0.1931vw,0.625rem)]"
+                                >
+                                    09:00-09:55
+                                </p>
+                                <p
+                                    class="[font-size:_clamp(0.5rem,0.4421rem+0.2896vw,0.6875rem)]"
+                                >
+                                    рогозинская елена
+                                </p>
+                            </div>
+                            <div
+                                class="flex gap-2 ml-auto py-2 pr-[20px] items-start justify-end"
+                            >
+                                <span>зал №2</span>
+                                <a href=""
+                                    ><img src="{{ glide:data_url
+                                    src="/assets/img/location.png" quality="75"
+                                    format="webp" }}" alt="" class="w-6" /></a
+                                >
+                            </div>
+                        </div>
+                        <div class="flex gap-4 bg-light/25 rounded-[20px] text-[#062B50]">
+                            <div
+                                class="bg-[#CA74E2] w-[50px] rounded-l-[20px]"
+                            ></div>
+                            <div class="py-2">
+                                <h4
+                                    class="uppercase [font-size:_clamp(1rem,0.9614rem+0.1931vw,1.125rem)]"
+                                >
+                                    силовая йога
+                                </h4>
+                                <p
+                                    class="[font-size:_clamp(0.5rem,0.4614rem+0.1931vw,0.625rem)]"
+                                >
+                                    09:00-09:55
+                                </p>
+                                <p
+                                    class="[font-size:_clamp(0.5rem,0.4421rem+0.2896vw,0.6875rem)]"
+                                >
+                                    рогозинская елена
+                                </p>
+                            </div>
+                            <div
+                                class="flex gap-2 ml-auto py-2 pr-[20px] items-start justify-end"
+                            >
+                                <span>зал №2</span>
+                                <a href=""
+                                    ><img src="{{ glide:data_url
+                                    src="/assets/img/location.png" quality="75"
+                                    format="webp" }}" alt="" class="w-6" /></a
+                                >
+                            </div>
+                        </div>
+                        <div class="flex gap-4 bg-light/25 rounded-[20px] text-[#062B50]">
+                            <div
+                                class="bg-[#CA74E2] w-[50px] rounded-l-[20px]"
+                            ></div>
+                            <div class="py-2">
+                                <h4
+                                    class="uppercase [font-size:_clamp(1rem,0.9614rem+0.1931vw,1.125rem)]"
+                                >
+                                    силовая йога
+                                </h4>
+                                <p
+                                    class="[font-size:_clamp(0.5rem,0.4614rem+0.1931vw,0.625rem)]"
+                                >
+                                    09:00-09:55
+                                </p>
+                                <p
+                                    class="[font-size:_clamp(0.5rem,0.4421rem+0.2896vw,0.6875rem)]"
+                                >
+                                    рогозинская елена
+                                </p>
+                            </div>
+                            <div
+                                class="flex gap-2 ml-auto py-2 pr-[20px] items-start justify-end"
+                            >
+                                <span>зал №2</span>
+                                <a href=""
+                                    ><img src="{{ glide:data_url
+                                    src="/assets/img/location.png" quality="75"
+                                    format="webp" }}" alt="" class="w-6" /></a
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <a
+                        href="{{ aboniment_raspisanie_link }}"
+                        class="absolute bottom-5 right-5 z-10 hover:scale-90 transition-all h-[clamp(5.25rem,4.7304rem+2.3092vw,6.6875rem)]"
+                    >
+                        <svg
+                            width="100%"
+                            height="100%"
+                            viewBox="0 0 107 107"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <circle
+                                cx="53.5"
+                                cy="53.5"
+                                r="53.5"
+                                fill="#2C498D"
+                            />
+                            <path
+                                d="M76 47.9911C73.2336 47.9911 70.9911 50.2336 70.9911 53C70.9911 55.7664 73.2336 58.0089 76 58.0089V47.9911ZM82.5419 56.5419C84.498 54.5857 84.498 51.4143 82.5419 49.4581L50.6651 17.5814C48.709 15.6253 45.5375 15.6253 43.5814 17.5814C41.6253 19.5375 41.6253 22.709 43.5814 24.6651L71.9163 53L43.5814 81.3349C41.6253 83.291 41.6253 86.4625 43.5814 88.4186C45.5375 90.3747 48.709 90.3747 50.6651 88.4186L82.5419 56.5419ZM76 58.0089H79V47.9911H76V58.0089Z"
+                                fill="#FFF8F8"
+                            />
+                        </svg>
+                    </a>
+            </div>
+            <div class="col-span-12 lg:col-span-7">
+                <div class="text-base text-[#062B50]">
+                    <span data-aos="zoom-in">
+Более 20 групповых программ и персональные
+тренировки детей от 1 года до 16 лет
+                    </span>
+                </div>
+                <div
+                    data-aos="zoom-in"
+                    class="bg-[#CA74E2] rounded-[clamp(1.375rem,1.1943rem+0.8032vw,1.875rem)] mt-4 px-8 py-6 mx-4"
+                >
+                    <h3
+                        class="text-light uppercase font-normal mb-4 text-lg md:text-xxl flex items-center justify-between"
+                    >
+                        {{ aboniment_our_team_title }}
+                        <a
+                            href="{{ aboniment_our_team_link }}"
+                            class="h-[clamp(5.25rem,4.7304rem+2.3092vw,6.6875rem)] flex items-center justify-center transition-all hover:scale-90"
+                            ><svg
+                                width="100%"
+                                height="100%"
+                                viewBox="0 0 103 103"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <circle
+                                    cx="51.5"
+                                    cy="51.5"
+                                    r="51.5"
+                                    fill="#2C498D"
+                                />
+                                <path
+                                    d="M73 45.8469C70.154 45.8469 67.8469 48.154 67.8469 51C67.8469 53.846 70.154 56.1531 73 56.1531V45.8469ZM79.6438 54.6438C81.6562 52.6314 81.6562 49.3686 79.6438 47.3562L46.8498 14.5622C44.8374 12.5498 41.5746 12.5498 39.5622 14.5622C37.5498 16.5746 37.5498 19.8374 39.5622 21.8498L68.7124 51L39.5622 80.1502C37.5498 82.1626 37.5498 85.4254 39.5622 87.4378C41.5746 89.4502 44.8374 89.4502 46.8498 87.4378L79.6438 54.6438ZM73 56.1531H76V45.8469H73V56.1531Z"
+                                    fill="#FFF8F8"
+                                />
+                            </svg>
+                        </a>
+                    </h3>
+                    <div
+                        class="relative flex items-center justify-center after:absolute after:top-0 after:bottom-0 after:left-0 after:right-0 after:bg-dark/50 rounded-[clamp(1.375rem,1.1943rem+0.8032vw,1.875rem)] overflow-hidden"
+                    >
+                        <img src="{{ glide:data_url src="{{
+                        aboniment_our_team_image }}" quality="75" format="webp"
+                        }}" alt="" class="max-h-[322px] object-center
+                        object-cover w-full" />
+                        <p
+                            class="uppercase absolute right-4 bottom-4 max-w-[615px] text-light text-right text-sm md:text-md z-10"
+                        >
+                            {{ aboniment_our_team_description }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Swiper -->
+    <h2 class="px-4 text-center text-xl text-[#FFF8F8]">СКОЛЬКО ЛЕТ ВАШЕМУ РЕБЕНКУ?</h2>
+        <div class="mx-4 lg:mx-0 my-8" data-aos="zoom-in">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    {{ aboniment_type }}
+                    <div class="swiper-slide">
+                        <a href="{{  aboniment_link }}" class="flip_card">
+                            <img src="{{ glide:data_url src="{{
+                            aboniment_image_front }}" quality="75" format="webp"
+                            }}" alt="" class="fron" /> <img src="{{
+                            glide:data_url src="{{ aboniment_image_rear }}"
+                            quality="75" format="webp" }}" alt="" class="back"
+                            />
+                        </a>
+                    </div>
+                    {{ /aboniment_type }}
+
+                    <!-- <div class="swiper-pagination"></div> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="container uppercase text-light text-center">
+            <h4 class="text-base md:text-lg" data-aos="zoom-in">
+                не нашли идеальный вариант?
+            </h4>
+            <div class="text-base md:text-md arrow-bg" data-aos="zoom-in">
+                <span class="block">подобрать подходящие условия</span>
+            </div>
+        </div>
+</section>
+<!-- END::ABONIMENT -->
+
+<section class="bg-hero-djunior-3 py-sectionPadding bg-gradient-to-b from-[#3F61B5] to-[#FFF8F8]">
+    <div class="container px-4 relative z-10">
+        <h2
+            data-aos="zoom-in"
+            class="text-lg md:text-xxl flex justify-center items-center font-normal px-4 lg:px-0 text-[#FFF8F8] mb-6 leading-[1]"
+        >
+Мы гордимся нашими воспитанниками!
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-5 py-6 mb-6">
+            <div class="text-[#FFF8F8] bg-[#3F61B5] rounded-brxl pb-9"data-aos="zoom-in">
+                <img src="" alt="" class="bg-red">
+                    <img
+                        src=""
+                        alt=""
+                        class="rounded-brxl group-hover:scale-110 transition-all object-cover h-[370px] border-none w-full object-center bg-white/50  mb-6"
+                    />
+                <div class="p-6">
+                <h3 class="text-lg">Имя</h3>
+                <h4 class="text-md">Имя</h4>
+                <p class="text-base">Далеко-далеко за словесными горами в стране гласных и согласных, живут рыбные тексты. Что подпоясал гор большого они. Заголовок взобравшись, мир, силуэт коварный деревни жаренные переулка речью, вершину парадигматическая пунктуация родного. Страну, своих!</p>
+                </div>
+            </div>
+            <div class="text-[#FFF8F8] bg-[#3F61B5] rounded-brxl pb-9"data-aos="zoom-in">
+                <img src="" alt="" class="bg-red">
+                    <img
+                        src=""
+                        alt=""
+                        class="rounded-brxl group-hover:scale-110 transition-all object-cover h-[370px] border-none w-full object-center bg-white/50  mb-6"
+                    />
+                <div class="p-6">
+                <h3 class="text-lg">Имя</h3>
+                <h4 class="text-md">Имя</h4>
+                <p class="text-base">Далеко-далеко за словесными горами в стране гласных и согласных, живут рыбные тексты. Что подпоясал гор большого они. Заголовок взобравшись, мир, силуэт коварный деревни жаренные переулка речью, вершину парадигматическая пунктуация родного. Страну, своих!</p>
+                </div>
+            </div>
+            <div class="text-[#FFF8F8] bg-[#3F61B5] rounded-brxl pb-9"data-aos="zoom-in">
+                <img src="" alt="" class="bg-red">
+                    <img
+                        src=""
+                        alt=""
+                        class="rounded-brxl group-hover:scale-110 transition-all object-cover h-[370px] border-none w-full object-center bg-white/50  mb-6"
+                    />
+                <div class="p-6">
+                <h3 class="text-lg">Имя</h3>
+                <h4 class="text-md">Имя</h4>
+                <p class="text-base">Далеко-далеко за словесными горами в стране гласных и согласных, живут рыбные тексты. Что подпоясал гор большого они. Заголовок взобравшись, мир, силуэт коварный деревни жаренные переулка речью, вершину парадигматическая пунктуация родного. Страну, своих!</p>
+                </div>
+            </div>
+        </div>
+
+        <h2
+            data-aos="zoom-in"
+            class="text-lg md:text-xl flex justify-center items-center font-normal px-4 lg:px-0 text-[#3F61B5] mb-6 leading-[1]"
+        >
+        вот что говорят о нашем центре клиенты
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="p-9 rounded-brxl bg-[#DAD9E3] text-[#062B50]" data-aos="zoom-in">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Всеми буквоград заглавных послушавшись гор всемогущая текстов инициал большой страну заголовок осталось, которое необходимыми однажды живет своих речью. Заманивший, меня.</div>
+            <div class="p-9 rounded-brxl bg-[#DAD9E3] text-[#062B50]" data-aos="zoom-in">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Всеми буквоград заглавных послушавшись гор всемогущая текстов инициал большой страну заголовок осталось, которое необходимыми однажды живет своих речью. Заманивший, меня.</div>
+            <div class="p-9 rounded-brxl bg-[#DAD9E3] text-[#062B50]" data-aos="zoom-in">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Всеми буквоград заглавных послушавшись гор всемогущая текстов инициал большой страну заголовок осталось, которое необходимыми однажды живет своих речью. Заманивший, меня.</div>
+        </div>
+    </div>
+</section>
+
+<!-- START::FORM -->
+<section class="bg-light px-4 py-sectionPadding">
+    <div
+        class="container md:grid md:grid-cols-2 gap-5 items-center leading-tight"
+    >
+        <div class="text-[#062B50] uppercase mb-5 md:mb-0 text-center md:text-left">
+            <h3
+                class="text-lg md:text-xl lg:text-xxl"
+                data-aos="zoom-in"
+                data-aos-delay="50"
+            >
+СТАТЬ ЧЕМПИОНОМ ЭТО ЛЕГКО
+            </h3>
+            <p
+                class="text-base md:text-md"
+                data-aos="zoom-in"
+                data-aos-delay="350"
+            >
+                колличество абонементов ограничено
+            </p>
+        </div>
+        <div class="" data-aos="fade-in" data-aos-delay="1000">
+            <form id="mainContactForm">
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    autocomplete="name"
+                    placeholder="имя"
+                    required
+                    class="block w-full bg-[#2C498D] text-[#FFF8F8] px-5 py-2 uppercase rounded-[clamp(0.625rem,0.3991rem+1.004vw,1.25rem)] text-[clamp(0.875rem,0.5587rem+1.4056vw,1.75rem)]"
+                />
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    autocomplete="tel"
+                    placeholder="номер телефона"
+                    required
+                    class="block w-full bg-[#2C498D] text-[#FFF8F8] px-5 py-2 uppercase rounded-[clamp(0.625rem,0.3991rem+1.004vw,1.25rem)] text-[clamp(0.875rem,0.5587rem+1.4056vw,1.75rem)] my-2"
+                />
+                <input
+                    type="submit"
+                    value="стать ближе к своей цели"
+                    class="block w-full bg-[#CA74E2] px-5 py-2 text-light uppercase rounded-[clamp(0.625rem,0.3991rem+1.004vw,1.25rem)] text-[clamp(0.875rem,0.5587rem+1.4056vw,1.75rem)]"
+                />
+                <span
+                    class="block mt-2 text-center text-[clamp(0.5rem,0.3645rem+0.6024vw,0.875rem)]"
+                >
+                    Нажимая "Отправить" я согласен на обработку персональных
+                    данных
+                </span>
+
+                <!-- Индикатор состояния -->
+                <div id="formStatus" class="mt-4 p-4 rounded-lg hidden">
+                    <p class="text-center"></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+@push('scripts')
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("mainContactForm");
+        const formStatus = document.getElementById("formStatus");
+
+        if (form) {
+            form.addEventListener("submit", async function (e) {
+                e.preventDefault();
+
+                const name = form.querySelector('[name="name"]').value;
+                const phone = form.querySelector('[name="phone"]').value;
+
+                const apiData = {
+                    leadtype: "request",
+                    callerphone: phone,
+                    requestDate: new Date()
+                        .toISOString()
+                        .slice(0, 19)
+                        .replace("T", " "),
+                    subject: "Заявка с сайта",
+                    fio: name,
+                    source: window.location.hostname,
+                    medium: document.referrer || "direct",
+                    siteName: window.location.hostname,
+                    city: "Симферополь",
+                };
+
+                try {
+                    const response = await fetch(
+                        "http://147.45.187.4:5557/api/leads",
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify(apiData),
+                        }
+                    );
+
+                    formStatus.classList.remove(
+                        "hidden",
+                        "bg-red-500",
+                        "bg-green-500"
+                    );
+
+                    if (response.ok) {
+                        form.reset();
+                        formStatus.classList.add("bg-green-500");
+                        formStatus.querySelector("p").textContent =
+                            "Спасибо! Ваша заявка отправлена.";
+                    } else {
+                        formStatus.classList.add("bg-red-500");
+                        formStatus.querySelector("p").textContent =
+                            "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
+                    }
+
+                    formStatus.classList.remove("hidden");
+
+                    // Скрываем статус через 3 секунды
+                    setTimeout(() => {
+                        formStatus.classList.add("hidden");
+                    }, 3000);
+                } catch (error) {
+                    console.error("Ошибка:", error);
+                    formStatus.classList.remove("hidden");
+                    formStatus.classList.add("bg-red-500");
+                    formStatus.querySelector("p").textContent =
+                        "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
+                }
+            });
+        }
+    });
+</script>
+@endpush
+
+<!-- END::FORM -->
+<!-- <article class="mt-4 bg-white p-8 shadow-xl rounded-xl max-w-xl prose">
+    {{ content | widont }}
+</article> -->

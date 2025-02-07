@@ -29,6 +29,10 @@ html {
     scroll-behavior: smooth;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 html,
 body {
     /* font-family: 'Gothic No60'; */
@@ -514,4 +518,67 @@ section {
 .content.active {
     display: block;
     opacity: 1;
+}
+
+/* START::DJUNIOR */
+.bg-hero-djunior-1 {
+    position: relative;
+}
+.bg-hero-djunior-1:after {
+    --size-position: -300px;
+    content: "";
+    background-image: url("../../public/assets/img/djunior-bg-1.png");
+    background-position: 0 0;
+    background-size: cover;
+    width: 1000px;
+    height: 1000px;
+    position: absolute;
+    right: var(--size-position);
+    bottom: var(--size-position);
+    z-index: -1;
+}
+.bg-hero-djunior-2 {
+    position: relative;
+}
+.bg-hero-djunior-2:before {
+    content: "";
+    background-image: url("../../public/assets/img/djunior-bg-2.png");
+    background-position: 0 0;
+    background-size: cover;
+    width: 1000px;
+    height: 1000px;
+    position: absolute;
+    left: -300px;
+    bottom: calc(70%);
+    /* z-index: -1; */
+}
+.bg-hero-djunior-3 {
+    position: relative;
+}
+.bg-hero-djunior-3:after {
+    --size-position: -300px;
+    content: "";
+    background-image: url("../../public/assets/img/djunior-bg-3.png");
+    background-position: 0 0;
+    background-size: cover;
+    width: 1000px;
+    height: 1000px;
+    position: absolute;
+    right: var(--size-position);
+    top: -300px;
+    /* z-index: -1; */
+}
+@media (width <= 768px) {
+    .bg-hero-djunior-1:after,
+    .bg-hero-djunior-2:before,
+    .bg-hero-djunior-3:after {
+        display: none;
+    }
+}
+@media (width >= 768px) {
+    .bg-hero-djunior-1:after,
+    .bg-hero-djunior-2:before,
+    .bg-hero-djunior-3:after{
+        overflow: hidden;
+    }
 }
