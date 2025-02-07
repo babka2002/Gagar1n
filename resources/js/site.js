@@ -175,8 +175,48 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // DIALOG
-const showBtns = document.querySelectorAll(".show"); // Получаем все элементы с классом show
-const closeBtns = document.querySelectorAll(".close"); // Получаем все элементы с классом close
+const showBtns = document.querySelectorAll(".show");
+const closeBtns = document.querySelectorAll(".close");
+const autoplayDialog = document.getElementById("dialog-autoplay");
+
+// Autoplay setup
+function shouldShowDialog() {
+    // Проверяем включен ли автопоказ
+    const enabled = autoplayDialog.dataset.enabled === 'true';
+    if (!enabled) return false;
+
+    const lastShown = localStorage.getItem('dialogLastShown');
+    const hasBeenShown = localStorage.getItem('dialogHasBeenShown');
+
+    // Если никогда не показывался
+    if (!hasBeenShown) {
+        return true;
+    }
+
+    // Проверяем интервал показа из настроек
+    if (lastShown) {
+        const intervalDays = parseInt(autoplayDialog.dataset.interval) || 7;
+        const daysSinceLastShow = (Date.now() - parseInt(lastShown)) / (1000 * 60 * 60 * 24);
+        return daysSinceLastShow >= intervalDays;
+    }
+
+    return false;
+}
+
+function handleAutoplayDialog() {
+    if (autoplayDialog && shouldShowDialog()) {
+        // Получаем задержку из настроек
+        const delaySeconds = parseInt(autoplayDialog.dataset.delay) || 3;
+
+        setTimeout(() => {
+            autoplayDialog.showModal();
+            localStorage.setItem('dialogLastShown', Date.now().toString());
+            localStorage.setItem('dialogHasBeenShown', 'true');
+        }, delaySeconds * 1000); // Конвертируем секунды в миллисекунды
+    }
+}
+// End Autoplay setup
+
 
 // Добавляем обработчик для каждой кнопки
 if (showBtns.length > 0) {
@@ -203,6 +243,22 @@ if (closeBtns.length > 0) {
         });
     });
 }
+
+// Initialize autoplay functionality
+document.addEventListener('DOMContentLoaded', handleAutoplayDialog);
+
+// Optional: Close dialog when clicking outside
+autoplayDialog?.addEventListener('click', (e) => {
+    const dialogDimensions = autoplayDialog.getBoundingClientRect();
+    if (
+        e.clientX < dialogDimensions.left ||
+        e.clientX > dialogDimensions.right ||
+        e.clientY < dialogDimensions.top ||
+        e.clientY > dialogDimensions.bottom
+    ) {
+        autoplayDialog.close();
+    }
+});
 // const dialogElem = document.getElementById("dialog");
 // const showBtns = document.querySelectorAll(".show"); // Получаем все элементы с классом show
 // const closeBtn = document.querySelector(".close");

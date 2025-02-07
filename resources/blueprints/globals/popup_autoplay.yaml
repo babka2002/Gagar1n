@@ -1,0 +1,53 @@
+tabs:
+  main:
+    display: Основное
+    sections:
+      -
+        fields:
+          -
+            handle: popup_title
+            field:
+              type: text
+              display: Заголовок
+              localizable: false
+          -
+            handle: popap_text
+            field:
+              type: textarea
+              display: Описание
+              localizable: false
+          -
+            handle: popap_image
+            field:
+              max_files: 1
+              container: assets
+              type: assets
+              display: Картинка
+              localizable: false
+  settings:
+    display: Настройки показа
+    sections:
+      -
+        fields:
+          -
+            handle: popup_delay
+            field:
+              type: integer
+              display: Задержка перед показом (в секундах)
+              default: 3
+              min: 0
+              max: 30
+          -
+            handle: popup_interval
+            field:
+              type: integer
+              display: Интервал повторного показа (в днях)
+              default: 7
+              min: 1
+              max: 365
+          -
+            handle: popup_enabled
+            field:
+              type: toggle
+              display: Включить автопоказ
+              default: true
