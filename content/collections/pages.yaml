@@ -5,7 +5,10 @@ sites:
   - Gun1or
 propagate: false
 template: default
-layout: layout
+layouts:
+  grelka: grelka.layout
+  gun1or: gun1or.layout
+  gfoodcafe: gfoodcafe.layout  
 revisions: false
 route: '{parent_uri}/{slug}'
 sort_dir: asc
