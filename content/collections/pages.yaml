@@ -6,10 +6,6 @@ sites:
 propagate: false
 template: default
 layout: layout
-layout:
-  Grelka: grelka/layouts
-  Gun1or: gun1or/layout
-  GFoodcafe: gfoodcafe/layout
 revisions: false
 route: '{parent_uri}/{slug}'
 sort_dir: asc
