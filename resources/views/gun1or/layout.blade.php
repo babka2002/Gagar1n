@@ -24,7 +24,7 @@
 
         @vite(['resources/css/site.css', 'resources/js/site.js'])
     </head>
-    <body class="bg-blue-300">
+    <body class="bg-[#3f62b5]">
     {{-- <body class="bg-dark"> --}}
         <!-- START::HEADER -->
         <div class="container px-[1em] my-5 sticky top-4 z-20">
