@@ -337,12 +337,7 @@
                                 const formData = new FormData(this);
                                 const token = document.querySelector('input[name="_token"]').value;
                                 const submitButton = form.querySelector('button[type="submit"]');
-
-                                // Получаем UTM параметры из URL
-                                const urlParams = new URLSearchParams(window.location.search);
-                                const utmSource = urlParams.get('utm_source') || undefined;
-                                const utmMedium = urlParams.get('utm_medium') || 'direct';
-                                const utmCampaign = urlParams.get('utm_campaign') || window.location.hostname;
+                                const hostname = window.location.hostname.replace('www.', '');
 
                                 submitButton.disabled = true;
                                 window.showSpinner();
@@ -372,33 +367,39 @@
                                             }, 500);
                                         }, 3000);
 
-                                        // Отправляем в webhook с расширенными данными
+                                        // Получаем значения полей из формы
+                                        const fullName = formData.get('full_name');
+                                        const phone = formData.get('phone');
+
+                                        // Подготавливаем данные для webhook в точном соответствии с требуемой структурой
+                                        const webhookData = {
+                                            callerphone: phone,                   // Телефон для звонка
+                                            fio: fullName,                       // ФИО из формы
+                                            name: fullName,                      // Имя (то же, что и ФИО)
+                                            phone: phone,                        // Телефон
+                                            form_name: "Заявка с сайта",         // Название формы
+                                            city: "Симферополь",                 // Город
+                                            source: hostname,                    // Источник (домен)
+                                            campaign: "direct",                  // Кампания
+                                            site_name: hostname,                 // Название сайта
+                                            utm: "",                            // UTM метка
+                                            utm_medium: hostname,                // UTM medium
+                                            utm_subject: "Заявка с сайта",       // UTM subject
+                                            is_club_member: "НЕТ",               // Член клуба
+                                            leadtype: "request",                 // Тип лида
+                                            medium: document.referrer || hostname, // Источник перехода
+                                            requestDate: new Date().toISOString().slice(0, 19).replace('T', ' '), // Дата заявки
+                                            subject: "Заявка с сайта"            // Тема заявки
+                                        };
+
+                                        // Отправляем в webhook
                                         await fetch('/webhook-proxy', {
                                             method: 'POST',
                                             headers: {
                                                 'Content-Type': 'application/json',
                                                 'X-CSRF-TOKEN': token
                                             },
-                                            body: JSON.stringify({
-                                                name: formData.get('full_name'),
-                                                phone: formData.get('phone'),
-                                                form_name: "Заявка с сайта",
-                                                city: "Симферополь",
-                                                source: window.location.hostname,
-                                                campaign: utmMedium,
-                                                site_name: window.location.hostname,
-                                                utm: utmSource,
-                                                utm_medium: window.location.hostname,
-                                                utm_subject: "Заявка с сайта",
-                                                is_club_member: "НЕТ",
-                                                // Поля для API совместимости
-                                                leadtype: "request",
-                                                callerphone: formData.get('phone'),
-                                                requestDate: new Date().toISOString().slice(0, 19).replace("T", " "),
-                                                subject: "Заявка с сайта",
-                                                fio: formData.get('full_name'),
-                                                medium: document.referrer || "direct"
-                                            })
+                                            body: JSON.stringify(webhookData)
                                         });
                                     } else {
                                         throw new Error('Failed to submit form');
