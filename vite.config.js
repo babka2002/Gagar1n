@@ -12,6 +12,7 @@ export default defineConfig({
                 'vendor/mkocansey/bladewind/public/js/helpers.js'
             ],
             refresh: true,
+            buildDirectory: 'build'
         }),
     ],
     build: {
