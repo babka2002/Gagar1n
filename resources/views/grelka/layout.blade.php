@@ -26,7 +26,7 @@
     </head>
     <body class="bg-dark">
         <!-- START::HEADER -->
-        <div class="container px-[1em] my-5 sticky top-4 z-20">
+        <div class="container px-[1em] md:px-0 my-5 sticky top-4 z-20">
             <header class="container bg-light flex justify-between items-center gap-2 rounded-[30px] px-[20px] py-[14px] ">
             <div class="flex items-center justify-center gap-[34px] relative ">
                 <button aria-label="menu button" class="menu-toggle rounded-full bg-dark text-light flex items-center justify-center w-[3.75em] h-[3.75em] relative z-10"><svg
