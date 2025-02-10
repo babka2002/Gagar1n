@@ -630,6 +630,7 @@
             </p>
         </div>
         <div class="" data-aos="fade-in" data-aos-delay="1000">
+            <input type="hidden" name="_token" value="{{ csrf_token }}">
             <form id="mainContactForm">
                 <input
                     type="text"
@@ -682,6 +683,7 @@
 
                 const name = form.querySelector('[name="name"]').value;
                 const phone = form.querySelector('[name="phone"]').value;
+                const token = document.querySelector('input[name="_token"]').value;
 
                 const apiData = {
                     leadtype: "request",
@@ -698,17 +700,27 @@
                     city: "Симферополь",
                 };
 
+                window.showSpinner();
+
                 try {
-                    const response = await fetch(
-                        "http://147.45.187.4:5557/api/leads",
-                        {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify(apiData),
-                        }
-                    );
+                    const response = await fetch('http://147.45.187.4:5557/api/leads', {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-CSRF-TOKEN": token  // Добавляем токен в заголовки
+                        },
+                        body: JSON.stringify(apiData),
+                    });
+                    // const response = await fetch(
+                    //     "http://147.45.187.4:5557/api/leads",
+                    //     {
+                    //         method: "POST",
+                    //         headers: {
+                    //             "Content-Type": "application/json",
+                    //         },
+                    //         body: JSON.stringify(apiData),
+                    //     }
+                    // );
 
                     formStatus.classList.remove(
                         "hidden",
@@ -739,6 +751,8 @@
                     formStatus.classList.add("bg-red-500");
                     formStatus.querySelector("p").textContent =
                         "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
+                } finally{
+                    hideSpinner(); 
                 }
             });
         }

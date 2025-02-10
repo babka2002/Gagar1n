@@ -31,14 +31,6 @@ Route::post('/webhook-proxy', function (Request $request) {
     }
 });
 
-Route::post('/proxy-leads', function (Request $request) {
-    try {
-        $response = Http::post('http://147.45.187.4:5557/api/leads', $request->all());
-        return response()->json($response->json(), $response->status());
-    } catch (\Exception $e) {
-        return response()->json(['error' => $e->getMessage()], 500);
-    }
-});
 
 // Route::statamic('example', 'example-view', [
 //    'title' => 'Example'
