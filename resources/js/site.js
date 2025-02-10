@@ -175,6 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // DIALOG
+// DIALOG
 const showBtns = document.querySelectorAll(".show");
 const closeBtns = document.querySelectorAll(".close");
 const autoplayDialog = document.getElementById("dialog-autoplay");
@@ -182,20 +183,22 @@ const autoplayDialog = document.getElementById("dialog-autoplay");
 // Autoplay setup
 function shouldShowDialog() {
     // Проверяем включен ли автопоказ
-    const enabled = autoplayDialog.dataset.enabled === 'true';
+    const enabled = autoplayDialog.dataset.enabled == 1;
     if (!enabled) return false;
+
+    const intervalDays = parseInt(autoplayDialog.dataset.interval);
+    
+    // Если интервал 0 или не задан, показываем каждый раз
+    if (intervalDays === 0) return true;
 
     const lastShown = localStorage.getItem('dialogLastShown');
     const hasBeenShown = localStorage.getItem('dialogHasBeenShown');
 
     // Если никогда не показывался
-    if (!hasBeenShown) {
-        return true;
-    }
+    if (!hasBeenShown) return true;
 
     // Проверяем интервал показа из настроек
     if (lastShown) {
-        const intervalDays = parseInt(autoplayDialog.dataset.interval) || 7;
         const daysSinceLastShow = (Date.now() - parseInt(lastShown)) / (1000 * 60 * 60 * 24);
         return daysSinceLastShow >= intervalDays;
     }
@@ -204,15 +207,24 @@ function shouldShowDialog() {
 }
 
 function handleAutoplayDialog() {
-    if (autoplayDialog && shouldShowDialog()) {
-        // Получаем задержку из настроек
-        const delaySeconds = parseInt(autoplayDialog.dataset.delay) || 3;
+    console.log(autoplayDialog, shouldShowDialog());
+    if (!autoplayDialog || !shouldShowDialog()) return;
 
-        setTimeout(() => {
-            autoplayDialog.showModal();
-            localStorage.setItem('dialogLastShown', Date.now().toString());
-            localStorage.setItem('dialogHasBeenShown', 'true');
-        }, delaySeconds * 1000); // Конвертируем секунды в миллисекунды
+    // Получаем задержку из настроек
+    const delaySeconds = parseInt(autoplayDialog.dataset.delay);
+    
+    // Функция показа диалога
+    const showDialog = () => {
+        autoplayDialog.showModal();
+        localStorage.setItem('dialogLastShown', Date.now().toString());
+        localStorage.setItem('dialogHasBeenShown', 'true');
+    };
+
+    // Если задержка 0 или не задана - показываем сразу
+    if (delaySeconds === 0) {
+        showDialog();
+    } else {
+        setTimeout(showDialog, delaySeconds * 1000);
     }
 }
 // End Autoplay setup

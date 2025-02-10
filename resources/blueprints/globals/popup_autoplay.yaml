@@ -43,7 +43,7 @@ tabs:
               type: integer
               display: Интервал повторного показа (в днях)
               default: 7
-              min: 1
+              min: 0
               max: 365
           -
             handle: popup_enabled
