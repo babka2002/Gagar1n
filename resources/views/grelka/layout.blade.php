@@ -313,13 +313,22 @@
                     <script>
                     document.addEventListener('DOMContentLoaded', function() {
                         let form = document.querySelector('form[action*="/!/forms/grelka"]');
-                        const status = document.getElementById('formStatus');
+                        const dialogElem = document.getElementById("dialog");
 
-                        function showStatus(message, type = 'success') {
-                            status.className = `fixed top-4 right-4 p-4 rounded-lg z-50 ${type === 'success' ? 'bg-green-500' : 'bg-red-500'}`;
-                            status.querySelector('p').textContent = message;
-                            status.classList.remove('hidden');
-                            setTimeout(() => status.classList.add('hidden'), 3000);
+                        function showSuccessMessage() {
+                            // Скрываем форму
+                            form.style.display = 'none';
+
+                            // Создаем и показываем сообщение об успехе
+                            const successMessage = document.createElement('div');
+                            successMessage.className = 'text-center py-8';
+                            successMessage.innerHTML = `
+                                <h3 class="text-2xl mb-4 text-green-400">Спасибо! Ваша заявка успешно отправлена</h3>
+                                <p class="text-lg">Мы свяжемся с вами в ближайшее время</p>
+                            `;
+
+                            // Вставляем сообщение в диалог
+                            form.parentNode.appendChild(successMessage);
                         }
 
                         if (form) {
@@ -329,18 +338,15 @@
 
                             form.addEventListener('submit', async function(e) {
                                 e.preventDefault();
-                                console.log('Form submitted');
 
-                                const dialogElem = document.getElementById("dialog");
                                 const formData = new FormData(this);
                                 const token = document.querySelector('input[name="_token"]').value;
                                 const submitButton = form.querySelector('button[type="submit"]');
 
                                 submitButton.disabled = true;
+                                window.showSpinner();
 
                                 try {
-                                    // Отправляем в Statamic
-                                    console.log('Sending to Statamic...');
                                     const statamicResponse = await fetch(this.action, {
                                         method: 'POST',
                                         headers: {
@@ -349,16 +355,26 @@
                                         },
                                         body: formData
                                     });
-                                    console.log('Statamic response:', statamicResponse);
 
                                     if (statamicResponse.ok) {
-                                        // Если Statamic успешно принял форму, закрываем диалог
-                                        showStatus('Form successfully sent!', 'success');
+                                        // Показываем сообщение об успехе в диалоге
+                                        showSuccessMessage();
                                         this.reset();
-                                        dialogElem.close();
 
-                                        // Отправляем данные в очередь вебхуков
-                                        console.log('Sending to webhook queue...');
+                                        // Закрываем диалог через 3 секунды
+                                        setTimeout(() => {
+                                            dialogElem.close();
+                                            // Восстанавливаем форму после закрытия
+                                            setTimeout(() => {
+                                                form.style.display = 'block';
+                                                const successMessage = form.parentNode.querySelector('div');
+                                                if (successMessage) {
+                                                    successMessage.remove();
+                                                }
+                                            }, 500);
+                                        }, 3000);
+
+                                        // Отправляем в webhook
                                         await fetch('/webhook-proxy', {
                                             method: 'POST',
                                             headers: {
@@ -371,14 +387,22 @@
                                             })
                                         });
                                     } else {
-                                        // console.error('Error submitting form to Statamic:', statamicResponse.status);
-                                        showStatus('Ошибка при отправке формы', 'error');
+                                        throw new Error('Failed to submit form');
                                     }
                                 } catch (error) {
                                     console.error('Error:', error);
-                                    showStatus('Произошла ошибка при отправке формы', 'error');
+                                    // Показываем ошибку в диалоге
+                                    const errorDiv = document.createElement('div');
+                                    errorDiv.className = 'text-red-500 text-center mt-4';
+                                    errorDiv.textContent = 'Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз';
+                                    form.appendChild(errorDiv);
+
+                                    setTimeout(() => {
+                                        errorDiv.remove();
+                                    }, 3000);
                                 } finally {
                                     submitButton.disabled = false;
+                                    hideSpinner();
                                 }
                             });
                         }

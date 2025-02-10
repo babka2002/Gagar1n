@@ -1,5 +1,13 @@
 <div
-    x-data="{ isLoading: false }"
+    x-data="{
+        isLoading: false,
+        handlePageShow(e) {
+            // Проверяем, загружена ли страница из кэша
+            if (e.persisted) {
+                this.isLoading = false;
+            }
+        }
+    }"
     x-init="
         $watch('isLoading', value => {
             if (value) {
@@ -9,25 +17,49 @@
             }
         });
 
-        window.addEventListener('load', () => isLoading = false);
+        // Добавляем обработчик pageshow
+        window.addEventListener('pageshow', e => handlePageShow(e));
+
+        // Обработка загрузки страницы
+        if (document.readyState === 'complete') {
+            isLoading = false;
+        } else {
+            window.addEventListener('load', () => isLoading = false);
+        }
+
+        // Устанавливаем состояние загрузки при уходе со страницы
         window.addEventListener('beforeunload', () => isLoading = true);
 
         document.addEventListener('DOMContentLoaded', () => {
+            // Обработка отправки форм
             document.querySelectorAll('form').forEach(form => {
-                form.addEventListener('submit', () => isLoading = true);
+                form.addEventListener('submit', (e) => {
+                    // Проверяем, что форма действительно отправляется
+                    if (form.checkValidity()) {
+                        isLoading = true;
+                    }
+                });
             });
 
+            // Обработка переходов по ссылкам
             document.querySelectorAll('a:not([target=\'_blank\']):not([href^=\'#\'])').forEach(link => {
-                link.addEventListener('click', () => isLoading = true);
+                link.addEventListener('click', () => {
+                    // Проверяем, что ссылка ведет на другую страницу
+                    if (link.href !== window.location.href) {
+                        isLoading = true;
+                    }
+                });
             });
         });
 
+        // Поддержка Livewire если он используется
         if (typeof Livewire !== 'undefined') {
             Livewire.hook('message.sent', () => isLoading = true);
             Livewire.hook('message.processed', () => isLoading = false);
             Livewire.hook('message.failed', () => isLoading = false);
         }
 
+        // Глобальные методы управления спиннером
         window.showSpinner = () => isLoading = true;
         window.hideSpinner = () => isLoading = false;
     "
@@ -41,46 +73,3 @@
         <div class="mt-4 text-white text-sm">Загрузка...</div>
     </div>
 </div>
-
-
-{{-- <div id="global-loader" class=" fixed inset-0 bg-gray-800 bg-opacity-80 flex items-center justify-center z-50">
-    <x-bladewind::spinner size="medium" color="red" />
-</div> --}}
-
-{{-- <script>
-    // alert('test');
-    window.showSpinner = function() {
-        document.getElementById('global-loader').classList.remove('hidden');
-    }
-
-    window.hideSpinner = function() {
-        document.getElementById('global-loader').classList.add('hidden');
-    }
-
-    // Автоматически показывать спиннер при отправке форм
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('form').forEach(form => {
-            form.addEventListener('submit', function() {
-                showSpinner();
-            });
-        });
-
-        // Показывать спиннер при переходе по ссылкам
-        document.querySelectorAll('a:not([target="_blank"])').forEach(link => {
-            link.addEventListener('click', function() {
-                showSpinner();
-            });
-        });
-
-        // Показывать спиннер при загрузке страницы
-        window.addEventListener('load', function() {
-            hideSpinner();
-        });
-
-        // Скрывать спиннер при ошибке загрузки
-        window.addEventListener('error', function() {
-            hideSpinner();
-        });
-    });
-</script> --}}
-
