@@ -1,18 +1,79 @@
 ---
 id: 93f7fc77-894c-445e-a257-239a1838c6fe
-blueprint: page
+blueprint: page_cicle
 title: САЙКЛ
-code_field:
-  code: null
-  mode: htmlmixed
-author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 template: grelka/cicle
+author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1738946100
+updated_at: 1739125806
 hero_title: САЙКЛ
-hero_desc_group:
-  pole_text_1: null
-  pole_text_discont: null
-  pole_text_2: null
-  pole_text_3: null
+hero_image: img/direction-6.jpg
+description_title: НОВЫЕ СОВРЕМЕННЫЕ ТРЕНАЖЕРЫ
+description_image: img/crossfit-bordered.jpg
+description_text: "На наших высокоинтенсивных тренировках вы не только сделаете шаг к идеальной форме, но и зарядитесь прекрасным настроением. Для этого мы обеспечим вас лучшими тренерами и кардиомониторами Dexbee для более эффективной тренировки."
+programs_replicator:
+  -
+    id: prog1
+    program_title: 'САЙКЛ HIIT'
+    program_description: 'Высокоинтенсивная тренировка под динамичную музыку, которая разгонит ваш метаболизм и запустит процесс жиросжигания. Польза: Сокращение жировой ткани в организме, что способствует насыщению кислородом, учащению пульс, Приведение в тонус всех мышечных групп, так как выполнение силовых упражнений укрепляет как ноги, так и плечи, туловище, Тренинг кардиореспираторной системы, улучшение функций дыхательных органов, укрепление сердца, сосудов, нормализация давления, Отсутствие нагрузки со стороны позвоночника/суставов. В противовес силовым занятиям компрессия на данные части тела не усиливается.
+    <br/>
+    <br/>
+    Рекомендуется для всех уровней подготовки.
+    <br/>
+    <br/>
+    При отсутствии противопоказаний сайклинг тренировка полностью безопасна в любом возрасте.
+    <br/>
+    <br/>
+    Продолжительность тренинга составляет 55 минут.'
+    program_recommendations: ''
+    is_pro: true
+    type: program
+    enabled: true
+  -
+    id: prog2
+    program_title: 'САЙКЛ START'
+    program_description: 'Групповая безударная кардио тренировка, с использованием специальных велотренажеров, громкой музыки и видеопроектора. Включает в себя имитацию настоящих заездов по склонам, горам и прочим рельефным поверхностям.
+    <br/>
+    <br/>
+    Рекомендуется для всех уровней подготовки.
+    <br/>
+    <br/>
+    Запись открывается за сутки, закрывается за 1 час до начала тренировки! В случае опоздания на тренировку вход по живой очереди.'
+    program_recommendations: ''
+    is_pro: false
+    type: program
+    enabled: true
+  -
+    id: prog3
+    program_title: 'САЙКЛ PRO'
+    program_description: 'рупповая безударная кардио тренировка, с использованием специальных велотренажеров, громкой музыки и видеопроектора. Включает в себя имитацию настоящих заездов по склонам, горам и прочим рельефным поверхностям. Рекомендуется для всех уровней подготовленности.
+    <br/>
+    <br/>
+    Рекомендуется для среднего уровня подготовки.'
+    program_recommendations: ''
+    is_pro: true
+    type: program
+    enabled: true
+
+# Related Links Section
+related_title: 'ищешь сайкл или кроссфит?'
+related_links:
+  -
+    id: rel1
+    link_title: 'сайкл'
+    link_url: 'entry::93f7fc77-894c-445e-a257-239a1838c6fe'
+    link_image: img/skail.jpg
+    type: link
+    enabled: true
+  -
+    id: rel2
+    link_title: 'кроссфит'
+    link_url: 'entry::e79d3f34-1bf7-4e1c-ac9c-fee15c7f1fc5'
+    link_image: img/fitness.jpg
+    type: link
+    enabled: true
+
+# Contact Form Section
+form_title: 'ПОЛУЧИ ЗАРЯД ЭНЕРГИИ'
+form_image: img/skail.jpg
 ---

@@ -1,0 +1,178 @@
+title: Hall
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        display: Шаблон
+        fields:
+          -
+            handle: template
+            field:
+              type: template
+              display: Шаблон
+              localizable: false
+      -
+        display: Hero
+        fields:
+          -
+            handle: hero_title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+              display: 'Hero Title'
+              localizable: false
+          -
+            handle: hero_image
+            field:
+              container: assets
+              type: assets
+              display: 'Hero Image'
+              max_files: 1
+              localizable: false
+      -
+        display: Stats
+        fields:
+          -
+            handle: stats_group
+            field:
+              type: group
+              display: 'Statistics'
+              fields:
+                -
+                  handle: area_size
+                  field:
+                    type: text
+                    display: 'Area Size'
+                -
+                  handle: equipment_count
+                  field:
+                    type: text
+                    display: 'Equipment Count'
+          -
+            handle: stats_subtitle
+            field:
+              type: text
+              display: 'Stats Subtitle'
+              localizable: false
+      -
+        display: Description
+        fields:
+          -
+            handle: description_title
+            field:
+              type: text
+              display: 'Description Title'
+              localizable: false
+          -
+            handle: description_image
+            field:
+              container: assets
+              type: assets
+              display: 'Description Image'
+              max_files: 1
+              localizable: false
+          -
+            handle: description_text
+            field:
+              type: textarea
+              display: 'Description Text'
+              localizable: false
+      -
+        display: Zones
+        fields:
+          -
+            handle: zones_title
+            field:
+              type: text
+              display: 'Zones Title'
+              localizable: false
+          -
+            handle: zones_replicator
+            field:
+              type: replicator
+              display: 'Zones'
+              sets:
+                zone:
+                  display: Zone
+                  fields:
+                    -
+                      handle: zone_title
+                      field:
+                        type: text
+                        display: 'Zone Title'
+                    -
+                      handle: zone_image
+                      field:
+                        container: assets
+                        type: assets
+                        display: 'Zone Image'
+                        max_files: 1
+          -
+            handle: zones_schedule_text
+            field:
+              type: text
+              display: 'Schedule Text'
+              localizable: false
+      -
+        display: Training
+        fields:
+          -
+            handle: training_title
+            field:
+              type: text
+              display: 'Training Section Title'
+              localizable: false
+          -
+            handle: training_image
+            field:
+              container: assets
+              type: assets
+              display: 'Training Image'
+              max_files: 1
+              localizable: false
+          -
+            handle: training_text
+            field:
+              type: text
+              display: 'Training Text'
+              localizable: false
+      -
+        display: Contact Form
+        fields:
+          -
+            handle: form_title
+            field:
+              type: text
+              display: 'Form Title'
+              localizable: false
+          -
+            handle: form_image
+            field:
+              container: assets
+              type: assets
+              display: 'Form Image'
+              max_files: 1
+              localizable: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - pages
+              max_items: 1
+              listable: false
+              localizable: true

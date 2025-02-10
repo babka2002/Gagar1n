@@ -1,24 +1,214 @@
-title: 'Page Personal Training'
+title: Personal Training
 tabs:
   main:
-    display: Основное
+    display: Main
     sections:
       -
+        display: Шаблон
         fields:
-          -
-            handle: title
-            field:
-              type: text
-              required: true
-              localizable: false
-              validate:
-                - required
           -
             handle: template
             field:
               type: template
               display: Шаблон
               localizable: false
+      -
+        display: Hero
+        fields:
+          -
+            handle: hero_title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+              display: 'Hero Title'
+              localizable: false
+          -
+            handle: hero_image
+            field:
+              container: assets
+              type: assets
+              display: 'Hero Image'
+              max_files: 1
+              localizable: false
+      -
+        display: Features
+        fields:
+          -
+            handle: features_list
+            field:
+              type: replicator
+              display: 'Features List'
+              sets:
+                feature:
+                  display: Feature
+                  fields:
+                    -
+                      handle: feature_text
+                      field:
+                        type: text
+                        display: 'Feature Text'
+          -
+            handle: features_subtitle
+            field:
+              type: text
+              display: 'Features Subtitle'
+      -
+        display: Trainers
+        fields:
+          -
+            handle: trainers_title
+            field:
+              type: text
+              display: 'Trainers Title'
+          -
+            handle: trainers_image
+            field:
+              container: assets
+              type: assets
+              display: 'Trainers Image'
+              max_files: 1
+          -
+            handle: trainers_description
+            field:
+              type: textarea
+              display: 'Trainers Description'
+      -
+        display: Programs
+        fields:
+          -
+            handle: programs_title
+            field:
+              type: text
+              display: 'Programs Title'
+          -
+            handle: programs_replicator
+            field:
+              type: replicator
+              display: 'Programs'
+              sets:
+                program:
+                  display: Program
+                  fields:
+                    -
+                      handle: program_title
+                      field:
+                        type: text
+                        display: 'Program Title'
+                    -
+                      handle: program_image
+                      field:
+                        container: assets
+                        type: assets
+                        display: 'Program Image'
+                        max_files: 1
+                    -
+                      handle: program_description
+                      field:
+                        type: textarea
+                        display: 'Program Description'
+      -
+        display: Reviews
+        fields:
+          -
+            handle: reviews_title
+            field:
+              type: text
+              display: 'Reviews Title'
+          -
+            handle: reviews_replicator
+            field:
+              type: replicator
+              display: 'Reviews'
+              sets:
+                review:
+                  display: Review
+                  fields:
+                    -
+                      handle: review_image
+                      field:
+                        container: assets
+                        type: assets
+                        display: 'Review Image'
+                        max_files: 1
+                    -
+                      handle: review_name
+                      field:
+                        type: text
+                        display: 'Name'
+                    -
+                      handle: review_subtitle
+                      field:
+                        type: text
+                        display: 'Subtitle'
+                    -
+                      handle: review_text
+                      field:
+                        type: textarea
+                        display: 'Review Text'
+      -
+        display: FAQ
+        fields:
+          -
+            handle: faq_title
+            field:
+              type: text
+              display: 'FAQ Title'
+          -
+            handle: faq_replicator
+            field:
+              type: replicator
+              display: 'FAQ Items'
+              sets:
+                faq:
+                  display: FAQ Item
+                  fields:
+                    -
+                      handle: question
+                      field:
+                        type: text
+                        display: 'Question'
+                    -
+                      handle: answer
+                      field:
+                        type: textarea
+                        display: 'Answer'
+      -
+        display: Training
+        fields:
+          -
+            handle: training_title
+            field:
+              type: text
+              display: 'Training Section Title'
+          -
+            handle: training_image
+            field:
+              container: assets
+              type: assets
+              display: 'Training Image'
+              max_files: 1
+          -
+            handle: training_text
+            field:
+              type: text
+              display: 'Training Text'
+      -
+        display: Contact Form
+        fields:
+          -
+            handle: form_title
+            field:
+              type: text
+              display: 'Form Title'
+          -
+            handle: form_image
+            field:
+              container: assets
+              type: assets
+              display: 'Form Image'
+              max_files: 1
   sidebar:
     display: Sidebar
     sections:

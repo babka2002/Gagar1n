@@ -1,0 +1,192 @@
+title: Crossfit
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        display: Шаблон
+        fields:
+          -
+            handle: template
+            field:
+              type: template
+              display: Шаблон
+              localizable: false
+      -
+        display: Hero
+        fields:
+          -
+            handle: hero_title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+              display: 'Hero Title'
+              localizable: false
+          -
+            handle: hero_image
+            field:
+              container: assets
+              type: assets
+              display: 'Hero Image'
+              max_files: 1
+              localizable: false
+      -
+        display: Features
+        fields:
+          -
+            handle: features_group
+            field:
+              type: group
+              display: 'Features Text'
+              fields:
+                -
+                  handle: features_text_1
+                  field:
+                    type: text
+                    display: 'Text 1'
+                -
+                  handle: features_text_2
+                  field:
+                    type: text
+                    display: 'Text 2'
+                -
+                  handle: features_text_3
+                  field:
+                    type: text
+                    display: 'Text 3'
+                -
+                  handle: features_text_4
+                  field:
+                    type: text
+                    display: 'Text 4'
+      -
+        display: Description
+        fields:
+          -
+            handle: description_title
+            field:
+              type: text
+              display: 'Description Title'
+              localizable: false
+          -
+            handle: description_image
+            field:
+              container: assets
+              type: assets
+              display: 'Description Image'
+              max_files: 1
+              localizable: false
+          -
+            handle: description_text
+            field:
+              type: textarea
+              display: 'Description Text'
+              localizable: false
+      -
+        display: Programs
+        fields:
+          -
+            handle: programs_replicator
+            field:
+              type: replicator
+              display: 'Programs'
+              localizable: false
+              sets:
+                program:
+                  display: Program
+                  fields:
+                    -
+                      handle: program_title
+                      field:
+                        type: text
+                        display: 'Program Title'
+                        required: true
+                    -
+                      handle: program_description
+                      field:
+                        type: textarea
+                        display: 'Program Description'
+                    -
+                      handle: program_recommendations
+                      field:
+                        type: textarea
+                        display: 'Program Recommendations'
+                    -
+                      handle: program_additional_info
+                      field:
+                        type: textarea
+                        display: 'Additional Information'
+      -
+        display: Related Links
+        fields:
+          -
+            handle: related_title
+            field:
+              type: text
+              display: 'Related Section Title'
+              localizable: false
+          -
+            handle: related_links
+            field:
+              type: replicator
+              display: 'Related Links'
+              sets:
+                link:
+                  display: Link
+                  fields:
+                    -
+                      handle: link_title
+                      field:
+                        type: text
+                        display: 'Link Title'
+                    -
+                      handle: link_url
+                      field:
+                        type: link
+                        display: 'Link URL'
+                    -
+                      handle: link_image
+                      field:
+                        container: assets
+                        type: assets
+                        display: 'Link Image'
+                        max_files: 1
+      -
+        display: Contact Form
+        fields:
+          -
+            handle: form_title
+            field:
+              type: text
+              display: 'Form Title'
+              localizable: false
+          -
+            handle: form_image
+            field:
+              container: assets
+              type: assets
+              display: 'Form Image'
+              max_files: 1
+              localizable: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - pages
+              max_items: 1
+              listable: false
+              localizable: true

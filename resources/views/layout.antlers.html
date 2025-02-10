@@ -1,0 +1,10 @@
+{{# layout.antlers.html #}}
+{{ if site:handle == 'Grelka' }}
+    {{ partial src="grelka/layout" }}
+{{ elseif site:handle == 'Gun1or' }}
+    {{ partial src="gun1or/layout" }}
+{{ elseif site:handle == 'GFoodcafe' }}
+    {{ partial src="gfoodcafe/layout" }}
+{{ else }}
+    {{ partial src="default/layout" }}
+{{ /if }}

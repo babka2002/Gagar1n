@@ -1,250 +1,102 @@
+<!-- START::HERO -->
 <section class="py-sectionPadding">
     <div class="container px-4">
-        <div
-            style="background-image: url('{{ glide:data_url src='/assets/img/hall_hero.jpg' quality='75' format='webp' }}')"
-            class="bg-no-repeat bg-top bg-cover flex items-start justify-center rounded-brxl overflow-hidden h-[625px] relative"
-        >
-            <h1
-                class="text-lg md:text-xxl uppercase text-light rounded-b-brxl bg-dark px-4 md:px-24 py-0 text-center invert-border-crossfit hyphens-auto z-9"
-            >
-                тренажерный зал
+        <div style="background-image: url('{{ hero_image }}')"
+            class="bg-no-repeat bg-top bg-cover flex items-start justify-center rounded-brxl overflow-hidden h-[625px] relative">
+            <h1 class="text-lg md:text-xxl uppercase text-light rounded-b-brxl bg-dark px-4 md:px-24 py-0 text-center invert-border-crossfit hyphens-auto z-9">
+                {{ hero_title }}
             </h1>
         </div>
 
         <div class="text-light pt-sectionPadding">
             <div class="flex items-center justify-around leading-none">
                 <div class="flex flex-col items-center justify-center">
-                    <span
-                        class="text-xxxl lg:text-[clamp(3.3125rem,0.805rem+11.1446vw,10.25rem)]"
-                        data-aos="zoom-in"
-                        >1700 </span
-                    ><span class="md:text-lg" data-aos="zoom-out"
-                        >кв.метров</span
-                    >
+                    <span class="text-xxxl lg:text-[clamp(3.3125rem,0.805rem+11.1446vw,10.25rem)]" data-aos="zoom-in">
+                        {{ stats_group:area_size }}
+                    </span>
+                    <span class="md:text-lg" data-aos="zoom-out">кв.метров</span>
                 </div>
                 <div class="flex flex-col items-center justify-center">
-                    <span
-                        class="text-xxxl lg:text-[clamp(3.3125rem,0.805rem+11.1446vw,10.25rem)]"
-                        data-aos="zoom-in"
-                        >100+</span
-                    ><span class="md:text-lg" data-aos="zoom-out"
-                        >ТРЕНАЖЕРОВ</span
-                    >
+                    <span class="text-xxxl lg:text-[clamp(3.3125rem,0.805rem+11.1446vw,10.25rem)]" data-aos="zoom-in">
+                        {{ stats_group:equipment_count }}
+                    </span>
+                    <span class="md:text-lg" data-aos="zoom-out">ТРЕНАЖЕРОВ</span>
                 </div>
             </div>
         </div>
 
         <div class="pt-sectionPadding">
-            <a
-                href="#"
-                class="rounded-brxl bg-main-red w-full py-6 px-4 flex items-center justify-center text-center text-light text-base md:text-md uppercase transition-all hover:scale-90"
-                data-aos="zoom-in"
-                >Самый крупный в республике Крым полноформатный фитнес клуб</a
-            >
+            <a href="#" data-aos="zoom-in"
+                class="rounded-brxl bg-main-red w-full py-6 px-4 flex items-center justify-center text-center text-light text-base md:text-md uppercase transition-all hover:scale-90">
+                {{ stats_subtitle }}
+            </a>
         </div>
     </div>
 </section>
 
+<!-- START::DESCRIPTION -->
 <section class="py-sectionPadding bg-light">
     <div class="container text-dark px-4">
-        <div
-            style="background-image: url('{{ glide:data_url src='/assets/img/hall_bordered.jpg' quality='75' format='webp' }}')"
-            class="bg-cover bg-top rounded-brxl overflow-hidden"
-        >
+        <div style="background-image: url('{{ description_image }}')"
+            class="bg-cover bg-top rounded-brxl overflow-hidden">
             <div class="grid grid-cols-3 grid-rows-2 text-dark min-h-[615px]">
-                <div
-                    class="self-start bg-light p-4 rounded-br-brxl tblock-rounded text-base md:text-xxl col-span-2 row-span-1"
-                >
-                    <span data-aos="zoom-in"> тренажерный зал </span>
+                <div class="self-start bg-light p-4 rounded-br-brxl tblock-rounded text-base md:text-xxl col-span-2 row-span-1">
+                    <span data-aos="zoom-in">{{ description_title }}</span>
                 </div>
                 <div class="col-span-1"></div>
                 <div class="col-span-1"></div>
-                <div
-                    class="self-end bg-light p-4 rounded-tl-brxl bblock-rounded row-span-2 col-span-2 text-right text-sm md:text-base"
-                    data-aos="zoom-in"
-                >
-                     На площади в 1700 кв.м стоит более 100 современных
-                    тренажеров. В кардиозоне – тренажеры Technogym с панорамным
-                    видом на улицу Киевская. Отдельная зона для функциональных
-                    тренировок с профессиональным оборудованием Foreman.
+                <div class="self-end bg-light p-4 rounded-tl-brxl bblock-rounded row-span-2 col-span-2 text-right text-sm md:text-base" data-aos="zoom-in">
+                    {{ description_text }}
                 </div>
             </div>
         </div>
 
         <div class="pt-sectionPadding">
-            <h2
-                class="uppercase text-lg md:text-xxl flex justify-center items-center font-normal px-4 lg:px-0 text-black mb-6 leading-[1]"
-                data-aos="zoom-in"
-            >
-                зоны и возможности
+            <h2 class="uppercase text-lg md:text-xxl flex justify-center items-center font-normal px-4 lg:px-0 text-black mb-6 leading-[1]" data-aos="zoom-in">
+                {{ zones_title }}
             </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <a
-                    href="#"
-                    class="block rounded-brxl overflow-hidden relative group"
-                    data-aos="fade-right"
-                >
-                    <img
-                        src="{{ glide:data_url src='/assets/img/hall_zone_1.jpg' quality='75' format='webp' }}"
-                        alt=""
-                        class="group-hover:scale-110 transition-all object-cover max-h-[370px] w-full object-center opacity-80 group-hover:opacity-100 bg-dark"
-                    />
-                    <div
-                        class="uppercase text-md lg:text-xl px-5 absolute text-light bottom-7 group-hover:scale-95 transition-all leading-tight"
-                    >
-                        функциональный тренинг
-                    </div>
-                </a>
-
-                <a
-                    href="#"
-                    class="block rounded-brxl overflow-hidden relative group"
-                    data-aos="fade-left"
-                >
-                    <img
-                        src="{{ glide:data_url src='/assets/img/hall_zone_1.jpg' quality='75' format='webp' }}"
-                        alt=""
-                        class="group-hover:scale-110 transition-all object-cover max-h-[370px] w-full object-center opacity-80 group-hover:opacity-100 bg-dark"
-                    />
-                    <div
-                        class="uppercase text-md lg:text-xl px-5 absolute text-light bottom-7 group-hover:scale-95 transition-all leading-tight"
-                    >
-                        зона свободных весов
-                    </div>
-                </a>
-
-                <a
-                    href="#"
-                    class="block rounded-brxl overflow-hidden relative group"
-                    data-aos="fade-right"
-                >
-                    <img
-                        src="{{ glide:data_url src='/assets/img/hall_zone_1.jpg' quality='75' format='webp' }}"
-                        alt=""
-                        class="group-hover:scale-110 transition-all object-cover max-h-[370px] w-full object-center opacity-80 group-hover:opacity-100 bg-dark"
-                    />
-                    <div
-                        class="uppercase text-md lg:text-xl px-5 absolute text-light bottom-7 group-hover:scale-95 transition-all leading-tight"
-                    >
-                        блочные тренажеры
-                    </div>
-                </a>
-
-                <a
-                    href="#"
-                    class="block rounded-brxl overflow-hidden relative group"
-                    data-aos="fade-left"
-                >
-                    <img
-                        src="{{ glide:data_url src='/assets/img/hall_zone_1.jpg' quality='75' format='webp' }}"
-                        alt=""
-                        class="group-hover:scale-110 transition-all object-cover max-h-[370px] w-full object-center opacity-80 group-hover:opacity-100 bg-dark"
-                    />
-                    <div
-                        class="uppercase text-md lg:text-xl px-5 absolute text-light bottom-7 group-hover:scale-95 transition-all leading-tight"
-                    >
-                        кардио зона
-                    </div>
-                </a>
-
-                <a
-                    href="#"
-                    class="block rounded-brxl overflow-hidden relative group"
-                    data-aos="fade-right"
-                >
-                    <img
-                        src="{{ glide:data_url src='/assets/img/hall_zone_1.jpg' quality='75' format='webp' }}"
-                        alt=""
-                        class="group-hover:scale-110 transition-all object-cover max-h-[370px] w-full object-center opacity-80 group-hover:opacity-100 bg-dark"
-                    />
-                    <div
-                        class="uppercase text-md lg:text-xl px-5 absolute text-light bottom-7 group-hover:scale-95 transition-all leading-tight"
-                    >
-                        зона кроссфита
-                    </div>
-                </a>
-
-                <a
-                    href="#"
-                    class="block rounded-brxl overflow-hidden relative group"
-                    data-aos="fade-left"
-                >
-                    <img
-                        src="{{ glide:data_url src='/assets/img/hall_zone_1.jpg' quality='75' format='webp' }}"
-                        alt=""
-                        class="group-hover:scale-110 transition-all object-cover max-h-[370px] w-full object-center opacity-80 group-hover:opacity-100 bg-dark"
-                    />
-                    <div
-                        class="uppercase text-md lg:text-xl px-5 absolute text-light bottom-7 group-hover:scale-95 transition-all leading-tight"
-                    >
-                        ринг
-                    </div>
-                </a>
+                {{ zones_replicator }}
+                    <a href="#" class="block rounded-brxl overflow-hidden relative group" data-aos="fade-{{ if {count} % 2 == 0 }}left{{ else }}right{{ /if }}">
+                        <img src="{{ zone_image }}" alt="{{ zone_title }}"
+                            class="group-hover:scale-110 transition-all object-cover max-h-[370px] w-full object-center opacity-80 group-hover:opacity-100 bg-dark" />
+                        <div class="uppercase text-md lg:text-xl px-5 absolute text-light bottom-7 group-hover:scale-95 transition-all leading-tight">
+                            {{ zone_title }}
+                        </div>
+                    </a>
+                {{ /zones_replicator }}
             </div>
 
             <div class="py-5">
-                <a
-                    href="#"
-                    class="rounded-brxl bg-main-red w-full py-6 px-4 flex items-center justify-center text-center text-light text-base md:text-md uppercase transition-all hover:scale-90"
-                    data-aos="zoom-in"
-                    >свободное посещение зала ежедневно с 7 до 23</a
-                >
+                <a href="#" class="rounded-brxl bg-main-red w-full py-6 px-4 flex items-center justify-center text-center text-light text-base md:text-md uppercase transition-all hover:scale-90" data-aos="zoom-in">
+                    {{ zones_schedule_text }}
+                </a>
             </div>
         </div>
     </div>
 </section>
 
+<!-- START::TRAINING -->
 <section class="pb-sectionPadding px-4 bg-light">
     <div class="container">
         <div class="">
-            <h2
-                data-aos="zoom-in"
-                class="uppercase text-lg md:text-xxl flex justify-center items-center font-normal px-4 lg:px-0 text-black mb-6 leading-[1]"
-            >
-                не знаешь как начать?
+            <h2 data-aos="zoom-in" class="uppercase text-lg md:text-xxl flex justify-center items-center font-normal px-4 lg:px-0 text-black mb-6 leading-[1]">
+                {{ training_title }}
             </h2>
 
-            <div
-                class="rounded-brxl bg-dark text-light p-[clamp(1rem,0.4127rem+2.6104vw,2.625rem)]"
-                data-aos="zoom-out"
-            >
-                <div
-                    class="max-h-[409px] object-center object-cover overflow-hidden rounded-brxl mb-6"
-                >
-                    <img
-                        src="{{ glide:data_url src='/assets/img/trainer-hero.jpg' quality='75' format='webp' }}"
-                        alt=""
-                        class=""
-                    />
+            <div class="rounded-brxl bg-dark text-light p-[clamp(1rem,0.4127rem+2.6104vw,2.625rem)]" data-aos="zoom-out">
+                <div class="max-h-[409px] object-center object-cover overflow-hidden rounded-brxl mb-6">
+                    <img src="{{ training_image }}" alt="" class="" />
                 </div>
-                <div
-                    class="grid grid-cols-3 gap-2 justify-between items-center"
-                >
+                <div class="grid grid-cols-3 gap-2 justify-between items-center">
                     <p class="text-base lg:text-lg col-span-2 hyphens-manual">
-                        запишись на <br />
-                        индивидуальную тренировку
+                        {{ training_text }}
                     </p>
-                    <a
-                        data-dialog="dialog-more"
-                        class="show ml-auto col-span-1 flex items-center justify-center w-[clamp(3rem,1.6672rem+5.9237vw,6.6875rem)] h-[clamp(3rem,1.6672rem+5.9237vw,6.6875rem)] transition-all hover:scale-110"
-                        ><svg
-                            width="100%"
-                            height="100%"
-                            viewBox="0 0 108 108"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <circle
-                                cx="53.7238"
-                                cy="53.7238"
-                                r="53.7238"
-                                fill="#FFF8F8"
-                            />
-                            <path
-                                d="M76.1914 48.7157C73.425 48.7157 71.1825 50.9582 71.1825 53.7246C71.1825 56.491 73.425 58.7336 76.1914 58.7336V48.7157ZM83.1521 57.2665C85.1082 55.3104 85.1082 52.1389 83.1521 50.1827L51.2753 18.306C49.3192 16.3499 46.1477 16.3499 44.1916 18.306C42.2355 20.2621 42.2355 23.4336 44.1916 25.3897L72.5265 53.7246L44.1916 82.0595C42.2355 84.0156 42.2355 87.1871 44.1916 89.1432C46.1477 91.0993 49.3192 91.0993 51.2753 89.1432L83.1521 57.2665ZM76.1914 58.7336H79.6102V48.7157H76.1914V58.7336Z"
-                                fill="#1E1E1E"
-                            />
+                    <a data-dialog="dialog-more" class="show ml-auto col-span-1 flex items-center justify-center w-[clamp(3rem,1.6672rem+5.9237vw,6.6875rem)] h-[clamp(3rem,1.6672rem+5.9237vw,6.6875rem)] transition-all hover:scale-110">
+                        <svg width="100%" height="100%" viewBox="0 0 108 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="53.7238" cy="53.7238" r="53.7238" fill="#FFF8F8"/>
+                            <path d="M76.1914 48.7157C73.425 48.7157 71.1825 50.9582 71.1825 53.7246C71.1825 56.491 73.425 58.7336 76.1914 58.7336V48.7157ZM83.1521 57.2665C85.1082 55.3104 85.1082 52.1389 83.1521 50.1827L51.2753 18.306C49.3192 16.3499 46.1477 16.3499 44.1916 18.306C42.2355 20.2621 42.2355 23.4336 44.1916 25.3897L72.5265 53.7246L44.1916 82.0595C42.2355 84.0156 42.2355 87.1871 44.1916 89.1432C46.1477 91.0993 49.3192 91.0993 51.2753 89.1432L83.1521 57.2665ZM76.1914 58.7336H79.6102V48.7157H76.1914V58.7336Z" fill="#1E1E1E"/>
                         </svg>
                     </a>
                 </div>
@@ -253,62 +105,37 @@
     </div>
 </section>
 
-<!-- Форма записи -->
-
+<!-- START::CONTACT FORM -->
 <section class="bg-dark">
-    <div
-        class="container grid grid-cols-1 items-center px-4 lg:grid-cols-3 gap-y-5 lg:gap-24 py-sectionPadding"
-    >
+    <div class="container grid grid-cols-1 items-center px-4 lg:grid-cols-3 gap-y-5 lg:gap-24 py-sectionPadding">
         <div class="col-span-2">
-            <h3
-                class="text-xl md:text-xxl leading-none uppercase mb-7 text-light max-w-full md:max-w-[60%]"
-                data-aos="zoom-in"
-            >
-                НЕ УПУСТИ ЭТУ ВОЗМОЖНОСТЬ
+            <h3 class="text-xl md:text-xxl leading-none uppercase mb-7 text-light max-w-full md:max-w-[60%]" data-aos="zoom-in">
+                {{ form_title }}
             </h3>
 
-            <form
-                id="contact-form"
-                action=""
-                method="get"
-                class="flex flex-col gap-5"
-                data-aos="zoom-in"
-                data-aos-delay="1000"
-            >
+            <form id="contact-form" action="" method="get" class="flex flex-col gap-5" data-aos="zoom-in" data-aos-delay="1000">
                 <div>
-                    <input
-                        type="text"
-                        placeholder="ИМЯ"
+                    <input type="text" placeholder="ИМЯ"
                         class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-light rounded-brxl focus:outline-none focus:ring-2 focus:ring-red-600"
-                        required
-                    />
+                        required />
                 </div>
                 <div>
-                    <input
-                        type="tel"
-                        placeholder="НОМЕР ТЕЛЕФОНА"
+                    <input type="tel" placeholder="НОМЕР ТЕЛЕФОНА"
                         class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-light rounded-brxl focus:outline-none focus:ring-2 focus:ring-red-600"
-                        required
-                    />
+                        required />
                 </div>
-                <button
-                    type="submit"
-                    class="w-full text-light px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-red-600 hover:bg-red-700 transition rounded-brxl"
-                >
+                <button type="submit"
+                    class="w-full text-light px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-red-600 hover:bg-red-700 transition rounded-brxl">
                     СТАТЬ БЛИЖЕ К СВОЕЙ ЦЕЛИ
                 </button>
                 <p class="text-sm text-center text-light">
-                    Нажимая "Отправить" я согласен на обработку персональных
-                    данных
+                    Нажимая "Отправить" я согласен на обработку персональных данных
                 </p>
             </form>
         </div>
         <div class="col-span-1" data-aos="zoom-in">
-            <img
-                src="{{ glide:data_url src='/assets/img/pool-contact.png' quality='75' format='webp' }}"
-                alt=""
-                class="block w-full mx-auto rounded-brxl"
-            />
+            <img src="{{ form_image }}" alt=""
+                class="block w-full mx-auto rounded-brxl" />
         </div>
     </div>
 </section>
