@@ -207,7 +207,6 @@ function shouldShowDialog() {
 }
 
 function handleAutoplayDialog() {
-    console.log(autoplayDialog, shouldShowDialog());
     if (!autoplayDialog || !shouldShowDialog()) return;
 
     // Получаем задержку из настроек
