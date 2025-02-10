@@ -316,18 +316,13 @@
                         const dialogElem = document.getElementById("dialog");
 
                         function showSuccessMessage() {
-                            // Скрываем форму
                             form.style.display = 'none';
-
-                            // Создаем и показываем сообщение об успехе
                             const successMessage = document.createElement('div');
                             successMessage.className = 'text-center py-8';
                             successMessage.innerHTML = `
                                 <h3 class="text-2xl mb-4 text-green-400">Спасибо! Ваша заявка успешно отправлена</h3>
                                 <p class="text-lg">Мы свяжемся с вами в ближайшее время</p>
                             `;
-
-                            // Вставляем сообщение в диалог
                             form.parentNode.appendChild(successMessage);
                         }
 
@@ -343,6 +338,12 @@
                                 const token = document.querySelector('input[name="_token"]').value;
                                 const submitButton = form.querySelector('button[type="submit"]');
 
+                                // Получаем UTM параметры из URL
+                                const urlParams = new URLSearchParams(window.location.search);
+                                const utmSource = urlParams.get('utm_source') || undefined;
+                                const utmMedium = urlParams.get('utm_medium') || 'direct';
+                                const utmCampaign = urlParams.get('utm_campaign') || window.location.hostname;
+
                                 submitButton.disabled = true;
                                 window.showSpinner();
 
@@ -357,14 +358,11 @@
                                     });
 
                                     if (statamicResponse.ok) {
-                                        // Показываем сообщение об успехе в диалоге
                                         showSuccessMessage();
                                         this.reset();
 
-                                        // Закрываем диалог через 3 секунды
                                         setTimeout(() => {
                                             dialogElem.close();
-                                            // Восстанавливаем форму после закрытия
                                             setTimeout(() => {
                                                 form.style.display = 'block';
                                                 const successMessage = form.parentNode.querySelector('div');
@@ -374,7 +372,7 @@
                                             }, 500);
                                         }, 3000);
 
-                                        // Отправляем в webhook
+                                        // Отправляем в webhook с расширенными данными
                                         await fetch('/webhook-proxy', {
                                             method: 'POST',
                                             headers: {
@@ -382,8 +380,24 @@
                                                 'X-CSRF-TOKEN': token
                                             },
                                             body: JSON.stringify({
+                                                name: formData.get('full_name'),
+                                                phone: formData.get('phone'),
+                                                form_name: "Заявка с сайта",
+                                                city: "Симферополь",
+                                                source: window.location.hostname,
+                                                campaign: utmMedium,
+                                                site_name: window.location.hostname,
+                                                utm: utmSource,
+                                                utm_medium: window.location.hostname,
+                                                utm_subject: "Заявка с сайта",
+                                                is_club_member: "НЕТ",
+                                                // Поля для API совместимости
+                                                leadtype: "request",
                                                 callerphone: formData.get('phone'),
-                                                fio: formData.get('full_name')
+                                                requestDate: new Date().toISOString().slice(0, 19).replace("T", " "),
+                                                subject: "Заявка с сайта",
+                                                fio: formData.get('full_name'),
+                                                medium: document.referrer || "direct"
                                             })
                                         });
                                     } else {
@@ -391,7 +405,6 @@
                                     }
                                 } catch (error) {
                                     console.error('Error:', error);
-                                    // Показываем ошибку в диалоге
                                     const errorDiv = document.createElement('div');
                                     errorDiv.className = 'text-red-500 text-center mt-4';
                                     errorDiv.textContent = 'Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз';
