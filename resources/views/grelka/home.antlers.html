@@ -675,90 +675,154 @@
 @push('scripts')
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const form = document.getElementById("mainContactForm");
-        const formStatus = document.getElementById("formStatus");
+    const form = document.getElementById("mainContactForm");
+    const formStatus = document.getElementById("formStatus");
 
-        if (form) {
-            form.addEventListener("submit", async function (e) {
-                e.preventDefault();
+    if (form) {
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
 
-                const name = form.querySelector('[name="name"]').value;
-                const phone = form.querySelector('[name="phone"]').value;
-                const token = document.querySelector('input[name="_token"]').value;
+            const name = form.querySelector('[name="name"]').value;
+            const phone = form.querySelector('[name="phone"]').value;
+            const token = document.querySelector('input[name="_token"]').value;
 
-                const apiData = {
-                    leadtype: "request",
-                    callerphone: phone,
-                    requestDate: new Date()
-                        .toISOString()
-                        .slice(0, 19)
-                        .replace("T", " "),
-                    subject: "Заявка с сайта",
-                    fio: name,
-                    source: window.location.hostname,
-                    medium: document.referrer || "direct",
-                    siteName: window.location.hostname,
-                    city: "Симферополь",
-                    _token: token
-                };
+            const apiData = {
+                leadtype: "request",
+                callerphone: phone,
+                requestDate: new Date().toISOString().slice(0, 19).replace("T", " "),
+                subject: "Заявка с сайта",
+                fio: name,
+                source: window.location.hostname,
+                medium: document.referrer || "direct",
+                siteName: window.location.hostname,
+                city: "Симферополь",
+                _token: token
+            };
 
-                window.showSpinner();
+            window.showSpinner();
+            try {
+                // Используем наш прокси вместо прямого обращения к API
+                const response = await fetch('/proxy-leads', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": token  // Добавляем токен в заголовки
+                    },
+                    body: JSON.stringify(apiData),
+                });
 
-                try {
-                    const response = await fetch('http://147.45.187.4:5557/api/leads', {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                            "X-CSRF-TOKEN": token  // Добавляем токен в заголовки
-                        },
-                        body: JSON.stringify(apiData),
-                    });
-                    // const response = await fetch(
-                    //     "http://147.45.187.4:5557/api/leads",
-                    //     {
-                    //         method: "POST",
-                    //         headers: {
-                    //             "Content-Type": "application/json",
-                    //         },
-                    //         body: JSON.stringify(apiData),
-                    //     }
-                    // );
+                formStatus.classList.remove("hidden", "bg-red-500", "bg-green-500");
 
-                    formStatus.classList.remove(
-                        "hidden",
-                        "bg-red-500",
-                        "bg-green-500"
-                    );
-
-                    if (response.ok) {
-                        form.reset();
-                        formStatus.classList.add("bg-green-500");
-                        formStatus.querySelector("p").textContent =
-                            "Спасибо! Ваша заявка отправлена.";
-                    } else {
-                        formStatus.classList.add("bg-red-500");
-                        formStatus.querySelector("p").textContent =
-                            "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
-                    }
-
-                    formStatus.classList.remove("hidden");
-
-                    // Скрываем статус через 3 секунды
-                    setTimeout(() => {
-                        formStatus.classList.add("hidden");
-                    }, 3000);
-                } catch (error) {
-                    console.error("Ошибка:", error);
-                    formStatus.classList.remove("hidden");
+                if (response.ok) {
+                    form.reset();
+                    formStatus.classList.add("bg-green-500");
+                    formStatus.querySelector("p").textContent = "Спасибо! Ваша заявка отправлена.";
+                } else {
                     formStatus.classList.add("bg-red-500");
-                    formStatus.querySelector("p").textContent =
-                        "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
-                } finally{
-                    hideSpinner();
+                    formStatus.querySelector("p").textContent = "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
                 }
-            });
-        }
-    });
+
+                formStatus.classList.remove("hidden");
+
+                setTimeout(() => {
+                    formStatus.classList.add("hidden");
+                }, 3000);
+            } catch (error) {
+                console.error("Ошибка:", error);
+                formStatus.classList.remove("hidden");
+                formStatus.classList.add("bg-red-500");
+                formStatus.querySelector("p").textContent = "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
+            } finally {
+                hideSpinner();
+            }
+        });
+    }
+});
+    // document.addEventListener("DOMContentLoaded", function () {
+    //     const form = document.getElementById("mainContactForm");
+    //     const formStatus = document.getElementById("formStatus");
+
+    //     if (form) {
+    //         form.addEventListener("submit", async function (e) {
+    //             e.preventDefault();
+
+    //             const name = form.querySelector('[name="name"]').value;
+    //             const phone = form.querySelector('[name="phone"]').value;
+    //             const token = document.querySelector('input[name="_token"]').value;
+
+    //             const apiData = {
+    //                 leadtype: "request",
+    //                 callerphone: phone,
+    //                 requestDate: new Date()
+    //                     .toISOString()
+    //                     .slice(0, 19)
+    //                     .replace("T", " "),
+    //                 subject: "Заявка с сайта",
+    //                 fio: name,
+    //                 source: window.location.hostname,
+    //                 medium: document.referrer || "direct",
+    //                 siteName: window.location.hostname,
+    //                 city: "Симферополь",
+    //                 _token: token
+    //             };
+
+    //             window.showSpinner();
+
+    //             try {
+    //                 const response = await fetch('http://147.45.187.4:5557/api/leads', {
+    //                     method: "POST",
+    //                     headers: {
+    //                         "Content-Type": "application/json",
+    //                         "X-CSRF-TOKEN": token  // Добавляем токен в заголовки
+    //                     },
+    //                     body: JSON.stringify(apiData),
+    //                 });
+    //                 // const response = await fetch(
+    //                 //     "http://147.45.187.4:5557/api/leads",
+    //                 //     {
+    //                 //         method: "POST",
+    //                 //         headers: {
+    //                 //             "Content-Type": "application/json",
+    //                 //         },
+    //                 //         body: JSON.stringify(apiData),
+    //                 //     }
+    //                 // );
+
+    //                 formStatus.classList.remove(
+    //                     "hidden",
+    //                     "bg-red-500",
+    //                     "bg-green-500"
+    //                 );
+
+    //                 if (response.ok) {
+    //                     form.reset();
+    //                     formStatus.classList.add("bg-green-500");
+    //                     formStatus.querySelector("p").textContent =
+    //                         "Спасибо! Ваша заявка отправлена.";
+    //                 } else {
+    //                     formStatus.classList.add("bg-red-500");
+    //                     formStatus.querySelector("p").textContent =
+    //                         "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
+    //                 }
+
+    //                 formStatus.classList.remove("hidden");
+
+    //                 // Скрываем статус через 3 секунды
+    //                 setTimeout(() => {
+    //                     formStatus.classList.add("hidden");
+    //                 }, 3000);
+    //             } catch (error) {
+    //                 console.error("Ошибка:", error);
+    //                 formStatus.classList.remove("hidden");
+    //                 formStatus.classList.add("bg-red-500");
+    //                 formStatus.querySelector("p").textContent =
+    //                     "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
+    //             } finally{
+    //                 hideSpinner();
+    //             }
+    //         });
+    //     }
+    // });
 </script>
 
 <!-- Performance Optimizations -->
