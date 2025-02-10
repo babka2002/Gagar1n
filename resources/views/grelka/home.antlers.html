@@ -630,7 +630,8 @@
             </p>
         </div>
         <div class="" data-aos="fade-in" data-aos-delay="1000">
-            <input type="hidden" name="_token" value="{{ csrf_token }}">
+            {{ csrf_field }}
+            <!-- <input type="hidden" name="_token" value="{{ csrf_token }}"> -->
             <form id="mainContactForm">
                 <input
                     type="text"
@@ -698,6 +699,7 @@
                     medium: document.referrer || "direct",
                     siteName: window.location.hostname,
                     city: "Симферополь",
+                    _token: token
                 };
 
                 window.showSpinner();
@@ -752,7 +754,7 @@
                     formStatus.querySelector("p").textContent =
                         "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
                 } finally{
-                    hideSpinner(); 
+                    hideSpinner();
                 }
             });
         }
