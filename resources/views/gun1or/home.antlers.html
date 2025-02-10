@@ -689,6 +689,7 @@
         </div>
         <div class="" data-aos="fade-in" data-aos-delay="1000">
             <form id="mainContactForm">
+                {{ csrf_field }}
                 <input
                     type="text"
                     id="name"
@@ -710,7 +711,7 @@
                 <input
                     type="submit"
                     value="стать ближе к своей цели"
-                    class="block w-full bg-[#CA74E2] px-5 py-2 text-light uppercase rounded-[clamp(0.625rem,0.3991rem+1.004vw,1.25rem)] text-[clamp(0.875rem,0.5587rem+1.4056vw,1.75rem)]"
+                    class="block w-full bg-[#CA74E2] px-5 py-2 text-light uppercase cursor-pointer rounded-[clamp(0.625rem,0.3991rem+1.004vw,1.25rem)] text-[clamp(0.875rem,0.5587rem+1.4056vw,1.75rem)]"
                 />
                 <span
                     class="block mt-2 text-center text-[clamp(0.5rem,0.3645rem+0.6024vw,0.875rem)]"
@@ -729,77 +730,64 @@
 </section>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const form = document.getElementById("mainContactForm");
-        const formStatus = document.getElementById("formStatus");
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("mainContactForm");
+    const formStatus = document.getElementById("formStatus");
 
-        if (form) {
-            form.addEventListener("submit", async function (e) {
-                e.preventDefault();
+    if (form) {
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
 
-                const name = form.querySelector('[name="name"]').value;
-                const phone = form.querySelector('[name="phone"]').value;
+            const name = form.querySelector('[name="name"]').value;
+            const phone = form.querySelector('[name="phone"]').value;
 
-                const apiData = {
-                    leadtype: "request",
-                    callerphone: phone,
-                    requestDate: new Date()
-                        .toISOString()
-                        .slice(0, 19)
-                        .replace("T", " "),
-                    subject: "Заявка с сайта",
-                    fio: name,
-                    source: window.location.hostname,
-                    medium: document.referrer || "direct",
-                    siteName: window.location.hostname,
-                    city: "Симферополь",
-                };
+            const apiData = {
+                leadtype: "request",
+                callerphone: phone,
+                requestDate: new Date().toISOString().slice(0, 19).replace("T", " "),
+                subject: "Заявка с сайта",
+                fio: name,
+                source: window.location.hostname,
+                medium: document.referrer || "direct",
+                siteName: window.location.hostname,
+                city: "Симферополь",
+            };
 
-                try {
-                    const response = await fetch(
-                        "http://147.45.187.4:5557/api/leads",
-                        {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify(apiData),
-                        }
-                    );
+            try {
+                // Используем наш прокси-URL вместо прямого обращения к API
+                const response = await fetch("/api/proxy-leads", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(apiData),
+                });
 
-                    formStatus.classList.remove(
-                        "hidden",
-                        "bg-red-500",
-                        "bg-green-500"
-                    );
+                formStatus.classList.remove("hidden", "bg-red-500", "bg-green-500");
 
-                    if (response.ok) {
-                        form.reset();
-                        formStatus.classList.add("bg-green-500");
-                        formStatus.querySelector("p").textContent =
-                            "Спасибо! Ваша заявка отправлена.";
-                    } else {
-                        formStatus.classList.add("bg-red-500");
-                        formStatus.querySelector("p").textContent =
-                            "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
-                    }
-
-                    formStatus.classList.remove("hidden");
-
-                    // Скрываем статус через 3 секунды
-                    setTimeout(() => {
-                        formStatus.classList.add("hidden");
-                    }, 3000);
-                } catch (error) {
-                    console.error("Ошибка:", error);
-                    formStatus.classList.remove("hidden");
+                if (response.ok) {
+                    form.reset();
+                    formStatus.classList.add("bg-green-500");
+                    formStatus.querySelector("p").textContent = "Спасибо! Ваша заявка отправлена.";
+                } else {
                     formStatus.classList.add("bg-red-500");
-                    formStatus.querySelector("p").textContent =
-                        "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
+                    formStatus.querySelector("p").textContent = "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
                 }
-            });
-        }
-    });
+
+                formStatus.classList.remove("hidden");
+
+                setTimeout(() => {
+                    formStatus.classList.add("hidden");
+                }, 3000);
+            } catch (error) {
+                console.error("Ошибка:", error);
+                formStatus.classList.remove("hidden");
+                formStatus.classList.add("bg-red-500");
+                formStatus.querySelector("p").textContent = "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
+            }
+        });
+    }
+});
 </script>
 
 <!-- END::FORM -->
