@@ -9,12 +9,27 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 
-
 Route::post('/webhook-proxy', function (Request $request) {
     try {
         SendWebhookJob::dispatch([
+            'name' => $request->input('name'),            // было 'full_name'
             'phone' => $request->input('phone'),
-            'full_name' => $request->input('full_name'),
+            'form_name' => $request->input('form_name'),
+            'city' => $request->input('city'),
+            'source' => $request->input('source'),
+            'campaign' => $request->input('campaign'),
+            'site_name' => $request->input('site_name'),
+            'utm' => $request->input('utm'),
+            'utm_medium' => $request->input('utm_medium'),
+            'utm_subject' => $request->input('utm_subject'),
+            'is_club_member' => $request->input('is_club_member'),
+            // Дополнительные поля для API
+            'leadtype' => $request->input('leadtype'),
+            'callerphone' => $request->input('callerphone'),
+            'requestDate' => $request->input('requestDate'),
+            'subject' => $request->input('subject'),
+            'fio' => $request->input('fio'),
+            'medium' => $request->input('medium')
         ]);
 
         return response()->json(['message' => 'Webhook queued successfully']);
@@ -23,7 +38,6 @@ Route::post('/webhook-proxy', function (Request $request) {
             'message' => $e->getMessage(),
             'request_data' => $request->all()
         ]);
-
         return response()->json([
             'error' => 'Webhook error',
             'message' => $e->getMessage()
