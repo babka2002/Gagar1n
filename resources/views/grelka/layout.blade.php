@@ -367,29 +367,17 @@
                                             }, 500);
                                         }, 3000);
 
-                                        // Получаем значения полей из формы
-                                        const fullName = formData.get('full_name');
-                                        const phone = formData.get('phone');
-
-                                        // Подготавливаем данные для webhook в точном соответствии с требуемой структурой
+                                        // Формируем данные точно как в curl запросе
                                         const webhookData = {
-                                            callerphone: phone,                   // Телефон для звонка
-                                            fio: fullName,                       // ФИО из формы
-                                            name: fullName,                      // Имя (то же, что и ФИО)
-                                            phone: phone,                        // Телефон
-                                            form_name: "Заявка с сайта",         // Название формы
-                                            city: "Симферополь",                 // Город
-                                            source: hostname,                    // Источник (домен)
-                                            campaign: "direct",                  // Кампания
-                                            site_name: hostname,                 // Название сайта
-                                            utm: "",                            // UTM метка
-                                            utm_medium: hostname,                // UTM medium
-                                            utm_subject: "Заявка с сайта",       // UTM subject
-                                            is_club_member: "НЕТ",               // Член клуба
-                                            leadtype: "request",                 // Тип лида
-                                            medium: document.referrer || hostname, // Источник перехода
-                                            requestDate: new Date().toISOString().slice(0, 19).replace('T', ' '), // Дата заявки
-                                            subject: "Заявка с сайта"            // Тема заявки
+                                            leadtype: "request",
+                                            callerphone: formData.get('phone'),
+                                            requestDate: new Date().toISOString().slice(0, 19).replace('T', ' '),
+                                            subject: "Заявка с сайта",
+                                            fio: formData.get('full_name'),
+                                            source: hostname,
+                                            medium: document.referrer || "direct",
+                                            siteName: hostname,
+                                            city: "Симферополь"
                                         };
 
                                         // Отправляем в webhook

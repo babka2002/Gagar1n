@@ -11,28 +11,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/webhook-proxy', function (Request $request) {
     try {
-        SendWebhookJob::dispatch([
-            'name' => $request->input('name'),            // было 'full_name'
-            'phone' => $request->input('phone'),
-            'form_name' => $request->input('form_name'),
-            'city' => $request->input('city'),
-            'source' => $request->input('source'),
-            'campaign' => $request->input('campaign'),
-            'site_name' => $request->input('site_name'),
-            'utm' => $request->input('utm'),
-            'utm_medium' => $request->input('utm_medium'),
-            'utm_subject' => $request->input('utm_subject'),
-            'is_club_member' => $request->input('is_club_member'),
-            // Дополнительные поля для API
-            'leadtype' => $request->input('leadtype'),
-            'callerphone' => $request->input('callerphone'),
-            'requestDate' => $request->input('requestDate'),
-            'subject' => $request->input('subject'),
-            'fio' => $request->input('fio'),
-            'medium' => $request->input('medium')
-        ]);
-
-        return response()->json(['message' => 'Webhook queued successfully']);
+        SendWebhookJob::dispatch($request->all());
+        return response()->json(['message' => 'OK']);  // точно такой же ответ как в curl
     } catch (\Exception $e) {
         Log::error('Webhook dispatch error:', [
             'message' => $e->getMessage(),
