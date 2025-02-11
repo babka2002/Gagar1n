@@ -29,7 +29,7 @@
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     </head>
     <body class="bg-dark">
-        {{-- <x-spinner /> --}}
+        <x-spinner />
         <!-- START::HEADER -->
         <div class="container px-[1em] md:px-0 my-5 sticky top-4 z-20">
             <header class="container bg-light flex justify-between items-center gap-2 rounded-[30px] px-[20px] py-[14px] ">
