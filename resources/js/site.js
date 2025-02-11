@@ -175,7 +175,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // DIALOG
-// DIALOG
 const showBtns = document.querySelectorAll(".show");
 const closeBtns = document.querySelectorAll(".close");
 const autoplayDialog = document.getElementById("dialog-autoplay");
@@ -187,7 +186,7 @@ function shouldShowDialog() {
     if (!enabled) return false;
 
     const intervalDays = parseInt(autoplayDialog.dataset.interval);
-    
+
     // Если интервал 0 или не задан, показываем каждый раз
     if (intervalDays === 0) return true;
 
@@ -205,13 +204,21 @@ function shouldShowDialog() {
 
     return false;
 }
+function handleDialogClose(dialogElem) {
+    window.showSpinner();
+
+    setTimeout(() => {
+        dialogElem.close();
+        window.hideSpinner();
+    }, 300);
+}
 
 function handleAutoplayDialog() {
     if (!autoplayDialog || !shouldShowDialog()) return;
 
     // Получаем задержку из настроек
     const delaySeconds = parseInt(autoplayDialog.dataset.delay);
-    
+
     // Функция показа диалога
     const showDialog = () => {
         autoplayDialog.showModal();
@@ -250,6 +257,7 @@ if (closeBtns.length > 0) {
             const dialogElem = btn.closest("dialog"); // Находим родительское модальное окно
             if (dialogElem) {
                 dialogElem.close(); // Закрываем модальное окно
+                handleDialogClose(dialogElem);
             }
         });
     });
