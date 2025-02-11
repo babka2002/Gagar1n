@@ -25,7 +25,7 @@
         <link href="{{ asset('vendor/bladewind/css/bladewind-ui.min.css') }}" rel="stylesheet" />
         <script src="{{ asset('vendor/bladewind/js/helpers.js') }}"></script> --}}
 
-        @vite(['resources/css/site.css', 'resources/js/site.js'])
+        @vite(['resources/css/site.css', 'resources/css/markdown-content.css', 'resources/js/site.js'])
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     </head>
     <body class="bg-dark">

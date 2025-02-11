@@ -1,4 +1,4 @@
-<section class="py-sectionPadding">
+<section class="py-sectionPadding markdown-content">
     <div class="container px-4">
         {{ if tipovaya_image }}
         <div
