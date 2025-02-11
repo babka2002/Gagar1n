@@ -21,6 +21,13 @@ tabs:
               display: Картинка
               localizable: false
           -
+            handle: tipovaya_html
+            field:
+              remove_empty_nodes: false
+              type: bard
+              display: Описание
+              localizable: false
+          -
             handle: tipovaya_text
             field:
               type: textarea
