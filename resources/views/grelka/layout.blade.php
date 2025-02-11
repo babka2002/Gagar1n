@@ -13,6 +13,16 @@
                 {{ title ?? site:name }}
             @endantlers
         </title>
+
+        @antlers
+        {{ if field_meta_description }}
+            <meta name="description" content="{{ field_meta_description }}">
+        {{ /if }}
+
+        {{ if field_meta_keywords }}
+            <meta name="keywords" content="{{ field_meta_keywords }}">
+        {{ /if }}
+        @endantlers
         {{-- @vite([
             'vendor/mkocansey/bladewind/public/css/animate.min.css',
             'vendor/mkocansey/bladewind/public/css/bladewind-ui.min.css',

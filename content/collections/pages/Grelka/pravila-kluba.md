@@ -2,8 +2,9 @@
 id: 87feca8d-298b-4cf2-893e-d6fdf3a089d6
 blueprint: tipovaia
 title: 'Правила клуба'
+meta_description: 'Правила клуба'
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1739280989
+updated_at: 1739284086
 template: grelka/pages/pravila-kluba
 custom_html_script:
   code: null
@@ -437,4 +438,6 @@ tipovaya_markdown: |-
   ---
 
   **Фитнес-парк желает Вам приятных тренировок!** 💪
+field_meta_description: 'Правила клуба'
+field_meta_keywords: 'Правила клуба'
 ---
