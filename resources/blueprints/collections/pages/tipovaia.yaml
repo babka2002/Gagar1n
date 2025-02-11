@@ -21,6 +21,12 @@ tabs:
               display: Картинка
               localizable: false
           -
+            handle: tipovaya_markdown
+            field:
+              type: markdown
+              display: 'Описание MD'
+              localizable: false
+          -
             handle: tipovaya_html
             field:
               remove_empty_nodes: false

@@ -48,5 +48,6 @@ Route::post('/proxy-leads', function (Request $request) {
 // ]);
 
 $router->get('/trainers', [TrainerController::class, 'showTrainers'])->name('trainers.list');
-$router->get('/trainers/{employeeId}', [TrainerController::class, 'showTrainer'])->name('trainers.show');
+$router->get('/trainers/{slug}', [TrainerController::class, 'showTrainerBySlug'])->where('slug', '[a-z0-9-]+')->name('trainers.show');
+// $router->get('/trainers/{employeeId}', [TrainerController::class, 'showTrainer'])->name('trainers.show');
 $router->get('/schedule', [ScheduleController::class, 'index'])->name('schedule.show');

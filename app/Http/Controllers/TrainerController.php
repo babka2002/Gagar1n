@@ -56,9 +56,38 @@ class TrainerController extends Controller
                     'title' => $departmentTitle
                 ],
                 'specializations' => $trainer->get('specializations') ?? [],
-                'experience' => $trainer->get('experience')
+                'experience' => $trainer->get('experience'),
+                'slug' => $trainer->slug() // Добавляем slug
             ];
         }
+    }
+
+
+    public function showTrainerBySlug(string $slug)
+    {
+        $currentSite = strtolower(Site::current()->handle());
+
+        // Ищем тренера по slug
+        $statamicTrainer = Entry::query()
+            ->where('collection', 'trainers')
+            ->where('is_active', true)
+            ->where('slug', $slug)
+            ->first();
+
+        if ($statamicTrainer) {
+            $trainer = $this->formatTrainerData($statamicTrainer, 'statamic');
+        }
+
+        if (!isset($trainer)) {
+            abort(404, 'Тренер не найден');
+        }
+
+        return (new View)
+            ->template($currentSite . '/trainer_single')
+            ->layout($currentSite . '/layout')
+            ->with([
+                'trainer' => $trainer
+            ]);
     }
 
     public function showTrainer(string $employeeId)
