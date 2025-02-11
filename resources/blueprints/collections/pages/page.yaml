@@ -232,6 +232,29 @@ tabs:
       -
         display: FORM
         instructions: FORM
+      -
+        display: Вопрос
+        fields:
+          -
+            handle: subscription_not_found_title
+            field:
+              type: text
+              display: 'Заголовок "не нашли вариант"'
+              default: 'не нашли идеальный вариант?'
+              localizable: false
+          -
+            handle: subscription_not_found_subtitle
+            field:
+              type: text
+              display: 'Подзаголовок "не нашли вариант"'
+              default: 'подобрать подходящие условия'
+              localizable: false
+          -
+            handle: subscription_link
+            field:
+              type: link
+              display: 'Поле Ссылка'
+              localizable: false
   sidebar:
     display: Sidebar
     sections:

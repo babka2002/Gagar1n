@@ -4,6 +4,9 @@ blueprint: tipovaia
 title: 'Правила клуба'
 tipovaya_text: 'Правила клуба Описание'
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1738159177
+updated_at: 1739276373
 template: grelka/pages/pravila-kluba
+custom_html_script:
+  code: null
+  mode: htmlmixed
 ---

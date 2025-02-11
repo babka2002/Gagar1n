@@ -176,104 +176,6 @@
             </div>
             {{ /if }} {{ /if }} {{ /direction_replicator }}
         </div>
-
-        <!-- <div
-            class="bg-dark rounded-[20px] px-3 py-6 grid md:grid-cols-3 gap-3 md:hidden mx-4"
-        >
-            <a
-                href="#"
-                data-aos="zoom-in"
-                class="rounded-[46px] bg-light flex flex-col transition-all hover:opacity-70"
-            >
-                <img src="{{ glide:data_url src="/assets/img/direction-1.jpg"
-                quality="75" format="webp" }}" alt="" class="object-cover
-                object-center rounded-[30px] h-[196px] w-full" />
-                <p
-                    class="text-center text-[clamp(1.25rem,1.137rem+0.502vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2"
-                >
-                    Индивидуальные <br />
-                    занятия
-                </p>
-            </a>
-            <div class="grid grid-cols-2 gap-2">
-                <a
-                    href="#"
-                    data-aos="zoom-in"
-                    class="rounded-[20px] bg-light flex flex-col transition-all hover:opacity-70"
-                >
-                    <img src="{{ glide:data_url
-                    src="/assets/img/direction-2.jpg" quality="75" format="webp"
-                    }}" alt="" class="object-cover object-center rounded-[20px]
-                    h-[125px] w-full" />
-                    <p
-                        class="text-center text-[clamp(0.8125rem,0.5414rem+1.2048vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2"
-                    >
-                        Тренажерный зал
-                    </p>
-                </a>
-                <a
-                    href="#"
-                    data-aos="zoom-in"
-                    class="rounded-[20px] bg-light flex flex-col transition-all hover:opacity-70"
-                >
-                    <img src="{{ glide:data_url
-                    src="/assets/img/direction-3.jpg" quality="75" format="webp"
-                    }}" alt="" class="object-cover object-center rounded-[20px]
-                    h-[125px] w-full" />
-                    <p
-                        class="text-center text-[clamp(0.8125rem,0.5414rem+1.2048vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2"
-                    >
-                        Фитнес
-                    </p>
-                </a>
-            </div>
-            <div class="grid grid-cols-2 gap-2">
-                <a
-                    href=""
-                    data-aos="zoom-in"
-                    class="rounded-[20px] bg-light flex flex-col transition-all hover:opacity-70"
-                >
-                    <img src="{{ glide:data_url
-                    src="/assets/img/direction-4.jpg" quality="75" format="webp"
-                    }}" alt="" class="object-cover object-top rounded-[20px]
-                    h-[125px] w-full" />
-                    <p
-                        class="text-center text-[clamp(0.8125rem,0.5414rem+1.2048vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2"
-                    >
-                        Кроссфит
-                    </p>
-                </a>
-                <a
-                    href="#"
-                    data-aos="zoom-in"
-                    class="rounded-[20px] bg-light flex flex-col gap-3 transition-all hover:opacity-70"
-                >
-                    <img src="{{ glide:data_url
-                    src="/assets/img/direction-6.jpg" quality="75" format="webp"
-                    }}" alt="" class="object-cover object-center rounded-[20px]
-                    h-[125px] w-full" />
-                    <p
-                        class="text-center text-[clamp(0.8125rem,0.5414rem+1.2048vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2"
-                    >
-                        Сайкл студия
-                    </p>
-                </a>
-            </div>
-            <a
-                href="#"
-                data-aos="zoom-in"
-                class="rounded-[20px] bg-light flex flex-col transition-all hover:opacity-70"
-            >
-                <p
-                    class="text-center text-[clamp(1.25rem,1.137rem+0.502vw,1.5625rem)] font-normal flex-1 flex items-center justify-center my-2"
-                >
-                    Бассейн
-                </p>
-                <img src="{{ glide:data_url src="/assets/img/direction-5.jpg"
-                quality="75" format="webp" }}" alt="" class="object-cover
-                object-center rounded-[20px] h-[196px] w-full" />
-            </a>
-        </div> -->
     </div>
 </section>
 <!-- END::DIRECTION -->
@@ -595,12 +497,14 @@
             </div>
         </div>
 
-        <div class="container uppercase text-light text-center">
+        <div
+            onclick="window.location='{{ subscription_link }};" style="cursor: pointer;"
+            class="container uppercase text-light text-center">
             <h4 class="text-base md:text-lg" data-aos="zoom-in">
-                не нашли идеальный вариант?
+                {{ subscription_not_found_title }}
             </h4>
             <div class="text-base md:text-md arrow-bg" data-aos="zoom-in">
-                <span class="block">подобрать подходящие условия</span>
+                <span class="block">{{ subscription_not_found_subtitle }}</span>
             </div>
         </div>
     </div>

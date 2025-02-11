@@ -58,7 +58,7 @@ code_field:
   mode: htmlmixed
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1739184562
+updated_at: 1739276238
 hero_title: 'Тренируйся с g1'
 pole_markdown: |-
   получи выгоду 
@@ -173,4 +173,6 @@ aboniment_our_team_title: 'наша команда'
 aboniment_our_team_description: 'самые высоквалифицированные тренеры симферополя'
 aboniment_our_team_image: img/team.jpg
 aboniment_our_team_link: 'entry::689557e0-2877-4aeb-af2f-e03270ca1d44'
+subscription_not_found_title: 'не нашли идеальный вариант?'
+subscription_not_found_subtitle: 'подобрать подходящие условия'
 ---

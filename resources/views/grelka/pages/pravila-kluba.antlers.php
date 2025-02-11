@@ -1,0 +1,14 @@
+<section class="py-sectionPadding">
+    <div class="container px-4">
+        {{ if tipovaya_image }}
+        <div
+            style="background-image: url('{{ glide:data_url src=tipovaya_image quality='75' format='webp' }}');"
+            class="bg-no-repeat bg-cover w-full h-[625px] {{ tipovaya_image ? '' : 'bg-gray-500 rounded-brxl' }}"
+        ></div>
+        {{ /if }}
+        <h1 class="text-lg md:text-xxl uppercase text-light mt-4">
+            {{ title }}
+        </h1>
+        <p class="text-light mt-2">{{ tipovaya_text }}</p>
+    </div>
+</section>
