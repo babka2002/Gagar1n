@@ -1,7 +1,7 @@
 <section class="py-sectionPadding">
     <div class="container px-4">
         <div
-            style="background-image: url('{{ glide:pool_image_1 quality='75' format='webp' }}')"
+            style="background-image: url('{{ pool_image_1 }}')"
             class="bg-no-repeat bg-top bg-cover flex items-start justify-center rounded-brxl overflow-hidden h-[625px] relative"
         >
             <h1
@@ -207,47 +207,33 @@
                 {{ form_title }}
             </h3>
 
-            <form
-                id="contact-form"
-                action=""
-                method="get"
-                class="flex flex-col gap-5"
-                data-aos="zoom-in"
-                data-aos-delay="1000"
-            >
-                <div>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        autocomplete="name"
-                        placeholder="ИМЯ"
-                        class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-light rounded-brxl focus:outline-none focus:ring-2 focus:ring-red-600"
-                        required
-                    />
-                </div>
-                <div>
-                    <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        autocomplete="tel"
-                        placeholder="НОМЕР ТЕЛЕФОНА"
-                        class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-light rounded-brxl focus:outline-none focus:ring-2 focus:ring-red-600"
-                        required
-                    />
-                </div>
-                <button
-                    type="submit"
-                    class="w-full text-light px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-red-600 hover:bg-red-700 transition rounded-brxl"
-                >
-                    СТАТЬ БЛИЖЕ К СВОЕЙ ЦЕЛИ
-                </button>
-                <p class="text-sm text-center text-light">
-                    Нажимая "Отправить" я согласен на обработку персональных
-                    данных
-                </p>
-            </form>
+            <div class="" data-aos="fade-in" data-aos-delay="1000">
+                {{ csrf_field }}
+                <form id="mainContactForm">
+                    <div>
+                        <input type="text" id="name" name="name" autocomplete="name" placeholder="ИМЯ"
+                            class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-light rounded-brxl focus:outline-none focus:ring-2 focus:ring-red-600"
+                            required />
+                    </div>
+                    <div>
+                        <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="НОМЕР ТЕЛЕФОНА"
+                            class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-light rounded-brxl focus:outline-none focus:ring-2 focus:ring-red-600 my-2"
+                            required />
+                    </div>
+                    <button type="submit"
+                        class="w-full text-light px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-red-600 hover:bg-red-700 transition rounded-brxl">
+                        СТАТЬ БЛИЖЕ К СВОЕЙ ЦЕЛИ
+                    </button>
+                    <p class="text-sm text-center text-light">
+                        Нажимая "Отправить" я согласен на обработку персональных данных
+                    </p>
+
+                    <!-- Индикатор состояния -->
+                    <div id="formStatus" class="mt-4 p-4 rounded-lg hidden">
+                        <p class="text-center"></p>
+                    </div>
+                </form>
+            </div>
         </div>
         <div class="col-span-1" data-aos="zoom-in">
             <img
@@ -262,78 +248,3 @@
         </div>
     </div>
 </section>
-@push('scripts')
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const form = document.getElementById("contact-form");
-        const formStatus = document.getElementById("formStatus");
-
-        if (form) {
-            form.addEventListener("submit", async function (e) {
-                e.preventDefault();
-
-                const name = form.querySelector('[name="name"]').value;
-                const phone = form.querySelector('[name="phone"]').value;
-
-                const apiData = {
-                    leadtype: "request",
-                    callerphone: phone,
-                    requestDate: new Date()
-                        .toISOString()
-                        .slice(0, 19)
-                        .replace("T", " "),
-                    subject: "Заявка с сайта",
-                    fio: name,
-                    source: window.location.hostname,
-                    medium: document.referrer || "direct",
-                    siteName: window.location.hostname,
-                    city: "Симферополь",
-                };
-
-                try {
-                    const response = await fetch(
-                        "http://147.45.187.4:5557/api/leads",
-                        {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify(apiData),
-                        }
-                    );
-
-                    formStatus.classList.remove(
-                        "hidden",
-                        "bg-red-500",
-                        "bg-green-500"
-                    );
-
-                    if (response.ok) {
-                        form.reset();
-                        formStatus.classList.add("bg-green-500");
-                        formStatus.querySelector("p").textContent =
-                            "Спасибо! Ваша заявка отправлена.";
-                    } else {
-                        formStatus.classList.add("bg-red-500");
-                        formStatus.querySelector("p").textContent =
-                            "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
-                    }
-
-                    formStatus.classList.remove("hidden");
-
-                    // Скрываем статус через 3 секунды
-                    setTimeout(() => {
-                        formStatus.classList.add("hidden");
-                    }, 3000);
-                } catch (error) {
-                    console.error("Ошибка:", error);
-                    formStatus.classList.remove("hidden");
-                    formStatus.classList.add("bg-red-500");
-                    formStatus.querySelector("p").textContent =
-                        "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
-                }
-            });
-        }
-    });
-</script>
-@endpush

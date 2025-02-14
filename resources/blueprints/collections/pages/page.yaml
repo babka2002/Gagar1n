@@ -76,13 +76,43 @@ tabs:
               max_files: 1
               localizable: false
           -
-            handle: hero_onlick_html
+            handle: hero_podrobnee_gruppa
             field:
-              type: html
-              display: 'Подробнее onclick'
-              instructions: 'связать с popup для сайта'
+              type: group
+              display: 'Подробнее Группа'
               localizable: false
-              instructions_position: below
+              fields:
+                -
+                  handle: hero_dialog_ili_ssylka
+                  field:
+                    type: radio
+                    display: 'Диалог или ссылка'
+                    localizable: false
+                    options:
+                      -
+                        key: dialog
+                        value: Диалог
+                      -
+                        key: link
+                        value: Ссылка
+                -
+                  handle: hero_abreviatura_dialoga
+                  field:
+                    type: text
+                    display: 'абревиатура диалога'
+                    localizable: false
+                -
+                  handle: hero_tekst_podrobnee
+                  field:
+                    type: text
+                    display: 'Hero текст подробнее'
+                    localizable: false
+                -
+                  handle: hero_podrobnee_ssylka
+                  field:
+                    type: link
+                    display: 'Hero подробнее ссылка'
+                    localizable: false
       -
         display: Direction
         instructions: direction
@@ -254,6 +284,39 @@ tabs:
             field:
               type: link
               display: 'Поле Ссылка'
+              localizable: false
+      -
+        display: Форма
+        fields:
+          -
+            handle: forma_zagolovok_h3
+            field:
+              type: text
+              display: 'Форма заголовок h3'
+              localizable: false
+          -
+            handle: forma_opisanie
+            field:
+              type: textarea
+              display: 'Форма описание'
+              localizable: false
+  seo_tab:
+    display: SEO
+    sections:
+      -
+        display: 'Новая секция'
+        fields:
+          -
+            handle: field_meta_description
+            field:
+              type: textarea
+              display: 'Краткое описание страницы'
+              localizable: false
+          -
+            handle: field_meta_keywords
+            field:
+              type: textarea
+              display: 'ключевые, слова, через, запятую'
               localizable: false
   sidebar:
     display: Sidebar

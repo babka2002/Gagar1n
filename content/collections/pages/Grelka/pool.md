@@ -11,7 +11,7 @@ knopka_tekst: 'Многоступенчатую систему очистки <b
 second_section_title: 'индивидуальные тренировки'
 kartinka: img/pool_bordered.jpg
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1738945995
+updated_at: 1739525318
 tekst_opisanie: |-
   Индивидуальные занятия под руководством
                       профессионального тренера для укрепления здоровья и
@@ -132,4 +132,6 @@ pn_pt:
 raspisanie_bg: img/pool-schedule.png
 form_title: 'ЛУЧШИЙ БАССЙЕН ГОРОДА ЖДЕТ ТЕБЯ'
 template: grelka/pool
+field_meta_description: Бассейн
+field_meta_keywords: Бассейн
 ---

@@ -2,9 +2,9 @@
 @section('fitness')
 <section class="py-sectionPadding">
     <div class="container px-4">
-        <div style="background-image: url(<s:glide:data_url src='{{ $first_bg }}' quality='75' format='webp' />)"
+        <div style="background-image: url({{ $first_bg }})"
             class="bg-no-repeat bg-top bg-cover flex items-start justify-center rounded-brxl overflow-hidden h-[625px] relative">
-            <h1 class="text-lg md:text-xxl uppercase text-light rounded-b-brxl bg-dark px-6 md:px-24 py-0 text-center invert-border-crossfit hyphens-auto z-9">
+            <h1 class="text-lg md:text-xxl uppercase text-light rounded-b-brxl bg-dark px-4 md:px-24 py-0 text-center invert-border-crossfit hyphens-auto z-9">
                 {{ $first_title }}
             </h1>
         </div>
@@ -151,27 +151,33 @@
                 {{ $forma_title }}
             </h3>
 
-            <form id="contact-form" action="" method="get" class="flex flex-col gap-5" data-aos="zoom-in"
-                data-aos-delay="1000">
-                <div>
-                    <input type="text" placeholder="ИМЯ"
-                        class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-light rounded-brxl focus:outline-none focus:ring-2 focus:ring-red-600"
-                        required />
-                </div>
-                <div>
-                    <input type="tel" placeholder="НОМЕР ТЕЛЕФОНА"
-                        class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-light rounded-brxl focus:outline-none focus:ring-2 focus:ring-red-600"
-                        required />
-                </div>
-                <button type="submit"
-                    class="w-full text-light px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-red-600 hover:bg-red-700 transition rounded-brxl">
-                    СТАТЬ БЛИЖЕ К СВОЕЙ ЦЕЛИ
-                </button>
-                <p class="text-sm text-center text-light">
-                    Нажимая "Отправить" я согласен на обработку персональных
-                    данных
-                </p>
-            </form>
+            <div class="" data-aos="fade-in" data-aos-delay="1000">
+                @csrf
+                <form id="mainContactForm">
+                    <div>
+                        <input type="text" id="name" name="name" autocomplete="name" placeholder="ИМЯ"
+                            class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-light rounded-brxl focus:outline-none focus:ring-2 focus:ring-red-600"
+                            required />
+                    </div>
+                    <div>
+                        <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="НОМЕР ТЕЛЕФОНА"
+                            class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-light rounded-brxl focus:outline-none focus:ring-2 focus:ring-red-600 my-2"
+                            required />
+                    </div>
+                    <button type="submit"
+                        class="w-full text-light px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-red-600 hover:bg-red-700 transition rounded-brxl">
+                        СТАТЬ БЛИЖЕ К СВОЕЙ ЦЕЛИ
+                    </button>
+                    <p class="text-sm text-center text-light">
+                        Нажимая "Отправить" я согласен на обработку персональных данных
+                    </p>
+
+                    <!-- Индикатор состояния -->
+                    <div id="formStatus" class="mt-4 p-4 rounded-lg hidden">
+                        <p class="text-center"></p>
+                    </div>
+                </form>
+            </div>
         </div>
 
         <div class="col-span-1" data-aos="zoom-in">

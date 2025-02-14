@@ -58,7 +58,7 @@ code_field:
   mode: htmlmixed
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1739276238
+updated_at: 1739529207
 hero_title: 'Тренируйся с g1'
 pole_markdown: |-
   получи выгоду 
@@ -104,7 +104,7 @@ direction_replicator:
     direction_image: img/direction-5.jpg
     type: direction
     enabled: true
-    direction_link: 'entry::8771a89e-9aaf-4ec0-b401-ace886f362e6'
+    direction_link: 'entry::33bcfb8a-ab38-4092-a564-608047523380'
   -
     id: m59ov5fd
     inversion: false
@@ -175,4 +175,14 @@ aboniment_our_team_image: img/team.jpg
 aboniment_our_team_link: 'entry::689557e0-2877-4aeb-af2f-e03270ca1d44'
 subscription_not_found_title: 'не нашли идеальный вариант?'
 subscription_not_found_subtitle: 'подобрать подходящие условия'
+field_meta_description: Главная
+field_meta_keywords: Главная
+hero_onlick_text: Подробнее
+hero_podrobnee_gruppa:
+  hero_dialog_ili_ssylka: dialog
+  hero_abreviatura_dialoga: dialog-more
+  hero_tekst_podrobnee: Подробнее
+  hero_podrobnee_ssylka: '#'
+forma_zagolovok_h3: 'стань членом клуба сейчас'
+forma_opisanie: 'колличество абонементов ограничено'
 ---

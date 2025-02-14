@@ -322,8 +322,8 @@
 
                     <script>
                     document.addEventListener('DOMContentLoaded', function() {
-                        let form = document.querySelector('form[action*="/!/forms/grelka"]');
-                        const dialogElem = document.getElementById("dialog");
+                        const dialogMoreElem = document.getElementById("dialog");
+                        let form = dialogMoreElem.querySelector('form[action*="/!/forms/grelka"]');
 
                         function showSuccessMessage() {
                             form.style.display = 'none';
@@ -421,44 +421,6 @@
                     });
                     </script>
                     @endantlers
-
-                    <!-- <form
-                        action=""
-                        method="post"
-                        class="mt-16 flex flex-col lg:flex-row items-center justify-between gap-4 pb-4"
-                    >
-                        <input
-                            type="text"
-                            name=""
-                            id=""
-                            placeholder="имя"
-                            class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase"
-                        />
-
-                        <input
-                            type="tel"
-                            name=""
-                            id=""
-                            placeholder="номер"
-                            class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase"
-                        />
-
-                        <button type="submit" class="transition-all hover:opacity-70">
-                            <svg
-                                width="161"
-                                height="81"
-                                viewBox="0 0 161 81"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <rect width="161" height="81" rx="33" fill="#E23333" />
-                                <path
-                                    d="M133.121 42.1213C134.293 40.9497 134.293 39.0503 133.121 37.8787L114.029 18.7868C112.858 17.6152 110.958 17.6152 109.787 18.7868C108.615 19.9584 108.615 21.8579 109.787 23.0294L126.757 40L109.787 56.9706C108.615 58.1421 108.615 60.0416 109.787 61.2132C110.958 62.3848 112.858 62.3848 114.029 61.2132L133.121 42.1213ZM29 43H131V37H29V43Z"
-                                    fill="#FFF8F8"
-                                />
-                            </svg>
-                        </button>
-                    </form> -->
                 </div>
             </div>
         </dialog>
@@ -497,57 +459,144 @@
                     {{ $popup_podrobnee->popap_text }}
                     </p>
 
-                    @php
-                        // dd($popup_podrobnee->pole_forma);
-                    @endphp
-                    <form method="POST" action="{{ route('statamic.forms.submit', 'podrobnee') }}" class="mt-16">
-                        @csrf
-                        <!-- Индикатор состояния -->
-                        <div id="formStatus" class="fixed top-4 right-4 p-4 rounded-lg hidden z-50">
-                            <p class="text-white"></p>
-                        </div>
+                    @antlers
+                    {{ form:grelka }}
+                        <div class="mt-16 flex flex-col lg:flex-row items-center justify-between gap-4 pb-4">
+                            <!-- Индикатор состояния -->
+                            <div id="formStatus" class="fixed top-4 right-4 p-4 rounded-lg hidden z-50">
+                                <p class="text-white"></p>
+                            </div>
 
-                        <div class="flex flex-col lg:flex-row items-center justify-between gap-4 pb-4">
                             <input
                                 type="text"
-                                name="name"
-                                value="{{ old('name') }}"
-                                class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase @error('name') border-red-500 @enderror"
-                                placeholder="Имя"
+                                name="full_name"
                                 required
-                            >
+                                placeholder="Имя"
+                                class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase"
+                            />
 
                             <input
                                 type="tel"
                                 name="phone"
-                                value="{{ old('phone') }}"
-                                class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase @error('phone') border-red-500 @enderror"
-                                placeholder="Номер"
                                 required
-                            >
+                                placeholder="Номер"
+                                class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase"
+                            />
 
-                            <button type="submit" class="transition-all hover:opacity-70">
+                            <button
+                                type="submit"
+                                class="transition-all hover:opacity-70"
+                            >
                                 <svg width="161" height="81" viewBox="0 0 161 81" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect width="161" height="81" rx="33" fill="#E23333" />
                                     <path d="M133.121 42.1213C134.293 40.9497 134.293 39.0503 133.121 37.8787L114.029 18.7868C112.858 17.6152 110.958 17.6152 109.787 18.7868C108.615 19.9584 108.615 21.8579 109.787 23.0294L126.757 40L109.787 56.9706C108.615 58.1421 108.615 60.0416 109.787 61.2132C110.958 62.3848 112.858 62.3848 114.029 61.2132L133.121 42.1213ZM29 43H131V37H29V43Z" fill="#FFF8F8" />
                                 </svg>
                             </button>
                         </div>
+                    {{ /form:grelka }}
 
-                        @if (session('success'))
-                            <div class="mt-4 p-4 bg-green-100 text-green-700 rounded-lg">
-                                Спасибо за вашу заявку! Мы свяжемся с вами в ближайшее время.
-                            </div>
-                        @endif
+                    <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const dialogMoreElem = document.getElementById("dialog-more");
+                        let form = dialogMoreElem.querySelector('form[action*="/!/forms/grelka"]');
 
-                        @error('name')
-                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                        @enderror
 
-                        @error('phone')
-                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                        @enderror
-                    </form>
+                        function showSuccessMessage() {
+                            form.style.display = 'none';
+                            const successMessage = document.createElement('div');
+                            successMessage.className = 'text-center py-8';
+                            successMessage.innerHTML = `
+                                <h3 class="text-2xl mb-4 text-green-400">Спасибо! Ваша заявка успешно отправлена</h3>
+                                <p class="text-lg">Мы свяжемся с вами в ближайшее время</p>
+                            `;
+                            form.parentNode.appendChild(successMessage);
+                        }
+
+                        if (form) {
+                            const oldForm = form.cloneNode(true);
+                            form.parentNode.replaceChild(oldForm, form);
+                            form = oldForm;
+
+                            form.addEventListener('submit', async function(e) {
+                                e.preventDefault();
+
+                                const formData = new FormData(this);
+                                const token = document.querySelector('input[name="_token"]').value;
+                                const submitButton = form.querySelector('button[type="submit"]');
+                                const hostname = window.location.hostname.replace('www.', '');
+
+                                submitButton.disabled = true;
+                                window.showSpinner();
+
+                                try {
+                                    const statamicResponse = await fetch(this.action, {
+                                        method: 'POST',
+                                        headers: {
+                                            'X-Requested-With': 'XMLHttpRequest',
+                                            'X-CSRF-TOKEN': token
+                                        },
+                                        body: formData
+                                    });
+
+                                    if (statamicResponse.ok) {
+                                        showSuccessMessage();
+                                        this.reset();
+
+                                        setTimeout(() => {
+                                            dialogElem.close();
+                                            setTimeout(() => {
+                                                form.style.display = 'block';
+                                                const successMessage = form.parentNode.querySelector('div');
+                                                if (successMessage) {
+                                                    successMessage.remove();
+                                                }
+                                            }, 500);
+                                        }, 3000);
+
+                                        // Формируем данные точно как в curl запросе
+                                        const webhookData = {
+                                            leadtype: "request",
+                                            callerphone: formData.get('phone'),
+                                            requestDate: new Date().toISOString().slice(0, 19).replace('T', ' '),
+                                            subject: "Заявка с сайта",
+                                            fio: formData.get('full_name'),
+                                            source: hostname,
+                                            medium: document.referrer || "direct",
+                                            siteName: hostname,
+                                            city: "Симферополь"
+                                        };
+
+                                        // Отправляем в webhook
+                                        await fetch('/webhook-proxy', {
+                                            method: 'POST',
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                                'X-CSRF-TOKEN': token
+                                            },
+                                            body: JSON.stringify(webhookData)
+                                        });
+                                    } else {
+                                        throw new Error('Failed to submit form');
+                                    }
+                                } catch (error) {
+                                    console.error('Error:', error);
+                                    const errorDiv = document.createElement('div');
+                                    errorDiv.className = 'text-red-500 text-center mt-4';
+                                    errorDiv.textContent = 'Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз';
+                                    form.appendChild(errorDiv);
+
+                                    setTimeout(() => {
+                                        errorDiv.remove();
+                                    }, 3000);
+                                } finally {
+                                    submitButton.disabled = false;
+                                    hideSpinner();
+                                }
+                            });
+                        }
+                    });
+                    </script>
+                    @endantlers
 
                 </div>
             </div>

@@ -7,6 +7,14 @@ tabs:
         display: Шаблон
         fields:
           -
+            handle: title
+            field:
+              type: text
+              required: true
+              localizable: false
+              validate:
+                - required
+          -
             handle: template
             field:
               type: template
@@ -19,7 +27,6 @@ tabs:
             handle: hero_title
             field:
               type: text
-              required: true
               validate:
                 - required
               display: 'Hero Title'
@@ -39,7 +46,8 @@ tabs:
             handle: stats_group
             field:
               type: group
-              display: 'Statistics'
+              display: Statistics
+              localizable: false
               fields:
                 -
                   handle: area_size
@@ -93,23 +101,35 @@ tabs:
             handle: zones_replicator
             field:
               type: replicator
-              display: 'Zones'
+              display: Zones
+              localizable: false
               sets:
-                zone:
-                  display: Zone
-                  fields:
-                    -
-                      handle: zone_title
-                      field:
-                        type: text
-                        display: 'Zone Title'
-                    -
-                      handle: zone_image
-                      field:
-                        container: assets
-                        type: assets
-                        display: 'Zone Image'
-                        max_files: 1
+                main:
+                  display: Основное
+                  sets:
+                    zone:
+                      display: Zone
+                      fields:
+                        -
+                          handle: zone_title
+                          field:
+                            type: text
+                            display: 'Zone Title'
+                            localizable: false
+                        -
+                          handle: zone_image
+                          field:
+                            container: assets
+                            type: assets
+                            display: 'Zone Image'
+                            max_files: 1
+                            localizable: false
+                        -
+                          handle: zone_description
+                          field:
+                            type: textarea
+                            display: 'Зоны описание'
+                            localizable: false
           -
             handle: zones_schedule_text
             field:
@@ -140,7 +160,7 @@ tabs:
               display: 'Training Text'
               localizable: false
       -
-        display: Contact Form
+        display: 'Contact Form'
         fields:
           -
             handle: form_title
@@ -155,6 +175,24 @@ tabs:
               type: assets
               display: 'Form Image'
               max_files: 1
+              localizable: false
+  seo_tab:
+    display: SEO
+    sections:
+      -
+        display: 'Новая секция'
+        fields:
+          -
+            handle: field_meta_description
+            field:
+              type: textarea
+              display: 'Краткое описание страницы'
+              localizable: false
+          -
+            handle: field_meta_keywords
+            field:
+              type: textarea
+              display: 'ключевые, слова, через, запятую'
               localizable: false
   sidebar:
     display: Sidebar

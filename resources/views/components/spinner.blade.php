@@ -41,9 +41,20 @@
                 });
             });
 
-            // Обработка переходов по ссылкам
+            // Обновляем обработку переходов по ссылкам
             document.querySelectorAll('a:not([target=\'_blank\']):not([href^=\'#\'])').forEach(link => {
-                link.addEventListener('click', () => {
+                link.addEventListener('click', (e) => {
+                    // Проверяем, не является ли клик частью взаимодействия со Swiper
+                    const isSwiperInteraction = e.target.closest('.swiper') ||
+                                              e.target.closest('.swiper-wrapper') ||
+                                              e.target.closest('.swiper-slide') ||
+                                              e.target.closest('.flip_card');
+
+                    // Если это взаимодействие со Swiper - не показываем спиннер
+                    if (isSwiperInteraction) {
+                        return;
+                    }
+
                     // Проверяем, что ссылка ведет на другую страницу
                     if (link.href !== window.location.href) {
                         isLoading = true;
@@ -59,8 +70,21 @@
             Livewire.hook('message.failed', () => isLoading = false);
         }
 
-        // Глобальные методы управления спиннером
-        window.showSpinner = () => isLoading = true;
+        // Обновляем глобальные методы управления спиннером
+        window.showSpinner = () => {
+            // Проверяем, не является ли текущее взаимодействие частью Swiper
+            const activeElement = document.activeElement;
+            const isSwiperInteraction = activeElement && (
+                activeElement.closest('.swiper') ||
+                activeElement.closest('.swiper-wrapper') ||
+                activeElement.closest('.swiper-slide') ||
+                activeElement.closest('.flip_card')
+            );
+
+            if (!isSwiperInteraction) {
+                isLoading = true;
+            }
+        };
         window.hideSpinner = () => isLoading = false;
     "
     x-show="isLoading"

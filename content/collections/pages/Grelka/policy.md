@@ -3,7 +3,7 @@ id: 8d5ed284-9b03-4944-82a3-75cf08b97c4a
 blueprint: tipovaia
 title: 'Политика конфиденциальности'
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1739285687
+updated_at: 1739525453
 template: grelka/pages/politika-konfidetsialnosti
 custom_html_script:
   code: |-
@@ -231,4 +231,6 @@ tipovaya_markdown: |-
   - Пользователь может получить разъяснения по вопросам обработки персональных данных, обратившись на email: [office@gagar1n.ru](mailto:office@gagar1n.ru).
   - Политика действует бессрочно до замены ее новой версией.
   - Актуальная версия Политики доступна в интернете по адресу: [https://gagar1n.ru/privacy](https://gagar1n.ru/privacy).
+field_meta_description: 'Политика конфиденциальности'
+field_meta_keywords: 'Политика конфиденциальности'
 ---

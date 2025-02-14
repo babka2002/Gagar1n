@@ -198,6 +198,24 @@ tabs:
               type: template
               display: Шаблон
               localizable: false
+  seo_tab:
+    display: SEO
+    sections:
+      -
+        display: 'Новая секция'
+        fields:
+          -
+            handle: field_meta_description
+            field:
+              type: textarea
+              display: 'Краткое описание страницы'
+              localizable: false
+          -
+            handle: field_meta_keywords
+            field:
+              type: textarea
+              display: 'ключевые, слова, через, запятую'
+              localizable: false
   sidebar:
     display: Sidebar
     sections:

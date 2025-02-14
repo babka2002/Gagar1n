@@ -31,7 +31,9 @@
                             @if (count($trainers) > 0) <!-- Проверяем, есть ли тренеры в отделе -->
                                 @foreach ($trainers as $trainer)
                                     <div class="swiper-slide">
-                                        <div class="bg-dark rounded-xl flex flex-col overflow-hidden">
+                                        <div
+                                            onclick="window.location='{{ route('trainers.show', ['slug' => $trainer->slug]) }}';"
+                                            class="cursor-pointer bg-dark rounded-xl flex flex-col overflow-hidden">
                                             <div class="bg-neutral-800 relative overflow-hidden h-[392px] max-h-[392px]">
                                                 {{-- <img src="{{ $trainer->photo }}" alt="{{ $trainer->name }} {{ $trainer->last_name }}" class="hover:scale-105 transition-all" /> --}}
                                                 <img src="{{ $trainer->localPhotoPath }}" alt="{{ $trainer->name }} {{ $trainer->second_name }} {{ $trainer->last_name }}" class="hover:scale-105 transition-all" />
@@ -156,7 +158,8 @@
 
             <div class="grid grid-cols-4 gap-4 my-5 lg:my-14">
                 <div
-                    class="col-span-3 text-light bg-main-red rounded-brxl p-[clamp(1rem,0.4127rem+2.6104vw,2.625rem)] grid grid-cols-1 lg:gap-9 lg:grid-cols-3 items-center" data-aos="fade-right">
+                    onclick="window.location='https://academy.gagar1n.ru';"
+                    class="cursor-pointer col-span-3 text-light bg-main-red rounded-brxl p-[clamp(1rem,0.4127rem+2.6104vw,2.625rem)] grid grid-cols-1 lg:gap-9 lg:grid-cols-3 items-center" data-aos="fade-right">
                     <div class="col-span-2 mb-5 lg:mb-0">
                         <h3 class="text-base md:text-lg leading-tight uppercase mb-5">
                             хочешь стать тренером?
