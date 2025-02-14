@@ -5,7 +5,7 @@ title: 'Тренажерный зал'
 template: grelka/hall
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1739535478
+updated_at: 1739537123
 hero_title: 'тренажерный зал'
 hero_image: img/hall_hero.jpg
 stats_group:
@@ -23,6 +23,7 @@ zones_replicator:
     type: zone
     enabled: true
     zone_description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quis sapiente aliquid eos beatae accusamus maiores ut itaque voluptatibus.'
+    zone_image: img/hall_zone_1.jpg
   -
     id: zone2
     zone_title: 'зона свободных весов'

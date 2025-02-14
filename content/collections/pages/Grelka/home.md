@@ -58,7 +58,7 @@ code_field:
   mode: htmlmixed
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1739529207
+updated_at: 1739537134
 hero_title: 'Тренируйся с g1'
 pole_markdown: |-
   получи выгоду 
