@@ -13,8 +13,12 @@
         </h1>
         {{ /if }}
 
-        {{ if tipovaya_text }}
-        <p class="text-light mt-2">{{ tipovaya_text }}</p>
+        {{ if tipovaya_markdown }}
+        <div class="text-light mt-2">{{ tipovaya_markdown }}</div>
+        {{ elseif tipovaya_html }}
+        <div class="text-light mt-2">{{ tipovaya_html }}</div>
+        {{ else }}
+        <div class="text-light mt-2">{{ tipovaya_text }}</div>
         {{ /if }}
 
         {{ if custom_html_script }}
