@@ -1,5 +1,6 @@
 @extends('grelka.layout')
 @section('trainerContent')
+
     <section class="py-sectionPadding px-4">
         <div class="container text-light">
             <div class="grid grid-cols-1 gap-0 md:grid-cols-3 md:gap-16">
@@ -31,7 +32,9 @@
                     <div class="text-lg text-right uppercase md:hidden my-5">{{ $trainer->position->title ?? 'Не определена' }}</div>
 
                     <a href="#"
-                        class="rounded-brxl px-6 py-2 leading-none text-dark bg-light text-md uppercase flex items-center justify-between gap-2 mb-5 mt-auto hover:scale-105 transition-all">
+                        data-dialog="dialog"
+                        data-trainer-name="{{ ($trainer->name ?? 'Имя отсутствует') . ' ' . ($trainer->second_name ?? 'Отчество отсутствует') . ' ' . ($trainer->last_name ?? 'Фамилия отсутствует') }}"
+                        class="show rounded-brxl px-6 py-2 leading-none text-dark bg-light text-md uppercase flex items-center justify-between gap-2 mb-5 mt-auto hover:scale-105 transition-all">
                         записаться
                         <svg width="448" height="19" viewBox="0 0 448 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path

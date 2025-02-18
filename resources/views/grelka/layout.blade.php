@@ -335,6 +335,23 @@
                             `;
                             form.parentNode.appendChild(successMessage);
                         }
+                        // Обработчик для всех кнопок с классом show
+                        document.querySelectorAll('.show[data-dialog]').forEach(button => {
+                            button.addEventListener('click', function(e) {
+                                let formSubject = 'Заявка с сайта';
+                                const trainerName = this.getAttribute('data-trainer-name');
+
+                                if (trainerName) {
+                                    formSubject = `Форма Тренер - ${trainerName}`;
+                                }
+
+                                // Формируем данные для webhook
+                                window.currentFormData = {
+                                    leadtype: "request",
+                                    subject: formSubject
+                                };
+                            });
+                        });
 
                         if (form) {
                             const oldForm = form.cloneNode(true);
@@ -377,12 +394,12 @@
                                             }, 500);
                                         }, 3000);
 
-                                        // Формируем данные точно как в curl запросе
+                                        // Используем сохраненные данные для webhook
                                         const webhookData = {
-                                            leadtype: "request",
+                                            leadtype: window.currentFormData?.leadtype || "request",
                                             callerphone: formData.get('phone'),
                                             requestDate: new Date().toISOString().slice(0, 19).replace('T', ' '),
-                                            subject: "Заявка с сайта",
+                                            subject: window.currentFormData?.subject || "Заявка с сайта",
                                             fio: formData.get('full_name'),
                                             source: hostname,
                                             medium: document.referrer || "direct",
