@@ -40,5 +40,9 @@
         {{ else }}
         <div class="text-light mt-2">{{ tipovaya_text }}</div>
         {{ /if }}
+
+        {{ if custom_html_script }}
+        {{!! custom_html_script !!}}
+        {{ /if }}
     </div>
 </section>
