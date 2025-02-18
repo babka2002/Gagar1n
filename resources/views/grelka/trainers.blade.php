@@ -51,8 +51,11 @@
                                                 {{-- <p class="text-sm">{{ Str::words($trainer->description, 100, '...') }}</p>
                                                 <p class="text-sm">Позиция: {{ $trainer->position->title }}</p> --}}
                                                 <ul class="text-sm list-disc list-inside">
-                                                    <li class="text-right text-sm mb-2">
-                                                        {{ Str::words($trainer->description, 50, '...') }}
+                                                    <li class="text-left text-sm mb-2">
+                                                        <div class="markdown-content">
+                                                            {!! $trainer->short_description !!}
+                                                        </div>
+                                                        {{-- {{ Str::words($trainer->description, 50, '...') }} --}}
                                                     </li>
                                                     <li class="text-right text-sm">
                                                         Позиция: {{ $trainer->position->title }}
@@ -130,7 +133,7 @@
                     не знаешь как начать?
                 </h2>
 
-                <div class="rounded-brxl bg-dark text-light p-[clamp(1rem,0.4127rem+2.6104vw,2.625rem)]"  data-aos="zoom-in">
+                <div data-dialog="dialog-more" class="show cursor-pointer rounded-brxl bg-dark text-light p-[clamp(1rem,0.4127rem+2.6104vw,2.625rem)]"  data-aos="zoom-in">
                     <div class="max-h-[409px] object-center object-cover overflow-hidden rounded-brxl mb-6">
                         <img
                             {{-- src="{{ glide:data_url src='/assets/img/trainer-hero.jpg' quality='75' format='webp' }}" --}}

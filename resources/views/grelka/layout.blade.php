@@ -384,7 +384,7 @@
                                         this.reset();
 
                                         setTimeout(() => {
-                                            dialogElem.close();
+                                            // dialogElem.close();
                                             setTimeout(() => {
                                                 form.style.display = 'block';
                                                 const successMessage = form.parentNode.querySelector('div');
@@ -560,7 +560,7 @@
                                         this.reset();
 
                                         setTimeout(() => {
-                                            dialogElem.close();
+                                            // dialogElem.close();
                                             setTimeout(() => {
                                                 form.style.display = 'block';
                                                 const successMessage = form.parentNode.querySelector('div');

@@ -38,7 +38,14 @@ tabs:
               validate:
                 - required
           -
-            handle: content
+            handle: short_description_markdown
+            field:
+              type: markdown
+              display: 'Короткое описание MD'
+              instructions: 'Полное описание тренера'
+              localizable: false
+          -
+            handle: content_markdown
             field:
               type: markdown
               display: Описание

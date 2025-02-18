@@ -6,6 +6,7 @@ use App\Services\TrainerService;
 use Statamic\Facades\Entry;
 use Statamic\View\View;
 use Statamic\Facades\Site;
+use Statamic\Facades\Markdown;
 
 class TrainerController extends Controller
 {
@@ -20,6 +21,14 @@ class TrainerController extends Controller
         } else {
             $position = $trainer->get('position');
             $department = $trainer->get('department');
+
+            // Обработка Markdown контента с проверкой
+            $description = $trainer->get('content_markdown');
+            $parsedDescription = $description ? \Statamic\Facades\Markdown::parse($description) : '';
+
+            // Обработка короткого описания
+            $shortDescription = $trainer->get('short_description_markdown');
+            $parsedShortDescription = $shortDescription ? \Statamic\Facades\Markdown::parse($shortDescription) : '';
 
             // Получаем term для позиции
             $positionTerm = null;
@@ -46,8 +55,9 @@ class TrainerController extends Controller
                 'name' => $trainer->get('name'),
                 'second_name' => $trainer->get('second_name'),
                 'last_name' => $trainer->get('last_name'),
-                'description' => $trainer->get('content'),
-                'localPhotoPath' => $trainer->get('localPhotoPath') ?'/assets/' . $trainer->get('localPhotoPath') : null,
+                'description' => $parsedDescription,
+                'short_description' => $parsedShortDescription, // Добавляем новое поле
+                'localPhotoPath' => $trainer->get('localPhotoPath') ? '/assets/' . $trainer->get('localPhotoPath') : null,
                 'position' => (object)[
                     'id' => null,
                     'title' => $positionTitle
@@ -57,7 +67,7 @@ class TrainerController extends Controller
                 ],
                 'specializations' => $trainer->get('specializations') ?? [],
                 'experience' => $trainer->get('experience'),
-                'slug' => $trainer->slug() // Добавляем slug
+                'slug' => $trainer->slug()
             ];
         }
     }
