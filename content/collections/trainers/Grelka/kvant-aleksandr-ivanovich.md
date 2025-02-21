@@ -12,7 +12,7 @@ template: trainer_single
 is_active: true
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1739897539
+updated_at: 1740152284
 content_markdown: |-
   ## Описание тренера
 
@@ -37,4 +37,6 @@ short_description_markdown: |-
   **Имя:** Иван Иванов  
   **Возраст:** 30 лет  
   **Опыт работы:** 10 лет в фитнесе
+field_meta_description: 'Тренер Квант Александр'
+field_meta_keywords: 'Тренер Квант Александр'
 ---

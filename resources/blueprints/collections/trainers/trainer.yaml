@@ -150,3 +150,21 @@ tabs:
               default: current
               max_items: 1
               localizable: false
+  seo:
+    display: SEO
+    sections:
+      -
+        display: 'Новая секция'
+        fields:
+          -
+            handle: field_meta_description
+            field:
+              type: text
+              display: 'Краткое описание страницы'
+              localizable: false
+          -
+            handle: field_meta_keywords
+            field:
+              type: text
+              display: 'ключевые, слова, через, запятую'
+              localizable: false
