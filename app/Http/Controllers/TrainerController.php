@@ -67,7 +67,10 @@ class TrainerController extends Controller
                 ],
                 'specializations' => $trainer->get('specializations') ?? [],
                 'experience' => $trainer->get('experience'),
-                'slug' => $trainer->slug()
+                'slug' => $trainer->slug(),
+                // SEO
+                'field_meta_description' => $trainer->get('field_meta_description'),
+                'field_meta_keywords' => $trainer->get('field_meta_keywords'),
             ];
         }
     }
@@ -96,7 +99,9 @@ class TrainerController extends Controller
             ->template($currentSite . '/trainer_single')
             ->layout($currentSite . '/layout')
             ->with([
-                'trainer' => $trainer
+                'trainer' => $trainer,
+                'field_meta_description' => $trainer->field_meta_description,
+                'field_meta_keywords' => $trainer->field_meta_keywords
             ]);
     }
 

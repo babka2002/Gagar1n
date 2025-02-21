@@ -4,14 +4,13 @@ blueprint: trainer
 title: 'Александр Бобок'
 name: Александр
 last_name: Бобок
-localPhotoPath: trainers/2024-10-22-19.46.04.jpg
 position:
   - personalnyy-trener
 template: grelka/trainer_single
 is_active: true
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1740152227
+updated_at: 1740152924
 content_markdown: |-
   # Александр Бобок  
   **Профессиональный тренер и инженер связи**  

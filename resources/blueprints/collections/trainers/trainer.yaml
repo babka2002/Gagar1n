@@ -159,12 +159,12 @@ tabs:
           -
             handle: field_meta_description
             field:
-              type: text
+              type: textarea
               display: 'Краткое описание страницы'
               localizable: false
           -
             handle: field_meta_keywords
             field:
-              type: text
+              type: textarea
               display: 'ключевые, слова, через, запятую'
               localizable: false
