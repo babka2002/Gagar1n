@@ -137,6 +137,11 @@ class TrainerController extends Controller
     {
         $currentSite = strtolower(Site::current()->handle());
 
+        $page = Entry::query()
+        ->where('collection', 'pages')
+        ->where('slug', 'trainers')
+        ->first();
+
         $statamicTrainers = Entry::query()
             ->where('collection', 'trainers')
             ->where('is_active', true)
@@ -158,7 +163,12 @@ class TrainerController extends Controller
             ->template($currentSite . '/trainers')
             ->layout($currentSite . '/layout')
             ->with([
-                'trainersByDepartment' => $trainersByDepartment
+                'trainersByDepartment' => $trainersByDepartment,
+                'title' => $page->get('hero_title'),
+                'field_meta_description' => $page->get('field_meta_description'),
+                'field_meta_keywords' => $page->get('field_meta_keywords'),
+                'subscription_not_found_title' => $page->get('subscription_not_found_title'),
+                'subscription_not_found_subtitle' => $page->get('subscription_not_found_subtitle')
             ]);
     }
 
