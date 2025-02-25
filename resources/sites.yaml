@@ -3,13 +3,16 @@ Grelka:
   url: /
   locale: ru_RU
   lang: ru
+  icon: /assets/favicon.ico
 Gun1or:
   name: gun1or
   url: /gun1or/
   locale: ru_RU
   lang: ru
+  icon: /assets/favicon.ico
 GFoodcafe:
   name: gfoodcafe
   url: /gfoodcafe/
   locale: ru_RU
   lang: ru
+  icon: /assets/favicon.ico
