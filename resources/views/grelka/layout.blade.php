@@ -672,5 +672,8 @@
                 </div>
             </div>
         </dialog>
+        <script>
+            {{ $footer_block_metrika }}
+        </script>
     </body>
 </html>
