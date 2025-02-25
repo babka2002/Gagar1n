@@ -233,6 +233,12 @@ tabs:
                       display: 'Новый набор'
                       fields:
                         -
+                          handle: aboniment_type_name
+                          field:
+                            type: text
+                            display: 'Название абонеменета'
+                            localizable: false
+                        -
                           handle: aboniment_image_front
                           field:
                             max_files: 1

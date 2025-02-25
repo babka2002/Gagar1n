@@ -201,8 +201,7 @@
             >
                 <div
                     data-aos="zoom-in"
-                    class="rounded-[clamp(1.375rem,1.1943rem+0.8032vw,1.875rem)] overflow-hidden bg-light/25 text-dark py-4 px-5 relative after:bg-gradient-to-t after:from-[#000000] 0% after:to-[#FFF8F838] 100% after:absolute after:bottom-0 after:left-0 after:right-0 after:top-0 after:opacity-55"
-                >
+                    class="rou
                     <h3
                         class="text-center uppercase text-md md:text-lg text-light"
                     >
@@ -483,8 +482,13 @@
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
                     {{ aboniment_type }}
-                    <div class="swiper-slide">
-                        <a href="{{  aboniment_link }}" class="flip_card">
+                    <div
+                        data-dialog="dialog"
+                        data-aboniment-name="{{ aboniment_type_name }}"
+                        data-aboniment-link="{{ aboniment_link }}"
+                        class="show swiper-slide"
+                    >
+                        <a href="#" class="flip_card">
                             <img
                                 src="{{ aboniment_image_front }}"
                                 alt=""

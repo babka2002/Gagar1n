@@ -340,15 +340,24 @@
                         document.querySelectorAll('.show[data-dialog]').forEach(button => {
                             button.addEventListener('click', function(e) {
                                 let formSubject = 'Заявка с сайта';
+                                let leadType = "request";
                                 const trainerName = this.getAttribute('data-trainer-name');
 
                                 if (trainerName) {
                                     formSubject = `Форма Тренер - ${trainerName}`;
+                                    leadType = "trainer";
+                                }
+
+                                 // Проверяем, это абонемент?
+                                const abonimentName = this.getAttribute('data-aboniment-name');
+                                if (abonimentName) {
+                                    formSubject = `Форма Абонемент - ${abonimentName}`;
+                                    leadType = "subscription";
                                 }
 
                                 // Формируем данные для webhook
                                 window.currentFormData = {
-                                    leadtype: "request",
+                                    leadtype: leadType,
                                     subject: formSubject
                                 };
                             });

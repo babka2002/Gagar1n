@@ -58,7 +58,7 @@ code_field:
   mode: htmlmixed
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1740396448
+updated_at: 1740499448
 hero_title: 'G1-ЛУЧШИЙ ПОДАРОК'
 pole_markdown: |-
   получи выгоду 
@@ -130,6 +130,7 @@ aboniment_type:
     type: novyy_nabor
     enabled: true
     aboniment_link: 'entry::890b4426-5239-4a45-92c4-bcf0809aa080'
+    aboniment_type_name: Базовый
   -
     id: m59pycmp
     aboniment_image_front: img/cards/day-1.png
@@ -137,6 +138,7 @@ aboniment_type:
     type: novyy_nabor
     enabled: true
     aboniment_link: 'entry::fb3939e7-faac-45c4-b113-72656639dbfc'
+    aboniment_type_name: Дневной
   -
     id: m59q5q8j
     aboniment_image_front: img/cards/biznes-1.png
@@ -144,6 +146,7 @@ aboniment_type:
     type: novyy_nabor
     enabled: true
     aboniment_link: 'entry::370e20e5-8168-44e9-a197-832f48314d14'
+    aboniment_type_name: Бизнес
   -
     id: m59q6d6p
     aboniment_image_front: img/cards/daimond-1.png
@@ -151,6 +154,7 @@ aboniment_type:
     type: novyy_nabor
     enabled: true
     aboniment_link: 'entry::a862bf94-d820-41a3-96a2-51eef76ce101'
+    aboniment_type_name: Daimond
   -
     id: m59q71us
     aboniment_image_front: img/cards/polden-1.png
@@ -158,6 +162,7 @@ aboniment_type:
     type: novyy_nabor
     enabled: true
     aboniment_link: 'entry::2990a2cb-a73d-48ea-bc02-e2924fab4455'
+    aboniment_type_name: Полдень
   -
     id: m59q7k1u
     aboniment_image_front: img/cards/studentam-1.png
@@ -165,6 +170,7 @@ aboniment_type:
     type: novyy_nabor
     enabled: true
     aboniment_link: 'entry::efae2e6a-4108-41b6-8fd4-b1168e4d7465'
+    aboniment_type_name: Студентам
 aboniment_raspisanie_zagolovok: расписание
 aboniment_raspisanie_text: '300+ тренеровок в неделю на выбор'
 aboniment_raspisanie_link: 'entry::b7c0207a-bca0-41b0-90cc-6e73d78cf0e0'
