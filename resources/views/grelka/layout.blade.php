@@ -672,8 +672,10 @@
                 </div>
             </div>
         </dialog>
+        @if($footer->footer_block_metrika)
         <script>
-            {{ $footer->footer_block_metrika }}
+            {!! $footer->footer_block_metrika !!}
         </script>
+        @endif
     </body>
 </html>
