@@ -673,7 +673,7 @@
             </div>
         </dialog>
         <script>
-            {{ $footer_block_metrika }}
+            {{ $footer->footer_block_metrika }}
         </script>
     </body>
 </html>
