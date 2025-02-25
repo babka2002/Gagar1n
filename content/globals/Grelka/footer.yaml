@@ -42,3 +42,6 @@ footer_menu:
     id: m6hzbt3i
     title: Контакты
     link: /kontakty
+footer_block_metrika:
+  code: "console.log('im here');"
+  mode: javascript

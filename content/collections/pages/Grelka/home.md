@@ -58,8 +58,8 @@ code_field:
   mode: htmlmixed
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1739537134
-hero_title: 'Тренируйся с g1'
+updated_at: 1740396448
+hero_title: 'G1-ЛУЧШИЙ ПОДАРОК'
 pole_markdown: |-
   получи выгоду 
   на годовой абонемент до
@@ -67,9 +67,9 @@ hero_discount: 30%
 hero_1: img/hero1.jpg
 hero_2: img/hero2.jpg
 hero_desc_group:
-  pole_text_1: 'получи выгоду до'
-  pole_text_discont: 30%
-  pole_text_2: годовой
+  pole_text_1: 'в подарок'
+  pole_text_discont: '2 месяца'
+  pole_text_2: 'на годовой'
   pole_text_3: абонемент
 direction_title: 'ВЫБЕРИ НАПРАВЛЕНИЕ СЕБЕ ПО ДУШЕ'
 direction_replicator:

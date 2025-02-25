@@ -110,3 +110,15 @@ tabs:
                   field:
                     type: text
                     display: Ссылка
+  block_metrika:
+    display: Метрика
+    sections:
+      -
+        display: 'Новая секция'
+        fields:
+          -
+            handle: footer_block_metrika
+            field:
+              type: code
+              display: Метрика
+              localizable: false
