@@ -1,7 +1,7 @@
 ---
 id: home
 blueprint: pages
-title: Главная
+title: 'GAGAR1N - фитнес парк. Симферополь фитнес-центр G1. Главная'
 template: grelka/home
 code_field:
   code: |-
@@ -58,7 +58,7 @@ code_field:
   mode: htmlmixed
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1740499448
+updated_at: 1745828354
 hero_title: 'G1-ЛУЧШИЙ ПОДАРОК'
 pole_markdown: |-
   получи выгоду 
@@ -67,9 +67,9 @@ hero_discount: 30%
 hero_1: img/hero1.jpg
 hero_2: img/hero2.jpg
 hero_desc_group:
-  pole_text_1: 'в подарок'
-  pole_text_discont: '2 месяца'
-  pole_text_2: 'на годовой'
+  pole_text_1: выгода
+  pole_text_discont: 'до 15 000'
+  pole_text_2: годовой
   pole_text_3: абонемент
 direction_title: 'ВЫБЕРИ НАПРАВЛЕНИЕ СЕБЕ ПО ДУШЕ'
 direction_replicator:

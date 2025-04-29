@@ -11,7 +11,7 @@ knopka_tekst: 'Многоступенчатую систему очистки <b
 second_section_title: 'индивидуальные тренировки'
 kartinka: img/pool_bordered.jpg
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1739525318
+updated_at: 1745923232
 tekst_opisanie: |-
   Индивидуальные занятия под руководством
                       профессионального тренера для укрепления здоровья и
@@ -21,7 +21,7 @@ gruppovye_zagolovok: 'групповые тренировки'
 gruppovye_bloki:
   -
     id: m6kyaphn
-    second_blok_zagolovok: PRO
+    second_blok_zagolovok: 'AQUA PRO'
     blok_opisanie: |-
       Групповая тренировка с использованием
                                       аква-гантелей, нудлов и аква-утяжелителей
@@ -33,7 +33,7 @@ gruppovye_bloki:
     enabled: true
   -
     id: m6kyb11c
-    second_blok_zagolovok: SWIMMING
+    second_blok_zagolovok: 'AQUA SWIMMING'
     blok_opisanie: |-
       Групповая тренировка для развития техники
                                       плавания и физической формы под руководством
@@ -48,10 +48,10 @@ gruppovye_bloki:
                                       водное поло. Развитие командного
                                       взаимодействия и плавательных навыков.
     type: novyy_nabor
-    enabled: true
+    enabled: false
   -
     id: m6kyd9bc
-    second_blok_zagolovok: ШЕЙПИНГ
+    second_blok_zagolovok: 'AQUA ШЕЙПИНГ'
     blok_opisanie: |-
       Аквааэробика для улучшения физической формы
                                       и формирования фигуры. Укрепление мышц и
@@ -60,7 +60,7 @@ gruppovye_bloki:
     enabled: true
   -
     id: m6kylyu2
-    second_blok_zagolovok: ГИМНАСТИКА
+    second_blok_zagolovok: 'AQUA ГИМНАСТИКА'
     blok_opisanie: |-
       Групповая тренировка для укрепления суставов
                                       и улучшения их гибкости. Сочетает
@@ -70,7 +70,7 @@ gruppovye_bloki:
     enabled: true
   -
     id: m6kymdos
-    second_blok_zagolovok: MIX
+    second_blok_zagolovok: 'AQUA MIX'
     blok_opisanie: |-
       Динамичная высокоинтенсивная тренировка,
                                       сочетающая аквааэробику и специальные
@@ -88,7 +88,7 @@ gruppovye_bloki:
     enabled: true
   -
     id: m6kymyr9
-    second_blok_zagolovok: 'NOODLES / DUMBBELLS'
+    second_blok_zagolovok: 'AQUA NOODLES / DUMBBELLS'
     blok_opisanie: |-
       Тренировка для развития координации и
                                       укрепления стабилизаторов с использованием

@@ -4,7 +4,7 @@ blueprint: page_personal_training
 title: 'Персональные тренировки'
 template: grelka/personal_training
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1739525442
+updated_at: 1745850472
 hero_title: персональные<br>тренировки
 hero_image: img/individual_trainings_hero.jpg
 features_list:
@@ -43,42 +43,42 @@ programs_replicator:
     id: prog1
     program_title: 'функциональные тренировки'
     program_image: img/functional_training.jpg
-    program_description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quis sapiente aliquid eos beatae accusamus maiores ut itaque voluptatibus.'
+    program_description: 'Функциональные тренировки — это вид физической активности, направленный на развитие движений, которые человек использует в повседневной жизни: приседания, наклоны, подъёмы, повороты и перенос тяжестей. Эти тренировки укрепляют мышцы-стабилизаторы, улучшают баланс, координацию и гибкость, помогая повысить общую физическую форму и снизить риск травм в реальной жизни.'
     type: program
     enabled: true
   -
     id: prog2
     program_title: 'силовые тренировки'
     program_image: img/strength_training.jpg
-    program_description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quis sapiente aliquid eos beatae accusamus maiores ut itaque voluptatibus.'
+    program_description: 'Силовые тренировки — это занятия, направленные на развитие мышечной силы и массы с помощью отягощений, таких как штанги, гантели, тренажёры или собственный вес тела. Они помогают укрепить мышцы, связки и суставы, ускоряют обмен веществ и улучшают общее состояние здоровья и физическую выносливость.'
     type: program
     enabled: true
   -
     id: prog3
     program_title: 'восстановительные программы'
     program_image: img/rehabilitation_programs.jpg
-    program_description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quis sapiente aliquid eos beatae accusamus maiores ut itaque voluptatibus.'
+    program_description: 'Восстановительные программы — это комплекс тренировок и процедур, направленных на восстановление организма после физических нагрузок, травм или стрессов. Они включают лёгкие физические упражнения, растяжку, массаж, дыхательные практики и помогают улучшить подвижность, снять напряжение и ускорить процесс восстановления мышц и суставов.'
     type: program
     enabled: true
   -
     id: prog4
     program_title: 'восстановление после родов'
     program_image: img/postpartum_recovery.jpg
-    program_description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quis sapiente aliquid eos beatae accusamus maiores ut itaque voluptatibus.'
+    program_description: 'Восстановление после родов — это комплекс мер, направленных на постепенное укрепление организма женщины после беременности и родов. Оно включает лёгкие физические упражнения для восстановления мышц тазового дна, пресса и спины, улучшение осанки, а также работу над общим тонусом и эмоциональным состоянием, с учётом индивидуальных особенностей и состояния здоровья.'
     type: program
     enabled: true
   -
     id: prog5
     program_title: 'ДЛЯ ДЕТЕЙ'
     program_image: img/FOR_CHILDREN.jpg
-    program_description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quis sapiente aliquid eos beatae accusamus maiores ut itaque voluptatibus.'
+    program_description: 'Тренировки для детей — это специально разработанные занятия, направленные на развитие силы, координации, гибкости и выносливости с учётом возраста и особенностей растущего организма. Они проходят в игровой форме, помогают укрепить здоровье, улучшить осанку, развить уверенность в себе и привить любовь к физической активности с раннего возраста.'
     type: program
     enabled: true
   -
     id: prog6
     program_title: 'ДЛЯ СПОРТСМЕНОВ'
     program_image: img/FOR_ATHLETES.jpg
-    program_description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quis sapiente aliquid eos beatae accusamus maiores ut itaque voluptatibus.'
+    program_description: 'Тренировки для спортсменов — это специализированные программы, направленные на развитие силы, скорости, выносливости, координации и других качеств, необходимых для конкретного вида спорта. Они учитывают уровень подготовки, цели и особенности спортсмена, помогают повысить результаты, предотвратить травмы и поддерживать оптимальную физическую форму.'
     type: program
     enabled: true
 reviews_title: 'ОТЗЫВЫ КЛИЕНТОВ'

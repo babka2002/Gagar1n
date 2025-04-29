@@ -36,5 +36,7 @@ template: trainer_single
 is_active: true
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1740393349
+updated_at: 1745925442
+field_meta_description: 'Тренер Денис Сечин'
+field_meta_keywords: 'Тренер Денис Сечин'
 ---

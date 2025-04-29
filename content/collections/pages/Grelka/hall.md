@@ -5,7 +5,7 @@ title: 'Тренажерный зал'
 template: grelka/hall
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1739537123
+updated_at: 1745829208
 hero_title: 'тренажерный зал'
 hero_image: img/hall_hero.jpg
 stats_group:
@@ -22,7 +22,7 @@ zones_replicator:
     zone_title: 'функциональный тренинг'
     type: zone
     enabled: true
-    zone_description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quis sapiente aliquid eos beatae accusamus maiores ut itaque voluptatibus.'
+    zone_description: 'Функциональный тренинг — это система упражнений, направленная на развитие силы, выносливости, координации и гибкости для выполнения движений, которые человек использует в повседневной жизни. Он помогает укрепить все группы мышц, улучшить осанку и снизить риск травм, делая тело более подготовленным к реальным физическим нагрузкам.'
     zone_image: img/hall_zone_1.jpg
   -
     id: zone2
@@ -30,35 +30,28 @@ zones_replicator:
     zone_image: img/hall_zone_1.jpg
     type: zone
     enabled: true
-    zone_description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quis sapiente aliquid eos beatae accusamus maiores ut itaque voluptatibus.'
+    zone_description: 'Зона свободных весов — это пространство в тренажёрном зале, где расположены гантели, штанги, гири и скамьи для тренировок. Она позволяет выполнять разнообразные упражнения, развивая силу, координацию и стабилизацию мышц, так как движения требуют самостоятельного удержания баланса.'
   -
     id: zone3
     zone_title: 'блочные тренажеры'
     zone_image: img/hall_zone_1.jpg
     type: zone
     enabled: true
-    zone_description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quis sapiente aliquid eos beatae accusamus maiores ut itaque voluptatibus.'
+    zone_description: 'Блочные тренажёры — это оборудование, в котором сопротивление создаётся с помощью системы тросов и грузов. Они помогают безопасно и изолированно прорабатывать отдельные группы мышц, обеспечивая контроль движения и минимизируя риск травм.'
   -
     id: zone4
     zone_title: 'кардио зона'
     zone_image: img/hall_zone_1.jpg
     type: zone
     enabled: true
-    zone_description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quis sapiente aliquid eos beatae accusamus maiores ut itaque voluptatibus.'
+    zone_description: 'Кардио-зона — это часть тренажёрного зала, оснащённая беговыми дорожками, велотренажёрами, эллипсами и другими устройствами для развития сердечно-сосудистой выносливости. Тренировки здесь помогают укрепить сердце, повысить общий тонус организма и способствуют сжиганию калорий.'
   -
     id: zone5
     zone_title: 'зона кроссфита'
     zone_image: img/hall_zone_1.jpg
     type: zone
     enabled: true
-    zone_description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quis sapiente aliquid eos beatae accusamus maiores ut itaque voluptatibus.'
-  -
-    id: zone6
-    zone_title: ринг
-    zone_image: img/hall_zone_1.jpg
-    type: zone
-    enabled: true
-    zone_description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quis sapiente aliquid eos beatae accusamus maiores ut itaque voluptatibus.'
+    zone_description: 'Зона кроссфита — это специально оборудованное пространство для проведения высокоинтенсивных функциональных тренировок, включающих упражнения с весами, кардио-нагрузки и элементы гимнастики. Здесь развивают силу, выносливость, скорость и координацию, сочетая разнообразные виды активности в одном занятии.'
 zones_schedule_text: 'свободное посещение зала ежедневно с 7 до 23'
 training_title: 'не знаешь как начать?'
 training_image: img/trainer-hero.jpg
