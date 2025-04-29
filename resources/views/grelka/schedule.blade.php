@@ -234,18 +234,21 @@
                 <a
                     href="#"
                     class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-2 px-4 transition-all hover:text-dark hover:bg-light"
+                    data-age-filter="любые"
                     >ЛЮБЫЕ</a
                 >
 
                 <a
                     href="#"
                     class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-2 px-4 transition-all hover:text-dark hover:bg-light"
+                    data-age-filter="взрослые"
                     >ВЗРОСЛЫЕ</a
                 >
 
                 <a
                     href="#"
                     class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-2 px-4 transition-all hover:text-dark hover:bg-light"
+                    data-age-filter="детские"
                     >ДЕТСКИЕ</a
                 >
 
@@ -294,19 +297,22 @@
                 <a
                     href="#"
                     class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-2 px-4 transition-all hover:text-dark hover:bg-light"
+                    data-cost-filter="неважно"
                     >НЕВАЖНО</a
                 >
 
                 <a
                     href="#"
                     class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-2 px-4 transition-all hover:text-dark hover:bg-light"
+                    data-cost-filter="платно"
                     >ПЛАТНО</a
                 >
 
                 <a
                     href="#"
                     class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-2 px-4 transition-all hover:text-dark hover:bg-light"
-                    >БЕСПАЛаНТНО</a
+                    data-cost-filter="бесплатно"
+                    >БЕСПЛАТНО</a
                 >
             </div>
         </div>
@@ -533,6 +539,58 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.search = urlParams.toString();
         });
     });
+});
+
+// Новый скрипт для фильтров возраста и стоимости
+document.addEventListener("DOMContentLoaded", () => {
+    const ageFilters = document.querySelectorAll('a[data-age-filter]');
+    const costFilters = document.querySelectorAll('a[data-cost-filter]');
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentAge = urlParams.get('age');
+    const currentCost = urlParams.get('cost');
+
+    // Функция для обновления URL и перезагрузки
+    const updateUrlAndReload = (paramName, paramValue) => {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (paramValue === 'любые' || paramValue === 'неважно') {
+            urlParams.delete(paramName);
+        } else {
+            urlParams.set(paramName, paramValue);
+        }
+        window.location.search = urlParams.toString();
+    };
+
+    // Выделение активных фильтров при загрузке
+    ageFilters.forEach(filter => {
+        const filterValue = filter.getAttribute('data-age-filter');
+        if ((!currentAge && filterValue === 'любые') || currentAge === filterValue) {
+            filter.classList.add('bg-light', 'text-dark');
+            filter.classList.remove('text-light');
+        } else {
+            filter.classList.remove('bg-light', 'text-dark');
+            filter.classList.add('text-light');
+        }
+        filter.addEventListener('click', (e) => {
+            e.preventDefault();
+            updateUrlAndReload('age', filterValue);
+        });
+    });
+
+    costFilters.forEach(filter => {
+        const filterValue = filter.getAttribute('data-cost-filter');
+        if ((!currentCost && filterValue === 'неважно') || currentCost === filterValue) {
+            filter.classList.add('bg-light', 'text-dark');
+            filter.classList.remove('text-light');
+        } else {
+            filter.classList.remove('bg-light', 'text-dark');
+            filter.classList.add('text-light');
+        }
+        filter.addEventListener('click', (e) => {
+            e.preventDefault();
+            updateUrlAndReload('cost', filterValue);
+        });
+    });
+
 });
 </script>
 

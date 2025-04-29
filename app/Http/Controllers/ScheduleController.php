@@ -58,69 +58,7 @@ class ScheduleController extends Controller
             return isset($item['type']) && $item['type'] === $scheduleType;
         });
 
-        $filters = [
-            'тренажерный зал' => [
-                'САЙКЛ START',
-                'САЙКЛ PRO ₽',
-                'HIIT',
-                'TOTAL BODY ₽',
-                'SUPER SCULPT',
-                'FUNCTIONAL TRAINING',
-                'TRX ₽',
-                'BODY SCULPT',
-                'PUMP PRO ₽',
-                'ABS+CORE',
-                'DYNAMIC STRETCHING',
-                'STRETCHING',
-                'STRETCHING MOBILITY',
-                'KICKBOXING KIDS',
-                'CROSSFIT',
-                'CROSSFIT ₽',
-                'CROSSFIT KIDS',
-                'CROSSFIT WORK',
-                'ZUMBA',
-                'DANCE MIX KIDS',
-                'AEROBIC DANCE',
-                'ART FUNCTIONAL',
-                'FITBOX',
-                'ORIENTAL FIT',
-                'TAE-BO',
-                'LATINA',
-                'WINTER CYCLING FESTIVAL MK',
-            ],
-            'аква зона' => [
-                'AQUA NOODLES / DUMBBELLS',
-                'AQUA MIX',
-                'AQUA SWIMMING',
-                'AQUA ПЛАВАНИЕ KIDS',
-                'AQUA МАМА И МАЛЫШ KIDS',
-                'AQUA ГИМНАСТИКА',
-                'AQUA ШЕЙПИНГ ₽',
-                'AQUA СПОРТ ПОДГОТОВКА KIDS',
-                'AQUA НЕ БОЙСЯ ВОДЫ KIDS',
-                'Аква ПЛАВАНИЕ KIDS',
-            ],
-            'йога' => [
-                'HATHA YOGA',
-                'NIRVANA YOGA',
-                'STRETCHING',
-            ],
-            'детские занятия' => [
-                'Аква ПЛАВАНИЕ KIDS',
-                'КАРАТЭ KIDS',
-                'BOXING KIDS',
-                'CROSSFIT KIDS',
-                'Аква НЕ БОЙСЯ ВОДЫ KIDS',
-                'ГРЭППЛИНГ KIDS',
-                'АКРОБАТИКА KIDS',
-                'РИТМИКА KIDS',
-                'DANCE MIX KIDS',
-                'MINI ГРУППА ЛФК ₽',
-            ],
-            // Добавьте другие категории по мере необходимости
-        ];
-
-        $filteredData = $this->applyFilters($scheduleData, $request, $filters);
+        $filteredData = $this->applyFilters($scheduleData, $request);
         $timeSlots = $this->generateTimeSlots($filteredData);
         $daysOfWeek = $this->prepareDaysOfWeek($filteredData, $timeSlots);
         $currentDay = Carbon::now()->locale('ru')->isoFormat('dddd');
@@ -234,29 +172,77 @@ class ScheduleController extends Controller
         return $daysOfWeek;
     }
 
-    private function applyFilters(array $scheduleData, Request $request, array $filters): array
+    private function applyFilters(array $scheduleData, Request $request): array
     {
-        $filteredData = [];
+        $filteredData = $scheduleData; // Начинаем с полных данных
         $selectedFilters = $request->input('filters', []);
+        $selectedAge = $request->input('age'); // 'любые', 'взрослые', 'детские'
+        $selectedCost = $request->input('cost'); // 'неважно', 'платно', 'бесплатно'
 
-        // Если фильтры не выбраны, возвращаем все данные
-        if (empty($selectedFilters)) {
-            return $scheduleData;
-        }
-
-        // Фильтруем данные на основе выбранных фильтров
-        foreach ($selectedFilters as $filter) {
-            if (isset($filters[$filter])) {
-                foreach ($filters[$filter] as $serviceTitle) {
-                    foreach ($scheduleData as $item) {
-                        if ($item['service']['title'] === $serviceTitle) {
-                            $filteredData[] = $item;
-                        }
+        // 1. Фильтр по залу (если выбран)
+        if (!empty($selectedFilters)) {
+            $selectedFiltersLower = array_map('mb_strtolower', $selectedFilters);
+            $locationFilteredData = [];
+            foreach ($filteredData as $item) {
+                if (isset($item['room']['title'])) {
+                    $roomTitleLower = mb_strtolower($item['room']['title']);
+                    if (in_array($roomTitleLower, $selectedFiltersLower)) {
+                        $locationFilteredData[] = $item;
                     }
                 }
             }
+            $filteredData = $locationFilteredData; // Обновляем данные после фильтрации по залу
         }
+
+        // 2. Фильтр по возрасту (если выбран и не 'любые')
+        if ($selectedAge && $selectedAge !== 'любые') {
+            $ageFilteredData = [];
+            $isKidsFilter = ($selectedAge === 'детские');
+
+            foreach ($filteredData as $item) {
+                $isKidsEvent = false;
+                // Проверяем наличие 'kids' или '(дети)' в релевантных полях
+                $checkTitles = [
+                    $item['service']['title'] ?? '',
+                    $item['group']['title'] ?? '',
+                    $item['course']['title'] ?? '',
+                ];
+                foreach ($checkTitles as $title) {
+                    if (mb_stripos($title, 'kids') !== false || mb_stripos($title, '(дети)') !== false) {
+                        $isKidsEvent = true;
+                        break;
+                    }
+                }
+
+                if ($isKidsFilter && $isKidsEvent) { // Нужны детские, и это детское
+                    $ageFilteredData[] = $item;
+                } elseif (!$isKidsFilter && !$isKidsEvent) { // Нужны взрослые, и это не детское
+                    $ageFilteredData[] = $item;
+                }
+            }
+            $filteredData = $ageFilteredData; // Обновляем данные после фильтрации по возрасту
+        }
+
+        // 3. Фильтр по стоимости (если выбран и не 'неважно')
+        if ($selectedCost && $selectedCost !== 'неважно') {
+            $costFilteredData = [];
+            $isPaidFilter = ($selectedCost === 'платно');
+
+            foreach ($filteredData as $item) {
+                // Проверяем платность: по полю commercial ИЛИ по наличию ₽ в названии
+                $isActuallyPaid = (isset($item['commercial']) && $item['commercial'] === true)
+                    || (isset($item['service']['title']) && mb_strpos($item['service']['title'], '₽') !== false);
+
+                if ($isPaidFilter && $isActuallyPaid) { // Нужны платные, и это платное
+                    $costFilteredData[] = $item;
+                } elseif (!$isPaidFilter && !$isActuallyPaid) { // Нужны бесплатные, и это бесплатное
+                    $costFilteredData[] = $item;
+                }
+            }
+            $filteredData = $costFilteredData; // Обновляем данные после фильтрации по стоимости
+        }
+
         // dd($filteredData);
-        return array_values($filteredData);
+        return array_values(array_unique($filteredData, SORT_REGULAR)); // Удаляем дубликаты, если они возникли
     }
 }
