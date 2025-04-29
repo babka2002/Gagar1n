@@ -9,6 +9,12 @@
         <h1 class="text-lg md:text-xxl uppercase text-light mt-4">
             {{ title }}
         </h1>
-        <p class="text-light mt-2">{{ tipovaya_text }}</p>
+        {{ if tipovaya_markdown }}
+        <div class="text-light mt-2">{{ tipovaya_markdown | markdown }}</div>
+        {{ elseif tipovaya_html }}
+        <div class="text-light mt-2">{{ tipovaya_html }}</div>
+        {{ elseif tipovaya_text }}
+        <div class="text-light mt-2">{{ tipovaya_text }}</div>
+        {{ /if }}
     </div>
 </section>
