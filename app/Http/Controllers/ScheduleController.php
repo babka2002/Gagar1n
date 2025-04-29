@@ -7,7 +7,9 @@ use App\Services\PersonalClassesService;
 use Illuminate\Http\Request;
 use Statamic\View\View;
 use Statamic\Facades\Site;
+use Statamic\Facades\Entry;
 use Carbon\Carbon;
+use Statamic\Entries\Entry as EntryModel;
 
 class ScheduleController extends Controller
 {
@@ -123,6 +125,21 @@ class ScheduleController extends Controller
         $daysOfWeek = $this->prepareDaysOfWeek($filteredData, $timeSlots);
         $currentDay = Carbon::now()->locale('ru')->isoFormat('dddd');
 
+        // Get data from the current Entry based on URI
+        $uri = '/' . trim($request->path(), '/');
+        $entry = Entry::findByUri($uri, Site::current()->handle());
+
+        $metaDescription = null;
+        $metaKeywords = null;
+        $pageTitle = 'Расписание'; // Default title
+
+        if ($entry) {
+            /** @var EntryModel $entry */
+            $metaDescription = $entry->get('field_meta_description');
+            $metaKeywords = $entry->get('field_meta_keywords');
+            $pageTitle = $entry->get('title', 'Расписание'); // Get title from entry or default
+        }
+
         return (new View)
             ->layout($currentSite . '/layout')
             ->template($currentSite . '/schedule')
@@ -131,7 +148,10 @@ class ScheduleController extends Controller
                 'daysOfWeek' => $daysOfWeek,
                 'filteredData' => $filteredData,
                 'currentDay' => $currentDay,
-                'scheduleType' => $scheduleType
+                'scheduleType' => $scheduleType,
+                'field_meta_description' => $metaDescription, // Pass meta description
+                'field_meta_keywords' => $metaKeywords,      // Pass meta keywords
+                'title' => $pageTitle                       // Pass title
             ]);
     }
 
