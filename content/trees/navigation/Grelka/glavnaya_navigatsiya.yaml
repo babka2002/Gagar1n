@@ -32,10 +32,6 @@ tree:
     title: Мероприятия
     url: /meropriyatiya
   -
-    id: 9a1aae38-b6e9-4f90-8f62-78553053fd46
-    title: Блог
-    url: /blog
-  -
     id: 935173a5-68b6-4af9-981f-008cd2559184
     title: Контакты
     url: /kontakty
