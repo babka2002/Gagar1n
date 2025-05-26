@@ -58,19 +58,19 @@ code_field:
   mode: htmlmixed
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1745828354
-hero_title: 'G1-ЛУЧШИЙ ПОДАРОК'
+updated_at: 1748283159
+hero_title: 'КАРТА БОССА'
 pole_markdown: |-
   получи выгоду 
   на годовой абонемент до
 hero_discount: 30%
 hero_1: img/hero1.jpg
-hero_2: img/hero2.jpg
 hero_desc_group:
-  pole_text_1: выгода
-  pole_text_discont: 'до 15 000'
-  pole_text_2: годовой
-  pole_text_3: абонемент
+  pole_text_1: за
+  pole_text_discont: '26 900 р'
+  pole_text_1_2: на
+  pole_text_2: '270 дней'
+  pole_text_3: 'фитнеса с бассейном'
 direction_title: 'ВЫБЕРИ НАПРАВЛЕНИЕ СЕБЕ ПО ДУШЕ'
 direction_replicator:
   -

@@ -44,21 +44,31 @@ tabs:
                   field:
                     type: text
                     display: 'Поле Text 1'
+                    localizable: false
                 -
                   handle: pole_text_discont
                   field:
                     type: text
                     display: 'Поле Text Discont'
+                    localizable: false
+                -
+                  handle: pole_text_1_2
+                  field:
+                    type: text
+                    display: 'Поле Text 1-2'
+                    localizable: false
                 -
                   handle: pole_text_2
                   field:
                     type: text
                     display: 'Поле Text 2'
+                    localizable: false
                 -
                   handle: pole_text_3
                   field:
                     type: text
                     display: 'Поле Text 3'
+                    localizable: false
           -
             handle: hero_1
             field:

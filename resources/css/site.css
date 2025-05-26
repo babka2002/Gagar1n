@@ -5,10 +5,12 @@
 /* This is all you. */
 
 @font-face {
-    font-family: "Gothic No60";
-    src:
-        url("../fonts/Gothic60-Regular.woff2") format("woff2"),
-        url("../fonts/Gothic60-Regular.woff") format("woff");
+    /* font-family: "Gothic No60";
+        src: url("../fonts/Gothic60-Regular.woff2") format("woff2"),
+        url("../fonts/Gothic60-Regular.woff") format("woff"); */
+    font-family: "Gotham Pro";
+    src: url("../fonts/GothamPro.woff2") format("woff2"),
+        url("../fonts/GothamPro.woff") format("woff");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -36,6 +38,7 @@ body {
 html,
 body {
     /* font-family: 'Gothic No60'; */
+    font-family: "Gotham Pro";
     color: #1e1e1e;
     text-wrap: balance;
 }
@@ -578,7 +581,7 @@ section {
 @media (width >= 768px) {
     .bg-hero-djunior-1:after,
     .bg-hero-djunior-2:before,
-    .bg-hero-djunior-3:after{
+    .bg-hero-djunior-3:after {
         overflow: hidden;
     }
 }
