@@ -24,10 +24,6 @@ tree:
     title: ТРЕНЕРЫ
     url: /trainers
   -
-    id: 3376eb1f-1789-40c0-9a87-761e1a0c29f3
-    title: 'АКАДЕМИЯ ФИТНЕСА'
-    url: /akademiya-fitnesa
-  -
     id: 360b451d-689e-49c6-8297-26e43773753f
     title: Мероприятия
     url: /meropriyatiya

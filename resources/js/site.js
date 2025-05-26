@@ -69,43 +69,103 @@ function initializeSwiperEvents() {
 // Инициализация событий при загрузке DOM
 document.addEventListener("DOMContentLoaded", initializeSwiperEvents);
 
-// TRAINER SLIDER
-var swiper2 = new Swiper(".mySwiper2", {
-    slidesPerView: 1,
-    spaceBetween: 16,
-    centeredSlides: true,
-    autoplay: {
-        delay: 2000,
-        disableOnInteraction: false,
-    },
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-        dynamicBullets: true,
-    },
-    autoHeight: false,
-    breakpoints: {
-        640: {
-            slidesPerView: 2,
+// TRAINER SLIDER - Массив для хранения всех экземпляров каруселей
+var trainerSwipers = [];
+
+// Инициализируем все карусели тренеров
+document.addEventListener("DOMContentLoaded", function () {
+    const swiperContainers = document.querySelectorAll(".mySwiper2");
+
+    swiperContainers.forEach(function (container, index) {
+        // Создаем уникальный ID для каждой карусели
+        if (!container.id) {
+            container.id = `trainerSwiper${index}`;
+        }
+
+        // Создаем отдельный экземпляр Swiper для каждой карусели
+        const swiperInstance = new Swiper(`#${container.id}`, {
+            slidesPerView: 1,
             spaceBetween: 16,
-        },
-        768: {
-            slidesPerView: 2,
-            spaceBetween: 16,
-        },
-        1024: {
-            slidesPerView: 3,
-            spaceBetween: 16,
-        },
-        1440: {
-            slidesPerView: 4,
-            spaceBetween: 16,
-        },
-        1600: {
-            slidesPerView: 5,
-            spaceBetween: 16,
-        },
-    },
+            centeredSlides: true,
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: `#${container.id} .swiper-pagination`,
+                clickable: true,
+                dynamicBullets: true,
+            },
+            autoHeight: false,
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 16,
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 16,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 16,
+                },
+                1440: {
+                    slidesPerView: 4,
+                    spaceBetween: 16,
+                },
+                1600: {
+                    slidesPerView: 5,
+                    spaceBetween: 16,
+                },
+            },
+        });
+
+        // Сохраняем экземпляр в массиве
+        trainerSwipers.push(swiperInstance);
+
+        // Добавляем обработчики событий для этой конкретной карусели
+        container.addEventListener("mouseenter", function () {
+            try {
+                swiperInstance.autoplay.stop();
+            } catch (error) {
+                console.log("Ошибка остановки автопрокрутки:", error);
+            }
+        });
+
+        container.addEventListener("mouseleave", function () {
+            try {
+                swiperInstance.autoplay.start();
+            } catch (error) {
+                console.log("Ошибка запуска автопрокрутки:", error);
+            }
+        });
+
+        // Обработчики для сенсорных устройств
+        container.addEventListener("touchstart", function () {
+            try {
+                swiperInstance.autoplay.stop();
+            } catch (error) {
+                console.log(
+                    "Ошибка остановки автопрокрутки при касании:",
+                    error
+                );
+            }
+        });
+
+        container.addEventListener("touchend", function () {
+            try {
+                setTimeout(() => {
+                    swiperInstance.autoplay.start();
+                }, 1000);
+            } catch (error) {
+                console.log(
+                    "Ошибка запуска автопрокрутки после касания:",
+                    error
+                );
+            }
+        });
+    });
 });
 
 // Компонент формы
