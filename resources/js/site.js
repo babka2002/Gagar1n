@@ -1,16 +1,15 @@
 // This is all you.
 
 // Initialize Swiper
-import Swiper from 'swiper/bundle';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import Swiper from "swiper/bundle";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 // Initialize AOS
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 var swiper = new Swiper(".mySwiper", {
     slidesPerView: 1,
@@ -43,32 +42,32 @@ var swiper = new Swiper(".mySwiper", {
 });
 // Инициализация обработчиков событий Swiper, если элемент существует
 function initializeSwiperEvents() {
-    const swiperContainer = document.querySelector('.mySwiper');
+    const swiperContainer = document.querySelector(".mySwiper");
 
     // Инициализируем события только если контейнер Swiper существует
-    if (swiperContainer && typeof swiper !== 'undefined') {
+    if (swiperContainer && typeof swiper !== "undefined") {
         // События мыши
-        swiperContainer.addEventListener('mouseenter', () => {
+        swiperContainer.addEventListener("mouseenter", () => {
             swiper.autoplay.stop();
         });
 
-        swiperContainer.addEventListener('mouseleave', () => {
+        swiperContainer.addEventListener("mouseleave", () => {
             swiper.autoplay.start();
         });
 
         // События касания
-        swiperContainer.addEventListener('touchstart', () => {
+        swiperContainer.addEventListener("touchstart", () => {
             swiper.autoplay.stop();
         });
 
-        swiperContainer.addEventListener('touchend', () => {
+        swiperContainer.addEventListener("touchend", () => {
             swiper.autoplay.start();
         });
     }
 }
 
 // Инициализация событий при загрузке DOM
-document.addEventListener('DOMContentLoaded', initializeSwiperEvents);
+document.addEventListener("DOMContentLoaded", initializeSwiperEvents);
 
 // TRAINER SLIDER
 var swiper2 = new Swiper(".mySwiper2", {
@@ -190,15 +189,16 @@ function shouldShowDialog() {
     // Если интервал 0 или не задан, показываем каждый раз
     if (intervalDays === 0) return true;
 
-    const lastShown = localStorage.getItem('dialogLastShown');
-    const hasBeenShown = localStorage.getItem('dialogHasBeenShown');
+    const lastShown = localStorage.getItem("dialogLastShown");
+    const hasBeenShown = localStorage.getItem("dialogHasBeenShown");
 
     // Если никогда не показывался
     if (!hasBeenShown) return true;
 
     // Проверяем интервал показа из настроек
     if (lastShown) {
-        const daysSinceLastShow = (Date.now() - parseInt(lastShown)) / (1000 * 60 * 60 * 24);
+        const daysSinceLastShow =
+            (Date.now() - parseInt(lastShown)) / (1000 * 60 * 60 * 24);
         return daysSinceLastShow >= intervalDays;
     }
 
@@ -222,8 +222,8 @@ function handleAutoplayDialog() {
     // Функция показа диалога
     const showDialog = () => {
         autoplayDialog.showModal();
-        localStorage.setItem('dialogLastShown', Date.now().toString());
-        localStorage.setItem('dialogHasBeenShown', 'true');
+        localStorage.setItem("dialogLastShown", Date.now().toString());
+        localStorage.setItem("dialogHasBeenShown", "true");
     };
 
     // Если задержка 0 или не задана - показываем сразу
@@ -235,10 +235,9 @@ function handleAutoplayDialog() {
 }
 // End Autoplay setup
 
-
 // Добавляем обработчик для каждой кнопки
 if (showBtns.length > 0) {
-    showBtns.forEach(btn => {
+    showBtns.forEach((btn) => {
         btn.addEventListener("click", (e) => {
             e.preventDefault(); // Предотвращаем стандартное поведение ссылки
             const dialogId = btn.getAttribute("data-dialog"); // Получаем ID модального окна
@@ -252,7 +251,7 @@ if (showBtns.length > 0) {
 
 // Добавляем обработчик для каждой кнопки закрытия
 if (closeBtns.length > 0) {
-    closeBtns.forEach(btn => {
+    closeBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
             const dialogElem = btn.closest("dialog"); // Находим родительское модальное окно
             if (dialogElem) {
@@ -264,26 +263,39 @@ if (closeBtns.length > 0) {
 }
 
 // Initialize autoplay functionality
-document.addEventListener('DOMContentLoaded', handleAutoplayDialog);
+document.addEventListener("DOMContentLoaded", handleAutoplayDialog);
 
-// Optional: Close dialog when clicking outside
-autoplayDialog?.addEventListener('click', (e) => {
-    const dialogDimensions = autoplayDialog.getBoundingClientRect();
-    if (
-        e.clientX < dialogDimensions.left ||
-        e.clientX > dialogDimensions.right ||
-        e.clientY < dialogDimensions.top ||
-        e.clientY > dialogDimensions.bottom
-    ) {
-        autoplayDialog.close();
-        handleDialogClose(autoplayDialog);
-    }
+// Close dialog when clicking outside - for all dialogs
+function addClickOutsideHandler(dialog) {
+    if (!dialog) return;
+
+    dialog.addEventListener("click", (e) => {
+        const dialogDimensions = dialog.getBoundingClientRect();
+        if (
+            e.clientX < dialogDimensions.left ||
+            e.clientX > dialogDimensions.right ||
+            e.clientY < dialogDimensions.top ||
+            e.clientY > dialogDimensions.bottom
+        ) {
+            dialog.close();
+            handleDialogClose(dialog);
+        }
+    });
+}
+
+// Apply click outside handler to all dialogs
+document.addEventListener("DOMContentLoaded", () => {
+    const dialogs = ["dialog", "dialog-more", "dialog-autoplay"];
+    dialogs.forEach((dialogId) => {
+        const dialog = document.getElementById(dialogId);
+        addClickOutsideHandler(dialog);
+    });
 });
 
 // Handle ESC key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        const openDialog = document.querySelector('dialog[open]');
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        const openDialog = document.querySelector("dialog[open]");
         if (openDialog) {
             handleDialogClose(openDialog);
         }
@@ -306,37 +318,46 @@ document.addEventListener("DOMContentLoaded", function () {
             const apiData = {
                 leadtype: "request",
                 callerphone: phone,
-                requestDate: new Date().toISOString().slice(0, 19).replace("T", " "),
+                requestDate: new Date()
+                    .toISOString()
+                    .slice(0, 19)
+                    .replace("T", " "),
                 subject: "Заявка с сайта",
                 fio: name,
                 source: window.location.hostname,
                 medium: document.referrer || "direct",
                 siteName: window.location.hostname,
                 city: "Симферополь",
-                _token: token
+                _token: token,
             };
 
             window.showSpinner();
             try {
                 // Используем наш прокси вместо прямого обращения к API
-                const response = await fetch('/proxy-leads', {
+                const response = await fetch("/proxy-leads", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        "X-CSRF-TOKEN": token  // Добавляем токен в заголовки
+                        "X-CSRF-TOKEN": token, // Добавляем токен в заголовки
                     },
                     body: JSON.stringify(apiData),
                 });
 
-                formStatus.classList.remove("hidden", "bg-red-500", "bg-green-500");
+                formStatus.classList.remove(
+                    "hidden",
+                    "bg-red-500",
+                    "bg-green-500"
+                );
 
                 if (response.ok) {
                     form.reset();
                     formStatus.classList.add("bg-green-500");
-                    formStatus.querySelector("p").textContent = "Спасибо! Ваша заявка отправлена.";
+                    formStatus.querySelector("p").textContent =
+                        "Спасибо! Ваша заявка отправлена.";
                 } else {
                     formStatus.classList.add("bg-red-500");
-                    formStatus.querySelector("p").textContent = "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
+                    formStatus.querySelector("p").textContent =
+                        "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
                 }
 
                 formStatus.classList.remove("hidden");
@@ -348,7 +369,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error("Ошибка:", error);
                 formStatus.classList.remove("hidden");
                 formStatus.classList.add("bg-red-500");
-                formStatus.querySelector("p").textContent = "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
+                formStatus.querySelector("p").textContent =
+                    "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
             } finally {
                 hideSpinner();
             }
@@ -358,7 +380,6 @@ document.addEventListener("DOMContentLoaded", function () {
 // const dialogElem = document.getElementById("dialog");
 // const showBtns = document.querySelectorAll(".show"); // Получаем все элементы с классом show
 // const closeBtn = document.querySelector(".close");
-
 
 // // Добавляем обработчик для каждой кнопки
 // if (dialogElem && showBtns.length > 0) {
@@ -375,7 +396,6 @@ document.addEventListener("DOMContentLoaded", function () {
 //         dialogElem.close();
 //     });
 // }
-
 
 // Init ViewTransition
 // document.addEventListener("click", (e) => {
@@ -441,49 +461,49 @@ document.addEventListener("visibilitychange", () => {
 
 // PAGE ANIMATIONS
 AOS.init({
-  // Global settings:
-  disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
-  startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
-  initClassName: 'aos-init', // class applied after initialization
-  animatedClassName: 'aos-animate', // class applied on animation
-  useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
-  disableMutationObserver: false, // disables automatic mutations' detections (advanced)
-  debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
-  throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
+    // Global settings:
+    disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
+    startEvent: "DOMContentLoaded", // name of the event dispatched on the document, that AOS should initialize on
+    initClassName: "aos-init", // class applied after initialization
+    animatedClassName: "aos-animate", // class applied on animation
+    useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
+    disableMutationObserver: false, // disables automatic mutations' detections (advanced)
+    debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
+    throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
 
-
-  // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
-  offset: 120, // offset (in px) from the original trigger point
-  delay: 100, // values from 0 to 3000, with step 50ms
-  duration: 300, // values from 0 to 3000, with step 50ms
-  easing: 'ease', // default easing for AOS animations
-  once: false, // whether animation should happen only once - while scrolling down
-  mirror: false, // whether elements should animate out while scrolling past them
-  anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+    // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+    offset: 120, // offset (in px) from the original trigger point
+    delay: 100, // values from 0 to 3000, with step 50ms
+    duration: 300, // values from 0 to 3000, with step 50ms
+    easing: "ease", // default easing for AOS animations
+    once: false, // whether animation should happen only once - while scrolling down
+    mirror: false, // whether elements should animate out while scrolling past them
+    anchorPlacement: "top-bottom", // defines which position of the element regarding to window should trigger the animation
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const buttons = document.querySelectorAll(".toggle-button");
+    const contents = document.querySelectorAll(".content");
 
-document.addEventListener('DOMContentLoaded', function() {
-    const buttons = document.querySelectorAll('.toggle-button');
-    const contents = document.querySelectorAll('.content');
-
-    buttons.forEach(button => {
-        button.addEventListener('click', function() {
-            const targetId = this.getAttribute('data-target');
+    buttons.forEach((button) => {
+        button.addEventListener("click", function () {
+            const targetId = this.getAttribute("data-target");
             const targetContent = document.getElementById(targetId);
 
-            if (targetContent.classList.contains('active')) {
+            if (targetContent.classList.contains("active")) {
                 // Если целевой блок уже активен, скрываем его
-                targetContent.classList.remove('active');
-                this.classList.remove('active');
+                targetContent.classList.remove("active");
+                this.classList.remove("active");
             } else {
                 // Скрываем все блоки и убираем активный класс с кнопок
-                contents.forEach(content => content.classList.remove('active'));
-                buttons.forEach(btn => btn.classList.remove('active'));
+                contents.forEach((content) =>
+                    content.classList.remove("active")
+                );
+                buttons.forEach((btn) => btn.classList.remove("active"));
 
                 // Показываем целевой блок и делаем кнопку активной
-                targetContent.classList.add('active');
-                this.classList.add('active');
+                targetContent.classList.add("active");
+                this.classList.add("active");
             }
         });
     });
