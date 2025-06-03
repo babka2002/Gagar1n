@@ -39,6 +39,9 @@
 
         @vite(['resources/css/site.css', 'resources/css/markdown-content.css', 'resources/js/site.js'])
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <style>
+            [x-cloak] { display: none !important; }
+        </style>
     </head>
     <body class="bg-dark">
         <x-spinner />
@@ -111,7 +114,7 @@
                 Киевская, 115</p>
 
                 <!-- Кнопка записаться с выпадающим меню -->
-                <div class="relative hidden lg:block" x-data="{ open: false }">
+                <div class="relative hidden lg:block" x-data="{ open: false }" x-init="open = false">
                     <button
                         @click="open = !open"
                         @click.away="open = false"
@@ -132,6 +135,8 @@
                     <!-- Выпадающее меню -->
                     <div
                         x-show="open"
+                        x-cloak
+                        style="display: none"
                         x-transition:enter="transition ease-out duration-200"
                         x-transition:enter-start="opacity-0 scale-95"
                         x-transition:enter-end="opacity-100 scale-100"
