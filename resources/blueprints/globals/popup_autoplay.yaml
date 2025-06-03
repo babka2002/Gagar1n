@@ -2,52 +2,50 @@ tabs:
   main:
     display: Основное
     sections:
-      -
-        fields:
-          -
-            handle: popup_title
+      - fields:
+          - handle: popup_title
             field:
               type: text
               display: Заголовок
+              instructions: "Заголовок, который будет отображаться в модальном окне автоплея."
               localizable: false
-          -
-            handle: popap_text
+          - handle: popap_text
             field:
               type: textarea
               display: Описание
+              instructions: "Текст описания в модальном окне. Поддерживает простую разметку."
               localizable: false
-          -
-            handle: popap_image
+          - handle: popap_image
             field:
               max_files: 1
               container: assets
               type: assets
               display: Картинка
+              instructions: "Необязательное изображение для модального окна автоплея. Рекомендуемый размер: 1024x600px."
               localizable: false
   settings:
     display: Настройки показа
     sections:
-      -
-        fields:
-          -
-            handle: popup_delay
+      - fields:
+          - handle: popup_delay
             field:
               type: integer
               display: Задержка перед показом (в секундах)
+              instructions: "Через сколько секунд после загрузки страницы показать модальное окно. 0 = показать сразу, максимум 86400 (24 часа). Например: 5 = показать через 5 секунд."
               default: 3
               min: 0
-              max: 30
-          -
-            handle: popup_interval
+              max: 86400
+          - handle: popup_interval
             field:
               type: integer
               display: Интервал повторного показа (в днях)
+              instructions: "Через сколько дней снова показать модальное окно пользователю. 0 = показывать при каждом посещении, 1 = раз в день, 7 = раз в неделю. Данные сохраняются в localStorage браузера."
               default: 7
               min: 0
               max: 365
-          -
-            handle: popup_enabled
+          - handle: popup_enabled
             field:
               type: toggle
               display: Включить автопоказ
+              instructions: "Включить или отключить автоматический показ модального окна. Если выключено, окно можно открыть только вручную."
               default: true

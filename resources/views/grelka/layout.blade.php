@@ -635,7 +635,7 @@
             class="dialog-glass text-light w-[95%] max-w-[1183px] p-8 lg:p-16 rounded-[32px] lg:rounded-[66px]"
             data-delay="{{ $popup_autoplay->popup_delay ?? 3 }}"
             data-interval="{{ $popup_autoplay->popup_interval ?? 7 }}"
-            data-enabled="{{ $popup_autoplay->popup_enabled ?? true }}"
+            data-enabled="{{ $popup_autoplay->popup_enabled ? 'true' : 'false' }}"
             >
             <div class="flex flex-col mx-4">
                 <button class="close hover:scale-90 transition-all ml-auto">
