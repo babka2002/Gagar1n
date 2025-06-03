@@ -1,9 +1,0 @@
-@font-face {
-    font-family: 'Gothic No60';
-    src: url('Gothic60-Regular.woff2') format('woff2'),
-        url('Gothic60-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-

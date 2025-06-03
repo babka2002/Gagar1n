@@ -321,6 +321,20 @@
                                 </svg>
                             </button>
                         </div>
+
+                        <!-- Согласие на обработку ПД -->
+                        <div class="mt-4 flex items-start gap-3">
+                            <input
+                                type="checkbox"
+                                id="privacy-consent-1"
+                                name="privacy_consent"
+                                required
+                                class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
+                            />
+                            <label for="privacy-consent-1" class="text-base text-light leading-relaxed">
+                                Я согласен(а) на обработку персональных данных и принимаю условия <a href="/policy" target="_blank" class="text-main-red hover:underline">политики конфиденциальности</a>
+                            </label>
+                        </div>
                     {{ /form:grelka }}
 
                     <script>
@@ -522,6 +536,20 @@
                                 </svg>
                             </button>
                         </div>
+
+                        <!-- Согласие на обработку ПД -->
+                        <div class="mt-4 flex items-start gap-3">
+                            <input
+                                type="checkbox"
+                                id="privacy-consent-2"
+                                name="privacy_consent"
+                                required
+                                class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
+                            />
+                            <label for="privacy-consent-2" class="text-base text-light leading-relaxed">
+                                Я согласен(а) на обработку персональных данных и принимаю условия <a href="/policy" target="_blank" class="text-main-red hover:underline">политики конфиденциальности</a>
+                            </label>
+                        </div>
                     {{ /form:grelka }}
 
                     <script>
@@ -665,7 +693,7 @@
                                 <s:glide:data_url src='{{ $popup_autoplay->popap_image }}' width='768' quality='75' format='webp' /> 768w,
                                 <s:glide:data_url src='{{ $popup_autoplay->popap_image }}' width='1024' quality='75' format='webp' /> 1024w"
                             alt="{{ $popup_autoplay->popup_title }}"
-                            class="w-full h-auto object-cover max-h-[50vh] lg:max-h-[60vh] rounded-2xl pb-2"
+                            class="w-full h-auto object-cover max-h-[30vh] lg:max-h-[35vh] rounded-2xl pb-2"
                         >
                     @endif
 
@@ -680,6 +708,156 @@
                     {{ $popup_autoplay->popap_text }}
                     </p>
 
+                    @antlers
+                    {{ form:grelka }}
+                        <div class="mt-16 flex flex-col lg:flex-row items-center justify-between gap-4 pb-4">
+                            <!-- Индикатор состояния -->
+                            <div id="formStatus" class="fixed top-4 right-4 p-4 rounded-lg hidden z-50">
+                                <p class="text-white"></p>
+                            </div>
+
+                            <input
+                                type="text"
+                                name="full_name"
+                                required
+                                placeholder="Имя"
+                                class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase"
+                            />
+
+                            <input
+                                type="tel"
+                                name="phone"
+                                required
+                                placeholder="Номер"
+                                class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase"
+                            />
+
+                            <button
+                                type="submit"
+                                class="transition-all hover:opacity-70"
+                            >
+                                <svg width="161" height="81" viewBox="0 0 161 81" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="161" height="81" rx="33" fill="#E23333" />
+                                    <path d="M133.121 42.1213C134.293 40.9497 134.293 39.0503 133.121 37.8787L114.029 18.7868C112.858 17.6152 110.958 17.6152 109.787 18.7868C108.615 19.9584 108.615 21.8579 109.787 23.0294L126.757 40L109.787 56.9706C108.615 58.1421 108.615 60.0416 109.787 61.2132C110.958 62.3848 112.858 62.3848 114.029 61.2132L133.121 42.1213ZM29 43H131V37H29V43Z" fill="#FFF8F8" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- Согласие на обработку ПД -->
+                        <div class="mt-4 flex items-start gap-3">
+                            <input
+                                type="checkbox"
+                                id="privacy-consent-3"
+                                name="privacy_consent"
+                                required
+                                class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
+                            />
+                            <label for="privacy-consent-3" class="text-base text-light leading-relaxed">
+                                Я согласен(а) на обработку персональных данных и принимаю условия <a href="/policy" target="_blank" class="text-main-red hover:underline">политики конфиденциальности</a>
+                            </label>
+                        </div>
+                    {{ /form:grelka }}
+
+                    <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const dialogAutoplayElem = document.getElementById("dialog-autoplay");
+                        let form = dialogAutoplayElem.querySelector('form[action*="/!/forms/grelka"]');
+
+                        function showSuccessMessage() {
+                            form.style.display = 'none';
+                            const successMessage = document.createElement('div');
+                            successMessage.className = 'text-center py-8';
+                            successMessage.innerHTML = `
+                                <h3 class="text-2xl mb-4 text-green-400">Спасибо! Ваша заявка успешно отправлена</h3>
+                                <p class="text-lg">Мы свяжемся с вами в ближайшее время</p>
+                            `;
+                            form.parentNode.appendChild(successMessage);
+                        }
+
+                        if (form) {
+                            const oldForm = form.cloneNode(true);
+                            form.parentNode.replaceChild(oldForm, form);
+                            form = oldForm;
+
+                            form.addEventListener('submit', async function(e) {
+                                e.preventDefault();
+
+                                const formData = new FormData(this);
+                                const token = document.querySelector('input[name="_token"]').value;
+                                const submitButton = form.querySelector('button[type="submit"]');
+                                const hostname = window.location.hostname.replace('www.', '');
+
+                                submitButton.disabled = true;
+                                window.showSpinner();
+
+                                try {
+                                    const statamicResponse = await fetch(this.action, {
+                                        method: 'POST',
+                                        headers: {
+                                            'X-Requested-With': 'XMLHttpRequest',
+                                            'X-CSRF-TOKEN': token
+                                        },
+                                        body: formData
+                                    });
+
+                                    if (statamicResponse.ok) {
+                                        showSuccessMessage();
+                                        this.reset();
+
+                                        setTimeout(() => {
+                                            setTimeout(() => {
+                                                form.style.display = 'block';
+                                                const successMessage = form.parentNode.querySelector('div');
+                                                if (successMessage) {
+                                                    successMessage.remove();
+                                                }
+                                            }, 500);
+                                        }, 3000);
+
+                                        // Формируем данные для webhook
+                                        const webhookData = {
+                                            leadtype: "autoplay_popup",
+                                            callerphone: formData.get('phone'),
+                                            requestDate: new Date().toISOString().slice(0, 19).replace('T', ' '),
+                                            subject: "Заявка из автоплей попапа",
+                                            fio: formData.get('full_name'),
+                                            source: hostname,
+                                            medium: document.referrer || "direct",
+                                            siteName: hostname,
+                                            city: "Симферополь"
+                                        };
+
+                                        // Отправляем в webhook
+                                        await fetch('/webhook-proxy', {
+                                            method: 'POST',
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                                'X-CSRF-TOKEN': token
+                                            },
+                                            body: JSON.stringify(webhookData)
+                                        });
+                                    } else {
+                                        throw new Error('Failed to submit form');
+                                    }
+                                } catch (error) {
+                                    console.error('Error:', error);
+                                    const errorDiv = document.createElement('div');
+                                    errorDiv.className = 'text-red-500 text-center mt-4';
+                                    errorDiv.textContent = 'Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз';
+                                    form.appendChild(errorDiv);
+
+                                    setTimeout(() => {
+                                        errorDiv.remove();
+                                    }, 3000);
+                                } finally {
+                                    submitButton.disabled = false;
+                                    hideSpinner();
+                                }
+                            });
+                        }
+                    });
+                    </script>
+                    @endantlers
 
                 </div>
             </div>
