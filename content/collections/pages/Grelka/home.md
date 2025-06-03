@@ -58,19 +58,19 @@ code_field:
   mode: htmlmixed
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1748283159
-hero_title: 'КАРТА БОССА'
+updated_at: 1748851798
+hero_title: 'Лето в ПОДАРОК'
 pole_markdown: |-
   получи выгоду 
   на годовой абонемент до
 hero_discount: 30%
 hero_1: img/hero1.jpg
 hero_desc_group:
-  pole_text_1: за
-  pole_text_discont: '26 900 р'
-  pole_text_1_2: на
-  pole_text_2: '270 дней'
-  pole_text_3: 'фитнеса с бассейном'
+  pole_text_1: 'Занимайся летом'
+  pole_text_discont: бесплатно
+  pole_text_1_2: 'с нашей новой'
+  pole_text_2: картой
+  pole_text_3: 'Безлимитный фитнес и бассейн'
 direction_title: 'ВЫБЕРИ НАПРАВЛЕНИЕ СЕБЕ ПО ДУШЕ'
 direction_replicator:
   -
@@ -191,4 +191,5 @@ hero_podrobnee_gruppa:
   hero_podrobnee_ssylka: '#'
 forma_zagolovok_h3: 'стань членом клуба сейчас'
 forma_opisanie: 'колличество абонементов ограничено'
+hero_2: leto-v-podarok_sait_novyi.png
 ---
