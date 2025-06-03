@@ -106,16 +106,84 @@
             </div>
 
             <div class="flex items-center justify-center">
-                <p class="text-black font-normal [font-size:_clamp(1rem,0.9228rem+0.3861vw,1.25rem)] hidden lg:block mr-5"> г.
+                <p class="text-black font-normal [font-size:_clamp(1rem,0.9228rem+0.3861vw,1.25rem)] hidden lg:block mr-5"> г.
                 Симферополь <br> ул.
                 Киевская, 115</p>
-                <a
-                    href="#"
-                    data-dialog="dialog"
-                    aria-label="call button"
-                    class="show flex items-center justify-center bg-main-red px-[10px] py-[19px] rounded-[30px] text-[20px] text-light hover:opacity-70 transition-all hidden lg:block">
-                    записаться
-                </a>
+
+                <!-- Кнопка записаться с выпадающим меню -->
+                <div class="relative hidden lg:block" x-data="{ open: false }">
+                    <button
+                        @click="open = !open"
+                        @click.away="open = false"
+                        aria-label="booking button"
+                        class="flex items-center justify-center gap-2 bg-main-red px-[10px] py-[19px] rounded-[30px] text-[20px] text-light hover:opacity-70 transition-all">
+                        записаться
+                        <svg
+                            :class="open ? 'rotate-180' : ''"
+                            class="w-4 h-4 transition-transform"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Выпадающее меню -->
+                    <div
+                        x-show="open"
+                        x-transition:enter="transition ease-out duration-200"
+                        x-transition:enter-start="opacity-0 scale-95"
+                        x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-150"
+                        x-transition:leave-start="opacity-100 scale-100"
+                        x-transition:leave-end="opacity-0 scale-95"
+                        class="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 z-50"
+                    >
+                        <div class="py-2">
+                            <a href="#"
+                               data-dialog="dialog"
+                               data-booking-type="massage"
+                               class="show flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
+                                <svg class="w-4 h-4 mr-3 text-main-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4 4 4 0 004-4V5z"></path>
+                                </svg>
+                                Запись на массаж
+                            </a>
+
+                            <a href="#"
+                               data-dialog="dialog"
+                               data-booking-type="call"
+                               class="show flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
+                                <svg class="w-4 h-4 mr-3 text-main-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                                Запись на звонок
+                            </a>
+
+                            <a href="#"
+                               data-dialog="dialog"
+                               data-booking-type="personal"
+                               class="show flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
+                                <svg class="w-4 h-4 mr-3 text-main-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                                </svg>
+                                Персональные тренировки
+                            </a>
+
+                            <a href="#"
+                               data-dialog="dialog"
+                               data-booking-type="group"
+                               class="show flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
+                                <svg class="w-4 h-4 mr-3 text-main-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                                Групповые занятия
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <a
                     href="#"
                     data-dialog="dialog"
@@ -277,11 +345,15 @@
 
                 <div class="h-auto">
                     <h2
+                        id="dialog-title"
+                        data-original-title="{{ $popup_pozvonit->title }}"
                         class="[font-size:_clamp(1.625rem,-0.2494rem+6.0465vw,4.875rem)] font-normal uppercase leading-none"
                     >
                         {{ $popup_pozvonit->title }}
                     </h2>
                     <p
+                        id="dialog-text"
+                        data-original-text="{{ $popup_pozvonit->text }}"
                         class="[font-size:_clamp(1.1875rem,0.4666rem+2.3256vw,2.4375rem)]"
                     >
                     {{ $popup_pozvonit->text }}
@@ -358,6 +430,7 @@
                                 let formSubject = 'Заявка с сайта';
                                 let leadType = "request";
                                 const trainerName = this.getAttribute('data-trainer-name');
+                                const bookingType = this.getAttribute('data-booking-type');
 
                                 if (trainerName) {
                                     formSubject = `Форма Тренер - ${trainerName}`;
@@ -371,11 +444,56 @@
                                     leadType = "subscription";
                                 }
 
+                                // Проверяем тип записи из выпадающего меню
+                                if (bookingType) {
+                                    const dialogTitle = document.getElementById('dialog-title');
+                                    const dialogText = document.getElementById('dialog-text');
+
+                                    switch(bookingType) {
+                                        case 'massage':
+                                            formSubject = 'Запись на массаж';
+                                            leadType = "massage";
+                                            if (dialogTitle) dialogTitle.textContent = 'ЗАПИСЬ НА МАССАЖ';
+                                            if (dialogText) dialogText.textContent = 'Оставьте свои контакты и мы свяжемся с вами для записи на массаж';
+                                            break;
+                                        case 'call':
+                                            formSubject = 'Запись на звонок';
+                                            leadType = "callback";
+                                            if (dialogTitle) dialogTitle.textContent = 'ОБРАТНЫЙ ЗВОНОК';
+                                            if (dialogText) dialogText.textContent = 'Оставьте свой номер телефона и мы вам перезвоним';
+                                            break;
+                                        case 'personal':
+                                            formSubject = 'Запись на персональные тренировки';
+                                            leadType = "personal_training";
+                                            if (dialogTitle) dialogTitle.textContent = 'ПЕРСОНАЛЬНЫЕ ТРЕНИРОВКИ';
+                                            if (dialogText) dialogText.textContent = 'Запишитесь на индивидуальные тренировки с персональным тренером';
+                                            break;
+                                        case 'group':
+                                            formSubject = 'Запись на групповые занятия';
+                                            leadType = "group_training";
+                                            if (dialogTitle) dialogTitle.textContent = 'ГРУППОВЫЕ ЗАНЯТИЯ';
+                                            if (dialogText) dialogText.textContent = 'Присоединяйтесь к нашим групповым тренировкам';
+                                            break;
+                                    }
+                                } else {
+                                    // Сбрасываем заголовок и текст к оригинальным если это не специальная запись
+                                    const dialogTitle = document.getElementById('dialog-title');
+                                    const dialogText = document.getElementById('dialog-text');
+                                    if (dialogTitle) dialogTitle.textContent = dialogTitle.getAttribute('data-original-title');
+                                    if (dialogText) dialogText.textContent = dialogText.getAttribute('data-original-text');
+                                }
+
                                 // Формируем данные для webhook
                                 window.currentFormData = {
                                     leadtype: leadType,
                                     subject: formSubject
                                 };
+
+                                // Закрываем выпадающее меню если оно открыто
+                                const dropdown = document.querySelector('[x-data*="open"]');
+                                if (dropdown && dropdown.__x) {
+                                    dropdown.__x.$data.open = false;
+                                }
                             });
                         });
 
