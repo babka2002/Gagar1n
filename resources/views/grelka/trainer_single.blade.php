@@ -21,7 +21,9 @@
                         <span class="text-xl uppercase">{{ $trainer->name }}</span>
                         <span class="text-md text-right uppercase hidden md:block">{{ $trainer->position->title ?? 'Не определена' }}</span>
                     </h2>
-                    <div class="text-right md:text-left text-md mb-4">{{ $trainer->experience ?? 'Не указано' }} ГОДА ОПЫТА</div>
+                    @if(!empty($trainer->experience))
+                    <div class="text-right md:text-left text-md mb-4">{{ $trainer->experience }} ГОДА ОПЫТА</div>
+                    @endif
                     {{-- <div class="text-right md:text-left text-md mb-4">{!! nl2br(e($trainer->description ?? '')) !!}</div> --}}
                     <div class="markdown-content text-right md:text-left text-md mb-4">
                         {!! $trainer->description  !!}
