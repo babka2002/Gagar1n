@@ -43,7 +43,7 @@ return [
 
         'password' => [
             'driver' => 'password',
-            'allowed' => ['secret'],
+            'allowed' => ['gunior2025'],
             'field' => null,
             'form_url' => null,
         ],
