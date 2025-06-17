@@ -83,8 +83,8 @@
 
                 {{-- Junior --}}
                 <s:get_site:Gun1or>
-                    <a href="https://gunior.ru"
-                    {{-- <a href="{{ $permalink }}" --}}
+                    {{-- <a href="https://gunior.ru" --}}
+                    <a href="{{ $permalink }}"
                        class="w-[52px] md:w-[4.4375em] {{ $site->handle === 'Gun1or' ? 'grayscale-0' : 'grayscale-[1] hover:grayscale-0' }} transition-all">
                         <img
                             src="<s:glide:data_url src='/assets/img/logo-dzhunior.png' quality='75' format='webp' />"
