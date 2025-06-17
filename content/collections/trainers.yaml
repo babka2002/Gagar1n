@@ -1,8 +1,16 @@
-title: Тренера
+title: 'Тренера G1'
 sites:
   - Grelka
 propagate: false
+template: default
+layout: grelka/layout
 revisions: false
+sort_dir: asc
 date_behavior:
   past: public
   future: private
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true

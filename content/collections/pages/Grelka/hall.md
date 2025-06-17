@@ -5,7 +5,7 @@ title: 'Тренажерный зал'
 template: grelka/hall
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1748945341
+updated_at: 1749111433
 hero_title: 'тренажерный зал'
 hero_image: img/hall_hero.jpg
 stats_group:

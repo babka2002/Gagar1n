@@ -6,7 +6,7 @@
             data-aos="zoom-in"
                 class="text-light text-xl md:text-xxl leading-tight uppercase xl:absolute xl:max-w-[58%] right-0 -top-6 z-9 xl:text-right text-center">
                 каждый тренер в нашей команде уникален
-                xl <span class="text-xl md:text-xxl block">НАЙДИ СВОЕГО</span>
+                <span class="text-xl md:text-xxl block">НАЙДИ СВОЕГО</span>
             </h1>
             <img
                 {{-- src="{{ glide:data_url src='/assets/img/trainer-hero.jpg' quality='75' format='webp' }}" --}}
