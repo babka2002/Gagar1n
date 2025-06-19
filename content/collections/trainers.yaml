@@ -1,6 +1,7 @@
-title: 'Тренера G1'
+title: "Тренера G1"
 sites:
   - Grelka
+  - Gun1or
 propagate: false
 template: default
 layout: grelka/layout
@@ -10,7 +11,6 @@ date_behavior:
   past: public
   future: private
 preview_targets:
-  -
-    label: Entry
-    url: '{permalink}'
+  - label: Entry
+    url: "{permalink}"
     refresh: true

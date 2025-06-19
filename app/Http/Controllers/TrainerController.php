@@ -14,6 +14,22 @@ class TrainerController extends Controller
         private readonly TrainerService $trainerService
     ) {}
 
+    /**
+     * Определяет сайт на основе URL
+     */
+    private function getSiteFromUrl(): string
+    {
+        $url = request()->getPathInfo();
+
+        if (str_starts_with($url, '/gun1or')) {
+            return 'Gun1or';
+        } elseif (str_starts_with($url, '/gfoodcafe')) {
+            return 'GFoodcafe';
+        } else {
+            return 'Grelka';
+        }
+    }
+
     private function formatTrainerData($trainer, $source = 'api')
     {
         if ($source === 'api') {
@@ -78,13 +94,20 @@ class TrainerController extends Controller
 
     public function showTrainerBySlug(string $slug)
     {
-        $currentSite = strtolower(Site::current()->handle());
+        // Определяем сайт на основе URL
+        $currentSite = $this->getSiteFromUrl();
 
-        // Ищем тренера по slug
-        $statamicTrainer = Entry::query()
+        // Ищем тренера по slug только для текущего сайта
+        $statamicTrainer = \Statamic\Facades\Entry::query()
             ->where('collection', 'trainers')
             ->where('is_active', true)
             ->where('slug', $slug)
+            ->get()
+            ->filter(function ($trainer) use ($currentSite) {
+                // Проверяем принадлежность тренера к сайту через путь файла
+                $path = $trainer->path();
+                return str_contains($path, '/' . $currentSite . '/');
+            })
             ->first();
 
         if ($statamicTrainer) {
@@ -96,8 +119,8 @@ class TrainerController extends Controller
         }
 
         return (new View)
-            ->template($currentSite . '/trainer_single')
-            ->layout($currentSite . '/layout')
+            ->template(strtolower($currentSite) . '/trainer_single')
+            ->layout(strtolower($currentSite) . '/layout')
             ->with([
                 'trainer' => $trainer,
                 'field_meta_description' => $trainer->field_meta_description,
@@ -135,17 +158,31 @@ class TrainerController extends Controller
     }
     public function showTrainers()
     {
-        $currentSite = strtolower(Site::current()->handle());
+        // Определяем сайт на основе URL
+        $currentSite = $this->getSiteFromUrl();
 
-        $page = Entry::query()
-        ->where('collection', 'pages')
-        ->where('slug', 'trainers')
-        ->first();
+        // Ищем страницу тренеров для текущего сайта
+        $page = \Statamic\Facades\Entry::query()
+            ->where('collection', 'pages')
+            ->where('slug', 'trainers')
+            ->get()
+            ->filter(function ($page) use ($currentSite) {
+                // Проверяем принадлежность страницы к сайту через путь файла
+                $path = $page->path();
+                return str_contains($path, '/' . $currentSite . '/');
+            })
+            ->first();
 
-        $statamicTrainers = Entry::query()
+        // Получаем тренеров только для текущего сайта
+        $statamicTrainers = \Statamic\Facades\Entry::query()
             ->where('collection', 'trainers')
             ->where('is_active', true)
-            ->get();
+            ->get()
+            ->filter(function ($trainer) use ($currentSite) {
+                // Проверяем принадлежность тренера к сайту через путь файла
+                $path = $trainer->path();
+                return str_contains($path, '/' . $currentSite . '/');
+            });
 
         $trainersByDepartment = [];
         foreach ($statamicTrainers as $trainer) {
@@ -160,15 +197,15 @@ class TrainerController extends Controller
         }
 
         return (new View)
-            ->template($currentSite . '/trainers')
-            ->layout($currentSite . '/layout')
+            ->template(strtolower($currentSite) . '/trainers')
+            ->layout(strtolower($currentSite) . '/layout')
             ->with([
                 'trainersByDepartment' => $trainersByDepartment,
-                'title' => $page->get('hero_title'),
-                'field_meta_description' => $page->get('field_meta_description'),
-                'field_meta_keywords' => $page->get('field_meta_keywords'),
-                'subscription_not_found_title' => $page->get('subscription_not_found_title'),
-                'subscription_not_found_subtitle' => $page->get('subscription_not_found_subtitle')
+                'title' => $page?->get('hero_title') ?? 'Тренеры',
+                'field_meta_description' => $page?->get('field_meta_description'),
+                'field_meta_keywords' => $page?->get('field_meta_keywords'),
+                'subscription_not_found_title' => $page?->get('subscription_not_found_title'),
+                'subscription_not_found_subtitle' => $page?->get('subscription_not_found_subtitle')
             ]);
     }
 

@@ -10,7 +10,7 @@
         @endantlers
         <title>
             @antlers
-                {{ title ?? site:name }}
+                {{ title or site:name }}
             @endantlers
         </title>
         {{-- @vite([
@@ -24,7 +24,7 @@
 
         @vite(['resources/css/site.css', 'resources/js/site.js'])
     </head>
-    <body class="bg-[#3f62b5]">
+    <body style="background-color: {{ $site_settings['primary_color'] ?? '#3B82F6' }}">
     {{-- <body class="bg-dark"> --}}
         <!-- START::HEADER -->
         <div class="container px-[1em] my-5 sticky top-4 z-20">
@@ -39,7 +39,11 @@
                 </button>
 
                 <a href="/" class="p-0 m-0 relative z-10 hidden md:block transition-all">
-                    <img src="<s:glide:data_url src='/assets/img/logo.png' quality='75' format='webp' />" alt="" class="max-w-[13.625em]">
+                    @if(isset($site_settings['main_logo']) && $site_settings['main_logo'])
+                        <img src="{{ $site_settings['main_logo'] }}" alt="" class="max-w-[13.625em]">
+                    @else
+                        <img src="/assets/img/logo-dzhunior.png" alt="" class="max-w-[13.625em]">
+                    @endif
                 </a>
 
                 @antlers
@@ -97,7 +101,8 @@
                     href="#"
                     data-dialog="dialog"
                     aria-label="call button"
-                    class="show flex items-center justify-center bg-main-red px-[10px] py-[19px] rounded-[30px] text-[20px] text-light hover:opacity-70 transition-all hidden lg:block">
+                    class="show flex items-center justify-center px-[10px] py-[19px] rounded-[30px] text-[20px] text-light hover:opacity-70 transition-all hidden lg:block"
+                    style="background-color: {{ $site_settings['primary_color'] ?? '#3B82F6' }}">
                     записаться
                 </a>
                 <a
@@ -119,22 +124,22 @@
         @antlers
         {{ template_content }}
         @endantlers
-        {{-- @yield('trainersContent')
+        @yield('trainersContent')
         @yield('trainerContent')
         @yield('scheduleContent')
-        @yield('fitness') --}}
-
+        @yield('fitness')
+        @yield('tipovayaContent')
 
         <!-- START::FOOTER -->
         <footer class="bg-light py-10 md:py-24 px-4">
-            <div class="container sm:grid sm:grid-cols-4 md:grid-cols-5 items-center gap-12 bg-dark rounded-[clamp(3rem,2.3449rem+2.9116vw,4.8125rem)] px-[clamp(2.375rem,1.7877rem+2.6104vw,4rem)] py-10">
+            <div class="container sm:grid sm:grid-cols-4 md:grid-cols-5 items-center gap-12 rounded-[clamp(3rem,2.3449rem+2.9116vw,4.8125rem)] px-[clamp(2.375rem,1.7877rem+2.6104vw,4rem)] py-10" style="background-color: {{ $site_settings['primary_color'] ?? '#3B82F6' }}">
 
-                <!-- Логотип -->
-                <a href="/" class="sm:col-span-4 md:col-span-1 flex justify-center items-center">
-                    @if($footer->footer_logo)
-                        <img src="{{ $footer->footer_logo }}" alt="Gagar1n" class="max-w-full block">
+                <!-- Логотип Gun1or -->
+                <a href="/gun1or/" class="sm:col-span-4 md:col-span-1 flex justify-center items-center">
+                    @if(isset($site_settings['footer_logo']) && $site_settings['footer_logo'])
+                        <img src="{{ $site_settings['footer_logo'] }}" alt="Gun1or" class="max-w-full block max-h-20">
                     @else
-                        <img src="/assets/img/footer-logo.svg" alt="Gagar1n" class="max-w-full block">
+                        <img src="/assets/img/logo-dzhunior.png" alt="Gun1or" class="max-w-full block max-h-20">
                     @endif
                 </a>
 

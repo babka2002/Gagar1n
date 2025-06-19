@@ -24,9 +24,26 @@ class ScheduleController extends Controller
         $this->personalService = $personalService;
     }
 
+    /**
+     * Определяет сайт на основе URL
+     */
+    private function getSiteFromUrl(): string
+    {
+        $url = request()->getPathInfo();
+
+        if (str_starts_with($url, '/gun1or')) {
+            return 'Gun1or';
+        } elseif (str_starts_with($url, '/gfoodcafe')) {
+            return 'GFoodcafe';
+        } else {
+            return 'Grelka';
+        }
+    }
+
     public function index(Request $request)
     {
-        $currentSite = strtolower(Site::current()->handle());
+        // Определяем сайт на основе URL (как в TrainerController)
+        $currentSite = $this->getSiteFromUrl();
 
         if (!$request->has('start_date') || empty($request->input('start_date'))) {
             $request->merge(['start_date' => Carbon::now()->startOfWeek()->format('Y-m-d H:i')]);
@@ -57,6 +74,29 @@ class ScheduleController extends Controller
         $scheduleData = array_filter($scheduleData, function ($item) use ($scheduleType) {
             return isset($item['type']) && $item['type'] === $scheduleType;
         });
+
+        // Дополнительная фильтрация для Gun1or (детские занятия)
+        if ($currentSite === 'Gun1or') {
+            $scheduleData = array_filter($scheduleData, function ($item) {
+                // Фильтруем только детские занятия
+                $checkTitles = [
+                    $item['service']['title'] ?? '',
+                    $item['group']['title'] ?? '',
+                    $item['course']['title'] ?? '',
+                ];
+                foreach ($checkTitles as $title) {
+                    if (
+                        mb_stripos($title, 'kids') !== false ||
+                        mb_stripos($title, '(дети)') !== false ||
+                        mb_stripos($title, 'детск') !== false ||
+                        mb_stripos($title, 'junior') !== false
+                    ) {
+                        return true;
+                    }
+                }
+                return false;
+            });
+        }
 
         $filteredData = $this->applyFilters($scheduleData, $request);
         $timeSlots = $this->generateTimeSlots($filteredData);
@@ -197,26 +237,71 @@ class ScheduleController extends Controller
         // 2. Фильтр по возрасту (если выбран и не 'любые')
         if ($selectedAge && $selectedAge !== 'любые') {
             $ageFilteredData = [];
-            $isKidsFilter = ($selectedAge === 'детские');
 
             foreach ($filteredData as $item) {
-                $isKidsEvent = false;
-                // Проверяем наличие 'kids' или '(дети)' в релевантных полях
+                $shouldInclude = false;
+
+                // Проверяем наличие детских маркеров в релевантных полях
                 $checkTitles = [
                     $item['service']['title'] ?? '',
                     $item['group']['title'] ?? '',
                     $item['course']['title'] ?? '',
                 ];
+
+                $isKidsEvent = false;
                 foreach ($checkTitles as $title) {
-                    if (mb_stripos($title, 'kids') !== false || mb_stripos($title, '(дети)') !== false) {
+                    if (
+                        mb_stripos($title, 'kids') !== false ||
+                        mb_stripos($title, '(дети)') !== false ||
+                        mb_stripos($title, 'детск') !== false ||
+                        mb_stripos($title, 'junior') !== false
+                    ) {
                         $isKidsEvent = true;
                         break;
                     }
                 }
 
-                if ($isKidsFilter && $isKidsEvent) { // Нужны детские, и это детское
-                    $ageFilteredData[] = $item;
-                } elseif (!$isKidsFilter && !$isKidsEvent) { // Нужны взрослые, и это не детское
+                // Логика фильтрации по возрастным группам
+                switch ($selectedAge) {
+                    case 'детские':
+                        // Показываем ВСЕ детские занятия
+                        $shouldInclude = $isKidsEvent;
+                        break;
+                    case '3-5':
+                        // Для малышей (3-5 лет) ищем специфические маркеры ИЛИ показываем все детские без маркеров
+                        if ($isKidsEvent) {
+                            $hasSpecificMarkers = $this->checkAgeGroup($checkTitles, ['малыш', '3-5', '3', '4', '5', 'ясли']);
+                            $shouldInclude = $hasSpecificMarkers || $this->isGeneralKidsEvent($checkTitles);
+                        }
+                        break;
+                    case '6-8':
+                        // Для дошкольников (6-8 лет)
+                        if ($isKidsEvent) {
+                            $hasSpecificMarkers = $this->checkAgeGroup($checkTitles, ['дошкол', '6-8', '6', '7', '8', 'подготов']);
+                            $shouldInclude = $hasSpecificMarkers || $this->isGeneralKidsEvent($checkTitles);
+                        }
+                        break;
+                    case '9-12':
+                        // Для школьников (9-12 лет)
+                        if ($isKidsEvent) {
+                            $hasSpecificMarkers = $this->checkAgeGroup($checkTitles, ['школьн', '9-12', '9', '10', '11', '12', 'младш']);
+                            $shouldInclude = $hasSpecificMarkers || $this->isGeneralKidsEvent($checkTitles);
+                        }
+                        break;
+                    case '13-16':
+                        // Для подростков (13-16 лет)
+                        if ($isKidsEvent) {
+                            $hasSpecificMarkers = $this->checkAgeGroup($checkTitles, ['подрост', '13-16', '13', '14', '15', '16', 'старш']);
+                            $shouldInclude = $hasSpecificMarkers || $this->isGeneralKidsEvent($checkTitles);
+                        }
+                        break;
+                    default:
+                        // Если не детские, то берем только взрослые
+                        $shouldInclude = !$isKidsEvent;
+                        break;
+                }
+
+                if ($shouldInclude) {
                     $ageFilteredData[] = $item;
                 }
             }
@@ -244,5 +329,68 @@ class ScheduleController extends Controller
 
         // dd($filteredData);
         return array_values(array_unique($filteredData, SORT_REGULAR)); // Удаляем дубликаты, если они возникли
+    }
+
+    /**
+     * Проверяет, соответствует ли событие определенной возрастной группе
+     */
+    private function checkAgeGroup(array $titles, array $ageMarkers): bool
+    {
+        foreach ($titles as $title) {
+            foreach ($ageMarkers as $marker) {
+                if (mb_stripos($title, $marker) !== false) {
+                    return true;
+                }
+            }
+        }
+
+        // Если специфических маркеров возраста НЕТ,
+        // НЕ показываем в конкретных возрастных группах (только в общем "детские")
+        return false;
+    }
+
+    /**
+     * Проверяет, является ли событие общим детским (без конкретных возрастных маркеров)
+     */
+    private function isGeneralKidsEvent(array $titles): bool
+    {
+        $specificAgeMarkers = [
+            'малыш',
+            'ясли',
+            '3-5',
+            '3',
+            '4',
+            '5',
+            'дошкол',
+            'подготов',
+            '6-8',
+            '6',
+            '7',
+            '8',
+            'школьн',
+            'младш',
+            '9-12',
+            '9',
+            '10',
+            '11',
+            '12',
+            'подрост',
+            'старш',
+            '13-16',
+            '13',
+            '14',
+            '15',
+            '16'
+        ];
+
+        foreach ($titles as $title) {
+            foreach ($specificAgeMarkers as $marker) {
+                if (mb_stripos($title, $marker) !== false) {
+                    return false; // Есть специфический маркер возраста
+                }
+            }
+        }
+
+        return true; // Нет специфических маркеров - общее детское событие
     }
 }

@@ -12,7 +12,7 @@
         @endantlers
         <title>
             @antlers
-                {{ title ?? site:name }}
+                {{ title or site:name }}
             @endantlers
         </title>
 
@@ -58,7 +58,11 @@
                 </button>
 
                 <a href="/" class="p-0 m-0 relative z-10 hidden md:block transition-all">
-                    <img src="<s:glide:data_url src='/assets/img/logo.png' quality='75' format='webp' />" alt="" class="max-w-[13.625em]">
+                    @if(isset($site_settings['main_logo']) && $site_settings['main_logo'])
+                        <img src="{{ $site_settings['main_logo'] }}" alt="" class="max-w-[13.625em]">
+                    @else
+                        <img src="/assets/img/logo.png" alt="" class="max-w-[13.625em]">
+                    @endif
                 </a>
 
                 @antlers
@@ -220,10 +224,12 @@
 
                 <!-- Логотип -->
                 <a href="/" class="sm:col-span-4 md:col-span-1 flex justify-center items-center">
-                    @if($footer->footer_logo)
-                        <img src="{{ $footer->footer_logo }}" alt="Gagar1n" class="max-w-full block">
+                    @if(isset($site_settings['footer_logo']) && $site_settings['footer_logo'])
+                        <img src="{{ $site_settings['footer_logo'] }}" alt="Grelka" class="max-w-full block">
+                    @elseif(isset($footer->footer_logo) && $footer->footer_logo)
+                        <img src="{{ $footer->footer_logo }}" alt="Grelka" class="max-w-full block">
                     @else
-                        <img src="/assets/img/footer-logo.svg" alt="Gagar1n" class="max-w-full block">
+                        <img src="/assets/img/footer-logo.svg" alt="Grelka" class="max-w-full block">
                     @endif
                 </a>
 

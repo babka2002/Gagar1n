@@ -51,3 +51,13 @@ $router->get('/trainers', [TrainerController::class, 'showTrainers'])->name('tra
 $router->get('/trainers/{slug}', [TrainerController::class, 'showTrainerBySlug'])->where('slug', '[a-z0-9-]+')->name('trainers.show');
 // $router->get('/trainers/{employeeId}', [TrainerController::class, 'showTrainer'])->name('trainers.show');
 $router->get('/schedule', [ScheduleController::class, 'index'])->name('schedule.show');
+
+// Роуты для Gun1or (сабдиректория)
+$router->get('/gun1or/trainers', [TrainerController::class, 'showTrainers'])->name('gun1or.trainers.list');
+$router->get('/gun1or/trainers/{slug}', [TrainerController::class, 'showTrainerBySlug'])->where('slug', '[a-z0-9-]+')->name('gun1or.trainers.show');
+$router->get('/gun1or/schedule', [ScheduleController::class, 'index'])->name('gun1or.schedule.show');
+
+// Роуты для GFoodcafe (сабдиректория)
+$router->get('/gfoodcafe/trainers', [TrainerController::class, 'showTrainers'])->name('gfoodcafe.trainers.list');
+$router->get('/gfoodcafe/trainers/{slug}', [TrainerController::class, 'showTrainerBySlug'])->where('slug', '[a-z0-9-]+')->name('gfoodcafe.trainers.show');
+$router->get('/gfoodcafe/schedule', [ScheduleController::class, 'index'])->name('gfoodcafe.schedule.show');

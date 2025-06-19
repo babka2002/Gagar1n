@@ -3,350 +3,305 @@ tabs:
   main:
     display: Main
     sections:
-      -
-        display: Шаблон
+      - display: Шаблон
         fields:
-          -
-            handle: template
+          - handle: template
             field:
               type: template
               display: Шаблон
               localizable: false
-      -
-        display: Hero
+      - display: Hero
         instructions: hero
         fields:
-          -
-            handle: title
+          - handle: title
             field:
               type: text
               required: true
               validate:
                 - required
               localizable: false
-          -
-            handle: hero_title
+          - handle: hero_title
             field:
               type: text
               validate:
                 - required
-              display: 'Hero Title'
+              display: "Hero Title"
               localizable: false
-          -
-            handle: hero_desc_group
+          - handle: hero_desc_group
             field:
               type: group
-              display: 'Hero Desc Group'
+              display: "Hero Desc Group"
               localizable: false
               fields:
-                -
-                  handle: pole_text_1
+                - handle: pole_text_1
                   field:
                     type: text
-                    display: 'Поле Text 1'
+                    display: "Поле Text 1"
                     localizable: false
-                -
-                  handle: pole_text_discont
+                - handle: pole_text_discont
                   field:
                     type: text
-                    display: 'Поле Text Discont'
+                    display: "Поле Text Discont"
                     localizable: false
-                -
-                  handle: pole_text_1_2
+                - handle: pole_text_1_2
                   field:
                     type: text
-                    display: 'Поле Text 1-2'
+                    display: "Поле Text 1-2"
                     localizable: false
-                -
-                  handle: pole_text_2
+                - handle: pole_text_2
                   field:
                     type: text
-                    display: 'Поле Text 2'
+                    display: "Поле Text 2"
                     localizable: false
-                -
-                  handle: pole_text_3
+                - handle: pole_text_3
                   field:
                     type: text
-                    display: 'Поле Text 3'
+                    display: "Поле Text 3"
                     localizable: false
-          -
-            handle: hero_1
+          - handle: hero_1
             field:
               container: assets
               type: assets
-              display: 'Hero 1'
+              display: "Hero 1"
               max_files: 1
               localizable: false
-          -
-            handle: hero_2
+          - handle: hero_2
             field:
               container: assets
               type: assets
-              display: 'Hero 2'
+              display: "Hero 2"
               max_files: 1
               localizable: false
-          -
-            handle: hero_podrobnee_gruppa
+          - handle: hero_podrobnee_gruppa
             field:
               type: group
-              display: 'Подробнее Группа'
+              display: "Подробнее Группа"
               localizable: false
               fields:
-                -
-                  handle: hero_dialog_ili_ssylka
+                - handle: hero_dialog_ili_ssylka
                   field:
                     type: radio
-                    display: 'Диалог или ссылка'
+                    display: "Диалог или ссылка"
                     localizable: false
                     options:
-                      -
-                        key: dialog
+                      - key: dialog
                         value: Диалог
-                      -
-                        key: link
+                      - key: link
                         value: Ссылка
-                -
-                  handle: hero_abreviatura_dialoga
+                - handle: hero_abreviatura_dialoga
                   field:
                     type: text
-                    display: 'абревиатура диалога'
+                    display: "абревиатура диалога"
                     localizable: false
-                -
-                  handle: hero_tekst_podrobnee
+                - handle: hero_tekst_podrobnee
                   field:
                     type: text
-                    display: 'Hero текст подробнее'
+                    display: "Hero текст подробнее"
                     localizable: false
-                -
-                  handle: hero_podrobnee_ssylka
+                - handle: hero_podrobnee_ssylka
                   field:
                     type: link
-                    display: 'Hero подробнее ссылка'
+                    display: "Hero подробнее ссылка"
                     localizable: false
-      -
-        display: Direction
+      - display: Direction
         instructions: direction
         fields:
-          -
-            handle: direction_title
+          - handle: direction_title
             field:
               type: text
-              display: 'Direction Title'
+              display: "Direction Title"
               localizable: false
-          -
-            handle: direction_replicator
+          - handle: direction_replicator
             field:
               type: replicator
-              display: 'DIRECTION Replicator'
+              display: "DIRECTION Replicator"
               localizable: false
               sets:
                 novaya_gruppa_naborov:
-                  display: 'Новая группа наборов'
+                  display: "Новая группа наборов"
                   sets:
                     direction:
                       display: Direction
                       fields:
-                        -
-                          handle: inversion
+                        - handle: inversion
                           field:
                             type: toggle
                             display: Inversion
-                        -
-                          handle: direction_title
+                        - handle: direction_title
                           field:
                             type: text
-                            display: 'DIRECTION Title'
-                        -
-                          handle: direction_image
+                            display: "DIRECTION Title"
+                        - handle: direction_image
                           field:
                             max_files: 1
                             min_files: 1
                             container: assets
                             type: assets
-                            display: 'DIRECTION image'
-                        -
-                          handle: direction_link
+                            display: "DIRECTION image"
+                        - handle: direction_link
                           field:
                             type: link
                             display: Ссылка
-      -
-        display: Абонемент
+      - display: Абонемент
         instructions: ABONIMENT
         fields:
-          -
-            handle: aboniment_raspisanie_zagolovok
+          - handle: aboniment_raspisanie_zagolovok
             field:
               type: text
-              display: 'Расписание заголовок'
+              display: "Расписание заголовок"
               localizable: false
-          -
-            handle: aboniment_raspisanie_text
+          - handle: aboniment_raspisanie_text
             field:
               type: text
-              display: 'Расписание текст'
+              display: "Расписание текст"
               localizable: false
-          -
-            handle: aboniment_raspisanie_link
+          - handle: aboniment_raspisanie_link
             field:
               type: link
-              display: 'Расписание ссылка'
+              display: "Расписание ссылка"
               localizable: false
-          -
-            handle: aboniment_our_team_pretitle
+          - handle: aboniment_our_team_pretitle
             field:
               type: text
-              display: 'Наша команда пре-заголовок'
+              display: "Наша команда пре-заголовок"
               localizable: false
-          -
-            handle: aboniment_our_team_title
+          - handle: aboniment_our_team_title
             field:
               type: text
-              display: 'Наша команда заголовок'
+              display: "Наша команда заголовок"
               localizable: false
-          -
-            handle: aboniment_our_team_description
+          - handle: aboniment_our_team_description
             field:
               type: text
-              display: 'Наша команда описание'
+              display: "Наша команда описание"
               localizable: false
-          -
-            handle: aboniment_our_team_image
+          - handle: aboniment_our_team_image
             field:
               max_files: 1
               container: assets
               type: assets
-              display: 'Наша команда картинка'
+              display: "Наша команда картинка"
               localizable: false
-          -
-            handle: aboniment_our_team_link
+          - handle: aboniment_our_team_link
             field:
               type: link
-              display: 'Наша команда ссылка'
+              display: "Наша команда ссылка"
               localizable: false
-          -
-            handle: aboniment_title
+          - handle: aboniment_title
             field:
               type: text
-              display: 'Абонемент заголовок'
+              display: "Абонемент заголовок"
               localizable: false
-          -
-            handle: aboniment_type
+          - handle: aboniment_type
             field:
               type: replicator
-              display: 'Абонемент тип'
+              display: "Абонемент тип"
               localizable: false
               sets:
                 novaya_gruppa_naborov:
-                  display: 'Новая группа наборов'
+                  display: "Новая группа наборов"
                   sets:
                     novyy_nabor:
-                      display: 'Новый набор'
+                      display: "Новый набор"
                       fields:
-                        -
-                          handle: aboniment_type_name
+                        - handle: aboniment_type_name
                           field:
                             type: text
-                            display: 'Название абонеменета'
+                            display: "Название абонеменета"
                             localizable: false
-                        -
-                          handle: aboniment_image_front
+                        - handle: aboniment_image_front
                           field:
                             max_files: 1
                             min_files: 1
                             container: assets
                             type: assets
-                            display: 'ABONIMENT image front'
+                            display: "ABONIMENT image front"
                             localizable: false
-                        -
-                          handle: aboniment_image_rear
+                        - handle: aboniment_image_rear
                           field:
                             max_files: 1
                             min_files: 1
                             container: assets
                             type: assets
-                            display: 'ABONIMENT image rear'
+                            display: "ABONIMENT image rear"
                             localizable: false
-                        -
-                          handle: aboniment_link
+                        - handle: aboniment_link
                           field:
                             collections:
                               - pages
                               - klubnaya_karta
                             type: link
-                            display: 'Aboniment link'
+                            display: "Aboniment link"
                             localizable: false
-      -
-        display: FORM
+      - display: FORM
         instructions: FORM
-      -
-        display: Вопрос
+      - display: Вопрос
         fields:
-          -
-            handle: subscription_not_found_title
+          - handle: subscription_not_found_title
             field:
               type: text
               display: 'Заголовок "не нашли вариант"'
-              default: 'не нашли идеальный вариант?'
+              default: "не нашли идеальный вариант?"
               localizable: false
-          -
-            handle: subscription_not_found_subtitle
+          - handle: subscription_not_found_subtitle
             field:
               type: text
               display: 'Подзаголовок "не нашли вариант"'
-              default: 'подобрать подходящие условия'
+              default: "подобрать подходящие условия"
               localizable: false
-          -
-            handle: subscription_link
+          - handle: subscription_link
             field:
               type: link
-              display: 'Поле Ссылка'
+              display: "Поле Ссылка"
               localizable: false
-      -
-        display: Форма
+      - display: Форма
         fields:
-          -
-            handle: forma_zagolovok_h3
+          - handle: forma_zagolovok_h3
             field:
               type: text
-              display: 'Форма заголовок h3'
+              display: "Форма заголовок h3"
               localizable: false
-          -
-            handle: forma_opisanie
+          - handle: forma_opisanie
             field:
               type: textarea
-              display: 'Форма описание'
+              display: "Форма описание"
               localizable: false
   seo_tab:
     display: SEO
     sections:
-      -
-        display: 'Новая секция'
+      - display: "Новая секция"
         fields:
-          -
-            handle: field_meta_description
+          - handle: field_meta_description
             field:
               type: textarea
-              display: 'Краткое описание страницы'
+              display: "Краткое описание страницы"
               localizable: false
-          -
-            handle: field_meta_keywords
+          - handle: field_meta_keywords
             field:
               type: textarea
-              display: 'ключевые, слова, через, запятую'
+              display: "ключевые, слова, через, запятую"
               localizable: false
   sidebar:
     display: Sidebar
     sections:
-      -
-        fields:
-          -
-            handle: slug
+      - fields:
+          - handle: protect
+            field:
+              type: select
+              display: "Защита доступа"
+              placeholder: "Выберите тип защиты"
+              clearable: true
+              options:
+                password: "Защита паролем"
+                logged_in: "Только для авторизованных"
+                ip_address: "Ограничение по IP"
+              localizable: false
+          - handle: slug
             field:
               type: slug
               localizable: true
-              validate: 'max:200'
-          -
-            handle: parent
+              validate: "max:200"
+          - handle: parent
             field:
               type: entries
               collections:

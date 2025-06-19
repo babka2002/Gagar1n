@@ -1,0 +1,355 @@
+title: "Gun1or Home"
+tabs:
+  main:
+    display: Main
+    sections:
+      - display: Шаблон
+        fields:
+          - handle: template
+            field:
+              type: template
+              display: Шаблон
+              localizable: false
+      - display: Hero
+        instructions: "Настройки главного баннера"
+        fields:
+          - handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+              localizable: false
+          - handle: hero_title
+            field:
+              type: textarea
+              rows: 3
+              validate:
+                - required
+              display: "Hero заголовок (HTML разрешен)"
+              localizable: false
+              instructions: "Основной заголовок героя. Можно использовать <br> и <span> теги"
+          - handle: hero_desc_group
+            field:
+              type: group
+              display: "Hero дополнительный текст"
+              localizable: false
+              fields:
+                - handle: pole_text_1
+                  field:
+                    type: text
+                    display: "Поле Text 1"
+                    localizable: false
+                - handle: pole_text_discont
+                  field:
+                    type: text
+                    display: "Поле Text Discont"
+                    localizable: false
+                - handle: pole_text_1_2
+                  field:
+                    type: text
+                    display: "Поле Text 1-2"
+                    localizable: false
+                - handle: pole_text_2
+                  field:
+                    type: text
+                    display: "Поле Text 2"
+                    localizable: false
+                - handle: pole_text_3
+                  field:
+                    type: text
+                    display: "Поле Text 3"
+                    localizable: false
+          - handle: hero_1
+            field:
+              container: assets
+              type: assets
+              display: "Hero изображение 1"
+              max_files: 1
+              localizable: false
+          - handle: hero_2
+            field:
+              container: assets
+              type: assets
+              display: "Hero изображение 2 (главное)"
+              max_files: 1
+              localizable: false
+          - handle: hero_podrobnee_gruppa
+            field:
+              type: group
+              display: "Кнопка 'Подробнее'"
+              localizable: false
+              fields:
+                - handle: hero_dialog_ili_ssylka
+                  field:
+                    type: radio
+                    display: "Диалог или ссылка"
+                    localizable: false
+                    options:
+                      - key: dialog
+                        value: Диалог
+                      - key: link
+                        value: Ссылка
+                - handle: hero_abreviatura_dialoga
+                  field:
+                    type: text
+                    display: "ID диалога"
+                    localizable: false
+                    default: "dialog-more"
+                - handle: hero_tekst_podrobnee
+                  field:
+                    type: text
+                    display: "Текст кнопки"
+                    localizable: false
+                    default: "подробнее"
+                - handle: hero_podrobnee_ssylka
+                  field:
+                    type: link
+                    display: "Ссылка кнопки"
+                    localizable: false
+      - display: "Направления развития"
+        instructions: "Блок 'Мы предлагаем комплексное развитие для Вашего ребенка'"
+        fields:
+          - handle: direction_title
+            field:
+              type: textarea
+              rows: 2
+              display: "Заголовок блока направлений"
+              localizable: false
+              default: "Мы предлагаем комплексное развитие для Вашего ребенка"
+              instructions: "HTML теги разрешены"
+          - handle: direction_button_text
+            field:
+              type: text
+              display: "Текст кнопки после заголовка"
+              localizable: false
+              default: "Узнать больше"
+              instructions: "Кнопка которую запросил клиент"
+          - handle: direction_button_link
+            field:
+              type: link
+              display: "Ссылка кнопки"
+              localizable: false
+              default: "/gun1or/schedule"
+          - handle: direction_replicator
+            field:
+              type: replicator
+              display: "Направления развития детей"
+              localizable: false
+              instructions: "Карточки с различными направлениями (спорт, творчество, развитие и т.д.)"
+              sets:
+                novaya_gruppa_naborov:
+                  display: "Новая группа наборов"
+                  sets:
+                    direction:
+                      display: "Направление"
+                      fields:
+                        - handle: inversion
+                          field:
+                            type: toggle
+                            display: "Инверсия (картинка сверху/снизу)"
+                            instructions: "Для мобильной версии и разнообразия дизайна"
+                        - handle: direction_title
+                          field:
+                            type: textarea
+                            rows: 2
+                            display: "Название направления"
+                            instructions: "HTML теги разрешены, например <br/>"
+                            validate:
+                              - required
+                        - handle: direction_image
+                          field:
+                            max_files: 1
+                            min_files: 1
+                            container: assets
+                            type: assets
+                            display: "Изображение направления"
+                            validate:
+                              - required
+                        - handle: direction_link
+                          field:
+                            type: link
+                            display: "Ссылка направления"
+                            default: "/gun1or/schedule"
+      - display: Расписание и Команда
+        instructions: "Настройки блоков расписания и команды"
+        fields:
+          - handle: aboniment_raspisanie_zagolovok
+            field:
+              type: text
+              display: "Расписание заголовок"
+              localizable: false
+              default: "расписание"
+          - handle: aboniment_raspisanie_text
+            field:
+              type: text
+              display: "Расписание описание"
+              localizable: false
+              default: "100+ тренировок в неделю на выбор"
+          - handle: aboniment_raspisanie_link
+            field:
+              type: link
+              display: "Расписание ссылка"
+              localizable: false
+              default: "/gun1or/schedule"
+          - handle: aboniment_our_team_pretitle
+            field:
+              type: textarea
+              rows: 2
+              display: "Команда пре-заголовок"
+              localizable: false
+              default: "более 20 групповых программ специально для детей"
+              instructions: "Текст над блоком команды"
+          - handle: aboniment_our_team_title
+            field:
+              type: text
+              display: "Команда заголовок"
+              localizable: false
+              default: "наша команда"
+          - handle: aboniment_our_team_description
+            field:
+              type: textarea
+              rows: 2
+              display: "Команда описание"
+              localizable: false
+              default: "самые высоквалифицированные детские тренеры"
+          - handle: aboniment_our_team_image
+            field:
+              max_files: 1
+              container: assets
+              type: assets
+              display: "Команда изображение"
+              localizable: false
+          - handle: aboniment_our_team_link
+            field:
+              type: link
+              display: "Команда ссылка"
+              localizable: false
+              default: "/gun1or/trainers"
+      - display: Возрастные группы
+        instructions: "Управление возрастными группами детей"
+        fields:
+          - handle: age_groups_title
+            field:
+              type: text
+              display: "Заголовок возрастных групп"
+              localizable: false
+              default: "СКОЛЬКО ЛЕТ ВАШЕМУ РЕБЕНКУ?"
+          - handle: age_groups
+            field:
+              type: replicator
+              display: "Возрастные группы"
+              localizable: false
+              sets:
+                novaya_gruppa_naborov:
+                  display: "Новая группа возрастов"
+                  sets:
+                    age_group:
+                      display: "Возрастная группа"
+                      fields:
+                        - handle: age_group_name
+                          field:
+                            type: text
+                            display: "Возраст (например: 3-5 лет)"
+                            localizable: false
+                            validate:
+                              - required
+                        - handle: age_group_description
+                          field:
+                            type: text
+                            display: "Описание группы (например: Малыши)"
+                            localizable: false
+                            validate:
+                              - required
+                        - handle: age_group_link
+                          field:
+                            type: text
+                            display: "Ссылка на расписание (например: /gun1or/schedule?age=3-5)"
+                            localizable: false
+                            default: "/gun1or/schedule"
+      - display: "Достижения и отзывы"
+        instructions: "Управление текстами блоков достижений и отзывов"
+        fields:
+          - handle: achievements_title
+            field:
+              type: text
+              display: "Заголовок блока достижений"
+              localizable: false
+              default: "Мы гордимся нашими воспитанниками!"
+          - handle: reviews_title
+            field:
+              type: text
+              display: "Заголовок блока отзывов"
+              localizable: false
+              default: "вот что говорят о нашем центре клиенты"
+      - display: "Форма записи"
+        instructions: "Настройки формы записи"
+        fields:
+          - handle: form_title
+            field:
+              type: text
+              display: "Заголовок формы"
+              localizable: false
+              default: "СТАТЬ ЧЕМПИОНОМ ЭТО ЛЕГКО"
+          - handle: form_subtitle
+            field:
+              type: text
+              display: "Подзаголовок формы"
+              localizable: false
+              default: "колличество абонементов ограничено"
+          - handle: form_button_text
+            field:
+              type: text
+              display: "Текст кнопки отправки"
+              localizable: false
+              default: "стать ближе к своей цели"
+          - handle: form_privacy_text
+            field:
+              type: textarea
+              rows: 2
+              display: "Текст согласия"
+              localizable: false
+              default: 'Нажимая "Отправить" я согласен на обработку персональных данных'
+      - display: "Последний блок"
+        instructions: "Настройки финального призыва к действию"
+        fields:
+          - handle: final_cta_title
+            field:
+              type: text
+              display: "Заголовок финального CTA"
+              localizable: false
+              default: "не нашли идеальный вариант?"
+          - handle: final_cta_subtitle
+            field:
+              type: text
+              display: "Подзаголовок финального CTA"
+              localizable: false
+              default: "подобрать подходящие условия"
+  meta:
+    display: Meta
+    sections:
+      - display: Meta
+        fields:
+          - handle: field_meta_description
+            field:
+              type: text
+              display: "Meta Description"
+              localizable: false
+          - handle: field_meta_keywords
+            field:
+              type: text
+              display: "Meta Keywords"
+              localizable: false
+      - display: FORM
+        instructions: FORM
+        fields:
+          - handle: forma_zagolovok_h3
+            field:
+              type: text
+              display: "Form Заголовок h3"
+              localizable: false
+          - handle: forma_opisanie
+            field:
+              type: text
+              display: "Form Описание"
+              localizable: false

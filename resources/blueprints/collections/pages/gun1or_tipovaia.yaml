@@ -1,0 +1,62 @@
+title: "Gun1or Типовая страница"
+tabs:
+  main:
+    display: Основное
+    sections:
+      - display: Заголовок
+        fields:
+          - handle: title
+            field:
+              type: text
+              display: Заголовок
+              width: 50
+              validate:
+                - required
+          - handle: slug
+            field:
+              type: slug
+              display: URL
+              from: title
+              width: 50
+              localizable: false
+      - display: Контент
+        fields:
+          - handle: tipovaya_markdown
+            field:
+              type: textarea
+              display: "Содержимое страницы (Markdown)"
+              rows: 20
+              validate:
+                - required
+      - display: Настройки
+        fields:
+          - handle: template
+            field:
+              type: template
+              display: Шаблон
+              default: gun1or/tipovaya
+          - handle: custom_html_script
+            field:
+              type: code
+              display: "Дополнительный код"
+              theme: material
+              mode: htmlmixed
+              indent_type: spaces
+              indent_size: 4
+              key_map: default
+              line_numbers: true
+              line_wrapping: true
+  seo:
+    display: SEO
+    sections:
+      - display: Meta
+        fields:
+          - handle: field_meta_description
+            field:
+              type: textarea
+              display: "Meta Description"
+              rows: 3
+          - handle: field_meta_keywords
+            field:
+              type: text
+              display: "Meta Keywords"

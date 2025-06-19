@@ -1,0 +1,54 @@
+title: "Настройки сайта"
+tabs:
+  main:
+    display: "Основные настройки"
+    sections:
+      - display: "Логотипы"
+        fields:
+          - handle: main_logo
+            field:
+              type: assets
+              container: assets
+              mode: list
+              max_files: 1
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              display: "Основной логотип (в header)"
+              instructions: "Логотип, который отображается в левой части header-а"
+          - handle: site_logo
+            field:
+              type: assets
+              container: assets
+              mode: list
+              max_files: 1
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              display: "Логотип сайта (в переключателе)"
+              instructions: "Логотип для переключения между сайтами в правой части header-а"
+          - handle: footer_logo
+            field:
+              type: assets
+              container: assets
+              mode: list
+              max_files: 1
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              display: "Логотип в футере"
+              instructions: "Логотип, который отображается в футере"
+      - display: "Цветовая схема"
+        fields:
+          - handle: primary_color
+            field:
+              type: color
+              display: "Основной цвет"
+              instructions: "Основной цвет кнопок и элементов интерфейса"
+              default: "#E23333"
+          - handle: button_hover_color
+            field:
+              type: color
+              display: "Цвет кнопок при наведении"
+              instructions: "Цвет кнопок при наведении мыши"
+              default: "#CC2929"

@@ -1,0 +1,10 @@
+title: 'Настройки сайта Grelka'
+data:
+  main_logo:
+    - /assets/img/logo.png
+  site_logo:
+    - /assets/img/grelka-logo.png
+  footer_logo:
+    - /assets/img/footer-logo.svg
+  primary_color: '#E23333'
+  button_hover_color: '#CC2929'

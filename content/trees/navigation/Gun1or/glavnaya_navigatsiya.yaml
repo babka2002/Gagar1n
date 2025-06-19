@@ -1,5 +1,16 @@
 tree:
-  -
-    id: 91cf7019-9577-4bed-8afd-def3b2c0f0a6
+  - id: 91cf7019-9577-4bed-8afd-def3b2c0f0a6
     title: Главная
     url: /gun1or/
+  - id: gun1or-trainers-nav-001
+    title: Тренеры
+    url: /gun1or/trainers
+  - id: gun1or-schedule-nav-001
+    title: Расписание
+    url: /gun1or/schedule
+  - id: gun1or-rules-nav-001
+    title: Правила клуба
+    url: /gun1or/pravila-detskogo-kluba
+  - id: gun1or-policy-nav-001
+    title: Политика конфиденциальности
+    url: /gun1or/politika-konfidentsialnosti

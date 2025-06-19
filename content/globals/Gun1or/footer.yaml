@@ -1,43 +1,35 @@
-footer_logo: img/footer-logo.svg
-phone_number: '8 800 500 1598'
-work_hours_weekdays: 'пн-пт 7-23'
-work_hours_weekends: 'сб-вс, праздники 7-22'
-telegram_link: 'https://t.me/GAGAR1N_G1'
-vk_link: 'https://vk.com/gagar1n_fitness'
-mobile_app_text: 'наше мобильное приложение'
-app_store_link: 'https://apps.apple.com/ru/app/gagarin-фитнес/id1556427863'
-google_play_link: 'https://play.google.com/store/search?q=gagarin+фитнес&c=apps&hl=ru&gl=US'
-yandex_rating: '4,9'
+footer_logo: img/logo-dzhunior.png
+phone_number: "8 800 500 1598"
+work_hours_weekdays: "пн-пт 7-23"
+work_hours_weekends: "сб-вс, праздники 7-22"
+telegram_link: "https://t.me/GAGAR1N_G1"
+vk_link: "https://vk.com/gagar1n_fitness"
+mobile_app_text: "наше мобильное приложение"
+app_store_link: "https://apps.apple.com/ru/app/gagarin-фитнес/id1556427863"
+google_play_link: "https://play.google.com/store/search?q=gagarin+фитнес&c=apps&hl=ru&gl=US"
+yandex_rating: "4,9"
 footer_menu:
-  -
-    id: m6i9mp1k
+  - id: m6i9mp1k
     title: Команда
-    link: /team
-  -
-    id: m6i9msjv
+    link: /gun1or/trainers
+  - id: m6i9msjv
     title: Партнеры
-    link: /partnery
-  -
-    id: m6i9mvi1
+    link: /gun1or/partnery
+  - id: m6i9mvi1
     title: Оплата
-    link: /oplata
-  -
-    id: m6i9myit
-    title: 'Сотрудничество и реклама'
-    link: /sotrudnichestvo-i-reklama
-  -
-    id: m6i9n1cv
-    title: 'Правила клуба'
-    link: /pravila-kluba
-  -
-    id: m6i9n3i8
-    title: 'Политика конфиденциальности'
-    link: /policy
-  -
-    id: m6i9nb4e
-    title: 'Договор оферты'
-    link: /dogovor-oferty
-  -
-    id: m6i9ndfy
+    link: /gun1or/oplata
+  - id: m6i9myit
+    title: "Сотрудничество и реклама"
+    link: /gun1or/sotrudnichestvo-i-reklama
+  - id: m6i9n1cv
+    title: "Правила клуба"
+    link: /gun1or/pravila-detskogo-kluba
+  - id: m6i9n3i8
+    title: "Политика конфиденциальности"
+    link: /gun1or/politika-konfidentsialnosti
+  - id: m6i9nb4e
+    title: "Договор оферты"
+    link: /gun1or/dogovor-oferty
+  - id: m6i9ndfy
     title: Контакты
-    link: /kontakty
+    link: /gun1or/kontakty

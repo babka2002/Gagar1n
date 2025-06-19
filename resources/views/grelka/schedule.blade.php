@@ -368,18 +368,19 @@
                             <div class="py-4 border-l-dark border-dashed border-l-[2px]">
                                 @foreach($eventsInSlot as $item)
                                     @if(isset($item['service']))
-                                    <div class="grid grid-cols-4 text-[9px]">
-                                        <div class="rounded-l-xl col-span-1 mb-2" style="background-color: {{ $item['service']['color'] }};"></div>
-                                        <div class="col-span-2 px-1 mb-2">
-                                            <h4 class="uppercase">{{ $item['service']['title'] }}</h4>
-                                            <p>{{ \Carbon\Carbon::parse($item['start_date'])->format('H:i') }} - {{ \Carbon\Carbon::parse($item['end_date'])->format('H:i') }}</p>
-                                            <p>{{ $item['employee']['name'] }}</p>
-                                        </div>
-                                        <div class="col-span-1">
-                                            <span>{{ $item['room']['title'] }}</span>
-                                            <a href="">
-                                                <img src="/assets/img/location.png" alt="" class="w-6" />
-                                            </a>
+                                    <div class="text-[10px] border-l-8 pl-2 mb-2" style="border-left-color: {{ $item['service']['color'] ?? '#cccccc' }};">
+                                        <div class="flex justify-between items-start">
+                                            <div>
+                                                <h4 class="uppercase font-semibold">{{ $item['service']['title'] }}</h4>
+                                                <p>{{ \Carbon\Carbon::parse($item['start_date'])->format('H:i') }} - {{ \Carbon\Carbon::parse($item['end_date'])->format('H:i') }}</p>
+                                                <p>{{ $item['employee']['name'] }}</p>
+                                            </div>
+                                            <div class="text-right flex flex-col items-end ml-1 flex-shrink-0">
+                                                <span>{{ $item['room']['title'] }}</span>
+                                                <a href="#" class="mt-1">
+                                                    <img src="/assets/img/location.png" alt="location" class="w-4 h-4" />
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                     @endif
