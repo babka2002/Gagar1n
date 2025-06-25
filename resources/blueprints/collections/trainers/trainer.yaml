@@ -1,70 +1,60 @@
 title: Тренера
 tabs:
   основное:
-    display: 'Основная информация'
+    display: "Основная информация"
     sections:
-      -
-        fields:
-          -
-            handle: title
+      - fields:
+          - handle: title
             field:
               type: text
               required: true
               display: ФИО
-              instructions: 'Полное имя тренера (будет отображаться в списках)'
+              instructions: "Полное имя тренера (будет отображаться в списках)"
               localizable: false
               validate:
                 - required
-          -
-            handle: name
+          - handle: name
             field:
               type: text
               display: Имя
               localizable: false
               validate:
                 - required
-          -
-            handle: second_name
+          - handle: second_name
             field:
               type: text
               display: Отчество
               localizable: false
-          -
-            handle: last_name
+          - handle: last_name
             field:
               type: text
               display: Фамилия
               localizable: false
               validate:
                 - required
-          -
-            handle: short_description_markdown
+          - handle: short_description_markdown
             field:
               type: markdown
-              display: 'Короткое описание MD'
-              instructions: 'Полное описание тренера'
+              display: "Короткое описание MD"
+              instructions: "Полное описание тренера"
               localizable: false
-          -
-            handle: content_markdown
+          - handle: content_markdown
             field:
               type: markdown
               display: Описание
-              instructions: 'Полное описание тренера'
+              instructions: "Полное описание тренера"
               localizable: false
-          -
-            handle: external_id
+          - handle: external_id
             field:
               type: text
-              display: 'ID из API'
-              instructions: 'Идентификатор тренера из внешней системы'
+              display: "ID из API"
+              instructions: "Идентификатор тренера из внешней системы"
               localizable: false
   медиа:
     display: Медиа
     sections:
-      -
-        fields:
-          -
-            handle: localPhotoPath
+      - fields:
+          - handle: localPhotoPath
             field:
               type: assets
               container: trainers
@@ -75,10 +65,8 @@ tabs:
   специализация:
     display: Специализация
     sections:
-      -
-        fields:
-          -
-            handle: position
+      - fields:
+          - handle: position
             field:
               type: terms
               taxonomies:
@@ -88,8 +76,7 @@ tabs:
               localizable: false
               validate:
                 - required
-          -
-            handle: department
+          - handle: department
             field:
               type: terms
               taxonomies:
@@ -97,8 +84,7 @@ tabs:
               mode: select
               display: Отдел
               localizable: false
-          -
-            handle: specializations
+          - handle: specializations
             field:
               type: terms
               taxonomies:
@@ -107,43 +93,37 @@ tabs:
               multiple: true
               display: Специализации
               localizable: false
-          -
-            handle: experience
+          - handle: experience
             field:
               type: text
-              display: 'Опыт работы'
+              display: "Опыт работы"
               localizable: false
   настройки:
     display: Настройки
     sections:
-      -
-        fields:
-          -
-            handle: slug
+      - fields:
+          - handle: slug
             field:
               type: slug
               localizable: true
               validate:
                 - required
-                - 'max:200'
+                - "max:200"
               display: URL
-              instructions: 'URL адрес страницы тренера'
-          -
-            handle: template
+              instructions: "URL адрес страницы тренера"
+          - handle: template
             field:
               type: template
               display: Шаблон
               default: trainer_single
               localizable: false
-          -
-            handle: is_active
+          - handle: is_active
             field:
               type: toggle
               display: Активен
               default: true
               localizable: false
-          -
-            handle: author
+          - handle: author
             field:
               type: users
               display: Автор
@@ -153,18 +133,23 @@ tabs:
   seo:
     display: SEO
     sections:
-      -
-        display: 'Новая секция'
+      - display: "Новая секция"
         fields:
-          -
-            handle: field_meta_description
+          - handle: seo_title
             field:
-              type: textarea
-              display: 'Краткое описание страницы'
+              type: text
+              display: "SEO Title"
+              instructions: 'Если не заполнено, будет использовано: "Имя - Фамилия | GAGAR1N Симферополь"'
               localizable: false
-          -
-            handle: field_meta_keywords
+              validate:
+                - "max:60"
+          - handle: field_meta_description
             field:
               type: textarea
-              display: 'ключевые, слова, через, запятую'
+              display: "Краткое описание страницы"
+              localizable: false
+          - handle: field_meta_keywords
+            field:
+              type: textarea
+              display: "ключевые, слова, через, запятую"
               localizable: false

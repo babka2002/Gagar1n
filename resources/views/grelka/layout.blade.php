@@ -11,9 +11,13 @@
             {{-- {{ dump:site }} --}}
         @endantlers
         <title>
-            @antlers
-                {{ title or site:name }}
-            @endantlers
+            @if(isset($title))
+                {{ $title }}
+            @else
+                @antlers
+                    {{ title or site:name }}
+                @endantlers
+            @endif
         </title>
 
         @antlers

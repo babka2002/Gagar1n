@@ -9,9 +9,13 @@
             {{ icon | favicon }}
         @endantlers
         <title>
-            @antlers
-                {{ title or site:name }}
-            @endantlers
+            @if(isset($title))
+                {{ $title }}
+            @else
+                @antlers
+                    {{ title or site:name }}
+                @endantlers
+            @endif
         </title>
         {{-- @vite([
             'vendor/mkocansey/bladewind/public/css/animate.min.css',

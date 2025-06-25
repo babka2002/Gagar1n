@@ -85,6 +85,7 @@ class TrainerController extends Controller
                 'experience' => $trainer->get('experience'),
                 'slug' => $trainer->slug(),
                 // SEO
+                'seo_title' => $trainer->get('seo_title'),
                 'field_meta_description' => $trainer->get('field_meta_description'),
                 'field_meta_keywords' => $trainer->get('field_meta_keywords'),
             ];
@@ -118,11 +119,18 @@ class TrainerController extends Controller
             abort(404, 'Тренер не найден');
         }
 
+        // Формируем SEO title
+        $seoTitle = $trainer->seo_title;
+        if (empty($seoTitle)) {
+            $seoTitle = $trainer->name . ' ' . $trainer->last_name . ' | GAGAR1N Симферополь';
+        }
+
         return (new View)
             ->template(strtolower($currentSite) . '/trainer_single')
             ->layout(strtolower($currentSite) . '/layout')
             ->with([
                 'trainer' => $trainer,
+                'title' => $seoTitle,
                 'field_meta_description' => $trainer->field_meta_description,
                 'field_meta_keywords' => $trainer->field_meta_keywords
             ]);
@@ -149,11 +157,20 @@ class TrainerController extends Controller
             abort(404, 'Тренер не найден');
         }
 
+        // Формируем SEO title
+        $seoTitle = $trainer->seo_title;
+        if (empty($seoTitle)) {
+            $seoTitle = $trainer->name . ' ' . $trainer->last_name . ' | GAGAR1N Симферополь';
+        }
+
         return (new View)
             ->template($currentSite . '/trainer_single')
             ->layout($currentSite . '/layout')
             ->with([
-                'trainer' => $trainer
+                'trainer' => $trainer,
+                'title' => $seoTitle,
+                'field_meta_description' => $trainer->field_meta_description,
+                'field_meta_keywords' => $trainer->field_meta_keywords
             ]);
     }
     public function showTrainers()
