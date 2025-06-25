@@ -269,8 +269,16 @@ tabs:
   seo_tab:
     display: SEO
     sections:
-      - display: "Новая секция"
+      - display: "SEO настройки"
         fields:
+          - handle: seo_title
+            field:
+              type: text
+              display: "SEO Заголовок"
+              instructions: "Если не заполнено, будет использован текущий title страницы"
+              localizable: false
+              validate:
+                - "max:60"
           - handle: field_meta_description
             field:
               type: textarea

@@ -11,13 +11,16 @@
             {{-- {{ dump:site }} --}}
         @endantlers
         <title>
-            @if(isset($title))
+            @antlers
+                {{ seo_title or title or site:name }}
+            @endantlers
+            {{-- @if(isset($title))
                 {{ $title }}
             @else
                 @antlers
-                    {{ title or site:name }}
+                    {{ seo_title or title or site:name }}
                 @endantlers
-            @endif
+            @endif --}}
         </title>
 
         @antlers

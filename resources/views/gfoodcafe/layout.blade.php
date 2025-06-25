@@ -9,13 +9,9 @@
             {{ icon | favicon }}
         @endantlers
         <title>
-            @if(isset($title))
-                {{ $title }}
-            @else
-                @antlers
-                    {{ title or site:name }}
-                @endantlers
-            @endif
+            @antlers
+                {{ seo_title or title or site:name }}
+            @endantlers
         </title>
 
         @vite(['resources/css/site.css', 'resources/js/site.js'])

@@ -1,22 +1,46 @@
 title: Default
-fields:
-  -
-    handle: content
-    field:
-      type: markdown
-      display: Content
-      localizable: true
-  -
-    handle: author
-    field:
-      type: users
-      display: Author
-      default: current
-      localizable: true
-      max_items: 1
-  -
-    handle: template
-    field:
-      type: template
-      display: Template
-      localizable: true
+tabs:
+  main:
+    display: Основное
+    sections:
+      - fields:
+          - handle: content
+            field:
+              type: markdown
+              display: Content
+              localizable: true
+          - handle: author
+            field:
+              type: users
+              display: Author
+              default: current
+              localizable: true
+              max_items: 1
+          - handle: template
+            field:
+              type: template
+              display: Template
+              localizable: true
+  seo:
+    display: SEO
+    sections:
+      - display: "SEO настройки"
+        fields:
+          - handle: seo_title
+            field:
+              type: text
+              display: "SEO Заголовок"
+              instructions: "Если не заполнено, будет использован текущий title страницы"
+              localizable: false
+              validate:
+                - "max:60"
+          - handle: field_meta_description
+            field:
+              type: textarea
+              display: "Краткое описание страницы"
+              localizable: false
+          - handle: field_meta_keywords
+            field:
+              type: textarea
+              display: "ключевые, слова, через, запятую"
+              localizable: false
