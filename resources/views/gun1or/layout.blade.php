@@ -24,7 +24,7 @@
 
         @vite(['resources/css/site.css', 'resources/js/site.js'])
     </head>
-    <body style="background-color:#3B82F6">
+    <body style="background-color:#3f61b5">
     {{-- <body style="background-color: {{ $site_settings['primary_color'] ?? '#3B82F6' }}"> --}}
     {{-- <body class="bg-dark"> --}}
         <!-- START::HEADER -->
