@@ -10,7 +10,7 @@
             <div class="absolute bottom-8 left-1/3 w-8 h-8 bg-blue-300 rounded-full opacity-80 animate-pulse"></div>
 
             <!-- Кнопка назад -->
-            <a href="/gun1or/trainers"
+            <a href="{{ route('gun1or.trainers.list') }}"
                class="inline-flex items-center gap-2 bg-white text-blue-600 font-bold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105 mb-8"
                data-aos="fade-right">
                 <svg width="20" height="20" viewBox="0 0 70 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -140,7 +140,7 @@
                         <span class="text-3xl ml-2">👥</span>
                     </h3>
                     <div class="text-center">
-                        <a href="/gun1or/trainers"
+                        <a href="{{ route('gun1or.trainers.list') }}"
                            class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105">
                             Посмотреть всех тренеров
                             <span class="ml-2">👀</span>

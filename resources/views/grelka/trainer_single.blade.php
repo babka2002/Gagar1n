@@ -17,15 +17,15 @@
                         назад
                     </a>
 
-                    <h2 class="text-right md:text-left md:flex items-start justify-between mb-4">
+                    <h2 class="text-left md:flex items-start justify-between mb-4">
                         <span class="text-xl uppercase">{{ $trainer->name }}</span>
                         <span class="text-md text-right uppercase hidden md:block">{{ $trainer->position->title ?? 'Не определена' }}</span>
                     </h2>
                     @if(!empty($trainer->experience))
-                    <div class="text-right md:text-left text-md mb-4">{{ $trainer->experience }} ГОДА ОПЫТА</div>
+                    <div class="text-left text-md mb-4">{{ $trainer->experience }} ГОДА ОПЫТА</div>
                     @endif
-                    {{-- <div class="text-right md:text-left text-md mb-4">{!! nl2br(e($trainer->description ?? '')) !!}</div> --}}
-                    <div class="markdown-content text-right md:text-left text-md mb-4">
+                    {{-- <div class="text-left text-md mb-4">{!! nl2br(e($trainer->description ?? '')) !!}</div> --}}
+                    <div class="markdown-content text-left text-md mb-4">
                         {!! $trainer->description  !!}
                     </div>
 
@@ -37,7 +37,7 @@
                             <li class="leading-tight">{{ $trainer->awards }}</li>
                         @endif
                     </ul>
-                    <div class="text-lg text-right uppercase md:hidden my-5">{{ $trainer->position->title ?? 'Не определена' }}</div>
+                    <div class="text-lg text-left uppercase md:hidden my-5">{{ $trainer->position->title ?? 'Не определена' }}</div>
 
 
 
@@ -55,16 +55,16 @@
                 </div>
                 <div class="col-span-1 order-1 md:order-2 mb-4 md:mb-0">
                     <div class="flex justify-between mb-5 md:hidden">
-                        <a href="#" class="">
+                        <button onclick="window.history.back()" class="hover:opacity-70 transition-all">
                             <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="17.4194" cy="17.4194" r="17.4194" fill="#D9D9D9" />
                                 <path fill-rule="evenodd" clip-rule="evenodd"
                                     d="M18.3672 8.26534C19.3343 7.30739 20.9023 7.30739 21.8693 8.26534C22.8364 9.22329 22.8364 10.7764 21.8693 11.7344L16.4199 17.1323L22.2167 22.8743C23.1838 23.8323 23.1838 25.3854 22.2167 26.3434C21.2496 27.3013 19.6817 27.3013 18.7146 26.3434L11.5961 19.2922C11.4068 19.1046 11.2545 18.8943 11.1393 18.67C10.2832 17.7065 10.3196 16.2368 11.2488 15.3165L18.3672 8.26534Z"
                                     fill="#3D3D3D" />
                             </svg>
-                        </a>
+                        </button>
 
-                        <a href="#" class="">
+                        <a href="{{ route('trainers.list') }}" class="hover:opacity-70 transition-all">
                             <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="17.389" cy="17.389" r="17.389" fill="#D9D9D9" />
                                 <path fill-rule="evenodd" clip-rule="evenodd"
