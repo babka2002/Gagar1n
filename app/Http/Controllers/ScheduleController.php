@@ -119,8 +119,8 @@ class ScheduleController extends Controller
         }
 
         return (new View)
-            ->layout($currentSite . '/layout')
-            ->template($currentSite . '/schedule')
+            ->layout(strtolower($currentSite) . '/layout')
+            ->template(strtolower($currentSite) . '/schedule')
             ->with([
                 'timeSlots' => $timeSlots,
                 'daysOfWeek' => $daysOfWeek,
