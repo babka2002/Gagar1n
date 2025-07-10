@@ -40,7 +40,7 @@
     {{-- <body class="bg-dark"> --}}
         <!-- START::HEADER -->
         <div class="container px-[1em] my-5 sticky top-4 z-20">
-            <header class="container bg-light flex justify-between items-center gap-2 rounded-[30px] px-[20px] py-[14px] ">
+            <header class="container bg-[#3d3d3d] flex justify-between items-center gap-2 rounded-[30px] px-[20px] py-[14px] ">
             <div class="flex items-center justify-center gap-[34px] relative ">
                 <button aria-label="menu button" class="menu-toggle rounded-full bg-dark text-light flex items-center justify-center w-[3.75em] h-[3.75em] relative z-10"><svg
                     width="34" height="22" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,11 +50,11 @@
                 </svg>
                 </button>
 
-                <a href="/" class="p-0 m-0 relative z-10 hidden md:block transition-all">
+                <a href="/" class="p-0 m-0 relative z-10 block transition-all">
                     @if(isset($site_settings['main_logo']) && $site_settings['main_logo'])
-                        <img src="{{ $site_settings['main_logo'] }}" alt="" class="max-w-[13.625em]">
+                        <img src="{{ $site_settings['main_logo'] }}" alt="" class="max-w-[4.5em] lg:max-w-[5.5em]">
                     @else
-                        <img src="/assets/img/logo-dzhunior.png" alt="" class="max-w-[13.625em]">
+                        <img src="/assets/img/logo-dzhunior.png" alt="" class="max-w-[4.5em] lg:max-w-[5.5em]">
                     @endif
                 </a>
 
@@ -65,15 +65,15 @@
 
             </div>
 
-            <div class="flex items-center justify-between gap-2 relative z-10">
+            <div class="hidden md:flex items-center justify-between gap-6 relative z-10">
                 {{-- Grelka - основной сайт --}}
                 <s:get_site:Grelka>
                     <a href="{{ $permalink }}"
-                       class="w-[52px] md:w-[4.4375em] {{ $site->handle === 'Grelka' ? 'grayscale-0' : 'grayscale-[1] hover:grayscale-0' }} transition-all">
+                       class="w-[52px] md:w-[6em] lg:w-[7em] {{ $site->handle === 'Grelka' ? 'grayscale-0' : 'grayscale-[1]' }} transition-all">
                         <img
-                            src="<s:glide:data_url src='/assets/img/grelka-logo.png' quality='75' format='webp' />"
+                            src="<s:glide:data_url src='/assets/img/new_logo_grelka.png' quality='75' format='webp' />"
                             alt="{{ $name }}"
-                            class="block hover:opacity-70 transition-all"
+                            class="block {{ $site->handle === 'Grelka' ? 'opacity-100' : 'opacity-70 hover:opacity-100' }} transition-all"
                         >
                     </a>
                 </s:get_site:Grelka>
@@ -82,11 +82,11 @@
                 <s:get_site:Gun1or>
                     <a href="#"
                     {{-- <a href="{{ $permalink }}" --}}
-                       class="w-[52px] md:w-[4.4375em] {{ $site->handle === 'Gun1or' ? 'grayscale-0' : 'grayscale-[1] hover:grayscale-0' }} transition-all">
+                       class="w-[52px] md:w-[6em] lg:w-[7em] {{ $site->handle === 'Gun1or' ? 'grayscale-0' : 'grayscale-[1]' }} transition-all">
                         <img
-                            src="<s:glide:data_url src='/assets/img/logo-dzhunior.png' quality='75' format='webp' />"
+                            src="<s:glide:data_url src='/assets/img/new_logo_gunior.png' quality='75' format='webp' />"
                             alt="{{ $name }}"
-                            class="block hover:opacity-70 transition-all"
+                            class="block {{ $site->handle === 'Gun1or' ? 'opacity-100' : 'opacity-70 hover:opacity-100' }} transition-all"
                         >
                     </a>
                 </s:get_site:Gun1or>
@@ -95,18 +95,18 @@
                 <s:get_site:GFoodcafe>
                     <a href="#"
                     {{-- <a href="{{ $permalink }}" --}}
-                       class="w-[52px] md:w-[4.4375em] {{ $site->handle === 'GFoodcafe' ? 'grayscale-0' : 'grayscale-[1] hover:grayscale-0' }} transition-all">
+                       class="w-[52px] md:w-[6em] lg:w-[7em] {{ $site->handle === 'GFoodcafe' ? 'grayscale-0' : 'grayscale-[1]' }} transition-all">
                         <img
-                            src="<s:glide:data_url src='/assets/img/dzhifud-logo.png' quality='75' format='webp' />"
+                            src="<s:glide:data_url src='/assets/img/new_logo_gfood.png' quality='75' format='webp' />"
                             alt="{{ $name }}"
-                            class="block hover:opacity-70 transition-all"
+                            class="block {{ $site->handle === 'GFoodcafe' ? 'opacity-100' : 'opacity-70 hover:opacity-100' }} transition-all"
                         >
                     </a>
                 </s:get_site:GFoodcafe>
             </div>
 
             <div class="flex items-center justify-center">
-                <p class="text-black font-normal [font-size:_clamp(1rem,0.9228rem+0.3861vw,1.25rem)] hidden lg:block mr-5"> г.
+                <p class="text-white font-normal [font-size:_clamp(1rem,0.9228rem+0.3861vw,1.25rem)] hidden lg:block mr-5"> г.
                 Симферополь <br> ул.
                 Киевская, 115</p>
                 <a
@@ -120,15 +120,56 @@
                 <a
                     href="#"
                     data-dialog="dialog"
-                    class="show flex items-center justify-center"
+                    class="show flex items-center justify-center bg-[#d9262e] rounded-full hover:opacity-80 transition-all lg:hidden"
                 >
                     <img
                     src="<s:glide:data_url src='/assets/img/phone.png' quality='75' format='webp' />"
                     alt=""
-                    class="min-w-[52px] h-[52px] flex-1 lg:hidden">
+                    class="w-[48px] h-[48px] object-contain m-1">
                 </a>
             </div>
             </header>
+
+            <!-- START::MOBILE LOGOS BLOCK -->
+            <div class="container px-[1em] md:hidden mb-4">
+                <div class="px-4 py-3">
+                    <div class="flex items-center justify-center gap-4">
+                        {{-- Grelka --}}
+                        <s:get_site:Grelka>
+                            <a href="{{ $permalink }}" class="flex-1 flex justify-center transition-all {{ $site->handle === 'Grelka' ? 'grayscale-0' : 'grayscale-[1]' }}">
+                                <img
+                                    src="<s:glide:data_url src='/assets/img/new_logo_grelka.png' quality='75' format='webp' />"
+                                    alt="{{ $name }}"
+                                    class="h-[40px] w-auto object-contain {{ $site->handle === 'Grelka' ? 'opacity-100' : 'opacity-70 hover:opacity-100' }} transition-all"
+                                >
+                            </a>
+                        </s:get_site:Grelka>
+
+                        {{-- Junior --}}
+                        <s:get_site:Gun1or>
+                            <a href="#" class="flex-1 flex justify-center transition-all {{ $site->handle === 'Gun1or' ? 'grayscale-0' : 'grayscale-[1]' }}">
+                                <img
+                                    src="<s:glide:data_url src='/assets/img/new_logo_gunior.png' quality='75' format='webp' />"
+                                    alt="{{ $name }}"
+                                    class="h-[40px] w-auto object-contain {{ $site->handle === 'Gun1or' ? 'opacity-100' : 'opacity-70 hover:opacity-100' }} transition-all"
+                                >
+                            </a>
+                        </s:get_site:Gun1or>
+
+                        {{-- GFood Cafe --}}
+                        <s:get_site:GFoodcafe>
+                            <a href="#" class="flex-1 flex justify-center transition-all {{ $site->handle === 'GFoodcafe' ? 'grayscale-0' : 'grayscale-[1]' }}">
+                                <img
+                                    src="<s:glide:data_url src='/assets/img/new_logo_gfood.png' quality='75' format='webp' />"
+                                    alt="{{ $name }}"
+                                    class="h-[40px] w-auto object-contain {{ $site->handle === 'GFoodcafe' ? 'opacity-100' : 'opacity-70 hover:opacity-100' }} transition-all"
+                                >
+                            </a>
+                        </s:get_site:GFoodcafe>
+                    </div>
+                </div>
+            </div>
+            <!-- END::MOBILE LOGOS BLOCK -->
         </div>
         <!-- END::HEADER -->
 

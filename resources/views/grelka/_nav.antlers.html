@@ -1,12 +1,13 @@
 <ul
-    class="absolute top-[90%] left-[-20px] bg-light rounded-b-[1.875em] p-5 min-w-[17.9375em] menu-items z-9 hidden"
+    class="absolute top-[90%] left-[-20px] bg-light rounded-tl-none rounded-tr-[1.875em] rounded-br-[1.875em] rounded-bl-[1.875em] p-5 min-w-[17.9375em] menu-items z-9 hidden"
 >
     {{ nav:glavnaya_navigatsiya include_home="true" }}
     <li>
         <a
             href="{{ url }}"
             class="{{ is_current ?= 'text-red-700'}} uppercase text-black leading-8 font-normal block hover:underline hover:underline-offset-4 transition-all"
-            >{{ title }}</a>
+            >{{ title }}</a
+        >
     </li>
     {{ /nav:glavnaya_navigatsiya }}
     <!-- <li>
