@@ -17,13 +17,13 @@
             </p>
 
             <!-- Переключатель групповых/индивидуальных -->
-            <div class="flex gap-4 justify-center mb-8" data-aos="zoom-in">
+            <div class="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center mb-8 px-4 sm:px-0" data-aos="zoom-in">
                 <a href="{{ route('gun1or.schedule.show', array_merge(request()->except('schedule_type'), ['schedule_type' => 'classes'])) }}"
-                   class="rounded-full px-6 py-3 font-bold text-lg transition-all hover:scale-105 {{ $scheduleType === 'classes' ? 'bg-white text-blue-600' : 'bg-white/20 text-white hover:bg-white/30' }}">
+                   class="rounded-full px-4 sm:px-6 py-2 sm:py-3 font-bold text-sm sm:text-lg transition-all hover:scale-105 text-center {{ $scheduleType === 'classes' ? 'bg-white text-blue-600' : 'bg-white/20 text-white hover:bg-white/30' }}">
                     🏃‍♂️ Групповые занятия
                 </a>
                 <a href="{{ route('gun1or.schedule.show', array_merge(request()->except('schedule_type'), ['schedule_type' => 'personal'])) }}"
-                   class="rounded-full px-6 py-3 font-bold text-lg transition-all hover:scale-105 {{ $scheduleType === 'personal' ? 'bg-white text-blue-600' : 'bg-white/20 text-white hover:bg-white/30' }}">
+                   class="rounded-full px-4 sm:px-6 py-2 sm:py-3 font-bold text-sm sm:text-lg transition-all hover:scale-105 text-center {{ $scheduleType === 'personal' ? 'bg-white text-blue-600' : 'bg-white/20 text-white hover:bg-white/30' }}">
                     👨‍🏫 Индивидуальные
                 </a>
             </div>
@@ -156,7 +156,7 @@
         </div>
 
         <!-- MOBILE VIEW -->
-        <div class="grid grid-cols-8 rounded-brxl p-4 bg-light gap-2 md:hidden">
+        <div class="grid grid-cols-8 rounded-brxl mt-2 p-4 bg-light gap-2 md:hidden">
             @if(empty($daysOfWeek))
                 <div class="col-span-8">
                     <div class="rounded-brxl bg-blue-500/10 p-4 text-center">
@@ -170,7 +170,7 @@
                         @foreach($daysOfWeek as $index => $day)
                         <li class="flex flex-col items-center justify-center rounded-lg day-selector {{ $loop->first ? 'bg-blue-500 text-light' : 'hover:bg-blue-500 hover:text-light' }} px-2" data-day-index="{{ $index }}">
                             <span class="text-base">{{ $day['date'] }}</span>
-                            <span class="text-sm uppercase">{{ substr($day['name'], 0, 3) }}</span>
+                            <span class="text-sm uppercase">{{ getDayAbbreviation($day['name']) }}</span>
                         </li>
                         @endforeach
                     </ul>
@@ -178,7 +178,11 @@
 
                 <div class="col-span-8">
                     <div class="bg-blue-500/45 px-4 py-2 rounded-xl text-center text-base" id="selected-day-name">
-                        {{ strtoupper(array_keys($daysOfWeek)[0] ?? 'ДЕНЬ') }}
+                        @if(!empty($daysOfWeek))
+                            {{ getDayAbbreviation(array_values($daysOfWeek)[0]['name'] ?? '') }}
+                        @else
+                            ДЕНЬ
+                        @endif
                     </div>
                 </div>
 
@@ -211,11 +215,9 @@
                                                 <p class="text-sm">{{ $eventStart->format('H:i') }} - {{ \Carbon\Carbon::parse($item['end_date'])->format('H:i') }}</p>
                                                 <p class="text-sm">{{ $item['employee']['name'] }}</p>
                                             </div>
-                                            <div class="col-span-3 flex gap-0 justify-end items-baseline text-sm p-1">
-                                                {{ $item['room']['title'] }}
-                                                <svg class="h-[18px]" viewBox="-3 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                    <path d="M0.929927373,12.3740416 C0.929927373,18.1213873 5.17041231,22.847918 10.4281516,22.847918 C15.6858908,22.847918 19.9263758,18.1213873 19.9263758,12.3740416 C19.9263758,6.62669598 15.6858908,1.9 10.4281516,1.9 C5.17041231,1.9 0.929927373,6.62669598 0.929927373,12.3740416 Z M10.4281516,8.51167832 C8.78977901,8.51167832 7.4618011,9.87293261 7.4618011,11.5568906 C7.4618011,13.2408485 8.78977901,14.6021028 10.4281516,14.6021028 C12.0665242,14.6021028 13.3945021,13.2408485 13.3945021,11.5568906 C13.3945021,9.87293261 12.0665242,8.51167832 10.4281516,8.51167832 Z"></path>
-                                                </svg>
+                                            <div class="col-span-3 flex gap-1 justify-end items-center text-sm p-1">
+                                                <span class="truncate">{{ $item['room']['title'] }}</span>
+                                                <img src="/assets/img/location.png" alt="location" class="w-3 h-3 flex-shrink-0" />
                                             </div>
                                         </div>
                                     @endif
@@ -243,7 +245,7 @@
                         </p>
                         <a href="#"
                            data-dialog="dialog"
-                           class="inline-flex items-center justify-center px-8 py-4 rounded-full text-white font-bold text-lg transition-all hover:scale-105"
+                           class="show inline-flex items-center justify-center px-8 py-4 rounded-full text-white font-bold text-lg transition-all hover:scale-105"
                            style="background: linear-gradient(45deg, {{ $site_settings['primary_color'] ?? '#3B82F6' }}, {{ $site_settings['button_hover_color'] ?? '#2563EB' }})">
                             {{ $subscription_not_found_subtitle ?? 'Связаться с нами' }}
                             <span class="ml-2">📞</span>
@@ -285,7 +287,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Обновляем название выбранного дня
             if (selectedDayName) {
-                selectedDayName.textContent = selector.querySelector('span.text-sm').textContent.toUpperCase();
+                selectedDayName.textContent = selector.querySelector('span.text-sm').textContent;
             }
         });
     });
