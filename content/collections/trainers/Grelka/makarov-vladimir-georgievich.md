@@ -23,12 +23,12 @@ content_markdown: |-
   - Научу плавать правильно и без лишнего напряжения  
   - Помогу усовершенствовать технику спортивного плавания всеми стилями  
   - Улыбка после занятий в бассейне станет для Вас нормой
-localPhotoPath: trainers/img_8156-(1).jpg
+localPhotoPath: trainers/_dsc8649_resized.jpg
 position:
   - trener-akva-zony
 template: trainer_single
 is_active: true
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1740395086
+updated_at: 1750925524
 ---

@@ -45,6 +45,8 @@ footer_menu:
 footer_block_metrika:
   code: |-
     <!-- Yandex.Metrika counter -->
+    <meta name="yandex-verification" content="9585d7f243b28800" />
+
     <script type="text/javascript" >
        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
        m[i].l=1*new Date();

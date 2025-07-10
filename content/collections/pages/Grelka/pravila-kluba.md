@@ -4,7 +4,7 @@ blueprint: tipovaia
 title: 'Правила клуба'
 meta_description: 'Правила клуба'
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1749111427
+updated_at: 1752147171
 template: grelka/pages/pravila-kluba
 custom_html_script:
   code: null
@@ -332,6 +332,8 @@ tipovaya_html2:
   code: null
   mode: htmlmixed
 tipovaya_markdown: |-
+  [правила клуба 
+  ](https://new.gagar1n.ru/assets/pravila_klub2a_2025.docx)
   # Правила посещения Фитнес-парка
 
   ## Общие правила

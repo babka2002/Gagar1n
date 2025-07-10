@@ -58,19 +58,19 @@ code_field:
   mode: htmlmixed
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1748851798
-hero_title: 'Лето в ПОДАРОК'
+updated_at: 1752054198
+hero_title: 'Фитнес и бассейн'
 pole_markdown: |-
   получи выгоду 
   на годовой абонемент до
 hero_discount: 30%
 hero_1: img/hero1.jpg
 hero_desc_group:
-  pole_text_1: 'Занимайся летом'
-  pole_text_discont: бесплатно
-  pole_text_1_2: 'с нашей новой'
-  pole_text_2: картой
-  pole_text_3: 'Безлимитный фитнес и бассейн'
+  pole_text_1: по
+  pole_text_discont: цене
+  pole_text_1_2: кофе
+  pole_text_2: 103₽
+  pole_text_3: 'в день'
 direction_title: 'ВЫБЕРИ НАПРАВЛЕНИЕ СЕБЕ ПО ДУШЕ'
 direction_replicator:
   -
@@ -84,7 +84,7 @@ direction_replicator:
   -
     id: m59otj1t
     inversion: true
-    direction_title: 'Теренажерный зал'
+    direction_title: 'Тренажерный зал'
     direction_image: img/direction-2.jpg
     type: direction
     enabled: true
@@ -133,7 +133,7 @@ aboniment_type:
     aboniment_type_name: Базовый
   -
     id: m59pycmp
-    aboniment_image_front: img/cards/day-1.png
+    aboniment_image_front: abonementy.png
     aboniment_image_rear: img/cards/day-2.png
     type: novyy_nabor
     enabled: true
@@ -172,11 +172,11 @@ aboniment_type:
     aboniment_link: 'entry::efae2e6a-4108-41b6-8fd4-b1168e4d7465'
     aboniment_type_name: Студентам
 aboniment_raspisanie_zagolovok: расписание
-aboniment_raspisanie_text: '300+ тренеровок в неделю на выбор'
+aboniment_raspisanie_text: '300+ тренировок в неделю на выбор'
 aboniment_raspisanie_link: 'entry::b7c0207a-bca0-41b0-90cc-6e73d78cf0e0'
 aboniment_our_team_pretitle: 'более 70 видов тренировок специально для тебя'
 aboniment_our_team_title: 'наша команда'
-aboniment_our_team_description: 'самые высоквалифицированные тренеры симферополя'
+aboniment_our_team_description: 'самые высококвалифицированные тренеры Симферополя'
 aboniment_our_team_image: img/team.jpg
 aboniment_our_team_link: 'entry::689557e0-2877-4aeb-af2f-e03270ca1d44'
 subscription_not_found_title: 'не нашли идеальный вариант?'
@@ -190,6 +190,6 @@ hero_podrobnee_gruppa:
   hero_tekst_podrobnee: Подробнее
   hero_podrobnee_ssylka: '#'
 forma_zagolovok_h3: 'стань членом клуба сейчас'
-forma_opisanie: 'колличество абонементов ограничено'
-hero_2: leto-v-podarok_sait_novyi.png
+forma_opisanie: 'количество абонементов ограничено'
+hero_2: fit_drieve_sait_novyi-(3)-(1).png
 ---
