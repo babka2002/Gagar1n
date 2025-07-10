@@ -40,8 +40,9 @@
     {{-- <body class="bg-dark"> --}}
         <!-- START::HEADER -->
         <div class="container px-[1em] my-5 sticky top-4 z-20">
-            <header class="container bg-[#3d3d3d] flex justify-between items-center gap-2 rounded-[30px] px-[20px] py-[14px] ">
-            <div class="flex items-center justify-center gap-[34px] relative ">
+            <header class="container bg-[#3d3d3d] grid grid-cols-3 md:flex md:justify-between items-center gap-2 rounded-[30px] px-[20px] py-[14px] ">
+            <!-- Мобильная версия: кнопка меню слева -->
+            <div class="flex items-center justify-start md:justify-center md:gap-[34px] relative">
                 <button aria-label="menu button" class="menu-toggle rounded-full bg-dark text-light flex items-center justify-center w-[3.75em] h-[3.75em] relative z-10"><svg
                     width="34" height="22" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2 2H32" stroke="#EBE7E7" stroke-width="4" stroke-linecap="round" />
@@ -50,8 +51,9 @@
                 </svg>
                 </button>
 
+                <!-- Логотип на десктопе -->
                 <s:get_site:Gun1or>
-                    <a href="{{ $permalink }}" class="p-0 m-0 relative z-10 block transition-all">
+                    <a href="{{ $permalink }}" class="hidden md:block p-0 m-0 relative z-10 transition-all">
                         @if(isset($site_settings['main_logo']) && $site_settings['main_logo'])
                             <img src="{{ $site_settings['main_logo'] }}" alt="" class="max-w-[4.5em] lg:max-w-[5.5em]">
                         @else
@@ -64,7 +66,19 @@
                 {{ partial:gun1or/_nav }}
                 {{-- {{ partial:nav }} --}}
                 @endantlers
+            </div>
 
+            <!-- Логотип по центру на мобильных -->
+            <div class="flex items-center justify-center md:hidden">
+                <s:get_site:Gun1or>
+                    <a href="{{ $permalink }}" class="p-0 m-0 relative z-10 block transition-all">
+                        @if(isset($site_settings['main_logo']) && $site_settings['main_logo'])
+                            <img src="{{ $site_settings['main_logo'] }}" alt="" class="max-w-[4.5em]">
+                        @else
+                            <img src="/assets/img/logo-dzhunior.png" alt="" class="max-w-[4.5em]">
+                        @endif
+                    </a>
+                </s:get_site:Gun1or>
             </div>
 
             <div class="hidden md:flex items-center justify-between gap-6 relative z-10">
@@ -107,7 +121,7 @@
                 </s:get_site:GFoodcafe>
             </div>
 
-            <div class="flex items-center justify-center">
+            <div class="flex items-center justify-end md:justify-center">
                 <p class="text-white font-normal [font-size:_clamp(1rem,0.9228rem+0.3861vw,1.25rem)] hidden lg:block mr-5"> г.
                 Симферополь <br> ул.
                 Киевская, 115</p>
