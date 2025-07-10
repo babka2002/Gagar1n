@@ -50,13 +50,15 @@
                 </svg>
                 </button>
 
-                <a href="/" class="p-0 m-0 relative z-10 block transition-all">
-                    @if(isset($site_settings['main_logo']) && $site_settings['main_logo'])
-                        <img src="{{ $site_settings['main_logo'] }}" alt="" class="max-w-[4.5em] lg:max-w-[5.5em]">
-                    @else
-                        <img src="/assets/img/logo-dzhunior.png" alt="" class="max-w-[4.5em] lg:max-w-[5.5em]">
-                    @endif
-                </a>
+                <s:get_site:Gun1or>
+                    <a href="{{ $permalink }}" class="p-0 m-0 relative z-10 block transition-all">
+                        @if(isset($site_settings['main_logo']) && $site_settings['main_logo'])
+                            <img src="{{ $site_settings['main_logo'] }}" alt="" class="max-w-[4.5em] lg:max-w-[5.5em]">
+                        @else
+                            <img src="/assets/img/logo-dzhunior.png" alt="" class="max-w-[4.5em] lg:max-w-[5.5em]">
+                        @endif
+                    </a>
+                </s:get_site:Gun1or>
 
                 @antlers
                 {{ partial:gun1or/_nav }}
