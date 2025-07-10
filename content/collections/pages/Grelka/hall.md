@@ -5,7 +5,7 @@ title: 'Тренажерный зал'
 template: grelka/hall
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1752130612
+updated_at: 1752152231
 hero_title: 'тренажерный зал'
 hero_image: img/hall_hero.jpg
 stats_group:
@@ -57,7 +57,7 @@ zones_replicator:
     zone_description: 'Зона кроссфита — это специально оборудованное пространство для проведения высокоинтенсивных функциональных тренировок, включающих упражнения с весами, кардио-нагрузки и элементы гимнастики. Здесь развивают силу, выносливость, скорость и координацию, сочетая разнообразные виды активности в одном занятии.'
 zones_schedule_text: 'свободное посещение зала ежедневно с 7 до 23'
 training_title: 'не знаешь как начать?'
-training_image: img/trainer-hero.jpg
+training_image: img/direction-4.jpg
 training_text: 'запишись на индивидуальную тренировку'
 form_title: 'НЕ УПУСТИ ЭТУ ВОЗМОЖНОСТЬ'
 form_image: img/pool-contact.png

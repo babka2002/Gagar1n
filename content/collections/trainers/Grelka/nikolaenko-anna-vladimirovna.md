@@ -21,12 +21,11 @@ content_markdown: |-
   > Люблю работать с группами, отдавать свою энергию и знания и видеть, как меняется жизнь моих студентов, видеть их счастливые улыбки и радоваться их успехам
 
   **Клиенты:** В основном, женская аудитория независимо от возраста и физической подготовки
-localPhotoPath: trainers/_dsc8561_resized.jpg
 position:
   - trener-gruppovyh-program
 template: trainer_single
 is_active: true
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1750925836
+updated_at: 1752155418
 ---
