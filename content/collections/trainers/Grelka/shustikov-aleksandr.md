@@ -1,7 +1,7 @@
 ---
 id: 00567800-4d67-45c1-84aa-f9a8ffef730c
 blueprint: trainer
-title: 'Шустиков Александр'
+title: 'Шустиков Александр Александрович'
 name: Александр
 second_name: Александрович
 last_name: Шустиков
@@ -22,12 +22,12 @@ content_markdown: |-
 
   ## Девиз
   - Поставим цель и дойдём до неё кратчайшим путём!
-localPhotoPath: trainers/sustikov-aleksandr-1.jpg
+localPhotoPath: trainers/sustikov-aleksandr.jpg
 position:
   - trener-akva-zony
 template: trainer_single
 is_active: true
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1740394478
+updated_at: 1751288202
 ---

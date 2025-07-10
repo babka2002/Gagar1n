@@ -1,7 +1,7 @@
 ---
 id: 879ef0a2-e51e-4e71-a855-cb980792525f
 blueprint: trainer
-title: 'Ксения Путина'
+title: 'Путина Ксения Игоревна'
 name: Ксения
 last_name: Путина
 content_markdown: |-
@@ -36,12 +36,15 @@ content_markdown: |-
   ## Образование
   - **Высшее образование**
     - Специальность: инженер (экспертиза и управление недвижимостью, ценообразование в строительстве)
-localPhotoPath: trainers/2024-10-22-19.42.40.jpg
+localPhotoPath: trainers/putina.jpg
 position:
   - personalnyy-trener
 template: trainer_single
 is_active: true
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1740392597
+updated_at: 1751371697
+second_name: Игоревна
+field_meta_description: Тест
+field_meta_keywords: Тест
 ---

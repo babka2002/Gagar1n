@@ -1,7 +1,7 @@
 ---
 id: b087b76b-37c1-44d0-bfc6-0060a1742808
 blueprint: trainer
-title: 'Денис Сечин'
+title: 'Сечин Денис Юрьевич'
 name: Денис
 last_name: Сечин
 content_markdown: |-
@@ -29,14 +29,15 @@ content_markdown: |-
 
   ## Место работы
   - Тренажерный зал
-localPhotoPath: trainers/secin-denis-1-(1)-min-2-(1).jpg
+localPhotoPath: trainers/secin.jpg
 position:
   - personalnyy-trener
 template: trainer_single
 is_active: true
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1745925442
+updated_at: 1751371673
 field_meta_description: 'Тренер Денис Сечин'
 field_meta_keywords: 'Тренер Денис Сечин'
+second_name: Юрьевич
 ---
