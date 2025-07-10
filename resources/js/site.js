@@ -243,28 +243,28 @@ function shouldShowDialog() {
     // Проверяем включен ли автопоказ
     const enabledValue = autoplayDialog.dataset.enabled;
     const enabled = enabledValue === "true" || enabledValue === "1";
-    console.log("AutoplayDialog enabled check:", enabledValue, "=>", enabled);
+    // console.log("AutoplayDialog enabled check:", enabledValue, "=>", enabled);
     if (!enabled) return false;
 
     const intervalDays = parseInt(autoplayDialog.dataset.interval);
-    console.log("AutoplayDialog interval days:", intervalDays);
+    // console.log("AutoplayDialog interval days:", intervalDays);
 
     // Если интервал 0 или не задан, показываем каждый раз
     if (intervalDays === 0) {
-        console.log(
-            "AutoplayDialog: интервал 0 дней, показываем при каждом посещении"
-        );
+        // console.log(
+        //     "AutoplayDialog: интервал 0 дней, показываем при каждом посещении"
+        // );
         return true;
     }
 
     const lastShown = localStorage.getItem("dialogLastShown");
     const hasBeenShown = localStorage.getItem("dialogHasBeenShown");
 
-    console.log("AutoplayDialog storage:", { lastShown, hasBeenShown });
+    // console.log("AutoplayDialog storage:", { lastShown, hasBeenShown });
 
     // Если никогда не показывался
     if (!hasBeenShown) {
-        console.log("AutoplayDialog: никогда не показывался, показываем");
+        // console.log("AutoplayDialog: никогда не показывался, показываем");
         return true;
     }
 
@@ -272,12 +272,12 @@ function shouldShowDialog() {
     if (lastShown) {
         const daysSinceLastShow =
             (Date.now() - parseInt(lastShown)) / (1000 * 60 * 60 * 24);
-        console.log(
-            "AutoplayDialog: дней с последнего показа:",
-            daysSinceLastShow,
-            "требуется:",
-            intervalDays
-        );
+        // console.log(
+        //     "AutoplayDialog: дней с последнего показа:",
+        //     daysSinceLastShow,
+        //     "требуется:",
+        //     intervalDays
+        // );
         return daysSinceLastShow >= intervalDays;
     }
 
@@ -294,7 +294,7 @@ function handleDialogClose(dialogElem) {
 
 function handleAutoplayDialog() {
     if (!autoplayDialog) {
-        console.log("AutoplayDialog: элемент не найден");
+        // console.log("AutoplayDialog: элемент не найден");
         return;
     }
 
@@ -302,20 +302,20 @@ function handleAutoplayDialog() {
     const delaySeconds = parseInt(autoplayDialog.dataset.delay);
     const intervalDays = parseInt(autoplayDialog.dataset.interval);
 
-    console.log("AutoplayDialog настройки:", {
-        enabled: enabledValue,
-        delay: delaySeconds + " сек (0 = сразу)",
-        interval: intervalDays + " дней (0 = каждый раз)",
-    });
+    // console.log("AutoplayDialog настройки:", {
+    //     enabled: enabledValue,
+    //     delay: delaySeconds + " сек (0 = сразу)",
+    //     interval: intervalDays + " дней (0 = каждый раз)",
+    // });
 
     if (!shouldShowDialog()) {
-        console.log("AutoplayDialog: не показываем согласно условиям");
+        // console.log("AutoplayDialog: не показываем согласно условиям");
         return;
     }
 
     // Функция показа диалога
     const showDialog = () => {
-        console.log("AutoplayDialog: показываем модальное окно");
+        // console.log("AutoplayDialog: показываем модальное окно");
         autoplayDialog.showModal();
         localStorage.setItem("dialogLastShown", Date.now().toString());
         localStorage.setItem("dialogHasBeenShown", "true");
@@ -325,7 +325,7 @@ function handleAutoplayDialog() {
     if (delaySeconds === 0 || isNaN(delaySeconds)) {
         showDialog();
     } else {
-        console.log(`AutoplayDialog: показываем через ${delaySeconds} секунд`);
+        // console.log(`AutoplayDialog: показываем через ${delaySeconds} секунд`);
         setTimeout(showDialog, delaySeconds * 1000);
     }
 }
@@ -335,7 +335,7 @@ function handleAutoplayDialog() {
 window.resetAutoplayDialog = function () {
     localStorage.removeItem("dialogLastShown");
     localStorage.removeItem("dialogHasBeenShown");
-    console.log("AutoplayDialog: состояние сброшено");
+    // console.log("AutoplayDialog: состояние сброшено");
 };
 
 // Добавляем обработчик для каждой кнопки
