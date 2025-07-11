@@ -113,14 +113,14 @@
                     <a
                         href="#"
                         class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light filter-item"
-                        data-filter="зона йоги"
+                        data-filter="студия йоги"
                         >зона йоги</a
                     >
 
                     <a
                         href="#"
                         class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light filter-item"
-                        data-filter="зал пилатеса"
+                        data-filter="студия пилатес"
                         >зал пилатеса</a
                     >
 
@@ -134,14 +134,14 @@
                     <a
                         href="#"
                         class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light filter-item"
-                        data-filter="зал для групповых занятий №1"
+                        data-filter="зал №1"
                         >зал для групповых занятий №1</a
                     >
 
                     <a
                         href="#"
                         class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light filter-item"
-                        data-filter="зал для групповых занятий №2"
+                        data-filter="зал №2"
                         >зал для групповых занятий №2</a
                     >
 
