@@ -162,14 +162,14 @@
                     <a
                         href="#"
                         class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light filter-item"
-                        data-filter="зал единоборств KIDS"
+                        data-filter="зал единоборств kids"
                         >зал единоборств KIDS</a
                     >
 
                     <a
                         href="#"
                         class="text-sm inline-flex items-center justify-center border border-light rounded-xl text-light py-0 px-2 transition-all hover:text-dark hover:bg-light filter-item"
-                        data-filter="эстетический зал KIDS"
+                        data-filter="эстетический зал kids"
                         >эстетический зал KIDS</a
                     >
 
