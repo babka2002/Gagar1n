@@ -267,7 +267,7 @@
                     <li class="flex items-center justify-end gap-4 py-4">
                         @if($footer->app_store_link)
                             <a href="{{ $footer->app_store_link }}"
-                            class="border border-light rounded-[64px] h-16 px-4 py-2 text-light"
+                            class="border border-light rounded-[64px] h-16 px-4 text-light flex items-center justify-center"
                             target="_blank"
                             rel="noopener noreferrer">
                                 App Store
@@ -276,7 +276,7 @@
 
                         @if($footer->google_play_link)
                             <a href="{{ $footer->google_play_link }}"
-                            class="border border-light rounded-[64px] h-16 px-4 py-2 text-light"
+                            class="border border-light rounded-[64px] h-16 px-4 text-light flex items-center justify-center"
                             target="_blank"
                             rel="noopener noreferrer">
                                 Google Play

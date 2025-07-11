@@ -1,0 +1,200 @@
+title: "Страница тренеров"
+tabs:
+  main:
+    display: Основное
+    sections:
+      - display: Шаблон
+        fields:
+          - handle: template
+            field:
+              type: template
+              display: Шаблон
+              localizable: false
+              default: grelka/trainers
+      - display: "Hero секция"
+        instructions: "Главный баннер страницы"
+        fields:
+          - handle: hero_title
+            field:
+              type: text
+              display: "Заголовок Hero"
+              instructions: "Заголовок в главном блоке (можно использовать HTML)"
+              localizable: false
+              default: "каждый тренер в нашей команде уникален"
+          - handle: hero_subtitle
+            field:
+              type: text
+              display: "Подзаголовок Hero"
+              localizable: false
+              default: "НАЙДИ СВОЕГО"
+          - handle: hero_image
+            field:
+              type: assets
+              container: assets
+              display: "Картинка Hero"
+              max_files: 1
+              localizable: false
+              instructions: "Изображение для главного блока"
+
+  blocks:
+    display: "Контентные блоки"
+    sections:
+      - display: 'Блок "Не знаешь как начать?"'
+        instructions: "Блок с призывом к действию"
+        fields:
+          - handle: cta_title
+            field:
+              type: text
+              display: "Заголовок блока"
+              localizable: false
+              default: "не знаешь как начать?"
+          - handle: cta_subtitle
+            field:
+              type: text
+              display: "Подзаголовок"
+              localizable: false
+              default: "запишись на"
+          - handle: cta_subtitle_highlight
+            field:
+              type: text
+              display: "Выделенный текст"
+              localizable: false
+              default: "индивидуальную тренировку"
+          - handle: cta_image
+            field:
+              type: assets
+              container: assets
+              display: "Картинка блока"
+              max_files: 1
+              localizable: false
+          - handle: cta_link
+            field:
+              type: link
+              display: "Ссылка блока"
+              localizable: false
+              instructions: "Ссылка при клике на блок"
+
+      - display: 'Блок "Академия фитнеса"'
+        instructions: "Блок о том как стать тренером"
+        fields:
+          - handle: academy_title
+            field:
+              type: text
+              display: "Заголовок блока"
+              localizable: false
+              default: "хочешь стать тренером?"
+          - handle: academy_subtitle
+            field:
+              type: text
+              display: "Название академии"
+              localizable: false
+              default: "АКАДЕМИЯ ФИТНЕСА"
+          - handle: academy_subtitle_dash
+            field:
+              type: text
+              display: "Подпись с тире"
+              localizable: false
+              default: "АКАДЕМИЯ ФИТНЕСА -"
+          - handle: academy_description
+            field:
+              type: textarea
+              display: "Описание академии"
+              localizable: false
+              rows: 4
+              default: "Профессиональное обучение персональных тренеров, тренеров групповых занятий, квалифицированных инструкторов тренажерного зала и тренеров по плаванию"
+          - handle: academy_image
+            field:
+              type: assets
+              container: assets
+              display: "Картинка блока"
+              max_files: 1
+              localizable: false
+          - handle: academy_link
+            field:
+              type: link
+              display: "Ссылка на академию"
+              localizable: false
+              default: "/academy"
+
+      - display: "Контактная форма"
+        instructions: "Форма обратной связи"
+        fields:
+          - handle: form_title
+            field:
+              type: text
+              display: "Заголовок формы"
+              localizable: false
+              default: "ТВОЙ ТРЕНЕР УЖЕ ЖДЕТ!"
+          - handle: form_image
+            field:
+              type: assets
+              container: assets
+              display: "Картинка формы"
+              max_files: 1
+              localizable: false
+          - handle: form_button_text
+            field:
+              type: text
+              display: "Текст кнопки"
+              localizable: false
+              default: "СТАТЬ БЛИЖЕ К СВОЕЙ ЦЕЛИ"
+          - handle: form_privacy_text
+            field:
+              type: text
+              display: "Текст согласия"
+              localizable: false
+              default: 'Нажимая "Отправить" я согласен на обработку персональных данных'
+          - handle: form_name_placeholder
+            field:
+              type: text
+              display: "Placeholder для имени"
+              localizable: false
+              default: "ИМЯ"
+          - handle: form_phone_placeholder
+            field:
+              type: text
+              display: "Placeholder для телефона"
+              localizable: false
+              default: "НОМЕР ТЕЛЕФОНА"
+
+  seo_tab:
+    display: SEO
+    sections:
+      - display: "SEO настройки"
+        fields:
+          - handle: seo_title
+            field:
+              type: text
+              display: "SEO Заголовок"
+              instructions: "Если не заполнено, будет использован текущий title страницы"
+              localizable: false
+              validate:
+                - "max:60"
+          - handle: field_meta_description
+            field:
+              type: textarea
+              display: "Краткое описание страницы"
+              localizable: false
+          - handle: field_meta_keywords
+            field:
+              type: textarea
+              display: "ключевые, слова, через, запятую"
+              localizable: false
+
+  sidebar:
+    display: Sidebar
+    sections:
+      - fields:
+          - handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: "max:200"
+          - handle: parent
+            field:
+              type: entries
+              collections:
+                - pages
+              max_items: 1
+              listable: false
+              localizable: true
