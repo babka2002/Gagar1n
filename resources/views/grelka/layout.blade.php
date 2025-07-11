@@ -348,7 +348,7 @@
                     <li class="flex items-center justify-end gap-4 py-4">
                         @if($footer->app_store_link)
                             <a href="{{ $footer->app_store_link }}"
-                            class="border border-light rounded-[64px] h-16 px-4 py-2 text-light"
+                            class="border border-light rounded-[64px] h-16 px-4 text-light flex items-center justify-center"
                             target="_blank"
                             rel="noopener noreferrer">
                                 App Store
@@ -357,7 +357,7 @@
 
                         @if($footer->google_play_link)
                             <a href="{{ $footer->google_play_link }}"
-                            class="border border-light rounded-[64px] h-16 px-4 py-2 text-light"
+                            class="border border-light rounded-[64px] h-16 px-4 text-light flex items-center justify-center"
                             target="_blank"
                             rel="noopener noreferrer">
                                 Google Play
@@ -547,6 +547,13 @@
                                 if (trainerName) {
                                     formSubject = `Форма Тренер - ${trainerName}`;
                                     leadType = "trainer";
+                                    // Создаем комментарий для записи к тренеру
+                                    const trainerComment = `Запись на тренировку к ${trainerName}`;
+                                    window.currentFormData = {
+                                        leadtype: leadType,
+                                        subject: formSubject,
+                                        comment: trainerComment
+                                    };
                                 }
 
                                  // Проверяем, это абонемент?
@@ -554,6 +561,10 @@
                                 if (abonimentName) {
                                     formSubject = `Форма Абонемент - ${abonimentName}`;
                                     leadType = "subscription";
+                                    window.currentFormData = {
+                                        leadtype: leadType,
+                                        subject: formSubject
+                                    };
                                 }
 
                                 // Проверяем тип записи из выпадающего меню
@@ -587,19 +598,25 @@
                                             if (dialogText) dialogText.textContent = 'Присоединяйтесь к нашим групповым тренировкам';
                                             break;
                                     }
+
+                                    // Сохраняем данные для webhook
+                                    window.currentFormData = {
+                                        leadtype: leadType,
+                                        subject: formSubject
+                                    };
                                 } else {
                                     // Сбрасываем заголовок и текст к оригинальным если это не специальная запись
                                     const dialogTitle = document.getElementById('dialog-title');
                                     const dialogText = document.getElementById('dialog-text');
                                     if (dialogTitle) dialogTitle.textContent = dialogTitle.getAttribute('data-original-title');
                                     if (dialogText) dialogText.textContent = dialogText.getAttribute('data-original-text');
-                                }
 
-                                // Формируем данные для webhook
-                                window.currentFormData = {
-                                    leadtype: leadType,
-                                    subject: formSubject
-                                };
+                                    // Формируем данные для webhook
+                                    window.currentFormData = {
+                                        leadtype: leadType,
+                                        subject: formSubject
+                                    };
+                                }
 
                                 // Закрываем выпадающее меню если оно открыто
                                 const dropdown = document.querySelector('[x-data*="open"]');
@@ -660,7 +677,8 @@
                                             source: hostname,
                                             medium: document.referrer || "direct",
                                             siteName: hostname,
-                                            city: "Симферополь"
+                                            city: "Симферополь",
+                                            comment: window.currentFormData?.comment || ""
                                         };
 
                                         // Отправляем в webhook

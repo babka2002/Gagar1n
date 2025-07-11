@@ -5,12 +5,12 @@
             <h1
             data-aos="zoom-in"
                 class="text-light text-xl md:text-xxl leading-tight uppercase xl:absolute xl:max-w-[58%] right-0 -top-6 z-9 xl:text-right text-center">
-                каждый тренер в нашей команде уникален
-                <span class="text-xl md:text-xxl block">НАЙДИ СВОЕГО</span>
+                {{ $hero_title }}
+                <span class="text-xl md:text-xxl block">{{ $hero_subtitle }}</span>
             </h1>
             <img
-                {{-- src="{{ glide:data_url src='/assets/img/trainer-hero.jpg' quality='75' format='webp' }}" --}}
-                src="<s:glide:data_url src='/assets/img/trainer-hero.jpg' quality='75' format='webp' />"
+                {{-- src="{{ glide:data_url src='/assets/{{ $hero_image }}' quality='75' format='webp' }}" --}}
+                src="<s:glide:data_url src='/assets/{{ $hero_image }}' quality='75' format='webp' />"
                 alt=""
                 class="trainer-hero-mask object-contain" />
         </div>
@@ -50,7 +50,7 @@
                                                 </h3>
                                                 {{-- <p class="text-sm">{{ Str::words($trainer->description, 100, '...') }}</p>
                                                 <p class="text-sm">Позиция: {{ $trainer->position->title }}</p> --}}
-                                                <ul class="text-sm list-disc list-inside">
+                                                <ul class="text-sm list-inside">
                                                     <li class="text-left text-sm mb-2">
                                                         <div class="markdown-content">
                                                             {!! $trainer->short_description !!}
@@ -130,23 +130,23 @@
         <div class="container">
             <div class="">
                 <h2 class="text-dark text-xl md:text-xxxl uppercase leading-tight mb-6" data-aos="zoom-in">
-                    не знаешь как начать?
+                    {{ $cta_title }}
                 </h2>
 
                 <div data-dialog="dialog-more" class="show cursor-pointer rounded-brxl bg-dark text-light p-[clamp(1rem,0.4127rem+2.6104vw,2.625rem)]"  data-aos="zoom-in">
                     <div class="max-h-[409px] object-center object-cover overflow-hidden rounded-brxl mb-6">
                         <img
-                            {{-- src="{{ glide:data_url src='/assets/img/trainer-hero.jpg' quality='75' format='webp' }}" --}}
-                            src="<s:glide:data_url src='/assets/img/trainer-hero.jpg' quality='75' format='webp' />"
+                            {{-- src="{{ glide:data_url src='/assets/{{ $cta_image }}' quality='75' format='webp' }}" --}}
+                            src="<s:glide:data_url src='/assets/{{ $cta_image }}' quality='75' format='webp' />"
                             alt=""
                             class="" />
                     </div>
                     <div class="grid grid-cols-3 gap-2 justify-between items-center">
                         <p class="text-base md:text-lg col-span-2 hyphens-manual">
-                            запишись на <br />
-                            индивидуальную тренировку
+                            {{ $cta_subtitle }} <br />
+                            {{ $cta_subtitle_highlight }}
                         </p>
-                        <a href=""
+                        <a href="{{ $cta_link }}"
                             class="ml-auto col-span-1 flex items-center justify-center w-[clamp(3rem,1.6672rem+5.9237vw,6.6875rem)] h-[clamp(3rem,1.6672rem+5.9237vw,6.6875rem)] transition-all hover:scale-110">
                             <svg width="100%" height="100%" viewBox="0 0 108 108" class=""
                                 xmlns="http://www.w3.org/2000/svg">
@@ -161,33 +161,31 @@
 
             <div class="grid grid-cols-4 gap-4 my-5 lg:my-14">
                 <div
-                    onclick="window.location='https://academy.gagar1n.ru';"
+                    onclick="window.location='{{ $academy_link }}';"
                     class="cursor-pointer col-span-3 text-light bg-main-red rounded-brxl p-[clamp(1rem,0.4127rem+2.6104vw,2.625rem)] grid grid-cols-1 lg:gap-9 lg:grid-cols-3 items-center" data-aos="fade-right">
                     <div class="col-span-2 mb-5 lg:mb-0">
                         <h3 class="text-base md:text-lg leading-tight uppercase mb-5">
-                            хочешь стать тренером?
+                            {{ $academy_title }}
                         </h3>
                         <p class="text-light text-sm md:text-base">
-                            <span class="text-sm md:text-md block">АКАДЕМИЯ ФИТНЕСА -</span>
-                            Профессиональное обучение персональных тренеров,
-                            тренеров групповых занятий, квалифицированных
-                            инструкторов тренажерного зала и тренеров по плаванию
+                            <span class="text-sm md:text-md block">{{ $academy_subtitle_dash }}</span>
+                            {{ $academy_description }}
                         </p>
                     </div>
                     <div class="col-span-1 rounded-brxl overflow-hidden">
                         <img
-                            {{-- src="{{ glide:data_url src='/assets/img/trainer-hero.jpg' quality='75' format='webp' }}" --}}
-                            src="<s:glide:data_url src='/assets/img/trainer-hero.jpg' quality='75' format='webp' />"
+                            {{-- src="{{ glide:data_url src='/assets/{{ $academy_image }}' quality='75' format='webp' }}" --}}
+                            src="<s:glide:data_url src='/assets/{{ $academy_image }}' quality='75' format='webp' />"
                             alt="" />
                     </div>
                 </div>
-                <a href="" data-aos="fade-left"
+                <a href="{{ $academy_link }}" data-aos="fade-left"
                     class="bg-dark rounded-brxl text-light flex items-center justify-center transition-all hover:scale-105">
                     <svg class="h-[clamp(3rem,0.9217rem+9.2369vw,8.75rem)] fill-[#fff8f8]" viewBox="0 0 80 140" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M63.7812 60.4893C58.5427 60.4893 54.296 64.736 54.296 69.9746C54.296 75.2132 58.5427 79.4599 63.7812 79.4599V60.4893ZM77.1281 76.6817C80.8323 72.9775 80.8323 66.9717 77.1281 63.2675L16.764 2.90346C13.0598 -0.800781 7.05404 -0.800781 3.3498 2.90346C-0.354435 6.60769 -0.354435 12.6134 3.3498 16.3177L57.0067 69.9746L3.3498 123.632C-0.354435 127.336 -0.354435 133.342 3.3498 137.046C7.05404 140.75 13.0598 140.75 16.764 137.046L77.1281 76.6817ZM63.7812 79.4599H70.421V60.4893H63.7812V79.4599Z" />
-                    </svg>
+                        </svg>
                 </a>
             </div>
         </div>
@@ -199,34 +197,33 @@
         <div class="container grid grid-cols-1 items-center px-4 lg:grid-cols-3 gap-y-5 lg:gap-24 py-sectionPadding">
             <div class="col-span-2">
                 <h3 class="text-xl md:text-xxl leading-none uppercase mb-7 text-light max-w-full md:max-w-[60%]" data-aos="zoom-in">
-                    ТВОЙ ТРЕНЕР УЖЕ ЖДЕТ!
+                    {{ $form_title }}
                 </h3>
 
                 <form id="contact-form" action="" method="get" class="flex flex-col gap-5" data-aos="zoom-in" data-aos-delay="1000">
                     <div>
-                        <input type="text" placeholder="ИМЯ"
+                        <input type="text" placeholder="{{ $form_name_placeholder }}"
                             class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-light rounded-brxl focus:outline-none focus:ring-2 focus:ring-red-600"
                             required />
                     </div>
                     <div>
-                        <input type="tel" placeholder="НОМЕР ТЕЛЕФОНА"
+                        <input type="tel" placeholder="{{ $form_phone_placeholder }}"
                             class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-light rounded-brxl focus:outline-none focus:ring-2 focus:ring-red-600"
                             required />
                     </div>
                     <button type="submit"
                         class="w-full text-light px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-red-600 hover:bg-red-700 transition rounded-brxl">
-                        СТАТЬ БЛИЖЕ К СВОЕЙ ЦЕЛИ
+                        {{ $form_button_text }}
                     </button>
                     <p class="text-sm text-center text-light">
-                        Нажимая "Отправить" я согласен на обработку персональных
-                        данных
+                        {{ $form_privacy_text }}
                     </p>
                 </form>
             </div>
             <div class="col-span-1" data-aos="zoom-in">
                 <img
-                    {{-- src="{{ glide:data_url src='/assets/img/pool-contact.png' quality='75' format='webp' }}" --}}
-                    src="<s:glide:data_url src='/assets/img/pool-contact.png' quality='75' format='webp' />"
+                    {{-- src="{{ glide:data_url src='/assets/{{ $form_image }}' quality='75' format='webp' }}" --}}
+                    src="<s:glide:data_url src='/assets/{{ $form_image }}' quality='75' format='webp' />"
                     alt=""
                     class="block w-full mx-auto rounded-brxl" />
             </div>

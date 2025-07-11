@@ -2,7 +2,8 @@
 
 @section('trainersContent')
     <!-- Hero секция -->
-    <section class="bg-gradient-to-br from-blue-400 via-purple-500 to-pink-400 pt-sectionPadding px-4 relative overflow-hidden">
+    <section class="pt-sectionPadding px-4 relative overflow-hidden"
+             style="background: linear-gradient(135deg, {{ $site_settings['gradient_from'] ?? '#60A5FA' }}, {{ $site_settings['gradient_to'] ?? '#F472B6' }})">
         <div class="container text-light relative z-10">
             <!-- Декоративные элементы -->
             <div class="absolute top-10 left-10 w-20 h-20 bg-yellow-300 rounded-full opacity-70 animate-bounce"></div>
@@ -10,15 +11,15 @@
             <div class="absolute bottom-20 left-1/4 w-12 h-12 bg-orange-300 rounded-full opacity-80 animate-bounce"></div>
 
             <h1 class="text-light text-xl md:text-xxl leading-tight uppercase text-center mb-4" data-aos="zoom-in">
-                {{ $title ?? 'Наши тренеры для детей' }}
+                {{ $hero_title }}
             </h1>
             <p class="text-center text-lg md:text-xl mb-8" data-aos="fade-up">
-                Профессионалы, которые сделают спорт увлекательным приключением!
+                {{ $hero_subtitle }}
             </p>
 
             <!-- Изображение hero -->
             <div class="flex justify-center" data-aos="zoom-in">
-                <img src="<s:glide:data_url src='/assets/img/kids-hero.jpg' quality='75' format='webp' />"
+                <img src="<s:glide:data_url src='/assets/{{ $hero_image }}' quality='75' format='webp' />"
                      alt="Детский фитнес"
                      class="max-w-md rounded-3xl shadow-2xl">
             </div>
@@ -109,34 +110,33 @@
         </div>
     </section>
 
-    <!-- Секция "Не знаешь как начать?" -->
+    <!-- Секция "Хочешь попробовать?" -->
     <section class="py-sectionPadding px-4 bg-gradient-to-r from-green-400 to-blue-500">
         <div class="container">
             <h2 class="text-light text-xl md:text-xxxl uppercase leading-tight mb-8 text-center" data-aos="zoom-in">
-                {{ $subscription_not_found_title ?? 'Хочешь попробовать?' }}
+                {{ $cta_title }}
             </h2>
 
             <div class="bg-white rounded-3xl p-8 shadow-2xl max-w-4xl mx-auto" data-aos="zoom-in">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                     <div>
                         <h3 class="text-2xl md:text-3xl text-blue-800 font-bold mb-4">
-                            Первое занятие БЕСПЛАТНО! 🎉
+                            {{ $cta_main_title }} 🎉
                         </h3>
                         <p class="text-gray-700 text-lg mb-6">
-                            Приходи познакомиться с нашими тренерами и попробовать детский фитнес.
-                            Мы найдем подходящую программу именно для твоего ребенка!
+                            {{ $cta_description }}
                         </p>
-                        <a href="#"
+                        <a href="{{ $cta_link }}"
                            data-dialog="dialog"
                            class="inline-flex items-center justify-center px-8 py-4 rounded-full text-white font-bold text-lg transition-all hover:scale-105"
                            style="background: linear-gradient(45deg, {{ $site_settings['primary_color'] ?? '#3B82F6' }}, {{ $site_settings['button_hover_color'] ?? '#2563EB' }})">
-                            {{ $subscription_not_found_subtitle ?? 'Записаться на пробное занятие' }}
+                            {{ $cta_button_text }}
                             <span class="ml-2">🚀</span>
                         </a>
                     </div>
                     <div class="text-center">
                         <div class="inline-block p-8 bg-gradient-to-br from-yellow-200 to-orange-200 rounded-full">
-                            <div class="text-6xl">🏃‍♀️👦👧</div>
+                            <div class="text-6xl">{!! $cta_emoji !!}</div>
                         </div>
                     </div>
                 </div>

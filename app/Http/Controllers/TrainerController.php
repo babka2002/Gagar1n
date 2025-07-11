@@ -213,17 +213,80 @@ class TrainerController extends Controller
             $trainersByDepartment[$departmentTitle][] = $formattedTrainer;
         }
 
+        // Подготавливаем базовые данные
+        $viewData = [
+            'trainersByDepartment' => $trainersByDepartment,
+            'title' => $page?->get('hero_title') ?? 'Тренеры',
+            'field_meta_description' => $page?->get('field_meta_description'),
+            'field_meta_keywords' => $page?->get('field_meta_keywords'),
+        ];
+
+        // Добавляем специфичные для сайта данные
+        if ($currentSite === 'Gun1or') {
+            // Данные для детского сайта Gun1or
+            $viewData = array_merge($viewData, [
+                // Hero секция
+                'hero_title' => $page?->get('hero_title') ?? 'Наши тренеры для детей',
+                'hero_subtitle' => $page?->get('hero_subtitle') ?? 'Профессионалы, которые сделают спорт увлекательным приключением!',
+                'hero_image' => $page?->get('hero_image') ?? 'img/kids-hero.jpg',
+
+                // CTA блок
+                'cta_title' => $page?->get('cta_title') ?? 'Хочешь попробовать?',
+                'cta_main_title' => $page?->get('cta_main_title') ?? 'Первое занятие БЕСПЛАТНО!',
+                'cta_description' => $page?->get('cta_description') ?? 'Приходи познакомиться с нашими тренерами и попробовать детский фитнес.',
+                'cta_button_text' => $page?->get('cta_button_text') ?? 'Записаться на пробное занятие',
+                'cta_emoji' => $page?->get('cta_emoji') ?? '🏃‍♀️👦👧',
+                'cta_link' => $page?->get('cta_link') ?? '#',
+
+                // Настройки дизайна
+                'site_settings' => [
+                    'primary_color' => $page?->get('primary_color') ?? '#3B82F6',
+                    'button_hover_color' => $page?->get('button_hover_color') ?? '#2563EB',
+                    'gradient_from' => $page?->get('gradient_from') ?? '#60A5FA',
+                    'gradient_to' => $page?->get('gradient_to') ?? '#F472B6',
+                ],
+
+                // Совместимость со старыми названиями переменных
+                'subscription_not_found_title' => $page?->get('cta_title') ?? 'Хочешь попробовать?',
+                'subscription_not_found_subtitle' => $page?->get('cta_button_text') ?? 'Записаться на пробное занятие'
+            ]);
+        } else {
+            // Данные для взрослых сайтов (Grelka, GFoodcafe)
+            $viewData = array_merge($viewData, [
+                // Hero секция
+                'hero_title' => $page?->get('hero_title') ?? 'каждый тренер в нашей команде уникален',
+                'hero_subtitle' => $page?->get('hero_subtitle') ?? 'НАЙДИ СВОЕГО',
+                'hero_image' => $page?->get('hero_image') ?? 'img/trainer-hero.jpg',
+
+                // Блок "Не знаешь как начать?"
+                'cta_title' => $page?->get('cta_title') ?? 'не знаешь как начать?',
+                'cta_subtitle' => $page?->get('cta_subtitle') ?? 'запишись на',
+                'cta_subtitle_highlight' => $page?->get('cta_subtitle_highlight') ?? 'индивидуальную тренировку',
+                'cta_image' => $page?->get('cta_image') ?? 'img/trainer-hero.jpg',
+                'cta_link' => $page?->get('cta_link') ?? '#',
+
+                // Блок "Академия фитнеса"
+                'academy_title' => $page?->get('academy_title') ?? 'хочешь стать тренером?',
+                'academy_subtitle' => $page?->get('academy_subtitle') ?? 'АКАДЕМИЯ ФИТНЕСА',
+                'academy_subtitle_dash' => $page?->get('academy_subtitle_dash') ?? 'АКАДЕМИЯ ФИТНЕСА -',
+                'academy_description' => $page?->get('academy_description') ?? 'Профессиональное обучение персональных тренеров, тренеров групповых занятий, квалифицированных инструкторов тренажерного зала и тренеров по плаванию',
+                'academy_image' => $page?->get('academy_image') ?? 'img/trainer-hero.jpg',
+                'academy_link' => $page?->get('academy_link') ?? '/academy',
+
+                // Контактная форма
+                'form_title' => $page?->get('form_title') ?? 'ТВОЙ ТРЕНЕР УЖЕ ЖДЕТ!',
+                'form_image' => $page?->get('form_image') ?? 'img/pool-contact.png',
+                'form_button_text' => $page?->get('form_button_text') ?? 'СТАТЬ БЛИЖЕ К СВОЕЙ ЦЕЛИ',
+                'form_privacy_text' => $page?->get('form_privacy_text') ?? 'Нажимая "Отправить" я согласен на обработку персональных данных',
+                'form_name_placeholder' => $page?->get('form_name_placeholder') ?? 'ИМЯ',
+                'form_phone_placeholder' => $page?->get('form_phone_placeholder') ?? 'НОМЕР ТЕЛЕФОНА'
+            ]);
+        }
+
         return (new View)
             ->template(strtolower($currentSite) . '/trainers')
             ->layout(strtolower($currentSite) . '/layout')
-            ->with([
-                'trainersByDepartment' => $trainersByDepartment,
-                'title' => $page?->get('hero_title') ?? 'Тренеры',
-                'field_meta_description' => $page?->get('field_meta_description'),
-                'field_meta_keywords' => $page?->get('field_meta_keywords'),
-                'subscription_not_found_title' => $page?->get('subscription_not_found_title'),
-                'subscription_not_found_subtitle' => $page?->get('subscription_not_found_subtitle')
-            ]);
+            ->with($viewData);
     }
 
     // public function showTrainers()
