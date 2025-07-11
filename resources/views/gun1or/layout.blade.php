@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="view-transition" content="same-origin">
         @antlers
-            {{ icon | favicon }}
+            {{ '/assets/favicon.ico' | favicon }}
         @endantlers
         <title>
             @antlers
