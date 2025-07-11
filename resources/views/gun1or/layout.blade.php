@@ -121,7 +121,7 @@
                 </s:get_site:GFoodcafe>
             </div>
 
-            <div class="flex items-center justify-end md:justify-center">
+            <div class="flex items-center justify-end">
                 <p class="text-white font-normal [font-size:_clamp(1rem,0.9228rem+0.3861vw,1.25rem)] hidden lg:block mr-5"> г.
                 Симферополь <br> ул.
                 Киевская, 115</p>
