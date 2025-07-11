@@ -18,7 +18,7 @@
                     </a>
 
                     <h2 class="text-left md:flex items-start justify-between mb-4">
-                        <span class="text-xl uppercase">{{ $trainer->name }}</span>
+                        <span class="text-xl uppercase">{{ $trainer->last_name }} {{ $trainer->name }} </span>
                         <span class="text-md text-right uppercase hidden md:block">{{ $trainer->position->title ?? 'Не определена' }}</span>
                     </h2>
                     @if(!empty($trainer->experience))
@@ -45,7 +45,7 @@
                         data-dialog="dialog"
                         data-trainer-name="{{ $trainer->name . ' ' . $trainer->second_name . ' ' . $trainer->last_name }}"
                         class="show rounded-brxl px-6 py-2 leading-none text-dark bg-light text-md uppercase flex items-center justify-between gap-2 mb-5 mt-auto hover:scale-105 transition-all">
-                        записаться
+                        Запись на тренировку к {{ $trainer->name . ' ' . $trainer->second_name . ' ' . $trainer->last_name }}
                         <svg width="448" height="19" viewBox="0 0 448 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M447.566 10.3414C448.062 9.84544 448.062 9.04128 447.566 8.54529L439.484 0.462712C438.988 -0.0332756 438.184 -0.0332756 437.688 0.462712C437.192 0.9587 437.192 1.76285 437.688 2.25884L444.872 9.44336L437.688 16.6279C437.192 17.1239 437.192 17.928 437.688 18.424C438.184 18.92 438.988 18.92 439.484 18.424L447.566 10.3414ZM0.878906 10.7134H446.668V8.1733H0.878906V10.7134Z"

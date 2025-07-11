@@ -34,7 +34,8 @@ class SendWebhookJob implements ShouldQueue
                 'source' => $this->data['source'] ?? '',
                 'medium' => $this->data['medium'] ?? 'direct',
                 'siteName' => $this->data['siteName'] ?? '',
-                'city' => $this->data['city'] ?? 'Симферополь'
+                'city' => $this->data['city'] ?? 'Симферополь',
+                'comment' => $this->data['comment'] ?? ''
             ];
 
             Log::info('Sending webhook data:', $webhookData);

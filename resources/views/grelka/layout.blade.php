@@ -547,6 +547,13 @@
                                 if (trainerName) {
                                     formSubject = `Форма Тренер - ${trainerName}`;
                                     leadType = "trainer";
+                                    // Создаем комментарий для записи к тренеру
+                                    const trainerComment = `Запись на тренировку к ${trainerName}`;
+                                    window.currentFormData = {
+                                        leadtype: leadType,
+                                        subject: formSubject,
+                                        comment: trainerComment
+                                    };
                                 }
 
                                  // Проверяем, это абонемент?
@@ -554,6 +561,10 @@
                                 if (abonimentName) {
                                     formSubject = `Форма Абонемент - ${abonimentName}`;
                                     leadType = "subscription";
+                                    window.currentFormData = {
+                                        leadtype: leadType,
+                                        subject: formSubject
+                                    };
                                 }
 
                                 // Проверяем тип записи из выпадающего меню
@@ -587,19 +598,25 @@
                                             if (dialogText) dialogText.textContent = 'Присоединяйтесь к нашим групповым тренировкам';
                                             break;
                                     }
+
+                                    // Сохраняем данные для webhook
+                                    window.currentFormData = {
+                                        leadtype: leadType,
+                                        subject: formSubject
+                                    };
                                 } else {
                                     // Сбрасываем заголовок и текст к оригинальным если это не специальная запись
                                     const dialogTitle = document.getElementById('dialog-title');
                                     const dialogText = document.getElementById('dialog-text');
                                     if (dialogTitle) dialogTitle.textContent = dialogTitle.getAttribute('data-original-title');
                                     if (dialogText) dialogText.textContent = dialogText.getAttribute('data-original-text');
-                                }
 
-                                // Формируем данные для webhook
-                                window.currentFormData = {
-                                    leadtype: leadType,
-                                    subject: formSubject
-                                };
+                                    // Формируем данные для webhook
+                                    window.currentFormData = {
+                                        leadtype: leadType,
+                                        subject: formSubject
+                                    };
+                                }
 
                                 // Закрываем выпадающее меню если оно открыто
                                 const dropdown = document.querySelector('[x-data*="open"]');
@@ -660,7 +677,8 @@
                                             source: hostname,
                                             medium: document.referrer || "direct",
                                             siteName: hostname,
-                                            city: "Симферополь"
+                                            city: "Симферополь",
+                                            comment: window.currentFormData?.comment || ""
                                         };
 
                                         // Отправляем в webhook
