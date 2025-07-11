@@ -5,7 +5,7 @@ title: 'Тренажерный зал'
 template: grelka/hall
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1752152231
+updated_at: 1752219717
 hero_title: 'тренажерный зал'
 hero_image: img/hall_hero.jpg
 stats_group:
@@ -60,7 +60,7 @@ training_title: 'не знаешь как начать?'
 training_image: img/direction-4.jpg
 training_text: 'запишись на индивидуальную тренировку'
 form_title: 'НЕ УПУСТИ ЭТУ ВОЗМОЖНОСТЬ'
-form_image: img/pool-contact.png
+form_image: img/crossfit-contact-mobile.png
 field_meta_description: 'Тренажерный зал'
 field_meta_keywords: 'Тренажерный зал'
 ---
