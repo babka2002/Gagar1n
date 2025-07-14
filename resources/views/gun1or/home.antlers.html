@@ -328,7 +328,14 @@
         {{ age_groups_title }}
     </h2>
     <div class="mx-2 lg:mx-0 my-12" data-aos="zoom-in">
-        <div class="swiper mySwiper">
+        <div class="swiper mySwiper relative">
+            <!-- Индикатор состояния автопрокрутки -->
+            <div
+                class="swiper-autoplay-indicator"
+                id="autoplayIndicator"
+                title="Автопрокрутка активна"
+            ></div>
+
             <div class="swiper-wrapper">
                 {{ age_groups }}
                 <div class="swiper-slide">

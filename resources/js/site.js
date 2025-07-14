@@ -11,6 +11,9 @@ import "swiper/css/pagination";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+// Глобальная переменная для отслеживания состояния карусели абонементов
+let abonimentSwiperPaused = false;
+
 var swiper = new Swiper(".mySwiper", {
     slidesPerView: 1,
     spaceBetween: 20,
@@ -18,8 +21,8 @@ var swiper = new Swiper(".mySwiper", {
     freeMode: true,
     autoHeight: false,
     autoplay: {
-        delay: 2000,
-        disableOnInteraction: false,
+        delay: 3000, // Увеличиваем задержку до 3 секунд
+        disableOnInteraction: false, // Не отключаем при взаимодействии
     },
     pagination: {
         el: ".swiper-pagination",
@@ -40,34 +43,172 @@ var swiper = new Swiper(".mySwiper", {
         },
     },
 });
-// Инициализация обработчиков событий Swiper, если элемент существует
-function initializeSwiperEvents() {
+
+// Улучшенная инициализация обработчиков событий для карусели абонементов
+function initializeAbonimentSwiperEvents() {
     const swiperContainer = document.querySelector(".mySwiper");
 
-    // Инициализируем события только если контейнер Swiper существует
     if (swiperContainer && typeof swiper !== "undefined") {
-        // События мыши
+        // Функция для обновления индикатора состояния
+        function updateAutoplayIndicator() {
+            const indicator = document.getElementById("autoplayIndicator");
+            if (indicator) {
+                if (abonimentSwiperPaused) {
+                    indicator.classList.add("paused");
+                    indicator.title = "Автопрокрутка остановлена";
+                } else {
+                    indicator.classList.remove("paused");
+                    indicator.title = "Автопрокрутка активна";
+                }
+            }
+        }
+
+        // Обработчик клика на слайды
+        swiperContainer.addEventListener("click", (e) => {
+            // Проверяем, что клик был по слайду или его содержимому
+            if (
+                e.target.closest(".swiper-slide") ||
+                e.target.closest(".flip_card")
+            ) {
+                if (!abonimentSwiperPaused) {
+                    swiper.autoplay.stop();
+                    abonimentSwiperPaused = true;
+                    updateAutoplayIndicator();
+                    console.log(
+                        "Карусель абонементов остановлена пользователем"
+                    );
+                }
+            }
+        });
+
+        // Обработчик касания (для мобильных устройств)
+        let touchStartTime = 0;
+        let touchEndTime = 0;
+
+        swiperContainer.addEventListener("touchstart", (e) => {
+            touchStartTime = new Date().getTime();
+            if (!abonimentSwiperPaused) {
+                swiper.autoplay.stop();
+                abonimentSwiperPaused = true;
+                updateAutoplayIndicator();
+                console.log("Карусель абонементов остановлена при касании");
+            }
+        });
+
+        // Обработчик свайпа
+        swiperContainer.addEventListener("touchmove", (e) => {
+            if (!abonimentSwiperPaused) {
+                swiper.autoplay.stop();
+                abonimentSwiperPaused = true;
+                updateAutoplayIndicator();
+                console.log("Карусель абонементов остановлена при свайпе");
+            }
+        });
+
+        // Обработчик наведения мыши (опционально - можно убрать)
         swiperContainer.addEventListener("mouseenter", () => {
-            swiper.autoplay.stop();
+            if (!abonimentSwiperPaused) {
+                swiper.autoplay.stop();
+            }
         });
 
         swiperContainer.addEventListener("mouseleave", () => {
-            swiper.autoplay.start();
+            // НЕ запускаем автопрокрутку обратно при уходе мыши
+            // Карусель остается остановленной
         });
 
-        // События касания
-        swiperContainer.addEventListener("touchstart", () => {
-            swiper.autoplay.stop();
+        // Обработчик клавиатуры
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+                if (!abonimentSwiperPaused) {
+                    swiper.autoplay.stop();
+                    abonimentSwiperPaused = true;
+                    updateAutoplayIndicator();
+                    console.log(
+                        "Карусель абонементов остановлена при использовании клавиатуры"
+                    );
+                }
+            }
         });
 
-        swiperContainer.addEventListener("touchend", () => {
+        // Инициализируем индикатор состояния
+        updateAutoplayIndicator();
+
+        // Добавляем кнопку для ручного перезапуска карусели (опционально)
+        addRestartButton();
+    }
+}
+
+// Функция для добавления кнопки перезапуска карусели
+function addRestartButton() {
+    const swiperContainer = document.querySelector(".mySwiper");
+    if (swiperContainer && !document.querySelector(".restart-swiper-btn")) {
+        const restartBtn = document.createElement("button");
+        restartBtn.className =
+            "restart-swiper-btn fixed bottom-4 right-4 bg-main-red text-white px-4 py-2 rounded-lg z-50 opacity-0 transition-opacity duration-300";
+        restartBtn.textContent = "▶ Автопрокрутка";
+        restartBtn.style.display = "none";
+
+        restartBtn.addEventListener("click", () => {
             swiper.autoplay.start();
+            abonimentSwiperPaused = false;
+            restartBtn.style.display = "none";
+
+            // Обновляем индикатор состояния
+            const indicator = document.getElementById("autoplayIndicator");
+            if (indicator) {
+                indicator.classList.remove("paused");
+                indicator.title = "Автопрокрутка активна";
+            }
+
+            console.log("Карусель абонементов перезапущена");
+        });
+
+        document.body.appendChild(restartBtn);
+
+        // Показываем кнопку через 5 секунд после остановки
+        let showButtonTimeout;
+
+        const showRestartButton = () => {
+            if (abonimentSwiperPaused) {
+                showButtonTimeout = setTimeout(() => {
+                    restartBtn.style.display = "block";
+                    setTimeout(
+                        () => restartBtn.classList.remove("opacity-0"),
+                        100
+                    );
+                }, 5000);
+            }
+        };
+
+        // Обновляем обработчики событий
+        const originalClickHandler = swiperContainer.onclick;
+        swiperContainer.addEventListener("click", (e) => {
+            if (
+                e.target.closest(".swiper-slide") ||
+                e.target.closest(".flip_card")
+            ) {
+                if (!abonimentSwiperPaused) {
+                    swiper.autoplay.stop();
+                    abonimentSwiperPaused = true;
+                    showRestartButton();
+                }
+            }
         });
     }
 }
 
 // Инициализация событий при загрузке DOM
-document.addEventListener("DOMContentLoaded", initializeSwiperEvents);
+document.addEventListener("DOMContentLoaded", () => {
+    initializeAbonimentSwiperEvents();
+
+    // Инициализация AOS
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100,
+    });
+});
 
 // TRAINER SLIDER - Массив для хранения всех экземпляров каруселей
 var trainerSwipers = [];

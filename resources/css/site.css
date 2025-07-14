@@ -2,6 +2,66 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+/* Fallback для старых браузеров */
+@supports not (font-size: clamp(1rem, 1vw, 2rem)) {
+    /* Fallback для clamp() */
+    .text-sm {
+        font-size: 0.875rem !important;
+    }
+    .text-base {
+        font-size: 1rem !important;
+    }
+    .text-md {
+        font-size: 1.125rem !important;
+    }
+    .text-lg {
+        font-size: 1.5rem !important;
+    }
+    .text-xl {
+        font-size: 2rem !important;
+    }
+    .text-xxl {
+        font-size: 2.5rem !important;
+    }
+    .text-xxxl {
+        font-size: 3rem !important;
+    }
+
+    /* Fallback для padding */
+    .py-sectionPadding {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+    .px-sectionPadding {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    /* Fallback для border-radius */
+    .rounded-brxl {
+        border-radius: 1rem !important;
+    }
+}
+
+/* Fallback для CSS Grid */
+@supports not (display: grid) {
+    .aboniment-block {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .faq-accordion-content {
+        display: block !important;
+    }
+}
+
+/* Fallback для backdrop-filter */
+@supports not (backdrop-filter: blur(10px)) {
+    .dialog-glass {
+        background: rgba(255, 255, 255, 0.9) !important;
+    }
+}
+
 /* This is all you. */
 
 @font-face {
@@ -269,7 +329,7 @@ dialog[open]::backdrop {
         background-repeat: no-repeat;
         background-size: contain;
 
-        @media (width <=600px) {
+        @media (max-width: 600px) {
             display: none;
         }
     }
@@ -472,7 +532,7 @@ section {
     display: block;
     flex-shrink: 0;
 }
-@media (width <= 768px) {
+@media (max-width: 768px) {
     .faq-accordion summary span {
         flex-shrink: 1;
     }
@@ -571,17 +631,79 @@ section {
     top: -300px;
     /* z-index: -1; */
 }
-@media (width <= 768px) {
+@media (max-width: 768px) {
     .bg-hero-djunior-1:after,
     .bg-hero-djunior-2:before,
     .bg-hero-djunior-3:after {
         display: none;
     }
 }
-@media (width >= 768px) {
+@media (min-width: 768px) {
     .bg-hero-djunior-1:after,
     .bg-hero-djunior-2:before,
     .bg-hero-djunior-3:after {
         overflow: hidden;
     }
+}
+
+/* Стили для кнопки перезапуска карусели абонементов */
+.restart-swiper-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #e53e3e;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 9999;
+    opacity: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: none;
+}
+
+.restart-swiper-btn:hover {
+    background: #c53030;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.restart-swiper-btn:active {
+    transform: translateY(0);
+}
+
+/* Анимация появления кнопки */
+.restart-swiper-btn.show {
+    opacity: 1;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .restart-swiper-btn {
+        bottom: 10px;
+        right: 10px;
+        padding: 10px 14px;
+        font-size: 12px;
+    }
+}
+
+/* Стили для индикатора состояния карусели */
+.swiper-autoplay-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+
+.swiper-autoplay-indicator.paused {
+    background: #ef4444;
 }
