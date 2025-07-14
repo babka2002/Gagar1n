@@ -7,7 +7,7 @@ code_field:
   mode: htmlmixed
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1752221124
+updated_at: 1752479391
 template: grelka/fitness
 first_title: Фитнес
 first_bg: img/fitness-hero.png
@@ -156,7 +156,7 @@ tipy_blok:
                                           стретчинга.
           <br/><br/>
           Рекомендуется для всех уровней подготовки.
-        rubl: false
+        rubl: true
         type: novyy_nabor
         enabled: true
       -

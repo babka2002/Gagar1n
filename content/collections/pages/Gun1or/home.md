@@ -7,8 +7,8 @@ hero_desc_group:
   pole_text_1: 'получи выгоду до'
   pole_text_discont: 30%
   pole_text_1_2: null
-  pole_text_2: годовой
-  pole_text_3: абонемент
+  pole_text_2: на
+  pole_text_3: занятия
 hero_1: img_9680.jpg
 hero_2: img_9680.jpg
 hero_podrobnee_gruppa:
@@ -24,7 +24,7 @@ direction_replicator:
     id: dir1
     inversion: false
     direction_title: Детская<br/>площадка
-    direction_image: detskaia-ploshhadka.jpg
+    direction_image: 2025-07-14-11.45.04.jpg
     direction_link: '/gun1or/schedule?category=sport'
     type: direction
     enabled: true
@@ -40,7 +40,7 @@ direction_replicator:
     id: dir3
     inversion: false
     direction_title: Единоборства
-    direction_image: napravlenie-sport.jpg
+    direction_image: edinoborstvo.jpg
     direction_link: '/gun1or/schedule?category=intellectual'
     type: direction
     enabled: true
@@ -48,7 +48,7 @@ direction_replicator:
     id: dir4
     inversion: true
     direction_title: Спорт
-    direction_image: img/direction-4.jpg
+    direction_image: napravlenie-sport-(1).jpg
     direction_link: '/gun1or/schedule?category=dance'
     type: direction
     enabled: true
@@ -56,7 +56,7 @@ direction_replicator:
     id: dir5
     inversion: false
     direction_title: 'Детская комната'
-    direction_image: img/direction-5.jpg
+    direction_image: detskaia-ploshhadka.jpg
     direction_link: '/gun1or/schedule?category=swimming'
     type: direction
     enabled: true
@@ -115,7 +115,7 @@ form_privacy_text: 'Нажимая "Отправить" я согласен на
 final_cta_title: 'не нашли идеальный вариант?'
 final_cta_subtitle: 'подобрать подходящие условия'
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1752166639
+updated_at: 1752482855
 template: gun1or/home
 field_meta_description: 'Детский фитнес центр Gun1or - развитие детей от 3 до 16 лет'
 field_meta_keywords: 'детский фитнес, Gun1or, развитие детей, спорт для детей'

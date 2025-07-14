@@ -4,7 +4,7 @@ blueprint: page_personal_training
 title: 'Персональные тренировки'
 template: grelka/personal_training
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1752151537
+updated_at: 1752494962
 hero_title: персональные<br>тренировки
 hero_image: img/individual_trainings_hero.jpg
 features_list:
@@ -131,6 +131,14 @@ faq_replicator:
     id: faq4
     question: 'Что делать, если я новичок в фитнесе?'
     answer: 'Не переживайте! Мы предложим вводное занятие, поможем составить индивидуальный план и адаптировать тренировки под ваш уровень. Все начинается с малого — главное начать!'
+    type: faq
+    enabled: true
+  -
+    id: md328n79
+    question: 'Сколько длится тренировка?'
+    answer: |-
+      В тренажёрном зале и Групповых программах - 55 минут, в Аква зоне - 45 минут
+      Это оптимальное время для эффективной разминки, основной части и заминки.
     type: faq
     enabled: true
 training_title: 'не знаешь как начать?'

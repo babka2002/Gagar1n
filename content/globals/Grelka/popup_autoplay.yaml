@@ -1,6 +1,6 @@
 popup_title: 'Автоплей заголовок'
 popap_text: 'Автоплей описание.'
 popap_image: xdihfgnerori3r3.jpeg
-popup_delay: 5
+popup_delay: 50000
 popup_interval: 0
 popup_enabled: false
