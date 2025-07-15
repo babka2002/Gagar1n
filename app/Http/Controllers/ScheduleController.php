@@ -219,19 +219,42 @@ class ScheduleController extends Controller
         $selectedAge = $request->input('age'); // 'любые', 'взрослые', 'детские'
         $selectedCost = $request->input('cost'); // 'неважно', 'платно', 'бесплатно'
 
-        // 1. Фильтр по залу (если выбран)
+        // 1. Фильтр по залу и типу занятий (если выбран)
         if (!empty($selectedFilters)) {
             $selectedFiltersLower = array_map('mb_strtolower', $selectedFilters);
             $locationFilteredData = [];
             foreach ($filteredData as $item) {
+                $shouldInclude = false;
+
+                // Проверяем фильтр по залу
                 if (isset($item['room']['title'])) {
                     $roomTitleLower = mb_strtolower($item['room']['title']);
                     if (in_array($roomTitleLower, $selectedFiltersLower)) {
-                        $locationFilteredData[] = $item;
+                        $shouldInclude = true;
                     }
                 }
+
+                // Проверяем фильтр по типу занятия (название занятия)
+                if (!$shouldInclude && isset($item['service']['title'])) {
+                    $serviceTitleLower = mb_strtolower($item['service']['title']);
+                    if (in_array($serviceTitleLower, $selectedFiltersLower)) {
+                        $shouldInclude = true;
+                    }
+                }
+
+                // Проверяем фильтр по группе занятия
+                if (!$shouldInclude && isset($item['group']['title'])) {
+                    $groupTitleLower = mb_strtolower($item['group']['title']);
+                    if (in_array($groupTitleLower, $selectedFiltersLower)) {
+                        $shouldInclude = true;
+                    }
+                }
+
+                if ($shouldInclude) {
+                    $locationFilteredData[] = $item;
+                }
             }
-            $filteredData = $locationFilteredData; // Обновляем данные после фильтрации по залу
+            $filteredData = $locationFilteredData; // Обновляем данные после фильтрации
         }
 
         // 2. Фильтр по возрасту (если выбран и не 'любые')
@@ -241,63 +264,35 @@ class ScheduleController extends Controller
             foreach ($filteredData as $item) {
                 $shouldInclude = false;
 
-                // Проверяем наличие детских маркеров в релевантных полях
-                $checkTitles = [
-                    $item['service']['title'] ?? '',
-                    $item['group']['title'] ?? '',
-                    $item['course']['title'] ?? '',
-                ];
+                // Проверяем наличие возрастных маркеров в описании занятия
+                $description = $item['service']['description'] ?? '';
+                $descriptionLower = mb_strtolower($description);
 
-                $isKidsEvent = false;
-                foreach ($checkTitles as $title) {
-                    if (
-                        mb_stripos($title, 'kids') !== false ||
-                        mb_stripos($title, '(дети)') !== false ||
-                        mb_stripos($title, 'детск') !== false ||
-                        mb_stripos($title, 'junior') !== false
-                    ) {
-                        $isKidsEvent = true;
-                        break;
-                    }
-                }
-
-                // Логика фильтрации по возрастным группам
+                // Логика фильтрации по возрастным группам на основе описаний
                 switch ($selectedAge) {
-                    case 'детские':
-                        // Показываем ВСЕ детские занятия
-                        $shouldInclude = $isKidsEvent;
+                    case 'малыш':
+                        // Ищем маркеры для малышей в описании
+                        $shouldInclude = mb_stripos($descriptionLower, 'малыш') !== false;
                         break;
-                    case '3-5':
-                        // Для малышей (3-5 лет) ищем специфические маркеры ИЛИ показываем все детские без маркеров
-                        if ($isKidsEvent) {
-                            $hasSpecificMarkers = $this->checkAgeGroup($checkTitles, ['малыш', '3-5', '3', '4', '5', 'ясли']);
-                            $shouldInclude = $hasSpecificMarkers || $this->isGeneralKidsEvent($checkTitles);
-                        }
+                    case 'дошкольн':
+                        // Ищем маркеры для дошкольников в описании
+                        $shouldInclude = mb_stripos($descriptionLower, 'дошкольн') !== false;
                         break;
-                    case '6-8':
-                        // Для дошкольников (6-8 лет)
-                        if ($isKidsEvent) {
-                            $hasSpecificMarkers = $this->checkAgeGroup($checkTitles, ['дошкол', '6-8', '6', '7', '8', 'подготов']);
-                            $shouldInclude = $hasSpecificMarkers || $this->isGeneralKidsEvent($checkTitles);
-                        }
+                    case 'школьн':
+                        // Ищем маркеры для школьников в описании
+                        $shouldInclude = mb_stripos($descriptionLower, 'школьн') !== false;
                         break;
-                    case '9-12':
-                        // Для школьников (9-12 лет)
-                        if ($isKidsEvent) {
-                            $hasSpecificMarkers = $this->checkAgeGroup($checkTitles, ['школьн', '9-12', '9', '10', '11', '12', 'младш']);
-                            $shouldInclude = $hasSpecificMarkers || $this->isGeneralKidsEvent($checkTitles);
-                        }
+                    case 'подрост':
+                        // Ищем маркеры для подростков в описании
+                        $shouldInclude = mb_stripos($descriptionLower, 'подрост') !== false;
                         break;
-                    case '13-16':
-                        // Для подростков (13-16 лет)
-                        if ($isKidsEvent) {
-                            $hasSpecificMarkers = $this->checkAgeGroup($checkTitles, ['подрост', '13-16', '13', '14', '15', '16', 'старш']);
-                            $shouldInclude = $hasSpecificMarkers || $this->isGeneralKidsEvent($checkTitles);
-                        }
+                    case '5+':
+                        // Ищем маркер "5+" в описании
+                        $shouldInclude = mb_stripos($descriptionLower, '5+') !== false;
                         break;
                     default:
-                        // Если не детские, то берем только взрослые
-                        $shouldInclude = !$isKidsEvent;
+                        // Для остальных случаев показываем все
+                        $shouldInclude = true;
                         break;
                 }
 
@@ -314,9 +309,23 @@ class ScheduleController extends Controller
             $isPaidFilter = ($selectedCost === 'платно');
 
             foreach ($filteredData as $item) {
-                // Проверяем платность: по полю commercial ИЛИ по наличию ₽ в названии
-                $isActuallyPaid = (isset($item['commercial']) && $item['commercial'] === true)
-                    || (isset($item['service']['title']) && mb_strpos($item['service']['title'], '₽') !== false);
+                // Проверяем платность по символу ₽ в названии занятия или группы
+                $isActuallyPaid = false;
+
+                // Проверяем символ ₽ в названии занятия
+                if (isset($item['service']['title']) && mb_strpos($item['service']['title'], '₽') !== false) {
+                    $isActuallyPaid = true;
+                }
+
+                // Проверяем символ ₽ в названии группы
+                if (!$isActuallyPaid && isset($item['group']['title']) && mb_strpos($item['group']['title'], '₽') !== false) {
+                    $isActuallyPaid = true;
+                }
+
+                // Проверяем поле commercial (хотя в данных все false, но на всякий случай)
+                if (!$isActuallyPaid && isset($item['commercial']) && $item['commercial'] === true) {
+                    $isActuallyPaid = true;
+                }
 
                 if ($isPaidFilter && $isActuallyPaid) { // Нужны платные, и это платное
                     $costFilteredData[] = $item;
@@ -327,7 +336,6 @@ class ScheduleController extends Controller
             $filteredData = $costFilteredData; // Обновляем данные после фильтрации по стоимости
         }
 
-        // dd($filteredData);
         return array_values(array_unique($filteredData, SORT_REGULAR)); // Удаляем дубликаты, если они возникли
     }
 

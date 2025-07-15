@@ -38,17 +38,18 @@
                     Найди идеальное занятие! 🔍
                 </h2>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Основные фильтры -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                     <!-- Фильтр по возрасту -->
                     <div>
                         <label class="block text-sm font-bold text-blue-700 mb-2">Возраст 👶</label>
                         <select name="age" class="w-full rounded-full border-2 border-blue-200 p-3 focus:border-blue-500 focus:outline-none">
                             <option value="любые" {{ request('age') === 'любые' || !request('age') ? 'selected' : '' }}>Любой возраст</option>
-                            <option value="3-5" {{ request('age') === '3-5' ? 'selected' : '' }}>3-5 лет (Малыши)</option>
-                            <option value="6-8" {{ request('age') === '6-8' ? 'selected' : '' }}>6-8 лет (Дошкольники)</option>
-                            <option value="9-12" {{ request('age') === '9-12' ? 'selected' : '' }}>9-12 лет (Школьники)</option>
-                            <option value="13-16" {{ request('age') === '13-16' ? 'selected' : '' }}>13-16 лет (Подростки)</option>
-                            <option value="детские" {{ request('age') === 'детские' ? 'selected' : '' }}>Все детские (до 16 лет)</option>
+                            <option value="малыш" {{ request('age') === 'малыш' ? 'selected' : '' }}>Малыши (до 5 лет)</option>
+                            <option value="дошкольн" {{ request('age') === 'дошкольн' ? 'selected' : '' }}>Дошкольники (5-7 лет)</option>
+                            <option value="школьн" {{ request('age') === 'школьн' ? 'selected' : '' }}>Школьники (7-12 лет)</option>
+                            <option value="подрост" {{ request('age') === 'подрост' ? 'selected' : '' }}>Подростки (12-16 лет)</option>
+                            <option value="5+" {{ request('age') === '5+' ? 'selected' : '' }}>От 5 лет и старше</option>
                         </select>
                     </div>
 
@@ -56,7 +57,7 @@
                     <div>
                         <label class="block text-sm font-bold text-blue-700 mb-2">Стоимость 💰</label>
                         <select name="cost" class="w-full rounded-full border-2 border-blue-200 p-3 focus:border-blue-500 focus:outline-none">
-                            <option value="неважно" {{ request('cost') === 'неважно' ? 'selected' : '' }}>Неважно</option>
+                            <option value="неважно" {{ request('cost') === 'неважно' || !request('cost') ? 'selected' : '' }}>Неважно</option>
                             <option value="бесплатно" {{ request('cost') === 'бесплатно' ? 'selected' : '' }}>Бесплатно</option>
                             <option value="платно" {{ request('cost') === 'платно' ? 'selected' : '' }}>Платно</option>
                         </select>
@@ -69,6 +70,40 @@
                                 style="background: linear-gradient(45deg, {{ $site_settings['primary_color'] ?? '#3B82F6' }}, {{ $site_settings['button_hover_color'] ?? '#2563EB' }})">
                             Применить фильтры 🚀
                         </button>
+                    </div>
+                </div>
+
+                <!-- Фильтры по залам -->
+                <div class="mb-6">
+                    <label class="block text-sm font-bold text-blue-700 mb-3">Залы 🏢</label>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="#" class="filter-item text-sm inline-flex items-center justify-center border border-blue-200 rounded-xl text-blue-700 py-2 px-3 transition-all hover:text-white hover:bg-blue-500" data-filter="аква зона">Аква зона</a>
+                        <a href="#" class="filter-item text-sm inline-flex items-center justify-center border border-blue-200 rounded-xl text-blue-700 py-2 px-3 transition-all hover:text-white hover:bg-blue-500" data-filter="зона кроссфита">Зона кроссфита</a>
+                        <a href="#" class="filter-item text-sm inline-flex items-center justify-center border border-blue-200 rounded-xl text-blue-700 py-2 px-3 transition-all hover:text-white hover:bg-blue-500" data-filter="малый бассейн">Малый бассейн</a>
+                        <a href="#" class="filter-item text-sm inline-flex items-center justify-center border border-blue-200 rounded-xl text-blue-700 py-2 px-3 transition-all hover:text-white hover:bg-blue-500" data-filter="эстетический зал kids">Эстетический зал KIDS</a>
+                        <a href="#" class="filter-item text-sm inline-flex items-center justify-center border border-blue-200 rounded-xl text-blue-700 py-2 px-3 transition-all hover:text-white hover:bg-blue-500" data-filter="кабинет кинезиолога">Кабинет кинезиолога</a>
+                        <a href="#" class="filter-item text-sm inline-flex items-center justify-center border border-blue-200 rounded-xl text-blue-700 py-2 px-3 transition-all hover:text-white hover:bg-blue-500" data-filter="сайкл студия">Сайкл студия</a>
+                        <a href="#" class="filter-item text-sm inline-flex items-center justify-center border border-blue-200 rounded-xl text-blue-700 py-2 px-3 transition-all hover:text-white hover:bg-blue-500" data-filter="зал единоборств kids">Зал единоборств KIDS</a>
+                        <a href="#" class="filter-item text-sm inline-flex items-center justify-center border border-blue-200 rounded-xl text-blue-700 py-2 px-3 transition-all hover:text-white hover:bg-blue-500" data-filter="студия 1 (g1unior)">Студия 1 (G1unior)</a>
+                    </div>
+                </div>
+
+                <!-- Фильтры по типам занятий -->
+                <div class="mb-6">
+                    <label class="block text-sm font-bold text-blue-700 mb-3">Типы занятий 🏃‍♂️</label>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="#" class="filter-item text-sm inline-flex items-center justify-center border border-blue-200 rounded-xl text-blue-700 py-2 px-3 transition-all hover:text-white hover:bg-blue-500" data-filter="аква плавание kids">Аква ПЛАВАНИЕ KIDS</a>
+                        <a href="#" class="filter-item text-sm inline-flex items-center justify-center border border-blue-200 rounded-xl text-blue-700 py-2 px-3 transition-all hover:text-white hover:bg-blue-500" data-filter="crossfit kids">CROSSFIT KIDS</a>
+                        <a href="#" class="filter-item text-sm inline-flex items-center justify-center border border-blue-200 rounded-xl text-blue-700 py-2 px-3 transition-all hover:text-white hover:bg-blue-500" data-filter="dance mix kids">DANCE MIX KIDS</a>
+                        <a href="#" class="filter-item text-sm inline-flex items-center justify-center border border-blue-200 rounded-xl text-blue-700 py-2 px-3 transition-all hover:text-white hover:bg-blue-500" data-filter="каратэ kids">КАРАТЭ KIDS</a>
+                        <a href="#" class="filter-item text-sm inline-flex items-center justify-center border border-blue-200 rounded-xl text-blue-700 py-2 px-3 transition-all hover:text-white hover:bg-blue-500" data-filter="акробатика kids">АКРОБАТИКА KIDS</a>
+                        <a href="#" class="filter-item text-sm inline-flex items-center justify-center border border-blue-200 rounded-xl text-blue-700 py-2 px-3 transition-all hover:text-white hover:bg-blue-500" data-filter="mma kids">MMA KIDS</a>
+                        <a href="#" class="filter-item text-sm inline-flex items-center justify-center border border-blue-200 rounded-xl text-blue-700 py-2 px-3 transition-all hover:text-white hover:bg-blue-500" data-filter="здоровая спина kids">ЗДОРОВАЯ СПИНА KIDS</a>
+                        <a href="#" class="filter-item text-sm inline-flex items-center justify-center border border-blue-200 rounded-xl text-blue-700 py-2 px-3 transition-all hover:text-white hover:bg-blue-500" data-filter="грэпплинг kids">ГРЭППЛИНГ KIDS</a>
+                        <a href="#" class="filter-item text-sm inline-flex items-center justify-center border border-blue-200 rounded-xl text-blue-700 py-2 px-3 transition-all hover:text-white hover:bg-blue-500" data-filter="boxing kids">BOXING KIDS</a>
+                        <a href="#" class="filter-item text-sm inline-flex items-center justify-center border border-blue-200 rounded-xl text-blue-700 py-2 px-3 transition-all hover:text-white hover:bg-blue-500" data-filter="ритмика kids">РИТМИКА KIDS</a>
+                        <a href="#" class="filter-item text-sm inline-flex items-center justify-center border border-blue-200 rounded-xl text-blue-700 py-2 px-3 transition-all hover:text-white hover:bg-blue-500" data-filter="taekick kids">TAEKICK KIDS</a>
+                        <a href="#" class="filter-item text-sm inline-flex items-center justify-center border border-blue-200 rounded-xl text-blue-700 py-2 px-3 transition-all hover:text-white hover:bg-blue-500" data-filter="дзюдо kids">ДЗЮДО KIDS</a>
                     </div>
                 </div>
 
@@ -289,6 +324,54 @@ document.addEventListener("DOMContentLoaded", () => {
             if (selectedDayName) {
                 selectedDayName.textContent = selector.querySelector('span.text-sm').textContent;
             }
+        });
+    });
+});
+
+// Функционал фильтров по залам и типам занятий
+document.addEventListener("DOMContentLoaded", () => {
+    const filterItems = document.querySelectorAll('.filter-item');
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedFilters = urlParams.getAll('filters[]');
+
+    // Выделяем выбранные фильтры при загрузке
+    filterItems.forEach(item => {
+        const filterId = item.getAttribute('data-filter');
+        if (selectedFilters.includes(filterId)) {
+            item.classList.add('bg-blue-500', 'text-white');
+            item.classList.remove('text-blue-700', 'border-blue-200');
+        }
+
+        item.addEventListener('click', (event) => {
+            event.preventDefault();
+            const filterId = item.getAttribute('data-filter');
+
+            // Получаем текущие параметры URL
+            const urlParams = new URLSearchParams(window.location.search);
+
+            // Добавляем или удаляем фильтр из параметров
+            if (urlParams.has('filters[]')) {
+                const filters = urlParams.getAll('filters[]');
+                if (filters.includes(filterId)) {
+                    // Если фильтр уже выбран, удаляем его
+                    const index = filters.indexOf(filterId);
+                    if (index > -1) {
+                        filters.splice(index, 1);
+                    }
+                } else {
+                    // Если фильтр не выбран, добавляем его
+                    filters.push(filterId);
+                }
+                // Обновляем параметры URL
+                urlParams.delete('filters[]');
+                filters.forEach(filter => urlParams.append('filters[]', filter));
+            } else {
+                // Если фильтров нет, добавляем текущий
+                urlParams.append('filters[]', filterId);
+            }
+
+            // Перезагружаем страницу с новыми параметрами
+            window.location.search = urlParams.toString();
         });
     });
 });
