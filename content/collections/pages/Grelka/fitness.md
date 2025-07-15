@@ -12,8 +12,11 @@ template: grelka/fitness
 first_title: Фитнес
 first_bg: img/fitness-hero.png
 zal: '3'
+zal_text: 'ЗАЛА'
 napravlenie: '45'
+napravlenie_text: 'НАПРАВЛЕНИЙ'
 trenerov: '15'
+trenerov_text: 'ТРЕНЕРОВ'
 knopka_tekst: 'групповые тренировки на любой вкус'
 tipy_blok:
   -

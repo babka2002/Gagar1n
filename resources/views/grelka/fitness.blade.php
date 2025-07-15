@@ -13,15 +13,15 @@
             <div class="flex items-center justify-around leading-none">
                 <div class="flex flex-col items-center justify-center">
                     <span class="text-xxxl lg:text-[clamp(3.3125rem,0.805rem+11.1446vw,10.25rem)]" data-aos="zoom-in">{{ $zal }}</span>
-                    <span class="md:text-lg" data-aos="zoom-out">ЗАЛА</span>
+                    <span class="md:text-lg" data-aos="zoom-out">{{ $zal_text ?? 'ЗАЛА' }}</span>
                 </div>
                 <div class="flex flex-col items-center justify-center">
                     <span class="text-xxxl lg:text-[clamp(3.3125rem,0.805rem+11.1446vw,10.25rem)]" data-aos="zoom-in">{{ $napravlenie }}</span>
-                    <span class="md:text-lg" data-aos="zoom-out">НАПРАВЛЕНИЙ</span>
+                    <span class="md:text-lg" data-aos="zoom-out">{{ $napravlenie_text ?? 'НАПРАВЛЕНИЙ' }}</span>
                 </div>
                 <div class="flex flex-col items-center justify-center">
                     <span class="text-xxxl lg:text-[clamp(3.3125rem,0.805rem+11.1446vw,10.25rem)]" data-aos="zoom-in">{{ $trenerov }}</span>
-                    <span class="md:text-lg" data-aos="zoom-out">ТРЕНЕРОВ</span>
+                    <span class="md:text-lg" data-aos="zoom-out">{{ $trenerov_text ?? 'ТРЕНЕРОВ' }}</span>
                 </div>
             </div>
         </div>
@@ -143,7 +143,7 @@
 </section>
 
 <!-- Форма записи -->
-<section class="bg-dark">
+<section class="">
     <div class="container grid grid-cols-1 items-center px-4 lg:grid-cols-3 gap-y-5 lg:gap-24 py-sectionPadding">
         <div class="col-span-2">
             <h3 class="text-xl md:text-xxl leading-none uppercase mb-7 text-light max-w-full md:max-w-[60%]"

@@ -1,199 +1,187 @@
-title: 'Page Fitness'
+title: "Page Fitness"
 tabs:
   main:
     display: Основное
     sections:
-      -
-        display: 'Первая секция'
+      - display: "Первая секция"
         fields:
-          -
-            handle: title
+          - handle: title
             field:
               type: text
               required: true
               localizable: false
               validate:
                 - required
-          -
-            handle: first_title
+          - handle: first_title
             field:
               type: text
               localizable: false
               validate:
                 - required
               display: Заголовок
-          -
-            handle: first_bg
+          - handle: first_bg
             field:
               max_files: 1
               container: assets
               type: assets
               display: Картинка
               localizable: false
-          -
-            handle: zal
+          - handle: zal
             field:
               type: text
               display: Зал
               localizable: false
-          -
-            handle: napravlenie
+          - handle: zal_text
+            field:
+              type: text
+              display: "Текст для зала (по умолчанию: ЗАЛА)"
+              localizable: false
+              default: ЗАЛА
+          - handle: napravlenie
             field:
               type: text
               display: Направлений
               localizable: false
-          -
-            handle: trenerov
+          - handle: napravlenie_text
+            field:
+              type: text
+              display: "Текст для направлений (по умолчанию: НАПРАВЛЕНИЙ)"
+              localizable: false
+              default: НАПРАВЛЕНИЙ
+          - handle: trenerov
             field:
               type: text
               display: Тренеров
               localizable: false
-          -
-            handle: knopka_tekst
+          - handle: trenerov_text
             field:
               type: text
-              display: 'Кнопка текст'
+              display: "Текст для тренеров (по умолчанию: ТРЕНЕРОВ)"
               localizable: false
-      -
-        display: 'Вторая секция'
+              default: ТРЕНЕРОВ
+          - handle: knopka_tekst
+            field:
+              type: text
+              display: "Кнопка текст"
+              localizable: false
+      - display: "Вторая секция"
         fields:
-          -
-            handle: tipy_blok
+          - handle: tipy_blok
             field:
               type: replicator
-              display: 'Типы блок'
+              display: "Типы блок"
               localizable: false
               sets:
                 novaya_gruppa_naborov:
-                  display: 'Новая группа наборов'
+                  display: "Новая группа наборов"
                   sets:
                     novyy_nabor:
-                      display: 'Новый набор'
+                      display: "Новый набор"
                       fields:
-                        -
-                          handle: tipy_blok_image
+                        - handle: tipy_blok_image
                           field:
                             max_files: 1
                             container: assets
                             type: assets
                             display: Картинка
                             localizable: false
-                        -
-                          handle: tipy_blok_title
+                        - handle: tipy_blok_title
                           field:
                             type: text
                             display: Заголовок
                             localizable: false
-                        -
-                          handle: tipy_blok_napravleniya
+                        - handle: tipy_blok_napravleniya
                           field:
                             type: replicator
-                            display: 'Типы блок направления'
+                            display: "Типы блок направления"
                             localizable: false
                             sets:
                               novaya_gruppa_naborov:
-                                display: 'Новая группа наборов'
+                                display: "Новая группа наборов"
                                 sets:
                                   novyy_nabor:
-                                    display: 'Новый набор'
+                                    display: "Новый набор"
                                     fields:
-                                      -
-                                        handle: tipy_blok_napravleniya
+                                      - handle: tipy_blok_napravleniya
                                         field:
                                           type: text
                                           display: Заголовок
                                           localizable: false
-                                      -
-                                        handle: tipy_blok_napravleniya_text
+                                      - handle: tipy_blok_napravleniya_text
                                         field:
                                           type: textarea
                                           display: Описание
                                           localizable: false
-                                      -
-                                        handle: rubl
+                                      - handle: rubl
                                         field:
                                           type: toggle
                                           display: Рубль
                                           localizable: false
-      -
-        display: 'Третий блок'
+      - display: "Третий блок"
         fields:
-          -
-            handle: third_block_title
+          - handle: third_block_title
             field:
               type: text
               display: Заголовок
               localizable: false
-          -
-            handle: left_title
+          - handle: left_title
             field:
               type: text
-              display: 'Левый заголовок'
+              display: "Левый заголовок"
               localizable: false
-          -
-            handle: left_image
+          - handle: left_image
             field:
               max_files: 1
               container: assets
               type: assets
-              display: 'Левая картинка'
+              display: "Левая картинка"
               localizable: false
-          -
-            handle: left_link
+          - handle: left_link
             field:
               type: link
-              display: 'Левая ссылка'
+              display: "Левая ссылка"
               localizable: false
-          -
-            handle: right_zagolovok
+          - handle: right_zagolovok
             field:
               type: text
-              display: 'Правая заголовок'
+              display: "Правая заголовок"
               localizable: false
-          -
-            handle: right_kartinka
+          - handle: right_kartinka
             field:
               max_files: 1
               container: assets
               type: assets
-              display: 'Правая картинка'
+              display: "Правая картинка"
               localizable: false
-          -
-            handle: right_ssylka
+          - handle: right_ssylka
             field:
               type: link
-              display: 'Правая ссылка'
+              display: "Правая ссылка"
               localizable: false
-      -
-        display: Форма
+      - display: Форма
         fields:
-          -
-            handle: forma_title
+          - handle: forma_title
             field:
               type: text
-              display: 'Форма заголовок'
+              display: "Форма заголовок"
               localizable: false
-          -
-            handle: forma_image
+          - handle: forma_image
             field:
               container: assets
               type: assets
-              display: 'Форма картинка'
+              display: "Форма картинка"
               localizable: false
               max_files: 1
-          -
-            handle: form_bg
+          - handle: form_bg
             field:
               max_files: 1
               container: assets
               type: assets
               display: Картинка
               localizable: false
-      -
-        display: Шаблон
+      - display: Шаблон
         fields:
-          -
-            handle: template
+          - handle: template
             field:
               type: template
               display: Шаблон
@@ -201,34 +189,28 @@ tabs:
   seo_tab:
     display: SEO
     sections:
-      -
-        display: 'Новая секция'
+      - display: "Новая секция"
         fields:
-          -
-            handle: field_meta_description
+          - handle: field_meta_description
             field:
               type: textarea
-              display: 'Краткое описание страницы'
+              display: "Краткое описание страницы"
               localizable: false
-          -
-            handle: field_meta_keywords
+          - handle: field_meta_keywords
             field:
               type: textarea
-              display: 'ключевые, слова, через, запятую'
+              display: "ключевые, слова, через, запятую"
               localizable: false
   sidebar:
     display: Sidebar
     sections:
-      -
-        fields:
-          -
-            handle: slug
+      - fields:
+          - handle: slug
             field:
               type: slug
               localizable: true
-              validate: 'max:200'
-          -
-            handle: parent
+              validate: "max:200"
+          - handle: parent
             field:
               type: entries
               collections:

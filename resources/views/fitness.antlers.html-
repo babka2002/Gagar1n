@@ -11,15 +11,15 @@
             <div class="flex items-center justify-around leading-none">
                 <div class="flex flex-col items-center justify-center">
                     <span class="text-xxxl lg:text-[clamp(3.3125rem,0.805rem+11.1446vw,10.25rem)]" data-aos="zoom-in">{{ zal }}</span>
-                    <span class="md:text-lg" data-aos="zoom-out">ЗАЛА</span>
+                    <span class="md:text-lg" data-aos="zoom-out">{{ zal_text ?? 'ЗАЛА' }}</span>
                 </div>
                 <div class="flex flex-col items-center justify-center">
                     <span class="text-xxxl lg:text-[clamp(3.3125rem,0.805rem+11.1446vw,10.25rem)]" data-aos="zoom-in">{{ napravlenie }}</span>
-                    <span class="md:text-lg" data-aos="zoom-out">НАПРАВЛЕНИЙ</span>
+                    <span class="md:text-lg" data-aos="zoom-out">{{ napravlenie_text ?? 'НАПРАВЛЕНИЙ' }}</span>
                 </div>
                 <div class="flex flex-col items-center justify-center">
                     <span class="text-xxxl lg:text-[clamp(3.3125rem,0.805rem+11.1446vw,10.25rem)]" data-aos="zoom-in">{{ trenerov }}</span>
-                    <span class="md:text-lg" data-aos="zoom-out">ТРЕНЕРОВ</span>
+                    <span class="md:text-lg" data-aos="zoom-out">{{ trenerov_text ?? 'ТРЕНЕРОВ' }}</span>
                 </div>
             </div>
         </div>
