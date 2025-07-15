@@ -84,7 +84,8 @@
             <div class="hidden md:flex items-center justify-between gap-6 relative z-10">
                 {{-- Grelka - основной сайт --}}
                 <s:get_site:Grelka>
-                    <a href="{{ $permalink }}"
+                    {{-- <a href="{{ $permalink }}" --}}
+                    <a href="#"
                        class="w-[52px] md:w-[6em] lg:w-[7em] {{ $site->handle === 'Grelka' ? 'grayscale-0' : 'grayscale-[1]' }} transition-all">
                         <img
                             src="<s:glide:data_url src='/assets/img/new_logo_grelka.png' quality='75' format='webp' />"
@@ -113,7 +114,7 @@
                     {{-- <a href="{{ $permalink }}" --}}
                        class="w-[52px] md:w-[6em] lg:w-[7em] {{ $site->handle === 'GFoodcafe' ? 'grayscale-0' : 'grayscale-[1]' }} transition-all">
                         <img
-                            src="<s:glide:data_url src='/assets/img/new_logo_gfood.png' quality='75' format='webp' />"
+                            src="<s:glide:data_url src='/assets/img/new_logo_gfood2.png' quality='75' format='webp' />"
                             alt="{{ $name }}"
                             class="block {{ $site->handle === 'GFoodcafe' ? 'opacity-100' : 'opacity-70 hover:opacity-100' }} transition-all"
                         >
@@ -161,7 +162,8 @@
                     <div class="flex items-center justify-center gap-4">
                         {{-- Grelka --}}
                         <s:get_site:Grelka>
-                            <a href="{{ $permalink }}" class="flex-1 flex justify-center transition-all {{ $site->handle === 'Grelka' ? 'grayscale-0' : 'grayscale-[1]' }}">
+                            {{-- <a href="{{ $permalink }}" --}}
+                            <a href="#" class="flex-1 flex justify-center transition-all {{ $site->handle === 'Grelka' ? 'grayscale-0' : 'grayscale-[1]' }}">
                                 <img
                                     src="<s:glide:data_url src='/assets/img/new_logo_grelka.png' quality='75' format='webp' />"
                                     alt="{{ $name }}"
@@ -185,7 +187,7 @@
                         <s:get_site:GFoodcafe>
                             <a href="/" class="flex-1 flex justify-center transition-all {{ $site->handle === 'GFoodcafe' ? 'grayscale-0' : 'grayscale-[1]' }}">
                                 <img
-                                    src="<s:glide:data_url src='/assets/img/new_logo_gfood.png' quality='75' format='webp' />"
+                                    src="<s:glide:data_url src='/assets/img/new_logo_gfood2.png' quality='75' format='webp' />"
                                     alt="{{ $name }}"
                                     class="h-[40px] w-auto object-contain {{ $site->handle === 'GFoodcafe' ? 'opacity-100' : 'opacity-70 hover:opacity-100' }} transition-all"
                                 >
