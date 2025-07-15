@@ -93,7 +93,7 @@
             <div class="hidden md:flex items-center justify-between gap-6 relative z-10">
                 {{-- Grelka - основной сайт --}}
                 <s:get_site:Grelka>
-                    <a href="https://grelkaspa.ru"
+                    <a href="/"
                     {{-- <a href="{{ $permalink }}" --}}
                        class="w-[52px] md:w-[6em] lg:w-[7em] {{ $site->handle === 'Grelka' ? 'grayscale-0' : 'grayscale-[1]' }} transition-all">
                         <img
@@ -119,7 +119,7 @@
 
                 {{-- GFood Cafe --}}
                 <s:get_site:GFoodcafe>
-                    <a href="https://gfoodcafe.ru"
+                    <a href="/"
                     {{-- <a href="{{ $permalink }}" --}}
                        class="w-[52px] md:w-[6em] lg:w-[7em] {{ $site->handle === 'GFoodcafe' ? 'grayscale-0' : 'grayscale-[1]' }} transition-all">
                         <img
@@ -231,7 +231,7 @@
                     <div class="flex items-center justify-center gap-4">
                         {{-- Grelka --}}
                         <s:get_site:Grelka>
-                                                    <a href="https://grelkaspa.ru" class="flex-1 flex justify-center transition-all {{ $site->handle === 'Grelka' ? 'grayscale-0' : 'grayscale-[1]' }}">
+                            <a href="/" class="flex-1 flex justify-center transition-all {{ $site->handle === 'Grelka' ? 'grayscale-0' : 'grayscale-[1]' }}">
                             <img
                                 src="<s:glide:data_url src='/assets/img/new_logo_grelka.png' quality='75' format='webp' />"
                                 alt="{{ $name }}"
@@ -242,7 +242,7 @@
 
                         {{-- Junior --}}
                         <s:get_site:Gun1or>
-                                                    <a href="{{ $permalink }}" class="flex-1 flex justify-center transition-all {{ $site->handle === 'Gun1or' ? 'grayscale-0' : 'grayscale-[1]' }}">
+                            <a href="{{ $permalink }}" class="flex-1 flex justify-center transition-all {{ $site->handle === 'Gun1or' ? 'grayscale-0' : 'grayscale-[1]' }}">
                             <img
                                 src="<s:glide:data_url src='/assets/img/new_logo_gunior.png' quality='75' format='webp' />"
                                 alt="{{ $name }}"
@@ -253,7 +253,7 @@
 
                         {{-- GFood Cafe --}}
                         <s:get_site:GFoodcafe>
-                                                    <a href="https://gfoodcafe.ru" class="flex-1 flex justify-center transition-all {{ $site->handle === 'GFoodcafe' ? 'grayscale-0' : 'grayscale-[1]' }}">
+                            <a href="/" class="flex-1 flex justify-center transition-all {{ $site->handle === 'GFoodcafe' ? 'grayscale-0' : 'grayscale-[1]' }}">
                             <img
                                 src="<s:glide:data_url src='/assets/img/new_logo_gfood.png' quality='75' format='webp' />"
                                 alt="{{ $name }}"
@@ -378,47 +378,6 @@
                         </p>
                     </li>
                 </ul>
-
-                        <!-- START::MOBILE LOGOS BLOCK -->
-        <div class="container px-[1em] md:hidden mb-4">
-            <div class="px-4 py-3">
-                <div class="flex items-center justify-center gap-4">
-                    {{-- Grelka --}}
-                    <s:get_site:Grelka>
-                        <a href="https://grelkaspa.ru" class="flex-1 flex justify-center transition-all hover:opacity-70">
-                            <img
-                                src="<s:glide:data_url src='/assets/img/grelka-logo.png' quality='75' format='webp' />"
-                                alt="{{ $name }}"
-                                class="h-[40px] w-auto object-contain"
-                            >
-                        </a>
-                    </s:get_site:Grelka>
-
-                    {{-- Junior --}}
-                    <s:get_site:Gun1or>
-                        <a href="{{ $permalink }}" class="flex-1 flex justify-center transition-all hover:opacity-70">
-                            <img
-                                src="<s:glide:data_url src='/assets/img/logo-dzhunior.png' quality='75' format='webp' />"
-                                alt="{{ $name }}"
-                                class="h-[40px] w-auto object-contain"
-                            >
-                        </a>
-                    </s:get_site:Gun1or>
-
-                    {{-- GFood Cafe --}}
-                    <s:get_site:GFoodcafe>
-                        <a href="https://gfoodcafe.ru" class="flex-1 flex justify-center transition-all hover:opacity-70">
-                            <img
-                                src="<s:glide:data_url src='/assets/img/dzhifud-logo.png' quality='75' format='webp' />"
-                                alt="{{ $name }}"
-                                class="h-[40px] w-auto object-contain"
-                            >
-                        </a>
-                    </s:get_site:GFoodcafe>
-                </div>
-            </div>
-        </div>
-        <!-- END::MOBILE LOGOS BLOCK -->
 
             </div>
 

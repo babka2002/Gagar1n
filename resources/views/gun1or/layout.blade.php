@@ -96,7 +96,7 @@
 
                 {{-- Junior --}}
                 <s:get_site:Gun1or>
-                    <a href="#"
+                    <a href="/"
                     {{-- <a href="{{ $permalink }}" --}}
                        class="w-[52px] md:w-[6em] lg:w-[7em] {{ $site->handle === 'Gun1or' ? 'grayscale-0' : 'grayscale-[1]' }} transition-all">
                         <img
@@ -109,7 +109,7 @@
 
                 {{-- GFood Cafe --}}
                 <s:get_site:GFoodcafe>
-                    <a href="#"
+                    <a href="/"
                     {{-- <a href="{{ $permalink }}" --}}
                        class="w-[52px] md:w-[6em] lg:w-[7em] {{ $site->handle === 'GFoodcafe' ? 'grayscale-0' : 'grayscale-[1]' }} transition-all">
                         <img
@@ -174,7 +174,7 @@
 
                         {{-- GFood Cafe --}}
                         <s:get_site:GFoodcafe>
-                            <a href="#" class="flex-1 flex justify-center transition-all {{ $site->handle === 'GFoodcafe' ? 'grayscale-0' : 'grayscale-[1]' }}">
+                            <a href="/" class="flex-1 flex justify-center transition-all {{ $site->handle === 'GFoodcafe' ? 'grayscale-0' : 'grayscale-[1]' }}">
                                 <img
                                     src="<s:glide:data_url src='/assets/img/new_logo_gfood.png' quality='75' format='webp' />"
                                     alt="{{ $name }}"
