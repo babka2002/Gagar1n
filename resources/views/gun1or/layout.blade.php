@@ -388,6 +388,20 @@
                                 </svg>
                             </button>
                         </div>
+
+                        <!-- Согласие на обработку ПД -->
+                        <div class="mt-4 flex items-start gap-3">
+                            <input
+                                type="checkbox"
+                                id="privacy-consent-1"
+                                name="privacy_consent"
+                                required
+                                class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
+                            />
+                            <label for="privacy-consent-1" class="text-base text-light leading-relaxed">
+                                Я согласен(а) на обработку персональных данных и принимаю условия <a href="/policy" target="_blank" class="text-main-red hover:underline">политики конфиденциальности</a>
+                            </label>
+                        </div>
                     {{ /form:grelka }}
 
                     <script>
@@ -539,6 +553,20 @@
                                     <path d="M133.121 42.1213C134.293 40.9497 134.293 39.0503 133.121 37.8787L114.029 18.7868C112.858 17.6152 110.958 17.6152 109.787 18.7868C108.615 19.9584 108.615 21.8579 109.787 23.0294L126.757 40L109.787 56.9706C108.615 58.1421 108.615 60.0416 109.787 61.2132C110.958 62.3848 112.858 62.3848 114.029 61.2132L133.121 42.1213ZM29 43H131V37H29V43Z" fill="#FFF8F8" />
                                 </svg>
                             </button>
+                        </div>
+
+                        <!-- Согласие на обработку ПД -->
+                        <div class="mt-4 flex items-start gap-3">
+                            <input
+                                type="checkbox"
+                                id="privacy-consent-2"
+                                name="privacy_consent"
+                                required
+                                class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
+                            />
+                            <label for="privacy-consent-2" class="text-base text-light leading-relaxed">
+                                Я согласен(а) на обработку персональных данных и принимаю условия <a href="/policy" target="_blank" class="text-main-red hover:underline">политики конфиденциальности</a>
+                            </label>
                         </div>
 
                         @if (session('success'))

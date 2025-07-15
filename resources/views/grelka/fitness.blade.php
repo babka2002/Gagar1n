@@ -168,9 +168,20 @@
                         class="w-full text-light px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-red-600 hover:bg-red-700 transition rounded-brxl">
                         СТАТЬ БЛИЖЕ К СВОЕЙ ЦЕЛИ
                     </button>
-                    <p class="text-sm text-center text-light">
-                        Нажимая "Отправить" я согласен на обработку <a href="https://new.gagar1n.ru/policy" target="_blank" class="underline hover:no-underline">персональных данных</a>
-                    </p>
+
+                    <!-- Согласие на обработку ПД -->
+                    <div class="mt-4 flex items-start gap-3">
+                        <input
+                            type="checkbox"
+                            id="privacy-consent-fitness"
+                            name="privacy_consent"
+                            required
+                            class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
+                        />
+                        <label for="privacy-consent-fitness" class="text-sm text-light leading-relaxed">
+                            Я согласен(а) на обработку персональных данных и принимаю условия <a href="https://new.gagar1n.ru/policy" target="_blank" class="underline hover:no-underline">политики конфиденциальности</a>
+                        </label>
+                    </div>
 
                     <!-- Индикатор состояния -->
                     <div id="formStatus" class="mt-4 p-4 rounded-lg hidden">
