@@ -409,9 +409,62 @@
             {{ achievements_title }}
         </h2>
 
-        <!-- Здесь будет блок достижений -->
+        <!-- Блок достижений -->
         <div class="grid md:grid-cols-3 gap-5 py-6 mb-6">
-            <!-- Карточки достижений -->
+            {{ if achievements }} {{ achievements }}
+            <div
+                class="p-6 rounded-brxl bg-[#FFF8F8] text-[#2C498D] text-center"
+                data-aos="zoom-in"
+            >
+                {{ if achievement_icon }}
+                <div class="text-4xl mb-3">{{ achievement_icon }}</div>
+                {{ /if }}
+                <h3 class="text-lg font-semibold mb-2 uppercase">
+                    {{ achievement_title }}
+                </h3>
+                {{ if achievement_description }}
+                <p class="text-sm opacity-80">{{ achievement_description }}</p>
+                {{ /if }}
+            </div>
+            {{ /achievements }} {{ else }}
+            <!-- Fallback достижения по умолчанию -->
+            <div
+                class="p-6 rounded-brxl bg-[#FFF8F8] text-[#2C498D] text-center"
+                data-aos="zoom-in"
+            >
+                <div class="text-4xl mb-3">🏆</div>
+                <h3 class="text-lg font-semibold mb-2 uppercase">
+                    Победитель соревнований
+                </h3>
+                <p class="text-sm opacity-80">
+                    Наш воспитанник занял первое место в городских соревнованиях
+                </p>
+            </div>
+            <div
+                class="p-6 rounded-brxl bg-[#FFF8F8] text-[#2C498D] text-center"
+                data-aos="zoom-in"
+            >
+                <div class="text-4xl mb-3">🥇</div>
+                <h3 class="text-lg font-semibold mb-2 uppercase">
+                    Мастер спорта
+                </h3>
+                <p class="text-sm opacity-80">
+                    Достижение высокого уровня в детском спорте
+                </p>
+            </div>
+            <div
+                class="p-6 rounded-brxl bg-[#FFF8F8] text-[#2C498D] text-center"
+                data-aos="zoom-in"
+            >
+                <div class="text-4xl mb-3">⭐</div>
+                <h3 class="text-lg font-semibold mb-2 uppercase">
+                    Лидер команды
+                </h3>
+                <p class="text-sm opacity-80">
+                    Развитие лидерских качеств и командного духа
+                </p>
+            </div>
+            {{ /if }}
         </div>
 
         <h2
@@ -423,6 +476,19 @@
 
         <div class="grid md:grid-cols-3 gap-8">
             <!-- Карточки отзывов -->
+            {{ if reviews }} {{ reviews }}
+            <div
+                class="p-9 rounded-brxl bg-[#DAD9E3] text-[#062B50]"
+                data-aos="zoom-in"
+            >
+                {{ review_text }} {{ if review_author }}
+                <div class="mt-4 text-sm font-semibold text-[#2C498D]">
+                    — {{ review_author }}
+                </div>
+                {{ /if }}
+            </div>
+            {{ /reviews }} {{ else }}
+            <!-- Fallback отзывы по умолчанию -->
             <div
                 class="p-9 rounded-brxl bg-[#DAD9E3] text-[#062B50]"
                 data-aos="zoom-in"
@@ -453,6 +519,7 @@
                 которое необходимыми однажды живет своих речью. Заманивший,
                 меня.
             </div>
+            {{ /if }}
         </div>
     </div>
 </section>

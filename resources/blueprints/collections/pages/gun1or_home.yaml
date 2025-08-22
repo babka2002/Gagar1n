@@ -276,12 +276,97 @@ tabs:
               display: "Заголовок блока достижений"
               localizable: false
               default: "Мы гордимся нашими воспитанниками!"
+          - handle: achievements
+            field:
+              type: replicator
+              display: "Достижения воспитанников"
+              localizable: false
+              instructions: "Добавьте достижения ваших воспитанников"
+              default:
+                - type: achievement
+                  achievement_title: "Победитель соревнований"
+                  achievement_description: "Наш воспитанник занял первое место в городских соревнованиях по гимнастике"
+                  achievement_icon: "🏆"
+                - type: achievement
+                  achievement_title: "Мастер спорта"
+                  achievement_description: "Достижение высокого уровня в детском спорте"
+                  achievement_icon: "🥇"
+                - type: achievement
+                  achievement_title: "Лидер команды"
+                  achievement_description: "Развитие лидерских качеств и командного духа"
+                  achievement_icon: "⭐"
+              sets:
+                novaya_gruppa_dostizheniy:
+                  display: "Новая группа достижений"
+                  sets:
+                    achievement:
+                      display: "Достижение"
+                      fields:
+                        - handle: achievement_title
+                          field:
+                            type: text
+                            display: "Название достижения"
+                            localizable: false
+                            validate:
+                              - required
+                            instructions: "Например: Победитель соревнований"
+                        - handle: achievement_description
+                          field:
+                            type: textarea
+                            rows: 3
+                            display: "Описание достижения"
+                            localizable: false
+                            instructions: "Подробное описание достижения"
+                        - handle: achievement_icon
+                          field:
+                            type: text
+                            display: "Иконка (необязательно)"
+                            localizable: false
+                            instructions: "Можно использовать эмодзи или классы иконок"
           - handle: reviews_title
             field:
               type: text
               display: "Заголовок блока отзывов"
               localizable: false
               default: "вот что говорят о нашем центре клиенты"
+          - handle: reviews
+            field:
+              type: replicator
+              display: "Отзывы клиентов"
+              localizable: false
+              instructions: "Добавьте отзывы клиентов о вашем центре"
+              default:
+                - type: review
+                  review_text: "Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Всеми буквоград заглавных послушавшись гор всемогущая текстов инициал большой страну заголовок осталось, которое необходимыми однажды живет своих речью. Заманивший, меня."
+                  review_author: ""
+                - type: review
+                  review_text: "Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Всеми буквоград заглавных послушавшись гор всемогущая текстов инициал большой страну заголовок осталось, которое необходимыми однажды живет своих речью. Заманивший, меня."
+                  review_author: ""
+                - type: review
+                  review_text: "Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Всеми буквоград заглавных послушавшись гор всемогущая текстов инициал большой страну заголовок осталось, которое необходимыми однажды живет своих речью. Заманивший, меня."
+                  review_author: ""
+              sets:
+                novaya_gruppa_otzyvov:
+                  display: "Новая группа отзывов"
+                  sets:
+                    review:
+                      display: "Отзыв"
+                      fields:
+                        - handle: review_text
+                          field:
+                            type: textarea
+                            rows: 4
+                            display: "Текст отзыва"
+                            localizable: false
+                            validate:
+                              - required
+                            instructions: "Введите текст отзыва клиента"
+                        - handle: review_author
+                          field:
+                            type: text
+                            display: "Автор отзыва (необязательно)"
+                            localizable: false
+                            instructions: "Имя автора отзыва (если известно)"
       - display: "Форма записи"
         instructions: "Настройки формы записи"
         fields:
