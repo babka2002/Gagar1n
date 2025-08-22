@@ -409,9 +409,62 @@
             {{ achievements_title }}
         </h2>
 
-        <!-- Здесь будет блок достижений -->
+        <!-- Блок достижений -->
         <div class="grid md:grid-cols-3 gap-5 py-6 mb-6">
-            <!-- Карточки достижений -->
+            {{ if achievements }} {{ achievements }}
+            <div
+                class="p-6 rounded-brxl bg-[#FFF8F8] text-[#2C498D] text-center"
+                data-aos="zoom-in"
+            >
+                {{ if achievement_icon }}
+                <div class="text-4xl mb-3">{{ achievement_icon }}</div>
+                {{ /if }}
+                <h3 class="text-lg font-semibold mb-2 uppercase">
+                    {{ achievement_title }}
+                </h3>
+                {{ if achievement_description }}
+                <p class="text-sm opacity-80">{{ achievement_description }}</p>
+                {{ /if }}
+            </div>
+            {{ /achievements }} {{ else }}
+            <!-- Fallback достижения по умолчанию -->
+            <div
+                class="p-6 rounded-brxl bg-[#FFF8F8] text-[#2C498D] text-center"
+                data-aos="zoom-in"
+            >
+                <div class="text-4xl mb-3">🏆</div>
+                <h3 class="text-lg font-semibold mb-2 uppercase">
+                    Победитель соревнований
+                </h3>
+                <p class="text-sm opacity-80">
+                    Наш воспитанник занял первое место в городских соревнованиях
+                </p>
+            </div>
+            <div
+                class="p-6 rounded-brxl bg-[#FFF8F8] text-[#2C498D] text-center"
+                data-aos="zoom-in"
+            >
+                <div class="text-4xl mb-3">🥇</div>
+                <h3 class="text-lg font-semibold mb-2 uppercase">
+                    Мастер спорта
+                </h3>
+                <p class="text-sm opacity-80">
+                    Достижение высокого уровня в детском спорте
+                </p>
+            </div>
+            <div
+                class="p-6 rounded-brxl bg-[#FFF8F8] text-[#2C498D] text-center"
+                data-aos="zoom-in"
+            >
+                <div class="text-4xl mb-3">⭐</div>
+                <h3 class="text-lg font-semibold mb-2 uppercase">
+                    Лидер команды
+                </h3>
+                <p class="text-sm opacity-80">
+                    Развитие лидерских качеств и командного духа
+                </p>
+            </div>
+            {{ /if }}
         </div>
 
         <h2
@@ -423,6 +476,19 @@
 
         <div class="grid md:grid-cols-3 gap-8">
             <!-- Карточки отзывов -->
+            {{ if reviews }} {{ reviews }}
+            <div
+                class="p-9 rounded-brxl bg-[#DAD9E3] text-[#062B50]"
+                data-aos="zoom-in"
+            >
+                {{ review_text }} {{ if review_author }}
+                <div class="mt-4 text-sm font-semibold text-[#2C498D]">
+                    — {{ review_author }}
+                </div>
+                {{ /if }}
+            </div>
+            {{ /reviews }} {{ else }}
+            <!-- Fallback отзывы по умолчанию -->
             <div
                 class="p-9 rounded-brxl bg-[#DAD9E3] text-[#062B50]"
                 data-aos="zoom-in"
@@ -453,6 +519,7 @@
                 которое необходимыми однажды живет своих речью. Заманивший,
                 меня.
             </div>
+            {{ /if }}
         </div>
     </div>
 </section>
@@ -501,6 +568,21 @@
                     required
                     class="block w-full bg-[#2C498D] text-[#FFF8F8] px-5 py-2 uppercase rounded-[clamp(0.625rem,0.3991rem+1.004vw,1.25rem)] text-[clamp(0.875rem,0.5587rem+1.4056vw,1.75rem)] my-2"
                 />
+                <div class="flex items-center gap-2 mt-2 mb-4">
+                    <input
+                        type="checkbox"
+                        id="privacy_consent"
+                        name="privacy_consent"
+                        required
+                        class="w-4 h-4 text-[#CA74E2] bg-[#2C498D] border-[#FFF8F8] rounded focus:ring-[#CA74E2] focus:ring-2"
+                    />
+                    <label
+                        for="privacy_consent"
+                        class="text-[clamp(0.5rem,0.3645rem+0.6024vw,0.875rem)] text-black"
+                    >
+                        Я согласен с обработкой персональных данных
+                    </label>
+                </div>
                 <input
                     type="submit"
                     value="{{ form_button_text }}"
@@ -532,6 +614,16 @@
 
                 const name = form.querySelector('[name="name"]').value;
                 const phone = form.querySelector('[name="phone"]').value;
+                const privacyConsent = form.querySelector(
+                    '[name="privacy_consent"]'
+                ).checked;
+
+                if (!privacyConsent) {
+                    alert(
+                        "Необходимо согласиться с обработкой персональных данных"
+                    );
+                    return;
+                }
 
                 const apiData = {
                     leadtype: "request",
@@ -546,13 +638,17 @@
                     medium: document.referrer || "direct",
                     siteName: window.location.hostname,
                     city: "Симферополь",
+                    privacy_consent: privacyConsent,
                 };
 
                 try {
-                    const response = await fetch("/api/proxy-leads", {
+                    const response = await fetch("/proxy-leads", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
+                            "X-CSRF-TOKEN": document
+                                .querySelector('meta[name="csrf-token"]')
+                                .getAttribute("content"),
                         },
                         body: JSON.stringify(apiData),
                     });
