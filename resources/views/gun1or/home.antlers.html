@@ -501,6 +501,21 @@
                     required
                     class="block w-full bg-[#2C498D] text-[#FFF8F8] px-5 py-2 uppercase rounded-[clamp(0.625rem,0.3991rem+1.004vw,1.25rem)] text-[clamp(0.875rem,0.5587rem+1.4056vw,1.75rem)] my-2"
                 />
+                <div class="flex items-center gap-2 mt-2 mb-4">
+                    <input
+                        type="checkbox"
+                        id="privacy_consent"
+                        name="privacy_consent"
+                        required
+                        class="w-4 h-4 text-[#CA74E2] bg-[#2C498D] border-[#FFF8F8] rounded focus:ring-[#CA74E2] focus:ring-2"
+                    />
+                    <label
+                        for="privacy_consent"
+                        class="text-[clamp(0.5rem,0.3645rem+0.6024vw,0.875rem)] text-black"
+                    >
+                        Я согласен с обработкой персональных данных
+                    </label>
+                </div>
                 <input
                     type="submit"
                     value="{{ form_button_text }}"
@@ -532,6 +547,16 @@
 
                 const name = form.querySelector('[name="name"]').value;
                 const phone = form.querySelector('[name="phone"]').value;
+                const privacyConsent = form.querySelector(
+                    '[name="privacy_consent"]'
+                ).checked;
+
+                if (!privacyConsent) {
+                    alert(
+                        "Необходимо согласиться с обработкой персональных данных"
+                    );
+                    return;
+                }
 
                 const apiData = {
                     leadtype: "request",
@@ -546,13 +571,17 @@
                     medium: document.referrer || "direct",
                     siteName: window.location.hostname,
                     city: "Симферополь",
+                    privacy_consent: privacyConsent,
                 };
 
                 try {
-                    const response = await fetch("/api/proxy-leads", {
+                    const response = await fetch("/proxy-leads", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
+                            "X-CSRF-TOKEN": document
+                                .querySelector('meta[name="csrf-token"]')
+                                .getAttribute("content"),
                         },
                         body: JSON.stringify(apiData),
                     });
