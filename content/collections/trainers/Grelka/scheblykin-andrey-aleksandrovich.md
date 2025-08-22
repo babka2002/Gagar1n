@@ -6,7 +6,7 @@ name: Андрей
 second_name: Александрович
 last_name: Щеблыкин
 content_markdown: |-
-  **Категория:** ГП СТАНДАРТ
+  **Категория:** СТАНДАРТ
 
   **Специализация:**
   - Реабилитация и восстановление спортсменов; 
@@ -27,5 +27,5 @@ template: trainer_single
 is_active: true
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1752496750
+updated_at: 1752754730
 ---

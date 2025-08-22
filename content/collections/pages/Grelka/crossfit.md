@@ -5,7 +5,7 @@ title: CROSSFIT
 template: grelka/crossfit
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1752130704
+updated_at: 1753092612
 hero_title: CROSSFIT
 hero_image: img/crossfit.jpg
 features_group:

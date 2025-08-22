@@ -5,7 +5,7 @@ title: 'Шакура Светлана Владимировна'
 name: Светлана
 last_name: Шакура
 content_markdown: |-
-  **Категория:** ГП ЭКСПЕРТ
+  **Категория:** ЭКСПЕРТ
 
   **Специализация:**
   - Хатха-йога
@@ -30,6 +30,6 @@ template: trainer_single
 is_active: true
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1752581698
+updated_at: 1752747386
 second_name: Владимировна
 ---

@@ -5,7 +5,7 @@ title: 'Сечин Денис Юрьевич'
 name: Денис
 last_name: Сечин
 content_markdown: |-
-  **Категория:** ТЗ ПРОФИ
+  **Категория:** ПРОФИ
 
   **Специализация:**
   - Силовые тренировки  
@@ -26,7 +26,7 @@ template: trainer_single
 is_active: true
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1752581375
+updated_at: 1752747313
 field_meta_description: 'Тренер Денис Сечин'
 field_meta_keywords: 'Тренер Денис Сечин'
 second_name: Юрьевич

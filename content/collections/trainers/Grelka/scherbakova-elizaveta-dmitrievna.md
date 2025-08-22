@@ -6,7 +6,7 @@ name: Елизавета
 second_name: Дмитриевна
 last_name: Щербакова
 content_markdown: |-
-  **Категория:** ТЗ СТАНДАРТ
+  **Категория:** СТАНДАРТ
 
   **Специализация:**
   - Функциональный тренинг и силовые тренировки
@@ -25,5 +25,5 @@ template: trainer_single
 is_active: true
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1752496841
+updated_at: 1752754743
 ---

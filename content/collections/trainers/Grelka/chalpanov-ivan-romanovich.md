@@ -6,7 +6,7 @@ name: Иван
 second_name: Романович
 last_name: Чалпанов
 content_markdown: |-
-  **Категория:** ТЗ ЭКСПЕРТ
+  **Категория:** ЭКСПЕРТ
 
   **Специализация:**
   - Коррекция фигуры
@@ -25,5 +25,5 @@ template: trainer_single
 is_active: true
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1752495929
+updated_at: 1752747377
 ---

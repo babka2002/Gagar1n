@@ -5,7 +5,7 @@ title: 'Путина Ксения Игоревна'
 name: Ксения
 last_name: Путина
 content_markdown: |-
-  **Категория:** ТЗ ПРОФИ
+  **Категория:** ПРОФИ
 
   **Специализация:**
   - Набор мышечной массы
@@ -31,7 +31,7 @@ template: trainer_single
 is_active: true
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1752484107
+updated_at: 1752747265
 second_name: Игоревна
 field_meta_description: Тест
 field_meta_keywords: Тест

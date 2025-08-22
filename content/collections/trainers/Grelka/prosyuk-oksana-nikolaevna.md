@@ -5,7 +5,7 @@ title: 'Просюк Оксана Николаевна'
 name: Оксана
 last_name: Просюк
 content_markdown: |-
-  **Категория:** ГП СТАНДАРТ, РЕФОРМЕР
+  **Категория:** СТАНДАРТ
 
   **Специализация:**
   - Пилатес-реформер
@@ -26,5 +26,5 @@ template: trainer_single
 is_active: true
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1752484160
+updated_at: 1752747256
 ---

@@ -58,7 +58,7 @@ code_field:
   mode: htmlmixed
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1752054198
+updated_at: 1753871868
 hero_title: 'Фитнес и бассейн'
 pole_markdown: |-
   получи выгоду 
@@ -124,53 +124,88 @@ direction_replicator:
 aboniment_title: 'один абонемент - безграничные возможности'
 aboniment_type:
   -
+    id: mdptqylk
+    aboniment_type_name: Basic
+    aboniment_image_front: karty7-5.png
+    aboniment_image_rear: karty7-6.png
+    type: novyy_nabor
+    enabled: true
+  -
+    id: mdpttgaq
+    aboniment_type_name: 'Basic День'
+    aboniment_image_front: karta-4-7.png
+    aboniment_image_rear: karta-4-8.png
+    type: novyy_nabor
+    enabled: true
+  -
+    id: mdpsajyd
+    aboniment_type_name: 'Basic 1'
+    aboniment_image_front: bazobl.png
+    aboniment_image_rear: bazovyi1.png
+    type: novyy_nabor
+    enabled: true
+  -
+    id: mdpsjagc
+    aboniment_type_name: 'Basic 3'
+    aboniment_image_front: karty7-9.png
+    aboniment_image_rear: karty2-2.png
+    type: novyy_nabor
+    enabled: true
+  -
     id: m59ptf5i
-    aboniment_image_front: img/cards/beisik-1.png
-    aboniment_image_rear: img/cards/beisik-2.png
+    aboniment_image_front: karty7-3.png
+    aboniment_image_rear: karty7-4.png
     type: novyy_nabor
     enabled: true
     aboniment_link: 'entry::890b4426-5239-4a45-92c4-bcf0809aa080'
-    aboniment_type_name: Базовый
+    aboniment_type_name: 'Basic 6'
   -
     id: m59pycmp
-    aboniment_image_front: abonementy.png
-    aboniment_image_rear: img/cards/day-2.png
+    aboniment_image_front: karty7-1.png
+    aboniment_image_rear: karty7-2.png
     type: novyy_nabor
     enabled: true
     aboniment_link: 'entry::fb3939e7-faac-45c4-b113-72656639dbfc'
-    aboniment_type_name: Дневной
+    aboniment_type_name: 'Basic 12'
   -
     id: m59q5q8j
-    aboniment_image_front: img/cards/biznes-1.png
-    aboniment_image_rear: img/cards/biznes-2.png
+    aboniment_image_front: karty7-11.png
+    aboniment_image_rear: karty7-12.png
     type: novyy_nabor
     enabled: true
     aboniment_link: 'entry::370e20e5-8168-44e9-a197-832f48314d14'
     aboniment_type_name: Бизнес
   -
     id: m59q6d6p
-    aboniment_image_front: img/cards/daimond-1.png
-    aboniment_image_rear: img/cards/daimond-2.png
+    aboniment_image_front: karty7-7.png
+    aboniment_image_rear: karty7-8.png
     type: novyy_nabor
     enabled: true
     aboniment_link: 'entry::a862bf94-d820-41a3-96a2-51eef76ce101'
     aboniment_type_name: Daimond
   -
     id: m59q71us
-    aboniment_image_front: img/cards/polden-1.png
-    aboniment_image_rear: img/cards/polden-2.png
+    aboniment_image_front: karta-4-3.png
+    aboniment_image_rear: karta-4-4.png
     type: novyy_nabor
     enabled: true
     aboniment_link: 'entry::2990a2cb-a73d-48ea-bc02-e2924fab4455'
     aboniment_type_name: Полдень
   -
     id: m59q7k1u
-    aboniment_image_front: img/cards/studentam-1.png
-    aboniment_image_rear: img/cards/studentam-2.png
+    aboniment_image_front: karta-4-6.png
+    aboniment_image_rear: karta-4-5.png
     type: novyy_nabor
     enabled: true
     aboniment_link: 'entry::efae2e6a-4108-41b6-8fd4-b1168e4d7465'
-    aboniment_type_name: Студентам
+    aboniment_type_name: 'Студент 9'
+  -
+    id: mdptz5kl
+    aboniment_type_name: 'Студент 12'
+    aboniment_image_front: karta-4-1.png
+    aboniment_image_rear: karta-4-2.png
+    type: novyy_nabor
+    enabled: true
 aboniment_raspisanie_zagolovok: расписание
 aboniment_raspisanie_text: '300+ тренировок в неделю на выбор'
 aboniment_raspisanie_link: 'entry::b7c0207a-bca0-41b0-90cc-6e73d78cf0e0'
@@ -181,8 +216,8 @@ aboniment_our_team_image: img/team.jpg
 aboniment_our_team_link: 'entry::689557e0-2877-4aeb-af2f-e03270ca1d44'
 subscription_not_found_title: 'не нашли идеальный вариант?'
 subscription_not_found_subtitle: 'подобрать подходящие условия'
-field_meta_description: Главная
-field_meta_keywords: Главная
+field_meta_description: 'G1 Gagar1n'
+field_meta_keywords: Гагарин
 hero_onlick_text: Подробнее
 hero_podrobnee_gruppa:
   hero_dialog_ili_ssylka: dialog

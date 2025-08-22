@@ -3,7 +3,7 @@ id: bb659703-1f04-435b-a2ed-796ce817c5dc
 blueprint: tipovaia
 title: 'Договор оферты'
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1740399311
+updated_at: 1753093628
 template: grelka/typovaya
 custom_html_script:
   code: null

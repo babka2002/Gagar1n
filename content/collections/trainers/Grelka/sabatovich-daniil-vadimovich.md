@@ -6,7 +6,7 @@ name: Даниил
 second_name: Вадимович
 last_name: Сабатович
 content_markdown: |-
-  **Категория:** АКВА СТАНДАРТ
+  **Категория:** СТАНДАРТ
 
   **Специализация:**
   - Обучение плаванию с нуля для детей и взрослых
@@ -26,5 +26,5 @@ template: trainer_single
 is_active: true
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1752485503
+updated_at: 1752747296
 ---

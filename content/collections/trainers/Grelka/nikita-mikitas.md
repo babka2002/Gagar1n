@@ -5,7 +5,7 @@ title: 'Микитась Никита Андреевич'
 name: Никита
 last_name: Микитась
 content_markdown: |-
-  **Категория:** ГП ЭКСПЕРТ
+  **Категория:** ЭКСПЕРТ
 
   **Специализация:**
   - Функциональный и силовой тренинг  
@@ -25,5 +25,5 @@ template: trainer_single
 is_active: true
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1752581160
+updated_at: 1752747192
 ---

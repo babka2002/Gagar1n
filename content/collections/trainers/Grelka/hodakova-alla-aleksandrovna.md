@@ -6,7 +6,7 @@ name: Алла
 second_name: Александровна
 last_name: Ходакова
 content_markdown: |-
-  **Категория:** ТЗ ПРОФИ
+  **Категория:** ПРОФИ
 
   **Специализация:**
   - Нутрициологическое сопровождение и консультации;
@@ -48,5 +48,5 @@ template: trainer_single
 is_active: true
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1752487621
+updated_at: 1752747357
 ---

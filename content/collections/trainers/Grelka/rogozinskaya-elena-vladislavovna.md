@@ -6,7 +6,7 @@ name: Елена
 second_name: Владиславовна
 last_name: Рогозинская
 content_markdown: |-
-  **Категория:** ГП ПРОФИ
+  **Категория:** ПРОФИ
 
   **Специализация:**
   - Оздоровление, коррекция фигуры, снижении веса
@@ -24,5 +24,5 @@ template: trainer_single
 is_active: true
 author: 9fcd11e1-673b-479c-8888-c690f9401ee3
 updated_by: 9fcd11e1-673b-479c-8888-c690f9401ee3
-updated_at: 1752485212
+updated_at: 1752747273
 ---
