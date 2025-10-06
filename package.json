@@ -20,6 +20,23 @@
   "type": "module",
   "dependencies": {
     "aos": "^2.3.4",
+    "body-parser": "^2.2.0",
+    "caniuse-lite": "^1.0.30001715",
+    "express": "^5.1.0",
     "swiper": "^11.1.15"
-  }
+  },
+  "name": "new.gagar1n.ru",
+  "version": "1.0.0",
+  "description": "<p align=\"center\"><img src=\"https://statamic.com/assets/branding/Statamic-Logo+Wordmark-Rad.svg\" width=\"400\" alt=\"Statamic Logo\" /></p>",
+  "main": "postcss.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://codeberg.org/webstartechnology/Gagar1n.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

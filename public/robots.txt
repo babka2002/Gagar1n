@@ -1,2 +1,20 @@
 User-agent: *
-Disallow: /
+Disallow: /vendor/
+Disallow: /storage/
+Disallow: /bootstrap/
+Disallow: /config/
+Disallow: /database/
+Disallow: /resources/
+Disallow: /routes/
+Disallow: /tests/
+Disallow: /artisan
+Disallow: /server.php
+Disallow: /composer.json
+Disallow: /composer.lock
+Disallow: /package.json
+Disallow: /yarn.lock
+Disallow: /phpunit.xml
+Allow: /
+
+Sitemap: https://gagar1n.ru/sitemap.xml
+Host: https://gagar1n.ru

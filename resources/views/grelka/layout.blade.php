@@ -46,6 +46,7 @@
 
         @vite(['resources/css/site.css', 'resources/css/markdown-content.css', 'resources/js/site.js'])
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script src="//code.jivo.ru/widget/IuuF2EtmWb" async></script>
         <style>
             [x-cloak] { display: none !important; }
         </style>
@@ -103,7 +104,7 @@
                     >
                 </a>
 
-                {{-- G1unior --}}
+                {{-- G1unior 
                 <a href="/gun1or/"
                    class="w-[52px] md:w-[6em] lg:w-[7em] grayscale-[1] hover:grayscale-0 transition-all">
                     <img
@@ -111,9 +112,9 @@
                         alt="G1unior"
                         class="block opacity-70 hover:opacity-100 transition-all"
                     >
-                </a>
+                </a>--}}
 
-                {{-- Gagarin - главный сайт (активный) --}}
+                {{-- Gagarin - главный сайт (активный) 
                 <a href="/"
                    class="w-[52px] md:w-[6em] lg:w-[7em] grayscale-0 transition-all">
                     <img
@@ -121,7 +122,7 @@
                         alt="Gagarin"
                         class="block opacity-100 transition-all"
                     >
-                </a>
+                </a>--}}
             </div>
 
             <div class="flex items-center justify-end">
@@ -243,23 +244,23 @@
                             >
                         </a>
 
-                        {{-- G1unior --}}
+                        {{-- G1unior 
                         <a href="/gun1or/" class="flex-1 flex justify-center transition-all grayscale-[1] hover:grayscale-0">
                             <img
                                 src="<s:glide:data_url src='/assets/img/new_logo_gunior.png' quality='75' format='webp' />"
                                 alt="G1unior"
                                 class="h-[40px] w-auto object-contain opacity-70 hover:opacity-100 transition-all"
                             >
-                        </a>
+                        </a> --}}
 
-                        {{-- Gagarin - главный сайт (активный) --}}
+                        {{-- Gagarin - главный сайт (активный) 
                         <a href="/" class="flex-1 flex justify-center transition-all grayscale-0">
                             <img
                                 src="<s:glide:data_url src='/assets/img/new_logo_gfood2.png' quality='75' format='webp' />"
                                 alt="Gagarin"
                                 class="h-[40px] w-auto object-contain opacity-100 transition-all"
                             >
-                        </a>
+                        </a> --}}
                     </div>
                 </div>
             </div>

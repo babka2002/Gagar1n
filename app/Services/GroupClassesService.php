@@ -29,24 +29,16 @@ class GroupClassesService implements ScheduleServiceInterface
         ini_set('memory_limit', '-1');
         set_time_limit(0);
 
-        // Проверяем, существует ли кэшированный файл
-        if (Storage::disk('public')->exists(self::CACHE_FILE)) {
-            $cachedData = json_decode(Storage::disk('public')->get(self::CACHE_FILE), true);
-            // dd( $cachedData);
-            // dd([
-            //     'all_data' => $cachedData,
-            //     'filtered_personal' => array_filter($cachedData['data'] ?? [], function($item) {
-            //         return isset($item['type']) && $item['type'] === 'classes';
-            //     }),
-            //     'params' => $params
-            // ]);
-            // Проверяем, актуален ли кэш
+        $cacheFile = $this->getCacheFileName($params);
+
+        if (Storage::disk('public')->exists($cacheFile)) {
+            $cachedData = json_decode(Storage::disk('public')->get($cacheFile), true);
+
             if ($this->isCacheValid($cachedData)) {
                 return $cachedData['data'];
             }
         }
 
-        // Если кэш недоступен или устарел, загружаем данные
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
             'apikey' => $this->apiKey,
@@ -64,11 +56,26 @@ class GroupClassesService implements ScheduleServiceInterface
         }
 
         $data = $response->json('data', []);
-        // Сохраняем данные в кэш
-        $this->cacheScheduleData($data);
+        $this->cacheScheduleData($data, $cacheFile);
 
         return $data;
     }
+
+    private function cacheScheduleData(array $data, string $cacheFile): void
+    {
+        $cachedData = [
+            'timestamp' => time(),
+            'data' => $data,
+        ];
+        Storage::disk('public')->put($cacheFile, json_encode($cachedData));
+    }
+
+    private function getCacheFileName(array $params): string
+    {
+        $date = $params['start_date'] ?? 'unknown';
+        return "group_schedule_{$date}.json";
+    }
+
 
     private function isCacheValid(array $cachedData): bool
     {
@@ -78,13 +85,5 @@ class GroupClassesService implements ScheduleServiceInterface
         }
         return (time() - $cachedData['timestamp']) < self::CACHE_TTL;
     }
-
-    private function cacheScheduleData(array $data): void
-    {
-        $cachedData = [
-            'timestamp' => time(),
-            'data' => $data,
-        ];
-        Storage::disk('public')->put(self::CACHE_FILE, json_encode($cachedData));
-    }
+    
 }

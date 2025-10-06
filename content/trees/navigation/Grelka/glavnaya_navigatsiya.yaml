@@ -16,13 +16,13 @@ tree:
     title: БАССЕЙН
     url: /pool
   -
-    id: 877c1c89-1ccc-4b47-998d-dcbb9b9c50da
-    title: РАСПИСАНИЕ
-    url: /schedule
-  -
     id: d7000734-1c74-4eb2-9c31-60a9fc427dbc
     title: ТРЕНЕРЫ
     url: /trainers
+  -
+    id: a091d2a2-7661-457b-848c-54de0ccb09f2
+    title: Расписание
+    url: /schedule
   -
     id: 360b451d-689e-49c6-8297-26e43773753f
     title: Мероприятия

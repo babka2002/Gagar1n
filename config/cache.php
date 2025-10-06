@@ -94,6 +94,10 @@ return [
             'driver' => 'file',
             'path' => storage_path('statamic/static-urls-cache'),
         ],
+        'glide' => [
+            'driver' => 'redis',
+            'connection' => 'glide',
+        ],
 
     ],
 

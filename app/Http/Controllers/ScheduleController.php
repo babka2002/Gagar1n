@@ -40,98 +40,127 @@ class ScheduleController extends Controller
         }
     }
 
-    public function index(Request $request)
-    {
-        // Определяем сайт на основе URL (как в TrainerController)
-        $currentSite = $this->getSiteFromUrl();
+public function index(Request $request)
+{
+    // Определяем сайт на основе URL (как в TrainerController)
+    $currentSite = $this->getSiteFromUrl();
 
-        if (!$request->has('start_date') || empty($request->input('start_date'))) {
-            $request->merge(['start_date' => Carbon::now()->startOfWeek()->format('Y-m-d H:i')]);
-        }
+    // Определяем дату начала недели (понедельник)
+    $startOfWeek = Carbon::now()->startOfWeek();
+    $endOfWeek = Carbon::now()->endOfWeek();
 
-        if (!$request->has('end_date') || empty($request->input('end_date'))) {
-            $request->merge(['end_date' => Carbon::now()->endOfWeek()->format('Y-m-d H:i')]);
-        }
-
-        $clubId = '49964502-5659-11eb-e291-ac162d836873';
-        $params = $request->only(['start_date', 'end_date', 'service_id', 'employee_id']);
-        $params['club_id'] = $clubId;
-
-        // Получаем тип расписания
-        $scheduleType = $request->input('schedule_type', 'classes');
-
-        // Выбираем нужный сервис
-        $service = $scheduleType === 'personal'
-            ? $this->personalService
-            : $this->groupService;
-
-        $scheduleData = $service->getSchedule($params);
-        if (empty($scheduleData)) {
-            return response()->json(['message' => 'Нет данных для отображения.'], 404);
-        }
-
-        // Фильтруем данные по типу
-        $scheduleData = array_filter($scheduleData, function ($item) use ($scheduleType) {
-            return isset($item['type']) && $item['type'] === $scheduleType;
-        });
-
-        // Дополнительная фильтрация для Gun1or (детские занятия)
-        if ($currentSite === 'Gun1or') {
-            $scheduleData = array_filter($scheduleData, function ($item) {
-                // Фильтруем только детские занятия
-                $checkTitles = [
-                    $item['service']['title'] ?? '',
-                    $item['group']['title'] ?? '',
-                    $item['course']['title'] ?? '',
-                ];
-                foreach ($checkTitles as $title) {
-                    if (
-                        mb_stripos($title, 'kids') !== false ||
-                        mb_stripos($title, '(дети)') !== false ||
-                        mb_stripos($title, 'детск') !== false ||
-                        mb_stripos($title, 'junior') !== false
-                    ) {
-                        return true;
-                    }
-                }
-                return false;
-            });
-        }
-
-        $filteredData = $this->applyFilters($scheduleData, $request);
-        $timeSlots = $this->generateTimeSlots($filteredData);
-        $daysOfWeek = $this->prepareDaysOfWeek($filteredData, $timeSlots);
-        $currentDay = Carbon::now()->locale('ru')->isoFormat('dddd');
-
-        // Get data from the current Entry based on URI
-        $uri = '/' . trim($request->path(), '/');
-        $entry = Entry::findByUri($uri, Site::current()->handle());
-
-        $metaDescription = null;
-        $metaKeywords = null;
-        $pageTitle = 'Расписание'; // Default title
-
-        if ($entry) {
-            /** @var EntryModel $entry */
-            $metaDescription = $entry->get('field_meta_description');
-            $metaKeywords = $entry->get('field_meta_keywords');
-            $pageTitle = $entry->get('title', 'Расписание'); // Get title from entry or default
-        }
-
-        return (new View)
-            ->layout(strtolower($currentSite) . '/layout')
-            ->template(strtolower($currentSite) . '/schedule')
-            ->with([
-                'timeSlots' => $timeSlots,
-                'daysOfWeek' => $daysOfWeek,
-                'filteredData' => $filteredData,
-                'currentDay' => $currentDay,
-                'scheduleType' => $scheduleType,
-                'field_meta_description' => $metaDescription, // Pass meta description
-                'field_meta_keywords' => $metaKeywords,      // Pass meta keywords
-                'title' => $pageTitle                       // Pass title
-            ]);
+    // Если нет входных параметров — подставляем неделю по умолчанию
+    if (!$request->has('start_date') || empty($request->input('start_date'))) {
+        $request->merge(['start_date' => $startOfWeek->format('Y-m-d H:i')]);
     }
+
+    if (!$request->has('end_date') || empty($request->input('end_date'))) {
+        $request->merge(['end_date' => $endOfWeek->format('Y-m-d H:i')]);
+    }
+
+    $clubId = '49964502-5659-11eb-e291-ac162d836873';
+    $baseParams = $request->only(['service_id', 'employee_id']);
+    $baseParams['club_id'] = $clubId;
+
+    // Получаем тип расписания
+    $scheduleType = $request->input('schedule_type', 'classes');
+
+    // Выбираем нужный сервис
+    $service = $scheduleType === 'personal'
+        ? $this->personalService
+        : $this->groupService;
+
+    // -------------------------------
+    // 🔹 Разбиваем неделю на 7 дней и собираем расписание по каждому дню
+    // -------------------------------
+    $weeklySchedule = [];
+
+    for ($i = 0; $i < 7; $i++) {
+    $dayStart = (clone $startOfWeek)->addDays($i)->startOfDay();
+    $dayEnd   = (clone $dayStart)->endOfDay();
+
+    $params = array_merge($baseParams, [
+        'start_date' => $dayStart->format('Y-m-d H:i'),
+        'end_date'   => $dayEnd->format('Y-m-d H:i'),
+    ]);
+
+    try {
+        $dayData = $service->getSchedule($params);
+
+        if (!empty($dayData)) {
+            $weeklySchedule = array_merge($weeklySchedule, $dayData);
+        }
+
+    } catch (\Throwable $e) {
+        \Log::warning("Ошибка при получении расписания за {$dayStart->toDateString()}: " . $e->getMessage());
+        continue;
+    }
+}
+
+
+    // Если после всех дней данных нет
+    if (empty($weeklySchedule)) {
+        return response()->json(['message' => 'Нет данных для отображения.'], 404);
+    }
+
+    // -------------------------------
+    // 🔹 Дальше код без изменений
+    // -------------------------------
+    $scheduleData = array_filter($weeklySchedule, function ($item) use ($scheduleType) {
+        return isset($item['type']) && $item['type'] === $scheduleType;
+    });
+
+    // Дополнительная фильтрация для Gun1or (детские занятия)
+    if ($currentSite === 'Gun1or') {
+        $scheduleData = array_filter($scheduleData, function ($item) {
+            $checkTitles = [
+                $item['service']['title'] ?? '',
+                $item['group']['title'] ?? '',
+                $item['course']['title'] ?? '',
+            ];
+            foreach ($checkTitles as $title) {
+                if (
+                    mb_stripos($title, 'kids') !== false ||
+                    mb_stripos($title, '(дети)') !== false ||
+                    mb_stripos($title, 'детск') !== false ||
+                    mb_stripos($title, 'junior') !== false
+                ) {
+                    return true;
+                }
+            }
+            return false;
+        });
+    }
+
+    $filteredData = $this->applyFilters($scheduleData, $request);
+    $timeSlots = $this->generateTimeSlots($filteredData);
+    $daysOfWeek = $this->prepareDaysOfWeek($filteredData, $timeSlots);
+    $currentDay = Carbon::now()->locale('ru')->isoFormat('dddd');
+
+    // Get data from the current Entry based on URI
+    $uri = '/' . trim($request->path(), '/');
+    $entry = Entry::findByUri($uri, Site::current()->handle());
+
+    $metaDescription = $entry?->get('field_meta_description');
+    $metaKeywords = $entry?->get('field_meta_keywords');
+    $pageTitle = $entry?->get('title', 'Расписание') ?? 'Расписание';
+
+    return (new View)
+        ->layout(strtolower($currentSite) . '/layout')
+        ->template(strtolower($currentSite) . '/schedule')
+        ->with([
+            'timeSlots' => $timeSlots,
+            'daysOfWeek' => $daysOfWeek,
+            'filteredData' => $filteredData,
+            'currentDay' => $currentDay,
+            'scheduleType' => $scheduleType,
+            'field_meta_description' => $metaDescription,
+            'field_meta_keywords' => $metaKeywords,
+            'title' => $pageTitle
+        ]);
+}
+
+
 
     private function generateTimeSlots(array $scheduleData): array
     {

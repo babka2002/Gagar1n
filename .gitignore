@@ -1,3 +1,7 @@
+.dist
+.vite
+_1
+/public
 /.phpunit.cache
 /node_modules
 /public/build
