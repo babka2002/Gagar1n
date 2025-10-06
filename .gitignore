@@ -33,3 +33,8 @@ public/static/
 public/assets/.meta/
 
 public/assets/img/.meta/
+
+# Project content and CMS blueprints (do not commit)
+/content/
+/resources/blueprints/
+/storage/
