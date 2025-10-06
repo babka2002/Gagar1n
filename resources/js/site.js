@@ -627,7 +627,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const name = form.querySelector('[name="name"]').value;
             const phone = form.querySelector('[name="phone"]').value;
-            const token = document.querySelector('input[name="_token"]').value;
+            const tokenInput = form.querySelector('input[name="_token"]');
+            const token = tokenInput ? tokenInput.value : (document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || "");
 
             const apiData = {
                 leadtype: "request",
@@ -675,14 +676,12 @@ document.addEventListener("DOMContentLoaded", function () {
                         formStatus.classList.add("bg-green-500");
                         formStatus.querySelector("p").textContent =
                             "Спасибо! Ваша заявка отправлена.";
-                        formStatus.scrollIntoView({ behavior: "smooth", block: "center" });
                     }
                 } else {
                     if (formStatus) {
                         formStatus.classList.add("bg-red-500");
                         formStatus.querySelector("p").textContent =
                             "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
-                        formStatus.scrollIntoView({ behavior: "smooth", block: "center" });
                     }
                 }
 
@@ -702,7 +701,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     formStatus.classList.add("bg-red-500");
                     formStatus.querySelector("p").textContent =
                         "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
-                    formStatus.scrollIntoView({ behavior: "smooth", block: "center" });
                 }
             } finally {
                 if (typeof window.hideSpinner === "function") {
