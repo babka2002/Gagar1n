@@ -374,12 +374,7 @@
                                                 <h4 class="uppercase font-semibold">{{ $item['service']['title'] }}</h4>
                                                 <p>{{ \Carbon\Carbon::parse($item['start_date'])->format('H:i') }} - {{ \Carbon\Carbon::parse($item['end_date'])->format('H:i') }}</p>
                                                 <p>{{ $item['employee']['name'] }}</p>
-                                            </div>
-                                            <div class="text-right flex flex-col items-end ml-1 flex-shrink-0">
                                                 <span>{{ $item['room']['title'] }}</span>
-                                                <a href="#" class="mt-1">
-                                                    <img src="/assets/img/location.png" alt="location" class="w-4 h-4" />
-                                                </a>
                                             </div>
                                         </div>
                                     </div>
