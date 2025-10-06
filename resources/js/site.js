@@ -425,11 +425,15 @@ function shouldShowDialog() {
     return false;
 }
 function handleDialogClose(dialogElem) {
-    window.showSpinner();
+    if (typeof window.showSpinner === "function") {
+        window.showSpinner();
+    }
 
     setTimeout(() => {
         dialogElem.close();
-        window.hideSpinner();
+        if (typeof window.hideSpinner === "function") {
+            window.hideSpinner();
+        }
     }, 300);
 }
 
@@ -549,15 +553,82 @@ document.addEventListener("keydown", (e) => {
 // Send main contact form
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("mainContactForm");
-    const formStatus = document.getElementById("formStatus");
+    const formStatus = form ? form.querySelector("#formStatus") : null;
+
+    // Consents handling for pages that include them
+    let triedSubmitConsents = false;
+    const consentConfig = [
+        { inputId: "consent_personal", labelId: "label-consent-personal" },
+        { inputId: "consent_terms", labelId: "label-consent-terms" },
+        { inputId: "consent_marketing", labelId: "label-consent-marketing" },
+    ];
+    const consents = consentConfig.map((cfg) => {
+        const input = form ? form.querySelector(`#${cfg.inputId}`) : null;
+        const label = document.getElementById(cfg.labelId);
+        if (input) {
+            input.addEventListener("change", () => {
+                if (!label) return;
+                if (triedSubmitConsents) {
+                    label.classList.toggle("text-red-500", !input.checked);
+                } else {
+                    label.classList.remove("text-red-500");
+                }
+                updateSubmitDisabled();
+            });
+        }
+        return { input, label };
+    });
+
+    // Disable submit until all consents are checked (when present)
+    const submitButton = form
+        ? form.querySelector('input[type="submit"], button[type="submit"]')
+        : null;
+    function updateSubmitDisabled() {
+        if (!form || !submitButton) return;
+        const presentConsents = consentConfig
+            .map((cfg) => form.querySelector(`#${cfg.inputId}`))
+            .filter(Boolean);
+        if (presentConsents.length === 0) return; // no consents on page
+        const allChecked = presentConsents.every((el) => el.checked === true);
+        submitButton.disabled = !allChecked;
+        submitButton.classList.toggle("opacity-50", !allChecked);
+        submitButton.classList.toggle("cursor-not-allowed", !allChecked);
+    }
+    // Initial state
+    updateSubmitDisabled();
 
     if (form) {
         form.addEventListener("submit", async function (e) {
             e.preventDefault();
 
+            // Validate required consents if present on the page (re-query to be robust)
+            const consentsNow = consentConfig.map((cfg) => ({
+                input: form.querySelector(`#${cfg.inputId}`),
+                label: document.getElementById(cfg.labelId),
+            }));
+            const haveConsents = consentsNow.some((c) => !!c.input);
+            if (haveConsents) {
+                triedSubmitConsents = true;
+                let allChecked = true;
+                consentsNow.forEach(({ input, label }) => {
+                    if (!input) return;
+                    const ok = input.checked === true;
+                    if (label) label.classList.toggle("text-red-500", !ok);
+                    if (!ok) allChecked = false;
+                });
+                if (!allChecked) {
+                    // Stop other listeners just in case
+                    if (typeof e.stopImmediatePropagation === "function") {
+                        e.stopImmediatePropagation();
+                    }
+                    return;
+                }
+            }
+
             const name = form.querySelector('[name="name"]').value;
             const phone = form.querySelector('[name="phone"]').value;
-            const token = document.querySelector('input[name="_token"]').value;
+            const tokenInput = form.querySelector('input[name="_token"]');
+            const token = tokenInput ? tokenInput.value : (document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || "");
 
             const apiData = {
                 leadtype: "request",
@@ -575,7 +646,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 _token: token,
             };
 
-            window.showSpinner();
+            if (typeof window.showSpinner === "function") {
+                window.showSpinner();
+            }
             try {
                 // Используем наш прокси вместо прямого обращения к API
                 const response = await fetch("/proxy-leads", {
@@ -587,36 +660,52 @@ document.addEventListener("DOMContentLoaded", function () {
                     body: JSON.stringify(apiData),
                 });
 
-                formStatus.classList.remove(
-                    "hidden",
-                    "bg-red-500",
-                    "bg-green-500"
-                );
+                if (formStatus) {
+                    formStatus.classList.remove(
+                        "hidden",
+                        "bg-red-500",
+                        "bg-green-500"
+                    );
+                    formStatus.setAttribute("role", "alert");
+                    formStatus.classList.add("text-white");
+                }
 
                 if (response.ok) {
                     form.reset();
-                    formStatus.classList.add("bg-green-500");
-                    formStatus.querySelector("p").textContent =
-                        "Спасибо! Ваша заявка отправлена.";
+                    if (formStatus) {
+                        formStatus.classList.add("bg-green-500");
+                        formStatus.querySelector("p").textContent =
+                            "Спасибо! Ваша заявка отправлена.";
+                    }
                 } else {
+                    if (formStatus) {
+                        formStatus.classList.add("bg-red-500");
+                        formStatus.querySelector("p").textContent =
+                            "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
+                    }
+                }
+
+                if (formStatus) {
+                    formStatus.classList.remove("hidden");
+                }
+
+                if (formStatus) {
+                    setTimeout(() => {
+                        formStatus.classList.add("hidden");
+                    }, 3000);
+                }
+            } catch (error) {
+                console.error("Ошибка:", error);
+                if (formStatus) {
+                    formStatus.classList.remove("hidden");
                     formStatus.classList.add("bg-red-500");
                     formStatus.querySelector("p").textContent =
                         "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
                 }
-
-                formStatus.classList.remove("hidden");
-
-                setTimeout(() => {
-                    formStatus.classList.add("hidden");
-                }, 3000);
-            } catch (error) {
-                console.error("Ошибка:", error);
-                formStatus.classList.remove("hidden");
-                formStatus.classList.add("bg-red-500");
-                formStatus.querySelector("p").textContent =
-                    "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
             } finally {
-                hideSpinner();
+                if (typeof window.hideSpinner === "function") {
+                    window.hideSpinner();
+                }
             }
         });
     }

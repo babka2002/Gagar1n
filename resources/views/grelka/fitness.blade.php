@@ -164,24 +164,101 @@
                             class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-light rounded-brxl focus:outline-none focus:ring-2 focus:ring-red-600 my-2"
                             required />
                     </div>
-                    <button type="submit"
-                        class="w-full text-light px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-red-600 hover:bg-red-700 transition rounded-brxl">
-                        СТАТЬ БЛИЖЕ К СВОЕЙ ЦЕЛИ
-                    </button>
+                    <!-- Consents -->
+                    <div class="mt-2 space-y-2">
+                        <label id="label-consent-personal" for="consent_personal" class="flex items-center gap-2 text-sm text-light cursor-pointer">
+                            <input
+                                type="checkbox"
+                                id="consent_personal"
+                                name="consent_personal"
+                                value="1"
+                                required
+                                class="mt-1 consent-box"
+                            />
+                            <span class="select-none">
+                                Я даю
+                                <a href="{{ config('consents.personal_consent') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">согласие на обработку моих персональных данных</a>
+                                и
+                                <a href="{{ config('consents.personal_policy') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">ознакомлен с политикой обработки персональных данных</a>.
+                            </span>
+                        </label>
 
-                    <!-- Согласие на обработку ПД -->
-                    <div class="mt-4 flex items-start gap-3">
-                        <input
-                            type="checkbox"
-                            id="privacy-consent-fitness"
-                            name="privacy_consent"
-                            required
-                            class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
-                        />
-                        <label for="privacy-consent-fitness" class="text-sm text-light leading-relaxed">
-                            Я согласен(а) на обработку персональных данных и принимаю условия <a href="https://new.gagar1n.ru/policy" target="_blank" class="underline hover:no-underline">политики конфиденциальности</a>
+                        <label id="label-consent-terms" for="consent_terms" class="flex items-center gap-2 text-sm text-light cursor-pointer">
+                            <input
+                                type="checkbox"
+                                id="consent_terms"
+                                name="consent_terms"
+                                value="1"
+                                required
+                                class="mt-1 consent-box"
+                            />
+                            <span class="select-none">
+                                Ознакомлен и согласен с
+                                <a href="{{ config('consents.offer') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">Договором оферты</a>,
+                                <a href="{{ config('consents.rules') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">правилами клуба</a>
+                                и
+                                <a href="{{ config('consents.safety') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">техникой безопасности</a>.
+                            </span>
+                        </label>
+
+                        <label id="label-consent-marketing" for="consent_marketing" class="flex items-center gap-2 text-sm text-light cursor-pointer">
+                            <input
+                                type="checkbox"
+                                id="consent_marketing"
+                                name="consent_marketing"
+                                value="1"
+                                required
+                                class="mt-1 consent-box"
+                            />
+                            <span class="select-none">
+                                Даю согласие на
+                                <a href="{{ config('consents.marketing') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">получение информационных и маркетинговых рассылок</a>.
+                            </span>
                         </label>
                     </div>
+
+                    <style>
+                        /* Uniform, custom-styled checkboxes for this form */
+                        #mainContactForm input.consent-box {
+                            -webkit-appearance: none;
+                            -moz-appearance: none;
+                            appearance: none;
+                            width: 20px;
+                            height: 20px;
+                            border: 1px solid #D1D5DB;
+                            border-radius: 4px;
+                            background: #FFFFFF;
+                            display: inline-block;
+                            position: relative;
+                            flex-shrink: 0;
+                            margin: 0;
+                        }
+                        #mainContactForm input.consent-box:checked {
+                            background-color: #E23333;
+                            border-color: #E23333;
+                        }
+                        #mainContactForm input.consent-box:checked::after {
+                            content: "";
+                            position: absolute;
+                            left: 6px;
+                            top: 2px;
+                            width: 6px;
+                            height: 10px;
+                            border: 2px solid #FFFFFF;
+                            border-top: 0;
+                            border-left: 0;
+                            transform: rotate(45deg);
+                        }
+                        #mainContactForm input.consent-box:focus {
+                            outline: 2px solid rgba(226, 51, 51, 0.5);
+                            outline-offset: 2px;
+                        }
+                    </style>
+
+                    <button type="submit"
+                        class="w-full text-light px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-red-600 hover:bg-red-700 transition rounded-brxl mt-4">
+                        СТАТЬ БЛИЖЕ К СВОЕЙ ЦЕЛИ
+                    </button>
 
                     <!-- Индикатор состояния -->
                     <div id="formStatus" class="mt-4 p-4 rounded-lg hidden">
