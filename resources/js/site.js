@@ -569,27 +569,54 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else {
                     label.classList.remove("text-red-500");
                 }
+                updateSubmitDisabled();
             });
         }
         return { input, label };
     });
-    const anyConsentPresent = consents.some((c) => !!c.input);
+
+    // Disable submit until all consents are checked (when present)
+    const submitButton = form
+        ? form.querySelector('input[type="submit"], button[type="submit"]')
+        : null;
+    function updateSubmitDisabled() {
+        if (!form || !submitButton) return;
+        const presentConsents = consentConfig
+            .map((cfg) => form.querySelector(`#${cfg.inputId}`))
+            .filter(Boolean);
+        if (presentConsents.length === 0) return; // no consents on page
+        const allChecked = presentConsents.every((el) => el.checked === true);
+        submitButton.disabled = !allChecked;
+        submitButton.classList.toggle("opacity-50", !allChecked);
+        submitButton.classList.toggle("cursor-not-allowed", !allChecked);
+    }
+    // Initial state
+    updateSubmitDisabled();
 
     if (form) {
         form.addEventListener("submit", async function (e) {
             e.preventDefault();
 
-            // Validate required consents if present on the page
-            if (anyConsentPresent) {
+            // Validate required consents if present on the page (re-query to be robust)
+            const consentsNow = consentConfig.map((cfg) => ({
+                input: form.querySelector(`#${cfg.inputId}`),
+                label: document.getElementById(cfg.labelId),
+            }));
+            const haveConsents = consentsNow.some((c) => !!c.input);
+            if (haveConsents) {
                 triedSubmitConsents = true;
                 let allChecked = true;
-                consents.forEach(({ input, label }) => {
+                consentsNow.forEach(({ input, label }) => {
                     if (!input) return;
-                    const ok = input.checked;
+                    const ok = input.checked === true;
                     if (label) label.classList.toggle("text-red-500", !ok);
                     if (!ok) allChecked = false;
                 });
                 if (!allChecked) {
+                    // Stop other listeners just in case
+                    if (typeof e.stopImmediatePropagation === "function") {
+                        e.stopImmediatePropagation();
+                    }
                     return;
                 }
             }
