@@ -581,8 +581,7 @@
                             name="consent_personal"
                             value="1"
                             required
-                            class="mt-1 shrink-0 rounded border-gray-300"
-                            style="width:20px;height:20px;accent-color:#E23333;appearance:auto;-webkit-appearance:checkbox;-moz-appearance:checkbox"
+                            class="mt-1 consent-box"
                         />
                         <span class="select-none">
                             Я даю
@@ -599,8 +598,7 @@
                             name="consent_terms"
                             value="1"
                             required
-                            class="mt-1 shrink-0 rounded border-gray-300"
-                            style="width:20px;height:20px;accent-color:#E23333;appearance:auto;-webkit-appearance:checkbox;-moz-appearance:checkbox"
+                            class="mt-1 consent-box"
                         />
                         <span class="select-none">
                             Ознакомлен и согласен с
@@ -618,8 +616,7 @@
                             name="consent_marketing"
                             value="1"
                             required
-                            class="mt-1 shrink-0 rounded border-gray-300"
-                            style="width:20px;height:20px;accent-color:#E23333;appearance:auto;-webkit-appearance:checkbox;-moz-appearance:checkbox"
+                            class="mt-1 consent-box"
                         />
                         <span class="select-none">
                             Даю согласие на
@@ -627,6 +624,44 @@
                         </span>
                     </label>
                 </div>
+
+                <style>
+                    /* Uniform, custom-styled checkboxes for this form */
+                    #mainContactForm input.consent-box {
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        appearance: none;
+                        width: 20px;
+                        height: 20px;
+                        border: 1px solid #D1D5DB;
+                        border-radius: 4px;
+                        background: #FFFFFF;
+                        display: inline-block;
+                        position: relative;
+                        flex-shrink: 0;
+                        margin: 0;
+                    }
+                    #mainContactForm input.consent-box:checked {
+                        background-color: #E23333;
+                        border-color: #E23333;
+                    }
+                    #mainContactForm input.consent-box:checked::after {
+                        content: "";
+                        position: absolute;
+                        left: 6px;
+                        top: 2px;
+                        width: 6px;
+                        height: 10px;
+                        border: 2px solid #FFFFFF;
+                        border-top: 0;
+                        border-left: 0;
+                        transform: rotate(45deg);
+                    }
+                    #mainContactForm input.consent-box:focus {
+                        outline: 2px solid rgba(226,51,51,0.5);
+                        outline-offset: 2px;
+                    }
+                </style>
 
                 <input
                     type="submit"
