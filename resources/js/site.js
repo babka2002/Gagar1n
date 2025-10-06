@@ -553,7 +553,7 @@ document.addEventListener("keydown", (e) => {
 // Send main contact form
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("mainContactForm");
-    const formStatus = document.getElementById("formStatus");
+    const formStatus = form ? form.querySelector("#formStatus") : null;
 
     // Consents handling for pages that include them
     let triedSubmitConsents = false;
@@ -659,34 +659,51 @@ document.addEventListener("DOMContentLoaded", function () {
                     body: JSON.stringify(apiData),
                 });
 
-                formStatus.classList.remove(
-                    "hidden",
-                    "bg-red-500",
-                    "bg-green-500"
-                );
+                if (formStatus) {
+                    formStatus.classList.remove(
+                        "hidden",
+                        "bg-red-500",
+                        "bg-green-500"
+                    );
+                    formStatus.setAttribute("role", "alert");
+                    formStatus.classList.add("text-white");
+                }
 
                 if (response.ok) {
                     form.reset();
-                    formStatus.classList.add("bg-green-500");
-                    formStatus.querySelector("p").textContent =
-                        "Спасибо! Ваша заявка отправлена.";
+                    if (formStatus) {
+                        formStatus.classList.add("bg-green-500");
+                        formStatus.querySelector("p").textContent =
+                            "Спасибо! Ваша заявка отправлена.";
+                        formStatus.scrollIntoView({ behavior: "smooth", block: "center" });
+                    }
                 } else {
+                    if (formStatus) {
+                        formStatus.classList.add("bg-red-500");
+                        formStatus.querySelector("p").textContent =
+                            "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
+                        formStatus.scrollIntoView({ behavior: "smooth", block: "center" });
+                    }
+                }
+
+                if (formStatus) {
+                    formStatus.classList.remove("hidden");
+                }
+
+                if (formStatus) {
+                    setTimeout(() => {
+                        formStatus.classList.add("hidden");
+                    }, 3000);
+                }
+            } catch (error) {
+                console.error("Ошибка:", error);
+                if (formStatus) {
+                    formStatus.classList.remove("hidden");
                     formStatus.classList.add("bg-red-500");
                     formStatus.querySelector("p").textContent =
                         "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
+                    formStatus.scrollIntoView({ behavior: "smooth", block: "center" });
                 }
-
-                formStatus.classList.remove("hidden");
-
-                setTimeout(() => {
-                    formStatus.classList.add("hidden");
-                }, 3000);
-            } catch (error) {
-                console.error("Ошибка:", error);
-                formStatus.classList.remove("hidden");
-                formStatus.classList.add("bg-red-500");
-                formStatus.querySelector("p").textContent =
-                    "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
             } finally {
                 if (typeof window.hideSpinner === "function") {
                     window.hideSpinner();
