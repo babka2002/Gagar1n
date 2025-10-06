@@ -551,9 +551,48 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("mainContactForm");
     const formStatus = document.getElementById("formStatus");
 
+    // Consents handling for pages that include them
+    let triedSubmitConsents = false;
+    const consentConfig = [
+        { inputId: "consent_personal", labelId: "label-consent-personal" },
+        { inputId: "consent_terms", labelId: "label-consent-terms" },
+        { inputId: "consent_marketing", labelId: "label-consent-marketing" },
+    ];
+    const consents = consentConfig.map((cfg) => {
+        const input = form ? form.querySelector(`#${cfg.inputId}`) : null;
+        const label = document.getElementById(cfg.labelId);
+        if (input) {
+            input.addEventListener("change", () => {
+                if (!label) return;
+                if (triedSubmitConsents) {
+                    label.classList.toggle("text-red-500", !input.checked);
+                } else {
+                    label.classList.remove("text-red-500");
+                }
+            });
+        }
+        return { input, label };
+    });
+    const anyConsentPresent = consents.some((c) => !!c.input);
+
     if (form) {
         form.addEventListener("submit", async function (e) {
             e.preventDefault();
+
+            // Validate required consents if present on the page
+            if (anyConsentPresent) {
+                triedSubmitConsents = true;
+                let allChecked = true;
+                consents.forEach(({ input, label }) => {
+                    if (!input) return;
+                    const ok = input.checked;
+                    if (label) label.classList.toggle("text-red-500", !ok);
+                    if (!ok) allChecked = false;
+                });
+                if (!allChecked) {
+                    return;
+                }
+            }
 
             const name = form.querySelector('[name="name"]').value;
             const phone = form.querySelector('[name="phone"]').value;

@@ -572,17 +572,61 @@
                     required
                     class="block w-full bg-dark text-light px-5 py-2 uppercase rounded-[clamp(0.625rem,0.3991rem+1.004vw,1.25rem)] text-[clamp(0.875rem,0.5587rem+1.4056vw,1.75rem)] my-2"
                 />
+                <!-- Consents -->
+                <div class="mt-2 space-y-2">
+                    <label id="label-consent-personal" for="consent_personal" class="flex items-start gap-2 text-[clamp(0.5rem,0.3645rem+0.6024vw,0.875rem)] cursor-pointer">
+                        <input
+                            type="checkbox"
+                            id="consent_personal"
+                            name="consent_personal"
+                            value="1"
+                            class="mt-1 w-4 h-4 rounded border-gray-300"
+                        />
+                        <span>
+                            Я даю
+                            <a href="https://docs.google.com/document/d/1EO5tCIW066XRFSEj6YhP98h4-vYukJM64wO8GWFS64o/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">согласие на обработку моих персональных данных</a>
+                            и
+                            <a href="https://docs.google.com/document/d/1EO5tCIW066XRFSEj6YhP98h4-vYukJM64wO8GWFS64o/edit?tab=t.uhb10ilbqhs4" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">ознакомлен с политикой обработки персональных данных</a>.
+                        </span>
+                    </label>
+
+                    <label id="label-consent-terms" for="consent_terms" class="flex items-start gap-2 text-[clamp(0.5rem,0.3645rem+0.6024vw,0.875rem)] cursor-pointer">
+                        <input
+                            type="checkbox"
+                            id="consent_terms"
+                            name="consent_terms"
+                            value="1"
+                            class="mt-1 w-4 h-4 rounded border-gray-300"
+                        />
+                        <span>
+                            Ознакомлен и согласен с
+                            <a href="https://docs.google.com/document/d/1EO5tCIW066XRFSEj6YhP98h4-vYukJM64wO8GWFS64o/edit?tab=t.w9ylabe0y0me" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">Договором оферты</a>,
+                            <a href="https://docs.google.com/document/d/1EO5tCIW066XRFSEj6YhP98h4-vYukJM64wO8GWFS64o/edit?tab=t.3c00bd4tv5hr" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">правилами клуба</a>
+                            и
+                            <a href="https://docs.google.com/document/d/1EO5tCIW066XRFSEj6YhP98h4-vYukJM64wO8GWFS64o/edit?tab=t.fkqj83coh4y9" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">техникой безопасности</a>.
+                        </span>
+                    </label>
+
+                    <label id="label-consent-marketing" for="consent_marketing" class="flex items-start gap-2 text-[clamp(0.5rem,0.3645rem+0.6024vw,0.875rem)] cursor-pointer">
+                        <input
+                            type="checkbox"
+                            id="consent_marketing"
+                            name="consent_marketing"
+                            value="1"
+                            class="mt-1 w-4 h-4 rounded border-gray-300"
+                        />
+                        <span>
+                            Даю согласие на
+                            <a href="https://docs.google.com/document/d/1EO5tCIW066XRFSEj6YhP98h4-vYukJM64wO8GWFS64o/edit?tab=t.dien9retn169#heading=h.e60m58davm2q" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">получение информационных и маркетинговых рассылок</a>.
+                        </span>
+                    </label>
+                </div>
+
                 <input
                     type="submit"
                     value="стать ближе к своей цели"
                     class="block w-full bg-main-red px-5 py-2 text-light uppercase cursor-pointer rounded-[clamp(0.625rem,0.3991rem+1.004vw,1.25rem)] text-[clamp(0.875rem,0.5587rem+1.4056vw,1.75rem)]"
                 />
-                <span
-                    class="block mt-2 text-center text-[clamp(0.5rem,0.3645rem+0.6024vw,0.875rem)]"
-                >
-                    Нажимая "ОТПРАВИТЬ" я согласен на обработку <a href="https://new.gagar1n.ru/policy" target="_blank" class="underline hover:no-underline">персональных
-                    данных</a>
-                </span>
 
                 <!-- Индикатор состояния -->
                 <div id="formStatus" class="mt-4 p-4 rounded-lg hidden">
