@@ -1,6 +1,8 @@
 .dist
 .vite
 _1
+/resources/blueprints
+storage
 /public
 /.phpunit.cache
 /node_modules
