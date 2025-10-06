@@ -425,11 +425,15 @@ function shouldShowDialog() {
     return false;
 }
 function handleDialogClose(dialogElem) {
-    window.showSpinner();
+    if (typeof window.showSpinner === "function") {
+        window.showSpinner();
+    }
 
     setTimeout(() => {
         dialogElem.close();
-        window.hideSpinner();
+        if (typeof window.hideSpinner === "function") {
+            window.hideSpinner();
+        }
     }, 300);
 }
 
@@ -641,7 +645,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 _token: token,
             };
 
-            window.showSpinner();
+            if (typeof window.showSpinner === "function") {
+                window.showSpinner();
+            }
             try {
                 // Используем наш прокси вместо прямого обращения к API
                 const response = await fetch("/proxy-leads", {
@@ -682,7 +688,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 formStatus.querySelector("p").textContent =
                     "Произошла ошибка. Пожалуйста, попробуйте еще раз.";
             } finally {
-                hideSpinner();
+                if (typeof window.hideSpinner === "function") {
+                    window.hideSpinner();
+                }
             }
         });
     }
