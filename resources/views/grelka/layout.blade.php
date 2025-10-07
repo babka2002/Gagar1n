@@ -480,9 +480,9 @@
                                 />
                                 <label for="consent-personal-1" class="text-base text-light leading-relaxed">
                                     Я даю
-                                    <a href="{{ config('consents.personal_consent') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">согласие на обработку моих персональных данных</a>
+                                    <a href="{{ config:consents:personal_consent }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">согласие на обработку моих персональных данных</a>
                                     и
-                                    <a href="{{ config('consents.personal_policy') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">ознакомлен с политикой обработки персональных данных</a>.
+                                    <a href="{{ config:consents:personal_policy }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">ознакомлен с политикой обработки персональных данных</a>.
                                 </label>
                             </div>
 
@@ -497,10 +497,10 @@
                                 />
                                 <label for="consent-terms-1" class="text-base text-light leading-relaxed">
                                     Ознакомлен и согласен с
-                                    <a href="{{ config('consents.offer') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">Договором оферты</a>,
-                                    <a href="{{ config('consents.rules') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">правилами клуба</a>
+                                    <a href="{{ config:consents:offer }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">Договором оферты</a>,
+                                    <a href="{{ config:consents:rules }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">правилами клуба</a>
                                     и
-                                    <a href="{{ config('consents.safety') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">техникой безопасности</a>.
+                                    <a href="{{ config:consents:safety }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">техникой безопасности</a>.
                                 </label>
                             </div>
 
@@ -515,7 +515,7 @@
                                 />
                                 <label for="consent-marketing-1" class="text-base text-light leading-relaxed">
                                     Даю согласие на
-                                    <a href="{{ config('consents.marketing') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">получение информационных и маркетинговых рассылок</a>.
+                                    <a href="{{ config:consents:marketing }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">получение информационных и маркетинговых рассылок</a>.
                                 </label>
                             </div>
                         </div>
@@ -871,9 +871,9 @@
                                 />
                                 <label for="consent-personal-2" class="text-base text-light leading-relaxed">
                                     Я даю
-                                    <a href="{{ config('consents.personal_consent') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">согласие на обработку моих персональных данных</a>
+                                    <a href="{{ config:consents:personal_consent }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">согласие на обработку моих персональных данных</a>
                                     и
-                                    <a href="{{ config('consents.personal_policy') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">ознакомлен с политикой обработки персональных данных</a>.
+                                    <a href="{{ config:consents:personal_policy }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">ознакомлен с политикой обработки персональных данных</a>.
                                 </label>
                             </div>
 
@@ -888,10 +888,10 @@
                                 />
                                 <label for="consent-terms-2" class="text-base text-light leading-relaxed">
                                     Ознакомлен и согласен с
-                                    <a href="{{ config('consents.offer') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">Договором оферты</a>,
-                                    <a href="{{ config('consents.rules') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">правилами клуба</a>
+                                    <a href="{{ config:consents:offer }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">Договором оферты</a>,
+                                    <a href="{{ config:consents:rules }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">правилами клуба</a>
                                     и
-                                    <a href="{{ config('consents.safety') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">техникой безопасности</a>.
+                                    <a href="{{ config:consents:safety }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">техникой безопасности</a>.
                                 </label>
                             </div>
 
@@ -906,7 +906,7 @@
                                 />
                                 <label for="consent-marketing-2" class="text-base text-light leading-relaxed">
                                     Даю согласие на
-                                    <a href="{{ config('consents.marketing') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">получение информационных и маркетинговых рассылок</a>.
+                                    <a href="{{ config:consents:marketing }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">получение информационных и маркетинговых рассылок</a>.
                                 </label>
                             </div>
                         </div>
@@ -1189,9 +1189,9 @@
                                 />
                                 <label for="consent-personal-3" class="text-base text-light leading-relaxed">
                                     Я даю
-                                    <a href="{{ config('consents.personal_consent') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">согласие на обработку моих персональных данных</a>
+                                    <a href="{{ config:consents:personal_consent }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">согласие на обработку моих персональных данных</a>
                                     и
-                                    <a href="{{ config('consents.personal_policy') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">ознакомлен с политикой обработки персональных данных</a>.
+                                    <a href="{{ config:consents:personal_policy }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">ознакомлен с политикой обработки персональных данных</a>.
                                 </label>
                             </div>
 
@@ -1206,10 +1206,10 @@
                                 />
                                 <label for="consent-terms-3" class="text-base text-light leading-relaxed">
                                     Ознакомлен и согласен с
-                                    <a href="{{ config('consents.offer') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">Договором оферты</a>,
-                                    <a href="{{ config('consents.rules') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">правилами клуба</a>
+                                    <a href="{{ config:consents:offer }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">Договором оферты</a>,
+                                    <a href="{{ config:consents:rules }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">правилами клуба</a>
                                     и
-                                    <a href="{{ config('consents.safety') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">техникой безопасности</a>.
+                                    <a href="{{ config:consents:safety }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">техникой безопасности</a>.
                                 </label>
                             </div>
 
@@ -1224,7 +1224,7 @@
                                 />
                                 <label for="consent-marketing-3" class="text-base text-light leading-relaxed">
                                     Даю согласие на
-                                    <a href="{{ config('consents.marketing') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">получение информационных и маркетинговых рассылок</a>.
+                                    <a href="{{ config:consents:marketing }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">получение информационных и маркетинговых рассылок</a>.
                                 </label>
                             </div>
                         </div>
