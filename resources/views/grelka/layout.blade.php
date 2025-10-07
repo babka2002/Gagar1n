@@ -479,7 +479,10 @@
                                     class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
                                 />
                                 <label for="consent-personal-1" class="text-base text-light leading-relaxed">
-                                    Я даю согласие на обработку моих персональных данных и ознакомлен с политикой обработки персональных данных
+                                    Я даю
+                                    <a href="{{ config('consents.personal_consent') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">согласие на обработку моих персональных данных</a>
+                                    и
+                                    <a href="{{ config('consents.personal_policy') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">ознакомлен с политикой обработки персональных данных</a>.
                                 </label>
                             </div>
 
@@ -493,7 +496,11 @@
                                     class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
                                 />
                                 <label for="consent-terms-1" class="text-base text-light leading-relaxed">
-                                    Ознакомлен и согласен с договором оферты, правилами клуба и техникой безопасности
+                                    Ознакомлен и согласен с
+                                    <a href="{{ config('consents.offer') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">Договором оферты</a>,
+                                    <a href="{{ config('consents.rules') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">правилами клуба</a>
+                                    и
+                                    <a href="{{ config('consents.safety') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">техникой безопасности</a>.
                                 </label>
                             </div>
 
@@ -507,7 +514,8 @@
                                     class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
                                 />
                                 <label for="consent-marketing-1" class="text-base text-light leading-relaxed">
-                                    Даю согласие на получение информационных и маркетинговых рассылок
+                                    Даю согласие на
+                                    <a href="{{ config('consents.marketing') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">получение информационных и маркетинговых рассылок</a>.
                                 </label>
                             </div>
                         </div>
@@ -862,7 +870,10 @@
                                     class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
                                 />
                                 <label for="consent-personal-2" class="text-base text-light leading-relaxed">
-                                    Я даю согласие на обработку моих персональных данных и ознакомлен с политикой обработки персональных данных
+                                    Я даю
+                                    <a href="{{ config('consents.personal_consent') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">согласие на обработку моих персональных данных</a>
+                                    и
+                                    <a href="{{ config('consents.personal_policy') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">ознакомлен с политикой обработки персональных данных</a>.
                                 </label>
                             </div>
 
@@ -876,7 +887,11 @@
                                     class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
                                 />
                                 <label for="consent-terms-2" class="text-base text-light leading-relaxed">
-                                    Ознакомлен и согласен с договором оферты, правилами клуба и техникой безопасности
+                                    Ознакомлен и согласен с
+                                    <a href="{{ config('consents.offer') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">Договором оферты</a>,
+                                    <a href="{{ config('consents.rules') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">правилами клуба</a>
+                                    и
+                                    <a href="{{ config('consents.safety') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">техникой безопасности</a>.
                                 </label>
                             </div>
 
@@ -890,7 +905,8 @@
                                     class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
                                 />
                                 <label for="consent-marketing-2" class="text-base text-light leading-relaxed">
-                                    Даю согласие на получение информационных и маркетинговых рассылок
+                                    Даю согласие на
+                                    <a href="{{ config('consents.marketing') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">получение информационных и маркетинговых рассылок</a>.
                                 </label>
                             </div>
                         </div>
@@ -1172,7 +1188,10 @@
                                     class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
                                 />
                                 <label for="consent-personal-3" class="text-base text-light leading-relaxed">
-                                    Я даю согласие на обработку моих персональных данных и ознакомлен с политикой обработки персональных данных
+                                    Я даю
+                                    <a href="{{ config('consents.personal_consent') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">согласие на обработку моих персональных данных</a>
+                                    и
+                                    <a href="{{ config('consents.personal_policy') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">ознакомлен с политикой обработки персональных данных</a>.
                                 </label>
                             </div>
 
@@ -1186,7 +1205,11 @@
                                     class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
                                 />
                                 <label for="consent-terms-3" class="text-base text-light leading-relaxed">
-                                    Ознакомлен и согласен с договором оферты, правилами клуба и техникой безопасности
+                                    Ознакомлен и согласен с
+                                    <a href="{{ config('consents.offer') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">Договором оферты</a>,
+                                    <a href="{{ config('consents.rules') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">правилами клуба</a>
+                                    и
+                                    <a href="{{ config('consents.safety') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">техникой безопасности</a>.
                                 </label>
                             </div>
 
@@ -1200,7 +1223,8 @@
                                     class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
                                 />
                                 <label for="consent-marketing-3" class="text-base text-light leading-relaxed">
-                                    Даю согласие на получение информационных и маркетинговых рассылок
+                                    Даю согласие на
+                                    <a href="{{ config('consents.marketing') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">получение информационных и маркетинговых рассылок</a>.
                                 </label>
                             </div>
                         </div>
