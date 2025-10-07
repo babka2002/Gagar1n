@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="@antlers{{ site:short_locale }}@endantlers">
     <head>
@@ -517,14 +518,24 @@
                         let form = dialogMoreElem.querySelector('form[action*="/!/forms/grelka"]');
 
                         function showSuccessMessage() {
-                            form.style.display = 'none';
+                            // Скрываем весь контент диалога
+                            const dialogContent = dialogMoreElem.querySelector('.h-auto');
+                            dialogContent.style.display = 'none';
+                            
+                            // Создаем сообщение об успехе
                             const successMessage = document.createElement('div');
                             successMessage.className = 'text-center py-8';
                             successMessage.innerHTML = `
-                                <h3 class="text-2xl mb-4 text-green-400">Спасибо! Ваша заявка успешно отправлена</h3>
-                                <p class="text-lg">Мы свяжемся с вами в ближайшее время</p>
+                                <h2 class="[font-size:_clamp(1.625rem,-0.2494rem+6.0465vw,4.875rem)] font-normal uppercase leading-none mb-8 text-light">
+                                    СПАСИБО!
+                                </h2>
+                                <p class="[font-size:_clamp(1.1875rem,0.4666rem+2.3256vw,2.4375rem)] text-light">
+                                    Ваша заявка успешно отправлена. Мы свяжемся с вами в ближайшее время.
+                                </p>
                             `;
-                            form.parentNode.appendChild(successMessage);
+                            
+                            // Добавляем сообщение в диалог
+                            dialogMoreElem.querySelector('.flex.flex-col.mx-4').appendChild(successMessage);
                         }
                         // Обработчик для всех кнопок с классом show
                         document.querySelectorAll('.show[data-dialog]').forEach(button => {
@@ -685,8 +696,12 @@
                                         setTimeout(() => {
                                             // dialogElem.close();
                                             setTimeout(() => {
-                                                form.style.display = 'block';
-                                                const successMessage = form.parentNode.querySelector('div');
+                                                // Восстанавливаем контент диалога
+                                                const dialogContent = dialogMoreElem.querySelector('.h-auto');
+                                                dialogContent.style.display = 'block';
+                                                
+                                                // Удаляем сообщение об успехе
+                                                const successMessage = dialogMoreElem.querySelector('.text-center.py-8');
                                                 if (successMessage) {
                                                     successMessage.remove();
                                                 }
@@ -864,14 +879,24 @@
 
 
                         function showSuccessMessage() {
-                            form.style.display = 'none';
+                            // Скрываем весь контент диалога
+                            const dialogContent = dialogMoreElem.querySelector('.h-auto');
+                            dialogContent.style.display = 'none';
+                            
+                            // Создаем сообщение об успехе
                             const successMessage = document.createElement('div');
                             successMessage.className = 'text-center py-8';
                             successMessage.innerHTML = `
-                                <h3 class="text-2xl mb-4 text-green-400">Спасибо! Ваша заявка успешно отправлена</h3>
-                                <p class="text-lg">Мы свяжемся с вами в ближайшее время</p>
+                                <h2 class="[font-size:_clamp(1.625rem,-0.2494rem+6.0465vw,4.875rem)] font-normal uppercase leading-none mb-8 text-light">
+                                    СПАСИБО!
+                                </h2>
+                                <p class="[font-size:_clamp(1.1875rem,0.4666rem+2.3256vw,2.4375rem)] text-light">
+                                    Ваша заявка успешно отправлена. Мы свяжемся с вами в ближайшее время.
+                                </p>
                             `;
-                            form.parentNode.appendChild(successMessage);
+                            
+                            // Добавляем сообщение в диалог
+                            dialogMoreElem.querySelector('.flex.flex-col.mx-4').appendChild(successMessage);
                         }
 
                         if (form) {
@@ -943,8 +968,12 @@
                                         setTimeout(() => {
                                             // dialogElem.close();
                                             setTimeout(() => {
-                                                form.style.display = 'block';
-                                                const successMessage = form.parentNode.querySelector('div');
+                                                // Восстанавливаем контент диалога
+                                                const dialogContent = dialogMoreElem.querySelector('.h-auto');
+                                                dialogContent.style.display = 'block';
+                                                
+                                                // Удаляем сообщение об успехе
+                                                const successMessage = dialogMoreElem.querySelector('.text-center.py-8');
                                                 if (successMessage) {
                                                     successMessage.remove();
                                                 }
@@ -1136,14 +1165,24 @@
                         let form = dialogAutoplayElem.querySelector('form[action*="/!/forms/grelka"]');
 
                         function showSuccessMessage() {
-                            form.style.display = 'none';
+                            // Скрываем весь контент диалога
+                            const dialogContent = dialogAutoplayElem.querySelector('.h-auto');
+                            dialogContent.style.display = 'none';
+                            
+                            // Создаем сообщение об успехе
                             const successMessage = document.createElement('div');
                             successMessage.className = 'text-center py-8';
                             successMessage.innerHTML = `
-                                <h3 class="text-2xl mb-4 text-green-400">Спасибо! Ваша заявка успешно отправлена</h3>
-                                <p class="text-lg">Мы свяжемся с вами в ближайшее время</p>
+                                <h2 class="[font-size:_clamp(1.625rem,-0.2494rem+6.0465vw,4.875rem)] font-normal uppercase leading-none mb-8 text-light">
+                                    СПАСИБО!
+                                </h2>
+                                <p class="[font-size:_clamp(1.1875rem,0.4666rem+2.3256vw,2.4375rem)] text-light">
+                                    Ваша заявка успешно отправлена. Мы свяжемся с вами в ближайшее время.
+                                </p>
                             `;
-                            form.parentNode.appendChild(successMessage);
+                            
+                            // Добавляем сообщение в диалог
+                            dialogAutoplayElem.querySelector('.flex.flex-col.mx-4').appendChild(successMessage);
                         }
 
                         if (form) {
@@ -1214,8 +1253,12 @@
 
                                         setTimeout(() => {
                                             setTimeout(() => {
-                                                form.style.display = 'block';
-                                                const successMessage = form.parentNode.querySelector('div');
+                                                // Восстанавливаем контент диалога
+                                                const dialogContent = dialogAutoplayElem.querySelector('.h-auto');
+                                                dialogContent.style.display = 'block';
+                                                
+                                                // Удаляем сообщение об успехе
+                                                const successMessage = dialogAutoplayElem.querySelector('.text-center.py-8');
                                                 if (successMessage) {
                                                     successMessage.remove();
                                                 }
