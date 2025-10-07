@@ -1,4 +1,5 @@
 
+
 <!doctype html>
 <html lang="@antlers{{ site:short_locale }}@endantlers">
     <head>
@@ -690,23 +691,30 @@
                                     });
 
                                     if (statamicResponse.ok) {
+                                        // Скрываем спиннер загрузки
+                                        window.hideSpinner();
+                                        
+                                        // Показываем сообщение об успехе
                                         showSuccessMessage();
-                                        this.reset();
-
+                                        
+                                        // Автозакрытие диалога через 5 секунд
                                         setTimeout(() => {
-                                            // dialogElem.close();
-                                            setTimeout(() => {
-                                                // Восстанавливаем контент диалога
-                                                const dialogContent = dialogMoreElem.querySelector('.h-auto');
-                                                dialogContent.style.display = 'block';
-                                                
-                                                // Удаляем сообщение об успехе
-                                                const successMessage = dialogMoreElem.querySelector('.text-center.py-8');
-                                                if (successMessage) {
-                                                    successMessage.remove();
-                                                }
-                                            }, 500);
-                                        }, 3000);
+                                            const dialogElem = document.getElementById("dialog");
+                                            dialogElem.close();
+                                            
+                                            // Восстанавливаем контент диалога
+                                            const dialogContent = dialogMoreElem.querySelector('.h-auto');
+                                            dialogContent.style.display = 'block';
+                                            
+                                            // Удаляем сообщение об успехе
+                                            const successMessage = dialogMoreElem.querySelector('.text-center.py-8');
+                                            if (successMessage) {
+                                                successMessage.remove();
+                                            }
+                                            
+                                            // Сбрасываем форму
+                                            form.reset();
+                                        }, 5000);
 
                                         // Используем сохраненные данные для webhook
                                         const webhookData = {
@@ -962,23 +970,30 @@
                                     });
 
                                     if (statamicResponse.ok) {
+                                        // Скрываем спиннер загрузки
+                                        window.hideSpinner();
+                                        
+                                        // Показываем сообщение об успехе
                                         showSuccessMessage();
-                                        this.reset();
-
+                                        
+                                        // Автозакрытие диалога через 5 секунд
                                         setTimeout(() => {
-                                            // dialogElem.close();
-                                            setTimeout(() => {
-                                                // Восстанавливаем контент диалога
-                                                const dialogContent = dialogMoreElem.querySelector('.h-auto');
-                                                dialogContent.style.display = 'block';
-                                                
-                                                // Удаляем сообщение об успехе
-                                                const successMessage = dialogMoreElem.querySelector('.text-center.py-8');
-                                                if (successMessage) {
-                                                    successMessage.remove();
-                                                }
-                                            }, 500);
-                                        }, 3000);
+                                            const dialogElem = document.getElementById("dialog-more");
+                                            dialogElem.close();
+                                            
+                                            // Восстанавливаем контент диалога
+                                            const dialogContent = dialogMoreElem.querySelector('.h-auto');
+                                            dialogContent.style.display = 'block';
+                                            
+                                            // Удаляем сообщение об успехе
+                                            const successMessage = dialogMoreElem.querySelector('.text-center.py-8');
+                                            if (successMessage) {
+                                                successMessage.remove();
+                                            }
+                                            
+                                            // Сбрасываем форму
+                                            form.reset();
+                                        }, 5000);
 
                                         // Формируем данные точно как в curl запросе
                                         const webhookData = {
@@ -1248,22 +1263,30 @@
                                     });
 
                                     if (statamicResponse.ok) {
+                                        // Скрываем спиннер загрузки
+                                        window.hideSpinner();
+                                        
+                                        // Показываем сообщение об успехе
                                         showSuccessMessage();
-                                        this.reset();
-
+                                        
+                                        // Автозакрытие диалога через 5 секунд
                                         setTimeout(() => {
-                                            setTimeout(() => {
-                                                // Восстанавливаем контент диалога
-                                                const dialogContent = dialogAutoplayElem.querySelector('.h-auto');
-                                                dialogContent.style.display = 'block';
-                                                
-                                                // Удаляем сообщение об успехе
-                                                const successMessage = dialogAutoplayElem.querySelector('.text-center.py-8');
-                                                if (successMessage) {
-                                                    successMessage.remove();
-                                                }
-                                            }, 500);
-                                        }, 3000);
+                                            const dialogElem = document.getElementById("dialog-autoplay");
+                                            dialogElem.close();
+                                            
+                                            // Восстанавливаем контент диалога
+                                            const dialogContent = dialogAutoplayElem.querySelector('.h-auto');
+                                            dialogContent.style.display = 'block';
+                                            
+                                            // Удаляем сообщение об успехе
+                                            const successMessage = dialogAutoplayElem.querySelector('.text-center.py-8');
+                                            if (successMessage) {
+                                                successMessage.remove();
+                                            }
+                                            
+                                            // Сбрасываем форму
+                                            form.reset();
+                                        }, 5000);
 
                                         // Формируем данные для webhook
                                         const webhookData = {
