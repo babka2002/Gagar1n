@@ -710,6 +710,75 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+// Handle popup forms with consents
+document.addEventListener("DOMContentLoaded", function () {
+    // Function to handle consent validation for popup forms
+    function handlePopupFormConsents(form) {
+        const consentConfig = [
+            { inputId: "consent_personal", labelId: "label-consent-personal" },
+            { inputId: "consent_terms", labelId: "label-consent-terms" },
+            { inputId: "consent_marketing", labelId: "label-consent-marketing" },
+        ];
+
+        const consents = consentConfig.map((cfg) => {
+            const input = form.querySelector(`#${cfg.inputId}`);
+            const label = form.querySelector(`#${cfg.labelId}`);
+            if (input && label) {
+                input.addEventListener("change", () => {
+                    if (triedSubmitConsents) {
+                        label.classList.toggle("text-red-500", !input.checked);
+                    } else {
+                        label.classList.remove("text-red-500");
+                    }
+                });
+            }
+            return { input, label };
+        });
+
+        return consents;
+    }
+
+    // Function to validate consents before form submission
+    function validateConsents(form) {
+        const consentConfig = [
+            { inputId: "consent_personal", labelId: "label-consent-personal" },
+            { inputId: "consent_terms", labelId: "label-consent-terms" },
+            { inputId: "consent_marketing", labelId: "label-consent-marketing" },
+        ];
+
+        const consentsNow = consentConfig.map((cfg) => ({
+            input: form.querySelector(`#${cfg.inputId}`),
+            label: form.querySelector(`#${cfg.labelId}`),
+        }));
+
+        const haveConsents = consentsNow.some((c) => !!c.input);
+        if (haveConsents) {
+            let allChecked = true;
+            consentsNow.forEach(({ input, label }) => {
+                if (!input) return;
+                const ok = input.checked === true;
+                if (label) label.classList.toggle("text-red-500", !ok);
+                if (!ok) allChecked = false;
+            });
+            return allChecked;
+        }
+        return true; // No consents found, allow submission
+    }
+
+    // Handle all popup forms
+    const popupForms = document.querySelectorAll('dialog form[action*="/!/forms/grelka"]');
+    popupForms.forEach(form => {
+        handlePopupFormConsents(form);
+        
+        form.addEventListener("submit", function (e) {
+            if (!validateConsents(form)) {
+                e.preventDefault();
+                return false;
+            }
+        });
+    });
+});
 // const dialogElem = document.getElementById("dialog");
 // const showBtns = document.querySelectorAll(".show"); // Получаем все элементы с классом show
 // const closeBtn = document.querySelector(".close");

@@ -465,19 +465,96 @@
                             </button>
                         </div>
 
-                        <!-- Согласие на обработку ПД -->
-                        <div class="mt-4 flex items-start gap-3">
-                            <input
-                                type="checkbox"
-                                id="privacy-consent-1"
-                                name="privacy_consent"
-                                required
-                                class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
-                            />
-                            <label for="privacy-consent-1" class="text-base text-light leading-relaxed">
-                                Я согласен(а) на обработку персональных данных и принимаю условия <a href="/policy" target="_blank" class="text-main-red hover:underline">политики конфиденциальности</a>
+                        <!-- Consents -->
+                        <div class="mt-4 space-y-3">
+                            <label id="label-consent-personal-1" for="consent_personal_1" class="flex items-center gap-3 text-base text-light cursor-pointer">
+                                <input
+                                    type="checkbox"
+                                    id="consent_personal_1"
+                                    name="consent_personal"
+                                    value="1"
+                                    required
+                                    class="mt-1 consent-box"
+                                />
+                                <span class="select-none">
+                                    Я даю
+                                    <a href="{{ config('consents.personal_consent') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">согласие на обработку моих персональных данных</a>
+                                    и
+                                    <a href="{{ config('consents.personal_policy') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">ознакомлен с политикой обработки персональных данных</a>.
+                                </span>
+                            </label>
+
+                            <label id="label-consent-terms-1" for="consent_terms_1" class="flex items-center gap-3 text-base text-light cursor-pointer">
+                                <input
+                                    type="checkbox"
+                                    id="consent_terms_1"
+                                    name="consent_terms"
+                                    value="1"
+                                    required
+                                    class="mt-1 consent-box"
+                                />
+                                <span class="select-none">
+                                    Ознакомлен и согласен с
+                                    <a href="{{ config('consents.offer') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">Договором оферты</a>,
+                                    <a href="{{ config('consents.rules') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">правилами клуба</a>
+                                    и
+                                    <a href="{{ config('consents.safety') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">техникой безопасности</a>.
+                                </span>
+                            </label>
+
+                            <label id="label-consent-marketing-1" for="consent_marketing_1" class="flex items-center gap-3 text-base text-light cursor-pointer">
+                                <input
+                                    type="checkbox"
+                                    id="consent_marketing_1"
+                                    name="consent_marketing"
+                                    value="1"
+                                    required
+                                    class="mt-1 consent-box"
+                                />
+                                <span class="select-none">
+                                    Даю согласие на
+                                    <a href="{{ config('consents.marketing') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">получение информационных и маркетинговых рассылок</a>.
+                                </span>
                             </label>
                         </div>
+
+                        <style>
+                            /* Uniform, custom-styled checkboxes for popup forms */
+                            #dialog input.consent-box {
+                                -webkit-appearance: none;
+                                -moz-appearance: none;
+                                appearance: none;
+                                width: 20px;
+                                height: 20px;
+                                border: 1px solid #D1D5DB;
+                                border-radius: 4px;
+                                background: #FFFFFF;
+                                display: inline-block;
+                                position: relative;
+                                flex-shrink: 0;
+                                margin: 0;
+                            }
+                            #dialog input.consent-box:checked {
+                                background-color: #E23333;
+                                border-color: #E23333;
+                            }
+                            #dialog input.consent-box:checked::after {
+                                content: "";
+                                position: absolute;
+                                left: 6px;
+                                top: 2px;
+                                width: 6px;
+                                height: 10px;
+                                border: 2px solid #FFFFFF;
+                                border-top: 0;
+                                border-left: 0;
+                                transform: rotate(45deg);
+                            }
+                            #dialog input.consent-box:focus {
+                                outline: 2px solid rgba(226, 51, 51, 0.5);
+                                outline-offset: 2px;
+                            }
+                        </style>
                     {{ /form:grelka }}
 
                     <script>
@@ -744,19 +821,96 @@
                             </button>
                         </div>
 
-                        <!-- Согласие на обработку ПД -->
-                        <div class="mt-4 flex items-start gap-3">
-                            <input
-                                type="checkbox"
-                                id="privacy-consent-2"
-                                name="privacy_consent"
-                                required
-                                class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
-                            />
-                            <label for="privacy-consent-2" class="text-base text-light leading-relaxed">
-                                Я согласен(а) на обработку персональных данных и принимаю условия <a href="/policy" target="_blank" class="text-main-red hover:underline">политики конфиденциальности</a>
+                        <!-- Consents -->
+                        <div class="mt-4 space-y-3">
+                            <label id="label-consent-personal-2" for="consent_personal_2" class="flex items-center gap-3 text-base text-light cursor-pointer">
+                                <input
+                                    type="checkbox"
+                                    id="consent_personal_2"
+                                    name="consent_personal"
+                                    value="1"
+                                    required
+                                    class="mt-1 consent-box"
+                                />
+                                <span class="select-none">
+                                    Я даю
+                                    <a href="{{ config('consents.personal_consent') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">согласие на обработку моих персональных данных</a>
+                                    и
+                                    <a href="{{ config('consents.personal_policy') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">ознакомлен с политикой обработки персональных данных</a>.
+                                </span>
+                            </label>
+
+                            <label id="label-consent-terms-2" for="consent_terms_2" class="flex items-center gap-3 text-base text-light cursor-pointer">
+                                <input
+                                    type="checkbox"
+                                    id="consent_terms_2"
+                                    name="consent_terms"
+                                    value="1"
+                                    required
+                                    class="mt-1 consent-box"
+                                />
+                                <span class="select-none">
+                                    Ознакомлен и согласен с
+                                    <a href="{{ config('consents.offer') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">Договором оферты</a>,
+                                    <a href="{{ config('consents.rules') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">правилами клуба</a>
+                                    и
+                                    <a href="{{ config('consents.safety') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">техникой безопасности</a>.
+                                </span>
+                            </label>
+
+                            <label id="label-consent-marketing-2" for="consent_marketing_2" class="flex items-center gap-3 text-base text-light cursor-pointer">
+                                <input
+                                    type="checkbox"
+                                    id="consent_marketing_2"
+                                    name="consent_marketing"
+                                    value="1"
+                                    required
+                                    class="mt-1 consent-box"
+                                />
+                                <span class="select-none">
+                                    Даю согласие на
+                                    <a href="{{ config('consents.marketing') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">получение информационных и маркетинговых рассылок</a>.
+                                </span>
                             </label>
                         </div>
+
+                        <style>
+                            /* Uniform, custom-styled checkboxes for popup forms */
+                            #dialog-more input.consent-box {
+                                -webkit-appearance: none;
+                                -moz-appearance: none;
+                                appearance: none;
+                                width: 20px;
+                                height: 20px;
+                                border: 1px solid #D1D5DB;
+                                border-radius: 4px;
+                                background: #FFFFFF;
+                                display: inline-block;
+                                position: relative;
+                                flex-shrink: 0;
+                                margin: 0;
+                            }
+                            #dialog-more input.consent-box:checked {
+                                background-color: #E23333;
+                                border-color: #E23333;
+                            }
+                            #dialog-more input.consent-box:checked::after {
+                                content: "";
+                                position: absolute;
+                                left: 6px;
+                                top: 2px;
+                                width: 6px;
+                                height: 10px;
+                                border: 2px solid #FFFFFF;
+                                border-top: 0;
+                                border-left: 0;
+                                transform: rotate(45deg);
+                            }
+                            #dialog-more input.consent-box:focus {
+                                outline: 2px solid rgba(226, 51, 51, 0.5);
+                                outline-offset: 2px;
+                            }
+                        </style>
                     {{ /form:grelka }}
 
                     <script>
@@ -950,19 +1104,96 @@
                             </button>
                         </div>
 
-                        <!-- Согласие на обработку ПД -->
-                        <div class="mt-4 flex items-start gap-3">
-                            <input
-                                type="checkbox"
-                                id="privacy-consent-3"
-                                name="privacy_consent"
-                                required
-                                class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
-                            />
-                            <label for="privacy-consent-3" class="text-base text-light leading-relaxed">
-                                Я согласен(а) на обработку персональных данных и принимаю условия <a href="/policy" target="_blank" class="text-main-red hover:underline">политики конфиденциальности</a>
+                        <!-- Consents -->
+                        <div class="mt-4 space-y-3">
+                            <label id="label-consent-personal-3" for="consent_personal_3" class="flex items-center gap-3 text-base text-light cursor-pointer">
+                                <input
+                                    type="checkbox"
+                                    id="consent_personal_3"
+                                    name="consent_personal"
+                                    value="1"
+                                    required
+                                    class="mt-1 consent-box"
+                                />
+                                <span class="select-none">
+                                    Я даю
+                                    <a href="{{ config('consents.personal_consent') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">согласие на обработку моих персональных данных</a>
+                                    и
+                                    <a href="{{ config('consents.personal_policy') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">ознакомлен с политикой обработки персональных данных</a>.
+                                </span>
+                            </label>
+
+                            <label id="label-consent-terms-3" for="consent_terms_3" class="flex items-center gap-3 text-base text-light cursor-pointer">
+                                <input
+                                    type="checkbox"
+                                    id="consent_terms_3"
+                                    name="consent_terms"
+                                    value="1"
+                                    required
+                                    class="mt-1 consent-box"
+                                />
+                                <span class="select-none">
+                                    Ознакомлен и согласен с
+                                    <a href="{{ config('consents.offer') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">Договором оферты</a>,
+                                    <a href="{{ config('consents.rules') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">правилами клуба</a>
+                                    и
+                                    <a href="{{ config('consents.safety') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">техникой безопасности</a>.
+                                </span>
+                            </label>
+
+                            <label id="label-consent-marketing-3" for="consent_marketing_3" class="flex items-center gap-3 text-base text-light cursor-pointer">
+                                <input
+                                    type="checkbox"
+                                    id="consent_marketing_3"
+                                    name="consent_marketing"
+                                    value="1"
+                                    required
+                                    class="mt-1 consent-box"
+                                />
+                                <span class="select-none">
+                                    Даю согласие на
+                                    <a href="{{ config('consents.marketing') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">получение информационных и маркетинговых рассылок</a>.
+                                </span>
                             </label>
                         </div>
+
+                        <style>
+                            /* Uniform, custom-styled checkboxes for popup forms */
+                            #dialog-autoplay input.consent-box {
+                                -webkit-appearance: none;
+                                -moz-appearance: none;
+                                appearance: none;
+                                width: 20px;
+                                height: 20px;
+                                border: 1px solid #D1D5DB;
+                                border-radius: 4px;
+                                background: #FFFFFF;
+                                display: inline-block;
+                                position: relative;
+                                flex-shrink: 0;
+                                margin: 0;
+                            }
+                            #dialog-autoplay input.consent-box:checked {
+                                background-color: #E23333;
+                                border-color: #E23333;
+                            }
+                            #dialog-autoplay input.consent-box:checked::after {
+                                content: "";
+                                position: absolute;
+                                left: 6px;
+                                top: 2px;
+                                width: 6px;
+                                height: 10px;
+                                border: 2px solid #FFFFFF;
+                                border-top: 0;
+                                border-left: 0;
+                                transform: rotate(45deg);
+                            }
+                            #dialog-autoplay input.consent-box:focus {
+                                outline: 2px solid rgba(226, 51, 51, 0.5);
+                                outline-offset: 2px;
+                            }
+                        </style>
                     {{ /form:grelka }}
 
                     <script>
