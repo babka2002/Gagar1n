@@ -467,7 +467,7 @@
 
                         <!-- Consents -->
                         <div class="mt-4 space-y-3">
-                            <label id="label-consent-personal-1" for="consent_personal_1" class="flex items-center gap-3 text-base text-light cursor-pointer">
+                            <label id="label-consent-personal-1" for="consent_personal_1" class="flex items-center gap-3 text-sm text-light cursor-pointer">
                                 <input
                                     type="checkbox"
                                     id="consent_personal_1"
@@ -478,13 +478,13 @@
                                 />
                                 <span class="select-none">
                                     Я даю
-                                    <a href="{{ config('consents.personal_consent') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">согласие на обработку моих персональных данных</a>
+                                    <a href="{{ config('consents.personal_consent') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">согласие на обработку моих персональных данных</a>
                                     и
-                                    <a href="{{ config('consents.personal_policy') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">ознакомлен с политикой обработки персональных данных</a>.
+                                    <a href="{{ config('consents.personal_policy') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">ознакомлен с политикой обработки персональных данных</a>.
                                 </span>
                             </label>
 
-                            <label id="label-consent-terms-1" for="consent_terms_1" class="flex items-center gap-3 text-base text-light cursor-pointer">
+                            <label id="label-consent-terms-1" for="consent_terms_1" class="flex items-center gap-3 text-sm text-light cursor-pointer">
                                 <input
                                     type="checkbox"
                                     id="consent_terms_1"
@@ -495,14 +495,14 @@
                                 />
                                 <span class="select-none">
                                     Ознакомлен и согласен с
-                                    <a href="{{ config('consents.offer') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">Договором оферты</a>,
-                                    <a href="{{ config('consents.rules') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">правилами клуба</a>
+                                    <a href="{{ config('consents.offer') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">Договором оферты</a>,
+                                    <a href="{{ config('consents.rules') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">правилами клуба</a>
                                     и
-                                    <a href="{{ config('consents.safety') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">техникой безопасности</a>.
+                                    <a href="{{ config('consents.safety') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">техникой безопасности</a>.
                                 </span>
                             </label>
 
-                            <label id="label-consent-marketing-1" for="consent_marketing_1" class="flex items-center gap-3 text-base text-light cursor-pointer">
+                            <label id="label-consent-marketing-1" for="consent_marketing_1" class="flex items-center gap-3 text-sm text-light cursor-pointer">
                                 <input
                                     type="checkbox"
                                     id="consent_marketing_1"
@@ -513,7 +513,7 @@
                                 />
                                 <span class="select-none">
                                     Даю согласие на
-                                    <a href="{{ config('consents.marketing') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">получение информационных и маркетинговых рассылок</a>.
+                                    <a href="{{ config('consents.marketing') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">получение информационных и маркетинговых рассылок</a>.
                                 </span>
                             </label>
                         </div>
@@ -667,8 +667,34 @@
                             form.parentNode.replaceChild(oldForm, form);
                             form = oldForm;
 
+                            // Валидация согласий для первой формы
+                            const consentInputs = form.querySelectorAll('input[name="consent_personal"], input[name="consent_terms"], input[name="consent_marketing"]');
+                            const submitButton = form.querySelector('button[type="submit"]');
+                            
+                            function updateSubmitButton() {
+                                const allChecked = Array.from(consentInputs).every(input => input.checked);
+                                submitButton.disabled = !allChecked;
+                                submitButton.style.opacity = allChecked ? '1' : '0.5';
+                                submitButton.style.cursor = allChecked ? 'pointer' : 'not-allowed';
+                            }
+                            
+                            // Инициализация состояния кнопки
+                            updateSubmitButton();
+                            
+                            // Обработчики изменения галочек
+                            consentInputs.forEach(input => {
+                                input.addEventListener('change', updateSubmitButton);
+                            });
+
                             form.addEventListener('submit', async function(e) {
                                 e.preventDefault();
+
+                                // Проверяем согласия перед отправкой
+                                const allConsentsChecked = Array.from(consentInputs).every(input => input.checked);
+                                if (!allConsentsChecked) {
+                                    alert('Необходимо согласиться со всеми условиями');
+                                    return;
+                                }
 
                                 const formData = new FormData(this);
                                 const token = document.querySelector('input[name="_token"]').value;
@@ -823,7 +849,7 @@
 
                         <!-- Consents -->
                         <div class="mt-4 space-y-3">
-                            <label id="label-consent-personal-2" for="consent_personal_2" class="flex items-center gap-3 text-base text-light cursor-pointer">
+                            <label id="label-consent-personal-2" for="consent_personal_2" class="flex items-center gap-3 text-sm text-light cursor-pointer">
                                 <input
                                     type="checkbox"
                                     id="consent_personal_2"
@@ -834,13 +860,13 @@
                                 />
                                 <span class="select-none">
                                     Я даю
-                                    <a href="{{ config('consents.personal_consent') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">согласие на обработку моих персональных данных</a>
+                                    <a href="{{ config('consents.personal_consent') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">согласие на обработку моих персональных данных</a>
                                     и
-                                    <a href="{{ config('consents.personal_policy') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">ознакомлен с политикой обработки персональных данных</a>.
+                                    <a href="{{ config('consents.personal_policy') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">ознакомлен с политикой обработки персональных данных</a>.
                                 </span>
                             </label>
 
-                            <label id="label-consent-terms-2" for="consent_terms_2" class="flex items-center gap-3 text-base text-light cursor-pointer">
+                            <label id="label-consent-terms-2" for="consent_terms_2" class="flex items-center gap-3 text-sm text-light cursor-pointer">
                                 <input
                                     type="checkbox"
                                     id="consent_terms_2"
@@ -851,14 +877,14 @@
                                 />
                                 <span class="select-none">
                                     Ознакомлен и согласен с
-                                    <a href="{{ config('consents.offer') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">Договором оферты</a>,
-                                    <a href="{{ config('consents.rules') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">правилами клуба</a>
+                                    <a href="{{ config('consents.offer') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">Договором оферты</a>,
+                                    <a href="{{ config('consents.rules') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">правилами клуба</a>
                                     и
-                                    <a href="{{ config('consents.safety') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">техникой безопасности</a>.
+                                    <a href="{{ config('consents.safety') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">техникой безопасности</a>.
                                 </span>
                             </label>
 
-                            <label id="label-consent-marketing-2" for="consent_marketing_2" class="flex items-center gap-3 text-base text-light cursor-pointer">
+                            <label id="label-consent-marketing-2" for="consent_marketing_2" class="flex items-center gap-3 text-sm text-light cursor-pointer">
                                 <input
                                     type="checkbox"
                                     id="consent_marketing_2"
@@ -869,7 +895,7 @@
                                 />
                                 <span class="select-none">
                                     Даю согласие на
-                                    <a href="{{ config('consents.marketing') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">получение информационных и маркетинговых рассылок</a>.
+                                    <a href="{{ config('consents.marketing') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">получение информационных и маркетинговых рассылок</a>.
                                 </span>
                             </label>
                         </div>
@@ -935,8 +961,34 @@
                             form.parentNode.replaceChild(oldForm, form);
                             form = oldForm;
 
+                            // Валидация согласий для второй формы
+                            const consentInputs = form.querySelectorAll('input[name="consent_personal"], input[name="consent_terms"], input[name="consent_marketing"]');
+                            const submitButton = form.querySelector('button[type="submit"]');
+                            
+                            function updateSubmitButton() {
+                                const allChecked = Array.from(consentInputs).every(input => input.checked);
+                                submitButton.disabled = !allChecked;
+                                submitButton.style.opacity = allChecked ? '1' : '0.5';
+                                submitButton.style.cursor = allChecked ? 'pointer' : 'not-allowed';
+                            }
+                            
+                            // Инициализация состояния кнопки
+                            updateSubmitButton();
+                            
+                            // Обработчики изменения галочек
+                            consentInputs.forEach(input => {
+                                input.addEventListener('change', updateSubmitButton);
+                            });
+
                             form.addEventListener('submit', async function(e) {
                                 e.preventDefault();
+
+                                // Проверяем согласия перед отправкой
+                                const allConsentsChecked = Array.from(consentInputs).every(input => input.checked);
+                                if (!allConsentsChecked) {
+                                    alert('Необходимо согласиться со всеми условиями');
+                                    return;
+                                }
 
                                 const formData = new FormData(this);
                                 const token = document.querySelector('input[name="_token"]').value;
@@ -1106,7 +1158,7 @@
 
                         <!-- Consents -->
                         <div class="mt-4 space-y-3">
-                            <label id="label-consent-personal-3" for="consent_personal_3" class="flex items-center gap-3 text-base text-light cursor-pointer">
+                            <label id="label-consent-personal-3" for="consent_personal_3" class="flex items-center gap-3 text-sm text-light cursor-pointer">
                                 <input
                                     type="checkbox"
                                     id="consent_personal_3"
@@ -1117,13 +1169,13 @@
                                 />
                                 <span class="select-none">
                                     Я даю
-                                    <a href="{{ config('consents.personal_consent') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">согласие на обработку моих персональных данных</a>
+                                    <a href="{{ config('consents.personal_consent') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">согласие на обработку моих персональных данных</a>
                                     и
-                                    <a href="{{ config('consents.personal_policy') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">ознакомлен с политикой обработки персональных данных</a>.
+                                    <a href="{{ config('consents.personal_policy') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">ознакомлен с политикой обработки персональных данных</a>.
                                 </span>
                             </label>
 
-                            <label id="label-consent-terms-3" for="consent_terms_3" class="flex items-center gap-3 text-base text-light cursor-pointer">
+                            <label id="label-consent-terms-3" for="consent_terms_3" class="flex items-center gap-3 text-sm text-light cursor-pointer">
                                 <input
                                     type="checkbox"
                                     id="consent_terms_3"
@@ -1134,14 +1186,14 @@
                                 />
                                 <span class="select-none">
                                     Ознакомлен и согласен с
-                                    <a href="{{ config('consents.offer') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">Договором оферты</a>,
-                                    <a href="{{ config('consents.rules') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">правилами клуба</a>
+                                    <a href="{{ config('consents.offer') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">Договором оферты</a>,
+                                    <a href="{{ config('consents.rules') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">правилами клуба</a>
                                     и
-                                    <a href="{{ config('consents.safety') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">техникой безопасности</a>.
+                                    <a href="{{ config('consents.safety') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">техникой безопасности</a>.
                                 </span>
                             </label>
 
-                            <label id="label-consent-marketing-3" for="consent_marketing_3" class="flex items-center gap-3 text-base text-light cursor-pointer">
+                            <label id="label-consent-marketing-3" for="consent_marketing_3" class="flex items-center gap-3 text-sm text-light cursor-pointer">
                                 <input
                                     type="checkbox"
                                     id="consent_marketing_3"
@@ -1152,7 +1204,7 @@
                                 />
                                 <span class="select-none">
                                     Даю согласие на
-                                    <a href="{{ config('consents.marketing') }}" target="_blank" rel="noopener noreferrer" class="text-main-red hover:underline">получение информационных и маркетинговых рассылок</a>.
+                                    <a href="{{ config('consents.marketing') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">получение информационных и маркетинговых рассылок</a>.
                                 </span>
                             </label>
                         </div>
@@ -1217,8 +1269,34 @@
                             form.parentNode.replaceChild(oldForm, form);
                             form = oldForm;
 
+                            // Валидация согласий для третьей формы
+                            const consentInputs = form.querySelectorAll('input[name="consent_personal"], input[name="consent_terms"], input[name="consent_marketing"]');
+                            const submitButton = form.querySelector('button[type="submit"]');
+                            
+                            function updateSubmitButton() {
+                                const allChecked = Array.from(consentInputs).every(input => input.checked);
+                                submitButton.disabled = !allChecked;
+                                submitButton.style.opacity = allChecked ? '1' : '0.5';
+                                submitButton.style.cursor = allChecked ? 'pointer' : 'not-allowed';
+                            }
+                            
+                            // Инициализация состояния кнопки
+                            updateSubmitButton();
+                            
+                            // Обработчики изменения галочек
+                            consentInputs.forEach(input => {
+                                input.addEventListener('change', updateSubmitButton);
+                            });
+
                             form.addEventListener('submit', async function(e) {
                                 e.preventDefault();
+
+                                // Проверяем согласия перед отправкой
+                                const allConsentsChecked = Array.from(consentInputs).every(input => input.checked);
+                                if (!allConsentsChecked) {
+                                    alert('Необходимо согласиться со всеми условиями');
+                                    return;
+                                }
 
                                 const formData = new FormData(this);
                                 const token = document.querySelector('input[name="_token"]').value;
