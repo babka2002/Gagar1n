@@ -95,16 +95,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Safe fade-in to prevent layout shift */
-.fade-in {
-    opacity: 1;
-    transition: opacity 300ms ease;
-}
-.fade-out {
-    opacity: 0;
-    transition: opacity 300ms ease;
-}
-
 html,
 body {
     /* font-family: 'Gothic No60'; */
