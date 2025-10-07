@@ -701,6 +701,11 @@
                                 const submitButton = form.querySelector('button[type="submit"]');
                                 const hostname = window.location.hostname.replace('www.', '');
 
+                                // Отладочная информация для телефона
+                                const phoneValue = formData.get('phone');
+                                console.log('Phone value from form:', phoneValue);
+                                console.log('Phone length:', phoneValue ? phoneValue.length : 0);
+
                                 submitButton.disabled = true;
                                 window.showSpinner();
 
@@ -753,6 +758,10 @@
                                             city: "Симферополь",
                                             comment: window.currentFormData?.comment || ""
                                         };
+
+                                        // Отладочная информация для webhook
+                                        console.log('Webhook callerphone:', webhookData.callerphone);
+                                        console.log('Webhook callerphone length:', webhookData.callerphone ? webhookData.callerphone.length : 0);
 
                                         // Отправляем в webhook
                                         await fetch('/webhook-proxy', {
