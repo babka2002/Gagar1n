@@ -621,8 +621,44 @@
                             form.parentNode.replaceChild(oldForm, form);
                             form = oldForm;
 
+                            // Функция проверки согласий
+                            function validateConsents() {
+                                const consentPersonal = form.querySelector('input[name="consent_personal"]');
+                                const consentTerms = form.querySelector('input[name="consent_terms"]');
+                                const consentMarketing = form.querySelector('input[name="consent_marketing"]');
+                                
+                                return consentPersonal && consentPersonal.checked &&
+                                       consentTerms && consentTerms.checked &&
+                                       consentMarketing && consentMarketing.checked;
+                            }
+
+                            // Функция обновления состояния кнопки
+                            function updateSubmitButton() {
+                                const submitButton = form.querySelector('button[type="submit"]');
+                                const isValid = validateConsents();
+                                
+                                submitButton.disabled = !isValid;
+                                submitButton.style.opacity = isValid ? '1' : '0.5';
+                                submitButton.style.cursor = isValid ? 'pointer' : 'not-allowed';
+                            }
+
+                            // Инициализация состояния кнопки
+                            updateSubmitButton();
+
+                            // Добавляем обработчики изменения галочек
+                            const consentInputs = form.querySelectorAll('input[name^="consent_"]');
+                            consentInputs.forEach(input => {
+                                input.addEventListener('change', updateSubmitButton);
+                            });
+
                             form.addEventListener('submit', async function(e) {
                                 e.preventDefault();
+
+                                // Проверяем согласия перед отправкой
+                                if (!validateConsents()) {
+                                    alert('Необходимо согласиться со всеми условиями для отправки формы');
+                                    return;
+                                }
 
                                 const formData = new FormData(this);
                                 const token = document.querySelector('input[name="_token"]').value;
@@ -843,8 +879,44 @@
                             form.parentNode.replaceChild(oldForm, form);
                             form = oldForm;
 
+                            // Функция проверки согласий
+                            function validateConsents() {
+                                const consentPersonal = form.querySelector('input[name="consent_personal"]');
+                                const consentTerms = form.querySelector('input[name="consent_terms"]');
+                                const consentMarketing = form.querySelector('input[name="consent_marketing"]');
+                                
+                                return consentPersonal && consentPersonal.checked &&
+                                       consentTerms && consentTerms.checked &&
+                                       consentMarketing && consentMarketing.checked;
+                            }
+
+                            // Функция обновления состояния кнопки
+                            function updateSubmitButton() {
+                                const submitButton = form.querySelector('button[type="submit"]');
+                                const isValid = validateConsents();
+                                
+                                submitButton.disabled = !isValid;
+                                submitButton.style.opacity = isValid ? '1' : '0.5';
+                                submitButton.style.cursor = isValid ? 'pointer' : 'not-allowed';
+                            }
+
+                            // Инициализация состояния кнопки
+                            updateSubmitButton();
+
+                            // Добавляем обработчики изменения галочек
+                            const consentInputs = form.querySelectorAll('input[name^="consent_"]');
+                            consentInputs.forEach(input => {
+                                input.addEventListener('change', updateSubmitButton);
+                            });
+
                             form.addEventListener('submit', async function(e) {
                                 e.preventDefault();
+
+                                // Проверяем согласия перед отправкой
+                                if (!validateConsents()) {
+                                    alert('Необходимо согласиться со всеми условиями для отправки формы');
+                                    return;
+                                }
 
                                 const formData = new FormData(this);
                                 const token = document.querySelector('input[name="_token"]').value;
@@ -1079,8 +1151,44 @@
                             form.parentNode.replaceChild(oldForm, form);
                             form = oldForm;
 
+                            // Функция проверки согласий
+                            function validateConsents() {
+                                const consentPersonal = form.querySelector('input[name="consent_personal"]');
+                                const consentTerms = form.querySelector('input[name="consent_terms"]');
+                                const consentMarketing = form.querySelector('input[name="consent_marketing"]');
+                                
+                                return consentPersonal && consentPersonal.checked &&
+                                       consentTerms && consentTerms.checked &&
+                                       consentMarketing && consentMarketing.checked;
+                            }
+
+                            // Функция обновления состояния кнопки
+                            function updateSubmitButton() {
+                                const submitButton = form.querySelector('button[type="submit"]');
+                                const isValid = validateConsents();
+                                
+                                submitButton.disabled = !isValid;
+                                submitButton.style.opacity = isValid ? '1' : '0.5';
+                                submitButton.style.cursor = isValid ? 'pointer' : 'not-allowed';
+                            }
+
+                            // Инициализация состояния кнопки
+                            updateSubmitButton();
+
+                            // Добавляем обработчики изменения галочек
+                            const consentInputs = form.querySelectorAll('input[name^="consent_"]');
+                            consentInputs.forEach(input => {
+                                input.addEventListener('change', updateSubmitButton);
+                            });
+
                             form.addEventListener('submit', async function(e) {
                                 e.preventDefault();
+
+                                // Проверяем согласия перед отправкой
+                                if (!validateConsents()) {
+                                    alert('Необходимо согласиться со всеми условиями для отправки формы');
+                                    return;
+                                }
 
                                 const formData = new FormData(this);
                                 const token = document.querySelector('input[name="_token"]').value;
