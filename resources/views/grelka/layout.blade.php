@@ -7,6 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="view-transition" content="same-origin">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         @antlers
             {{ '/assets/favicon.ico' | favicon }}
             {{-- {{ icon | favicon }} --}}
@@ -51,6 +52,42 @@
         <script src="//code.jivo.ru/widget/IuuF2EtmWb" async></script>
         <style>
             [x-cloak] { display: none !important; }
+            
+            /* Uniform, custom-styled checkboxes for popup forms */
+            .consent-box {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                width: 20px;
+                height: 20px;
+                border: 1px solid #D1D5DB;
+                border-radius: 4px;
+                background: #FFFFFF;
+                display: inline-block;
+                position: relative;
+                flex-shrink: 0;
+                margin: 0;
+            }
+            .consent-box:checked {
+                background: #DC2626;
+                border-color: #DC2626;
+            }
+            .consent-box:checked::after {
+                content: "";
+                position: absolute;
+                left: 6px;
+                top: 2px;
+                width: 6px;
+                height: 10px;
+                border: 2px solid #FFFFFF;
+                border-top: 0;
+                border-left: 0;
+                transform: rotate(45deg);
+            }
+            .consent-box:focus {
+                outline: 2px solid rgba(226, 51, 51, 0.5);
+                outline-offset: 2px;
+            }
         </style>
     </head>
     <body class="bg-dark">
@@ -451,6 +488,7 @@
                             <input
                                 type="tel"
                                 name="phone"
+                                autocomplete="tel"
                                 required
                                 placeholder="Номер"
                                 class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase"
@@ -475,10 +513,11 @@
                                     type="checkbox"
                                     id="consent-personal-1"
                                     name="consent_personal"
+                                    value="1"
                                     required
-                                    class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
+                                    class="mt-1 consent-box"
                                 />
-                                <label for="consent-personal-1" class="text-base text-light leading-relaxed">
+                                <label for="consent-personal-1" class="text-base text-light leading-relaxed select-none">
                                     Я даю
                                     <a href="{{ config:consents:personal_consent }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">согласие на обработку моих персональных данных</a>
                                     и
@@ -492,10 +531,11 @@
                                     type="checkbox"
                                     id="consent-terms-1"
                                     name="consent_terms"
+                                    value="1"
                                     required
-                                    class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
+                                    class="mt-1 consent-box"
                                 />
-                                <label for="consent-terms-1" class="text-base text-light leading-relaxed">
+                                <label for="consent-terms-1" class="text-base text-light leading-relaxed select-none">
                                     Ознакомлен и согласен с
                                     <a href="{{ config:consents:offer }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">Договором оферты</a>,
                                     <a href="{{ config:consents:rules }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">правилами клуба</a>
@@ -510,10 +550,11 @@
                                     type="checkbox"
                                     id="consent-marketing-1"
                                     name="consent_marketing"
+                                    value="1"
                                     required
-                                    class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
+                                    class="mt-1 consent-box"
                                 />
-                                <label for="consent-marketing-1" class="text-base text-light leading-relaxed">
+                                <label for="consent-marketing-1" class="text-base text-light leading-relaxed select-none">
                                     Даю согласие на
                                     <a href="{{ config:consents:marketing }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">получение информационных и маркетинговых рассылок</a>.
                                 </label>
@@ -697,16 +738,13 @@
                                 }
 
                                 const formData = new FormData(this);
-                                const token = document.querySelector('input[name="_token"]').value;
+                                const token = document.querySelector('input[name="_token"]')?.value || 
+                                             document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
                                 const submitButton = form.querySelector('button[type="submit"]');
                                 const hostname = window.location.hostname.replace('www.', '');
+                                const fullUrl = window.location.href;
 
-                                // Отладочная информация для телефона
-                                const phoneValue = formData.get('phone');
-                                console.log('Phone value from form:', phoneValue);
-                                console.log('Phone length:', phoneValue ? phoneValue.length : 0);
-
-                                submitButton.disabled = true;
+                                // Кнопка всегда активна - убираем отключение
                                 window.showSpinner();
 
                                 try {
@@ -752,16 +790,13 @@
                                             requestDate: new Date().toISOString().slice(0, 19).replace('T', ' '),
                                             subject: window.currentFormData?.subject || "Заявка с сайта",
                                             fio: formData.get('full_name'),
-                                            source: hostname,
-                                            medium: document.referrer || "direct",
+                                            source: fullUrl,
+                                            medium: document.referrer && document.referrer !== window.location.href ? 
+                                                   new URL(document.referrer).hostname : "direct",
                                             siteName: hostname,
                                             city: "Симферополь",
                                             comment: window.currentFormData?.comment || ""
                                         };
-
-                                        // Отладочная информация для webhook
-                                        console.log('Webhook callerphone:', webhookData.callerphone);
-                                        console.log('Webhook callerphone length:', webhookData.callerphone ? webhookData.callerphone.length : 0);
 
                                         // Отправляем в webhook
                                         await fetch('/webhook-proxy', {
@@ -851,6 +886,7 @@
                             <input
                                 type="tel"
                                 name="phone"
+                                autocomplete="tel"
                                 required
                                 placeholder="Номер"
                                 class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase"
@@ -875,10 +911,11 @@
                                     type="checkbox"
                                     id="consent-personal-2"
                                     name="consent_personal"
+                                    value="1"
                                     required
-                                    class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
+                                    class="mt-1 consent-box"
                                 />
-                                <label for="consent-personal-2" class="text-base text-light leading-relaxed">
+                                <label for="consent-personal-2" class="text-base text-light leading-relaxed select-none">
                                     Я даю
                                     <a href="{{ config:consents:personal_consent }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">согласие на обработку моих персональных данных</a>
                                     и
@@ -892,10 +929,11 @@
                                     type="checkbox"
                                     id="consent-terms-2"
                                     name="consent_terms"
+                                    value="1"
                                     required
-                                    class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
+                                    class="mt-1 consent-box"
                                 />
-                                <label for="consent-terms-2" class="text-base text-light leading-relaxed">
+                                <label for="consent-terms-2" class="text-base text-light leading-relaxed select-none">
                                     Ознакомлен и согласен с
                                     <a href="{{ config:consents:offer }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">Договором оферты</a>,
                                     <a href="{{ config:consents:rules }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">правилами клуба</a>
@@ -910,10 +948,11 @@
                                     type="checkbox"
                                     id="consent-marketing-2"
                                     name="consent_marketing"
+                                    value="1"
                                     required
-                                    class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
+                                    class="mt-1 consent-box"
                                 />
-                                <label for="consent-marketing-2" class="text-base text-light leading-relaxed">
+                                <label for="consent-marketing-2" class="text-base text-light leading-relaxed select-none">
                                     Даю согласие на
                                     <a href="{{ config:consents:marketing }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">получение информационных и маркетинговых рассылок</a>.
                                 </label>
@@ -1009,11 +1048,13 @@
                                 }
 
                                 const formData = new FormData(this);
-                                const token = document.querySelector('input[name="_token"]').value;
+                                const token = document.querySelector('input[name="_token"]')?.value || 
+                                             document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
                                 const submitButton = form.querySelector('button[type="submit"]');
                                 const hostname = window.location.hostname.replace('www.', '');
+                                const fullUrl = window.location.href;
 
-                                submitButton.disabled = true;
+                                // Кнопка всегда активна - убираем отключение
                                 window.showSpinner();
 
                                 try {
@@ -1059,8 +1100,9 @@
                                             requestDate: new Date().toISOString().slice(0, 19).replace('T', ' '),
                                             subject: "Заявка с сайта",
                                             fio: formData.get('full_name'),
-                                            source: hostname,
-                                            medium: document.referrer || "direct",
+                                            source: fullUrl,
+                                            medium: document.referrer && document.referrer !== window.location.href ? 
+                                                   new URL(document.referrer).hostname : "direct",
                                             siteName: hostname,
                                             city: "Симферополь"
                                         };
@@ -1169,6 +1211,7 @@
                             <input
                                 type="tel"
                                 name="phone"
+                                autocomplete="tel"
                                 required
                                 placeholder="Номер"
                                 class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase"
@@ -1193,10 +1236,11 @@
                                     type="checkbox"
                                     id="consent-personal-3"
                                     name="consent_personal"
+                                    value="1"
                                     required
-                                    class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
+                                    class="mt-1 consent-box"
                                 />
-                                <label for="consent-personal-3" class="text-base text-light leading-relaxed">
+                                <label for="consent-personal-3" class="text-base text-light leading-relaxed select-none">
                                     Я даю
                                     <a href="{{ config:consents:personal_consent }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">согласие на обработку моих персональных данных</a>
                                     и
@@ -1210,10 +1254,11 @@
                                     type="checkbox"
                                     id="consent-terms-3"
                                     name="consent_terms"
+                                    value="1"
                                     required
-                                    class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
+                                    class="mt-1 consent-box"
                                 />
-                                <label for="consent-terms-3" class="text-base text-light leading-relaxed">
+                                <label for="consent-terms-3" class="text-base text-light leading-relaxed select-none">
                                     Ознакомлен и согласен с
                                     <a href="{{ config:consents:offer }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">Договором оферты</a>,
                                     <a href="{{ config:consents:rules }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">правилами клуба</a>
@@ -1228,10 +1273,11 @@
                                     type="checkbox"
                                     id="consent-marketing-3"
                                     name="consent_marketing"
+                                    value="1"
                                     required
-                                    class="mt-1 w-5 h-5 text-main-red border-gray-300 rounded focus:ring-main-red"
+                                    class="mt-1 consent-box"
                                 />
-                                <label for="consent-marketing-3" class="text-base text-light leading-relaxed">
+                                <label for="consent-marketing-3" class="text-base text-light leading-relaxed select-none">
                                     Даю согласие на
                                     <a href="{{ config:consents:marketing }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">получение информационных и маркетинговых рассылок</a>.
                                 </label>
@@ -1326,11 +1372,13 @@
                                 }
 
                                 const formData = new FormData(this);
-                                const token = document.querySelector('input[name="_token"]').value;
+                                const token = document.querySelector('input[name="_token"]')?.value || 
+                                             document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
                                 const submitButton = form.querySelector('button[type="submit"]');
                                 const hostname = window.location.hostname.replace('www.', '');
+                                const fullUrl = window.location.href;
 
-                                submitButton.disabled = true;
+                                // Кнопка всегда активна - убираем отключение
                                 window.showSpinner();
 
                                 try {
@@ -1376,8 +1424,9 @@
                                             requestDate: new Date().toISOString().slice(0, 19).replace('T', ' '),
                                             subject: "Заявка из автоплей попапа",
                                             fio: formData.get('full_name'),
-                                            source: hostname,
-                                            medium: document.referrer || "direct",
+                                            source: fullUrl,
+                                            medium: document.referrer && document.referrer !== window.location.href ? 
+                                                   new URL(document.referrer).hostname : "direct",
                                             siteName: hostname,
                                             city: "Симферополь"
                                         };

@@ -200,25 +200,115 @@
                     {{ $form_title }}
                 </h3>
 
-                <form id="contact-form" action="" method="get" class="flex flex-col gap-5" data-aos="zoom-in" data-aos-delay="1000">
+                <form id="mainContactForm" action="" method="get" class="flex flex-col gap-5" data-aos="zoom-in" data-aos-delay="1000">
+                    @csrf
                     <div>
-                        <input type="text" placeholder="{{ $form_name_placeholder }}"
+                        <input type="text" name="name" placeholder="{{ $form_name_placeholder }}"
                             class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-light rounded-brxl focus:outline-none focus:ring-2 focus:ring-red-600"
                             required />
                     </div>
                     <div>
-                        <input type="tel" placeholder="{{ $form_phone_placeholder }}"
+                        <input type="tel" name="phone" placeholder="{{ $form_phone_placeholder }}" autocomplete="tel"
                             class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-light rounded-brxl focus:outline-none focus:ring-2 focus:ring-red-600"
                             required />
                     </div>
+                    
+                    <!-- Consents -->
+                    <div class="mt-2 space-y-2">
+                        <label id="label-consent-personal" for="consent_personal" class="flex items-center gap-2 text-sm text-light cursor-pointer">
+                            <input
+                                type="checkbox"
+                                id="consent_personal"
+                                name="consent_personal"
+                                value="1"
+                                required
+                                class="mt-1 consent-box"
+                            />
+                            <span class="select-none">
+                                Я даю
+                                <a href="{{ config('consents.personal_consent') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">согласие на обработку моих персональных данных</a>
+                                и
+                                <a href="{{ config('consents.personal_policy') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">ознакомлен с политикой обработки персональных данных</a>.
+                            </span>
+                        </label>
+
+                        <label id="label-consent-terms" for="consent_terms" class="flex items-center gap-2 text-sm text-light cursor-pointer">
+                            <input
+                                type="checkbox"
+                                id="consent_terms"
+                                name="consent_terms"
+                                value="1"
+                                required
+                                class="mt-1 consent-box"
+                            />
+                            <span class="select-none">
+                                Ознакомлен и согласен с
+                                <a href="{{ config('consents.offer') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">Договором оферты</a>,
+                                <a href="{{ config('consents.rules') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">правилами клуба</a>
+                                и
+                                <a href="{{ config('consents.safety') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">техникой безопасности</a>.
+                            </span>
+                        </label>
+
+                        <label id="label-consent-marketing" for="consent_marketing" class="flex items-center gap-2 text-sm text-light cursor-pointer">
+                            <input
+                                type="checkbox"
+                                id="consent_marketing"
+                                name="consent_marketing"
+                                value="1"
+                                required
+                                class="mt-1 consent-box"
+                            />
+                            <span class="select-none">
+                                Даю согласие на
+                                <a href="{{ config('consents.marketing') }}" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">получение информационных и маркетинговых рассылок</a>.
+                            </span>
+                        </label>
+                    </div>
+                    
                     <button type="submit"
                         class="w-full text-light px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-red-600 hover:bg-red-700 transition rounded-brxl">
                         {{ $form_button_text }}
                     </button>
-                    <p class="text-sm text-center text-light">
-                        {{ $form_privacy_text }}
-                    </p>
                 </form>
+
+                <style>
+                    /* Uniform, custom-styled checkboxes for this form */
+                    #mainContactForm input.consent-box {
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        appearance: none;
+                        width: 20px;
+                        height: 20px;
+                        border: 1px solid #D1D5DB;
+                        border-radius: 4px;
+                        background: #FFFFFF;
+                        display: inline-block;
+                        position: relative;
+                        flex-shrink: 0;
+                        margin: 0;
+                    }
+                    #mainContactForm input.consent-box:checked {
+                        background: #DC2626;
+                        border-color: #DC2626;
+                    }
+                    #mainContactForm input.consent-box:checked::after {
+                        content: "";
+                        position: absolute;
+                        left: 6px;
+                        top: 2px;
+                        width: 6px;
+                        height: 10px;
+                        border: 2px solid #FFFFFF;
+                        border-top: 0;
+                        border-left: 0;
+                        transform: rotate(45deg);
+                    }
+                    #mainContactForm input.consent-box:focus {
+                        outline: 2px solid rgba(226, 51, 51, 0.5);
+                        outline-offset: 2px;
+                    }
+                </style>
             </div>
             <div class="col-span-1" data-aos="zoom-in">
                 <img

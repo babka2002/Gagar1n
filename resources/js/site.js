@@ -573,29 +573,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else {
                     label.classList.remove("text-red-500");
                 }
-                updateSubmitDisabled();
             });
         }
         return { input, label };
     });
 
-    // Disable submit until all consents are checked (when present)
+    // Кнопка всегда активна - убираем логику отключения
     const submitButton = form
         ? form.querySelector('input[type="submit"], button[type="submit"]')
         : null;
-    function updateSubmitDisabled() {
-        if (!form || !submitButton) return;
-        const presentConsents = consentConfig
-            .map((cfg) => form.querySelector(`#${cfg.inputId}`))
-            .filter(Boolean);
-        if (presentConsents.length === 0) return; // no consents on page
-        const allChecked = presentConsents.every((el) => el.checked === true);
-        submitButton.disabled = !allChecked;
-        submitButton.classList.toggle("opacity-50", !allChecked);
-        submitButton.classList.toggle("cursor-not-allowed", !allChecked);
-    }
-    // Initial state
-    updateSubmitDisabled();
 
     if (form) {
         form.addEventListener("submit", async function (e) {
@@ -609,18 +595,16 @@ document.addEventListener("DOMContentLoaded", function () {
             const haveConsents = consentsNow.some((c) => !!c.input);
             if (haveConsents) {
                 triedSubmitConsents = true;
-                let allChecked = true;
+                let hasErrors = false;
                 consentsNow.forEach(({ input, label }) => {
                     if (!input) return;
                     const ok = input.checked === true;
                     if (label) label.classList.toggle("text-red-500", !ok);
-                    if (!ok) allChecked = false;
+                    if (!ok) hasErrors = true;
                 });
-                if (!allChecked) {
-                    // Stop other listeners just in case
-                    if (typeof e.stopImmediatePropagation === "function") {
-                        e.stopImmediatePropagation();
-                    }
+                if (hasErrors) {
+                    // Показываем предупреждение вместо остановки отправки
+                    alert("Вы пропустили обязательные поля согласия. Пожалуйста, отметьте все необходимые галки.");
                     return;
                 }
             }
@@ -639,8 +623,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     .replace("T", " "),
                 subject: "Заявка с сайта",
                 fio: name,
-                source: window.location.hostname,
-                medium: document.referrer || "direct",
+                source: window.location.href,
+                medium: document.referrer && document.referrer !== window.location.href ? 
+                       new URL(document.referrer).hostname : "direct",
                 siteName: window.location.hostname,
                 city: "Симферополь",
                 _token: token,
@@ -709,75 +694,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
-});
-
-// Handle popup forms with consents
-document.addEventListener("DOMContentLoaded", function () {
-    // Function to handle consent validation for popup forms
-    function handlePopupFormConsents(form) {
-        const consentConfig = [
-            { inputId: "consent_personal", labelId: "label-consent-personal" },
-            { inputId: "consent_terms", labelId: "label-consent-terms" },
-            { inputId: "consent_marketing", labelId: "label-consent-marketing" },
-        ];
-
-        const consents = consentConfig.map((cfg) => {
-            const input = form.querySelector(`#${cfg.inputId}`);
-            const label = form.querySelector(`#${cfg.labelId}`);
-            if (input && label) {
-                input.addEventListener("change", () => {
-                    if (triedSubmitConsents) {
-                        label.classList.toggle("text-red-500", !input.checked);
-                    } else {
-                        label.classList.remove("text-red-500");
-                    }
-                });
-            }
-            return { input, label };
-        });
-
-        return consents;
-    }
-
-    // Function to validate consents before form submission
-    function validateConsents(form) {
-        const consentConfig = [
-            { inputId: "consent_personal", labelId: "label-consent-personal" },
-            { inputId: "consent_terms", labelId: "label-consent-terms" },
-            { inputId: "consent_marketing", labelId: "label-consent-marketing" },
-        ];
-
-        const consentsNow = consentConfig.map((cfg) => ({
-            input: form.querySelector(`#${cfg.inputId}`),
-            label: form.querySelector(`#${cfg.labelId}`),
-        }));
-
-        const haveConsents = consentsNow.some((c) => !!c.input);
-        if (haveConsents) {
-            let allChecked = true;
-            consentsNow.forEach(({ input, label }) => {
-                if (!input) return;
-                const ok = input.checked === true;
-                if (label) label.classList.toggle("text-red-500", !ok);
-                if (!ok) allChecked = false;
-            });
-            return allChecked;
-        }
-        return true; // No consents found, allow submission
-    }
-
-    // Handle all popup forms
-    const popupForms = document.querySelectorAll('dialog form[action*="/!/forms/grelka"]');
-    popupForms.forEach(form => {
-        handlePopupFormConsents(form);
-        
-        form.addEventListener("submit", function (e) {
-            if (!validateConsents(form)) {
-                e.preventDefault();
-                return false;
-            }
-        });
-    });
 });
 // const dialogElem = document.getElementById("dialog");
 // const showBtns = document.querySelectorAll(".show"); // Получаем все элементы с классом show

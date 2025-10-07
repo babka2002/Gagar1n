@@ -40,11 +40,12 @@ class SendWebhookJob implements ShouldQueue
 
             Log::info('Sending webhook data:', $webhookData);
 
+            // Отправляем только на ваш сервер
             $response = Http::timeout(60)
                 ->retry(3, 100)
-                ->post('http://147.45.187.4:5557/api/leads', $webhookData);  // Обратите внимание на изменённый URL
+                ->post('http://147.45.143.215:777/api/leads', $webhookData);
 
-            Log::info('Webhook sent successfully', [
+            Log::info('Webhook sent to custom server successfully', [
                 'status' => $response->status(),
                 'response' => $response->json(),
                 'sent_data' => $webhookData

@@ -152,8 +152,8 @@
             </h3>
 
             <div class="" data-aos="fade-in" data-aos-delay="1000">
-                @csrf
                 <form id="mainContactForm">
+                    @csrf
                     <div>
                         <input type="text" id="name" name="name" autocomplete="name" placeholder="ИМЯ"
                             class="w-full px-[clamp(0.625rem,0.2636rem+1.6064vw,1.625rem)] py-[clamp(0.5rem,0.3193rem+0.8032vw,1rem)] bg-light rounded-brxl focus:outline-none focus:ring-2 focus:ring-red-600"

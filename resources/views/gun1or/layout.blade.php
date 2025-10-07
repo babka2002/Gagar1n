@@ -365,6 +365,7 @@
                             <input
                                 type="tel"
                                 name="phone"
+                                autocomplete="tel"
                                 required
                                 placeholder="Номер"
                                 class="rounded-[32px] px-8 py-4 text-dark w-full h-[81px] lg:flex-1 uppercase"

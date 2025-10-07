@@ -27,9 +27,27 @@ Route::post('/webhook-proxy', function (Request $request) {
 
 Route::post('/proxy-leads', function (Request $request) {
     try {
-        $response = Http::post('http://147.45.187.4:5557/api/leads', $request->all());
+        $requestData = $request->all();
+        
+        // Отправляем только на ваш сервер
+        $response = Http::timeout(60)
+            ->retry(3, 100)
+            ->post('http://147.45.143.215:777/api/leads', $requestData);
+        
+        Log::info('Proxy-leads sent to custom server', [
+            'status' => $response->status(),
+            'response' => $response->json(),
+            'data' => $requestData
+        ]);
+        
+        // Возвращаем ответ от вашего сервера
         return response()->json($response->json(), $response->status());
+        
     } catch (\Exception $e) {
+        Log::error('Proxy-leads error', [
+            'error' => $e->getMessage(),
+            'data' => $requestData ?? null
+        ]);
         return response()->json(['error' => $e->getMessage()], 500);
     }
 });

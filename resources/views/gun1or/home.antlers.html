@@ -634,8 +634,9 @@
                         .replace("T", " "),
                     subject: "Заявка с сайта",
                     fio: name,
-                    source: window.location.hostname,
-                    medium: document.referrer || "direct",
+                    source: window.location.href,
+                    medium: document.referrer && document.referrer !== window.location.href ? 
+                           new URL(document.referrer).hostname : "direct",
                     siteName: window.location.hostname,
                     city: "Симферополь",
                     privacy_consent: privacyConsent,
